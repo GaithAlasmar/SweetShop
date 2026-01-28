@@ -5,17 +5,12 @@ using SweetShop.Data;
 
 namespace SweetShop.Models;
 
-public class ShoppingCart
+public class ShoppingCart(ApplicationDbContext context)
 {
-    private readonly ApplicationDbContext _context;
+    private readonly ApplicationDbContext _context = context;
 
-    public string ShoppingCartId { get; set; }
-    public List<ShoppingCartItem> ShoppingCartItems { get; set; } = new List<ShoppingCartItem>();
-
-    public ShoppingCart(ApplicationDbContext context)
-    {
-        _context = context;
-    }
+    public string ShoppingCartId { get; set; } = default!;
+    public List<ShoppingCartItem> ShoppingCartItems { get; set; } = default!;
 
     public static ShoppingCart GetCart(IServiceProvider services)
     {
@@ -78,10 +73,12 @@ public class ShoppingCart
 
     public List<ShoppingCartItem> GetShoppingCartItems()
     {
-        return ShoppingCartItems ??= _context.ShoppingCartItems
-            .Where(c => c.ShoppingCartId == ShoppingCartId)
-            .Include(s => s.Product)
-            .ToList();
+        return ShoppingCartItems ??=
+        [
+            .. _context.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == ShoppingCartId)
+                .Include(s => s.Product)
+        ];
     }
 
     public void ClearCart()
