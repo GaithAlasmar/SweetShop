@@ -1,35 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Drag and Drop | Gaith Alasmar</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- Font Awesome للآيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      color: white;
+      font-family: sans-serif;
+      box-sizing: border-box;
+    }
+    body{
+      background-color: #001;
+      display: flex;
+    }
+    .img-box{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid blue;
+      flex-shrink: 0;
+    }
+    .img-box img{
+      width: 100%;
+    }
+    .profile{
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .profile h2{
+      font-size: 20px;
+      text-transform: capitalize;
+    }
+    .menu{
+      background-color: #123;
+      width: 60px;
+      height: 100vh;
+      padding: 20px;
+      overflow: hidden;
+      transition: .5s;
+    }
+    .menu:hover{
+      width: 260px;
+    }
+    ul{
+      list-style: none;
+      position: relative;
+      height: 95%;
+    }
+    ul li a{
+      text-decoration: none;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      transition: .5s;
+    }
+    ul li a:hover,.active,.data-info .box:hover,td:hover{
+      background-color: #ffffff55;
+    }
+    .log-out{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .log-out a{
+      background-color: #a00;
+    }
+    ul li a i{
+      font-size: 30px;
+    }
+    .content{
+      width: 100%;
+      margin: 10px;
+    }
+    .title-info{
+      background-color:#0481ff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .data-info{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .data-info .box{
+      background-color: #123;
+      height: 150px;
+      flex-basis: 150px;
+      flex-grow: 1;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .data-info .box i{
+      font-size: 40px;
+    }
+    .data-info .box .data{
+      text-align: center;
+    }
+    .data-info .box .data span{
+      font-size: 30px;
+    }
+    table{
+      width: 100%;
+      text-align: center;
+      border-spacing: 10px;
+    }
+    td,th{
+      background-color: #123;
+      height: 40px;
+      border-radius: 8px;
+    }
+    th{
+      background-color: #0481ff;
+    }
+    .price,.count{
+      padding: 6px;
+      border-radius: 6px;
+    }
+    .price{
+      background-color: green;
+    }
+    .count{
+      background-color: gold;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
-    <div class="inputs">
-        <h2>Ad Text</h2>
+  <!-- Sidebar -->
+  <div class="menu">
+    <div class="profile">
+      <div class="img-box">
+        <img src="https://via.placeholder.com/50" alt="profile">
+      </div>
+      <h2>Admin</h2>
+    </div>
+    <ul>
+      <li><a href="#" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+      <li><a href="#"><i class="fas fa-users"></i><span>Users</span></a></li>
+      <li><a href="#"><i class="fas fa-box"></i><span>Products</span></a></li>
+      <li><a href="#"><i class="fas fa-chart-bar"></i><span>Reports</span></a></li>
+      <li><a href="#"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+      <li class="log-out"><a href="#"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="title-info">
+      <h1>Dashboard</h1>
+      <button>Download Report</button>
+    </div>
+
+    <!-- Statistics -->
+    <div class="data-info">
+      <div class="box">
+        <i class="fas fa-users"></i>
         <div class="data">
-            <input type="text" id="inp">
-            <button id="btn">Add</button>
+          <span>1500</span>
+          <p>Users</p>
         </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-box"></i>
+        <div class="data">
+          <span>320</span>
+          <p>Products</p>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-dollar-sign"></i>
+        <div class="data">
+          <span>$12k</span>
+          <p>Sales</p>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-chart-line"></i>
+        <div class="data">
+          <span>75%</span>
+          <p>Growth</p>
+        </div>
+      </div>
     </div>
-    <div class="list">
-        <div class="box">
-            <h2>Box</h2>
-        </div>
-        <div class="box">
-            <h2>Box</h2>
-        </div>
-        <div class="box">
-            <h2>Box</h2>
-        </div>
-        <div class="box">
-            <h2>Box</h2>
-        </div>
-    </div>
 
-
-
-    <script src="main.js"></script>
+    <!-- Table -->
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Count</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Laptop</td>
+        <td><span class="price">$1200</span></td>
+        <td><span class="count">5</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Phone</td>
+        <td><span class="price">$800</span></td>
+        <td><span class="count">10</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Headset</td>
+        <td><span class="price">$150</span></td>
+        <td><span class="count">20</span></td>
+      </tr>
+    </table>
+  </div>
 </body>
 </html>

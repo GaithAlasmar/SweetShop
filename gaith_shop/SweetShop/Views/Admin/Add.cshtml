@@ -1,0 +1,47 @@
+@model Product
+
+<h2>@(Model == null || Model.Id == 0 ? "Add" : "Edit") Product</h2>
+
+<form asp-action="@(Model == null || Model.Id == 0 ? "Add" : "Edit")" method="post">
+    <input type="hidden" asp-for="Id" />
+    
+    <div class="form-group mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsPreferredSweet" class="form-check-input" />
+        <label asp-for="IsPreferredSweet" class="form-check-label">Preferred Sweet</label>
+    </div>
+    
+     <div class="form-check mb-3">
+        <input asp-for="InStock" class="form-check-input" />
+        <label asp-for="InStock" class="form-check-label">In Stock</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

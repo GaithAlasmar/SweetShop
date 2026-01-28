@@ -1,0 +1,28 @@
+﻿@model HomeViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Sweet Shop</h1>
+    <p>The best place to buy sweets online!</p>
+</div>
+
+<div class="row">
+    @foreach (var sweet in Model.PreferredSweets)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@sweet.Name</h5>
+                    <p class="card-text">@sweet.Price.ToString("c")</p>
+                    <p class="card-text">@sweet.Description</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id" class="btn btn-sm btn-success">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
