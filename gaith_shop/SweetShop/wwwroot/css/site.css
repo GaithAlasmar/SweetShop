@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #0076BD;
+  --secondary-color: #FFFFFF;
+  --accent-color: #E6F2FA;
+  --text-color: #333333;
+}
+
 html {
   font-size: 14px;
 }
@@ -8,8 +15,12 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--primary-color);
 }
 
 html {
@@ -19,13 +30,103 @@ html {
 
 body {
   margin-bottom: 60px;
+  color: var(--text-color);
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(var(--primary-color) 1px, transparent 1px),
+    radial-gradient(var(--primary-color) 1px, transparent 1px),
+    radial-gradient(var(--primary-color) 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px, 30px 30px;
+  background-position: 0 0, 40px 40px, 15px 15px;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  width: 100%;
+  font-family: 'Readex Pro', sans-serif;
+}
+
+/* Custom Theme Classes */
+.bg-primary-custom {
+  background-color: var(--primary-color) !important;
+  color: white;
+}
+
+.text-primary-custom {
+  color: var(--primary-color) !important;
+}
+
+.btn-primary-custom {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary-custom:hover {
+  background-color: #005a91;
+  /* Darker shade for hover */
+  border-color: #005a91;
+  color: white;
+}
+
+.form-floating>.form-control-plaintext::placeholder,
+.form-floating>.form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+.form-floating>.form-control-plaintext:focus::placeholder,
+.form-floating>.form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Top Header Styles */
+.bg-light-blue {
+  background-color: var(--accent-color);
+}
+
+.top-header {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.fs-custom {
+  font-size: 0.75rem;
+}
+
+/* Responsive adjustments for top header */
+@media (max-width: 576px) {
+  .top-header .container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+
+/* Header Divider Group */
+.header-divider-group> :not(:last-child) {
+  position: relative;
+  padding-left: 1rem;
+  margin-left: 1rem;
+}
+
+
+.header-divider-group> :not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  /* Centered exactly between content and next element:
+     Padding-left (1rem) + Margin-left (1rem) = 2rem gap.
+     Midpoint is at the edge of the padding box (left: 0).
+  */
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 1px;
+  height: 12px;
+  background-color: #C7AE6A;
+}
+
+/* Adjust for LTR/RTL mixed content if needed, but existing layout is RTL base */

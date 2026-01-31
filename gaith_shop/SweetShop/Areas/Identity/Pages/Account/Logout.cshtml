@@ -1,0 +1,19 @@
+@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "تسجيل الخروج";
+}
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    @{
+        if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <p>لقد قمت بتسجيل الخروج بنجاح.</p>
+        }
+        else
+        {
+            <p>أنت لست مسجلاً للدخول حاليًا.</p>
+        }
+    }
+</header>

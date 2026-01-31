@@ -14,8 +14,10 @@
                     <p class="card-text">@sweet.Description</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id" class="btn btn-sm btn-outline-secondary">View Details</a>
-                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id" class="btn btn-sm btn-success">Add to Cart</a>
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
+                                class="btn btn-sm btn-outline-secondary">عرض التفاصيل</a>
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
+                                class="btn btn-sm btn-success">أضف إلى السلة</a>
                         </div>
                     </div>
                 </div>

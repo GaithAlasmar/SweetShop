@@ -1,38 +1,70 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SweetShop</title>
+    <title>@ViewData["Title"] - حلويات الاسمر</title>
     <script type="importmap"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SweetShop.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="top-header py-2 bg-light-blue text-dark border-bottom">
+            <div class="container d-flex justify-content-between align-items-center flex-wrap">
+                <!-- Left Side: Email & Phone -->
+                <div class="d-flex align-items-center header-divider-group">
+                    <span><i class="bi bi-envelope-fill text-primary-custom me-1"></i>البريد :
+                        info@sweetshop.com</span>
+                    <span><i class="bi bi-telephone-fill text-primary-custom me-1"></i> الهاتف :
+                        <span dir="ltr">+962 79 123 4567</span></span>
+                </div>
+
+                <!-- Right Side: Language, Country, Currency -->
+                <div class="d-flex align-items-center header-divider-group">
+                    <span class="fs-custom">العربية</span>
+                    <span class="d-flex align-items-center gap-1">
+                        <span>الأردن</span>
+                        <img src="https://flagcdn.com/w20/jo.png" alt="Jordan Flag" width="20">
+                    </span>
+                    <span class="text-primary-custom fs-custom">دينار أردني</span>
+                </div>
+            </div>
+        </div>
+        <nav
+            class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary-custom border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SweetShop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">حلويات
+                    الاسمر</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home"
+                                asp-action="Index">الرئيسية</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="List">All Sweets</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Product" asp-action="List">كل
+                                الحلويات</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="ShoppingCart"
+                                asp-action="Index">السلة</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin Config</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="Index">إعدادات
+                                    المسؤول</a>
                             </li>
                         }
 
@@ -51,7 +83,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - SweetShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - حلويات الاسمر - <a asp-area="" asp-controller="Home" asp-action="Privacy">الخصوصية</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -59,4 +91,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
