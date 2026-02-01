@@ -1,15 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@using SweetShop.Models
+@inject ShoppingCart _shoppingCart
+
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - حلويات الاسمر</title>
+    <title>@ViewData["Title"] - حلويات الاسمر </title>
     <script type="importmap"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SweetShop.styles.css" asp-append-version="true" />
 </head>
@@ -20,8 +24,8 @@
             <div class="container d-flex justify-content-between align-items-center flex-wrap">
                 <!-- Left Side: Email & Phone -->
                 <div class="d-flex align-items-center header-divider-group">
-                    <span><i class="bi bi-envelope-fill text-primary-custom me-1"></i>البريد :
-                        info@sweetshop.com</span>
+                    <span><i class="bi bi-envelope-fill text-primary-custom me-1"></i> البريد :
+                        info@sweetshop.com </span>
                     <span><i class="bi bi-telephone-fill text-primary-custom me-1"></i> الهاتف :
                         <span dir="ltr">+962 79 123 4567</span></span>
                 </div>
@@ -37,58 +41,234 @@
                 </div>
             </div>
         </div>
-        <nav
-            class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary-custom border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">حلويات
-                    الاسمر</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home"
-                                asp-action="Index">الرئيسية</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Product" asp-action="List">كل
-                                الحلويات</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="ShoppingCart"
-                                asp-action="Index">السلة</a>
-                        </li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="Index">إعدادات
-                                    المسؤول</a>
-                            </li>
-                        }
+
+        <!-- Main Header Section (Logo, Search, Actions) -->
+        <div class="main-header d-flex justify-content-between align-items-center py-2 bg-white border-bottom">
+            <div class="container-fluid px-5 d-flex justify-content-between align-items-center">
+
+                <!-- Right: Logo & Slogan -->
+                <a asp-controller="Home" asp-action="Index"
+                    class="d-flex align-items-center gap-3 text-decoration-none">
+                    <!-- Default Logo & Slogan -->
+                    <span class="default-logo d-flex align-items-center gap-3">
+                        <img src="~/images/logo.png" alt="Sweet Shop Logo" style="height: 80px;">
+                        <h2 class="slogan-text m-0" style="color: #C7AE6A; font-weight: bold;"> حلويات الاسمر </h2>
+                    </span>
+
+                    <!-- Sticky Logo (Hidden by default) -->
+                    <img src="~/images/sticky-logo.png" alt="Sticky Logo" class="sticky-logo d-none"
+                        style="height: 60px;">
+                </a>
+
+                <!-- Center: Search Bar -->
+                <div class="flex-grow-1 mx-3">
+                    <form class="d-flex justify-content-center">
+                        <div class="input-group" style="max-width: 600px; width: 100%;">
+                            <input class="form-control border-end-0 rounded-start" type="search" placeholder="البحث..."
+                                aria-label="Search" style="border-radius: 0 0.375rem 0.375rem 0;">
+                            <button class="btn btn-dark-blue rounded-end" type="submit"
+                                style="border-radius: 0.375rem 0 0 0.375rem;">
+                                <i class="bi bi-search text-white"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Left: Account & Cart -->
+                <div class="d-flex align-items-center gap-4">
+
+                    <!-- Account -->
+                    <a asp-controller="Account" asp-action="Login"
+                        class="d-flex align-items-center gap-2 text-dark text-decoration-none">
+                        <span>حسابي</span>
+                        <i class="bi bi-person fs-5"></i>
+                    </a>
+
+                    <!-- Divider -->
+                    <div style="width: 1px; height: 24px; background-color: #C7AE6A;"></div>
+
+                    <!-- Cart -->
+                    <a href="#" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" onclick="loadCart()"
+                        class="d-flex align-items-center gap-2 text-dark text-decoration-none position-relative">
+                        <span>عربة التسوق</span>
+                        <div class="position-relative">
+                            <i class="bi bi-cart fs-5"></i>
+                            <span id="cart-badge"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size: 0.6rem; padding: 0.25em 0.4em;">
+                                @_shoppingCart.GetShoppingCartTotalCount()
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Sticky Header Center Logo -->
+                <div class="sticky-center-logo d-none justify-content-center align-items-center position-absolute"
+                    style="left: 50%; transform: translateX(-50%);">
+                    <img src="~/images/theName.png" alt="حلويات عربية" style="height: 65px;">
+                </div>
+
+                <!-- Sticky Header Extras (Left Side) -->
+                <div class="sticky-extras d-none align-items-center" style="gap: 35px;">
+                    <!-- Language (العربية) -->
+                    <a href="#" class="fw-bold text-decoration-none" style="color: #1A8CB0;">العربية</a>
+
+                    <!-- Cart (التسوق) -->
+                    <a href="#" class="position-relative" style="color: #1A8CB0;" data-bs-toggle="offcanvas"
+                        data-bs-target="#cartOffcanvas" onclick="loadCart()">
+                        <i class="bi bi-cart fs-5"></i>
+                        <span id="sticky-cart-badge"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.5rem; padding: 0.2em 0.35em;">
+                            @_shoppingCart.GetShoppingCartTotalCount()
+                        </span>
+                    </a>
+
+                    <!-- Search (البحث) -->
+                    <a href="#" style="color: #1A8CB0;" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="bi bi-search fs-5"></i>
+                    </a>
+
+                    <!-- Contact (الأردن) -->
+                    <a href="tel:+962791234567" style="color: #1A8CB0;"><i class="bi bi-telephone-fill fs-5"></i></a>
+                </div>
+
+                <!-- Sticky Header Right Side (Categories Dropdown) -->
+                <div class="sticky-categories d-none align-items-center position-absolute" style="right: 80px;">
+                    <div class="dropdown">
+                        <button class="btn d-flex align-items-center gap-2 px-3 py-2"
+                            style="background-color: #1A8CB0; color: white; border: none; border-radius: 5px;"
+                            type="button" id="stickyCategoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-list fs-5"></i>
+                            <span>جميع الأصناف</span>
+                        </button>
+                        <ul class="dropdown-menu text-end" aria-labelledby="stickyCategoriesDropdown">
+                            <li><a class="dropdown-item" href="#">كنافة</a></li>
+                            <li><a class="dropdown-item" href="#">بقلاوة</a></li>
+                            <li><a class="dropdown-item" href="#">معمول</a></li>
+                            <li><a class="dropdown-item" href="#">حلاوة</a></li>
+                            <li><a class="dropdown-item" href="#">قطايف</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sticky Header Right Side (User Icon) -->
+                <div class="sticky-user-icon d-none align-items-center position-absolute" style="right: 20px;">
+                    <a asp-controller="Account" asp-action="Login"
+                        class="d-flex align-items-center justify-content-center"
+                        style="width: 45px; height: 45px; background-color: #1A8CB0; border-radius: 50%; text-decoration: none;">
+                        <i class="bi bi-person-fill fs-4 text-white"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
 
 
-                    </ul>
-                    <partial name="_LoginPartial" />
+    </header>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="ابحث عن منتج..."
+                            aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">بحث</button>
+                    </form>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar-custom border-bottom" dir="rtl">
+        <div class="container-fluid px-5">
+            <div class="d-flex align-items-center gap-4">
+                <!-- All Categories Button -->
+                <div class="dropdown">
+                    <button class="btn all-categories-btn d-flex align-items-center gap-2 rounded-0 px-4 py-2"
+                        type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-list fs-5"></i>
+                        <span>جميع الأصناف</span>
+                    </button>
+                    <ul class="dropdown-menu text-end" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">كنافة</a></li>
+                        <li><a class="dropdown-item" href="#">بقلاوة</a></li>
+                        <li><a class="dropdown-item" href="#">معمول</a></li>
+                        <li><a class="dropdown-item" href="#">كيك</a></li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Links -->
+                <!-- Navigation Links Container -->
+                <div class="d-flex align-items-center justify-content-between flex-grow-1">
+                    <!-- Right Group (Categories) -->
+                    <ul class="nav d-flex align-items-center gap-5">
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom text-dark" asp-controller="Home"
+                                asp-action="Index">حلويات عربية </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom text-dark" href="#">كنافة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom text-dark" href="#">الحلويات الغربية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom text-dark" href="#">الشوكلاتة والهدايا والمناسبات
+                                الخاصة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom text-dark" href="#">عبوات خاصة</a>
+                        </li>
+                    </ul>
+
+                    <!-- Left Group (Services) -->
+                    <ul class="nav d-flex align-items-center gap-5" style="margin-left: 72px    ;">
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom text-dark" href="#">طلبيات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom text-dark" href="#">فروعنا</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end cart-offcanvas-premium" tabindex="-1" id="cartOffcanvas"
+        aria-labelledby="cartOffcanvasLabel">
+        <div id="cart-offcanvas-content">
+            <!-- Content loaded via AJAX -->
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid px-5">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container-fluid px-5">
             &copy; 2026 - حلويات الاسمر - <a asp-area="" asp-controller="Home" asp-action="Privacy">الخصوصية</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

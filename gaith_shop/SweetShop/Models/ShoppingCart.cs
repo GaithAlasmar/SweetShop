@@ -41,7 +41,7 @@ public class ShoppingCart(ApplicationDbContext context)
         }
         else
         {
-            shoppingCartItem.Amount++;
+            shoppingCartItem.Amount += amount;
         }
         _context.SaveChanges();
     }
@@ -71,6 +71,18 @@ public class ShoppingCart(ApplicationDbContext context)
         return localAmount;
     }
 
+    public void RemoveTotalFromCart(Product product)
+    {
+        var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(
+            s => s.Product.Id == product.Id && s.ShoppingCartId == ShoppingCartId);
+
+        if (shoppingCartItem != null)
+        {
+            _context.ShoppingCartItems.Remove(shoppingCartItem);
+        }
+        _context.SaveChanges();
+    }
+
     public List<ShoppingCartItem> GetShoppingCartItems()
     {
         return ShoppingCartItems ??=
@@ -88,6 +100,14 @@ public class ShoppingCart(ApplicationDbContext context)
 
         _context.ShoppingCartItems.RemoveRange(cartItems);
         _context.SaveChanges();
+    }
+
+    public int GetShoppingCartTotalCount()
+    {
+        var count = _context.ShoppingCartItems
+            .Where(c => c.ShoppingCartId == ShoppingCartId)
+            .Sum(c => c.Amount);
+        return count;
     }
 
     public decimal GetShoppingCartTotal()

@@ -71,7 +71,7 @@ app.MapControllerRoute(
 app.MapRazorPages()
    .WithStaticAssets();
 
-DbSeeder.Seed(app);
+await DbSeeder.SeedAsync(app);
 
 app.Run();
 

@@ -1,0 +1,91 @@
+@model ShoppingCartViewModel
+
+<!-- Header -->
+<div class="cart-offcanvas-header d-flex justify-content-between align-items-center">
+    <h5 class="cart-title">سلة المشتريات</h5>
+    <button type="button" class="cart-close-btn btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+
+<!-- Body -->
+<div class="cart-body offcanvas-body p-0">
+    @if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
+    {
+        <!-- Items Container -->
+        <div class="cart-items-container">
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <div class="cart-item-card">
+                    <div class="d-flex gap-3 align-items-start">
+                        <!-- Product Image (Right side for RTL) -->
+                        <img src="@line.Product.ImageUrl" alt="@line.Product.Name" class="cart-item-image">
+
+                        <!-- Product Details -->
+                        <div class="cart-item-details">
+                            <!-- Name and Remove Button -->
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="cart-item-name">@line.Product.Name</h6>
+                                    <small class="cart-item-price">@line.Product.Price.ToString("c")</small>
+                                </div>
+                                <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart"
+                                    asp-route-productId="@line.Product.Id" class="cart-remove-btn ajax-remove-from-cart"
+                                    title="حذف">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+
+                            <!-- Quantity and Total -->
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div class="cart-quantity-controls">
+                                    <button class="cart-quantity-btn ajax-decrease-quantity" data-product-id="@line.Product.Id"
+                                        title="تقليل">
+                                        <i class="bi bi-dash"></i>
+                                    </button>
+                                    <span class="cart-quantity-display">@line.Amount</span>
+                                    <button class="cart-quantity-btn ajax-increase-quantity" data-product-id="@line.Product.Id"
+                                        title="زيادة">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                </div>
+                                <strong class="cart-item-total">@((line.Amount * line.Product.Price).ToString("c"))</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Footer -->
+        <div class="cart-footer">
+            <!-- Total Row -->
+            <div class="cart-total-row">
+                <span class="cart-total-label">المجموع</span>
+                <strong class="cart-total-amount">@Model.ShoppingCartTotal.ToString("c")</strong>
+            </div>
+
+            <!-- Checkout Button -->
+            <a class="cart-checkout-btn" asp-controller="Order" asp-action="Checkout">
+                إتمام الطلب
+            </a>
+
+            <!-- View Cart Link -->
+            <a class="cart-view-link" asp-controller="ShoppingCart" asp-action="Index">
+                عرض السلة كاملة
+            </a>
+        </div>
+    }
+    else
+    {
+        <!-- Empty State -->
+        <div class="cart-empty-state">
+            <i class="bi bi-cart-x cart-empty-icon"></i>
+            <p class="cart-empty-message">
+                لم تقم بإضافة حلويات بعد<br>
+                <small>ابدأ بتصفح منتجاتنا اللذيذة</small>
+            </p>
+            <a class="cart-browse-btn" asp-controller="Product" asp-action="List" data-bs-dismiss="offcanvas">
+                تصفح القائمة
+            </a>
+        </div>
+    }
+</div>

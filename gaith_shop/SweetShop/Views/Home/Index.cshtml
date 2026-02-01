@@ -1,14 +1,56 @@
-﻿@model HomeViewModel
+@model HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">مرحبا بكم في حلويات الاسمر</h1>
-    <p>أفضل مكان لشراء الحلويات عبر الإنترنت!</p>
+<!-- Hero Carousel -->
+<div id="heroCarousel" class="carousel slide hero-carousel mb-5" data-bs-ride="carousel" data-bs-interval="5000">
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/images/HomePic1.png" class="d-block w-100" alt="حلويات عربية - أجود أنواع الحلويات الشرقية">
+            <div class="carousel-shop-now">
+                <a href="@Url.Action("List", "Product")" class="btn btn-shop-now">تسوق الآن</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/HomePic2.png" class="d-block w-100" alt="كنافة طازجة يومياً">
+            <div class="carousel-shop-now">
+                <a href="@Url.Action("List", "Product")" class="btn btn-shop-now">تسوق الآن</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/HomePic3.png" class="d-block w-100" alt="هدايا مميزة للمناسبات الخاصة">
+            <div class="carousel-shop-now">
+                <a href="@Url.Action("List", "Product")" class="btn btn-shop-now">تسوق الآن</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">السابق</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">التالي</span>
+    </button>
 </div>
 
-<div class="row">
-    @foreach (var sweet in Model.PreferredSweets)
+<div class="text-center mb-4" style="position: relative; top: -17px;">
+    <h1 class="display-4" style="color: #C7AE6A; font-weight: bold;">حلويات عربية</h1>
+</div>
+
+<div class="row equal-height-cards">
+    @foreach (var sweet in Model.PreferredSweets.Where(p => p.Category.Name == "Arabic Sweets"))
     {
-        <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card mb-4 shadow-sm">
                 <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
                 <div class="card-body">
@@ -18,9 +60,9 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
-                                class="btn btn-sm btn-outline-secondary">عرض التفاصيل</a>
+                                class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
                             <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
-                                class="btn btn-sm btn-success">أضف إلى السلة</a>
+                                class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
                         </div>
                     </div>
                 </div>
@@ -28,3 +70,114 @@
         </div>
     }
 </div>
+
+<div class="text-center mb-3 mt-4" style="position: relative; top: -25px;">
+    <h1 class="display-4" style="color: #C7AE6A; font-weight: bold;">كنافة</h1>
+</div>
+
+<div class="row equal-height-cards">
+    @foreach (var sweet in Model.PreferredSweets.Where(p => p.Category.Name == "Kunafa"))
+    {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card mb-4 shadow-sm">
+                <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@sweet.Name</h5>
+                    <p class="card-text">@sweet.Price.ToString("c")</p>
+                    <p class="card-text">@sweet.Description</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
+                                class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
+                                class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center mb-5 mt-5" style="position: relative;">
+    <h2 class="display-4" style="color: #C7AE6A; font-weight: bold; font-family: 'Amiri', serif;">تصفح جميع الأقسام</h2>
+    <p class="lead text-muted">اكتشف تشكيلتنا الواسعة من الحلويات والهدايا</p>
+</div>
+
+@{
+    var categoriesToShow = new[]
+    {
+"حلويات عربية",
+"كنافة",
+"الحلويات الغربية",
+"الشوكلاتة والهدايا والمناسبات الخاصة",
+"عبوات خاصة",
+"البوظة"
+};
+
+    var categoryImages = new Dictionary<string, string>
+{
+{ "حلويات عربية", "/images/ArabicSweets.jpeg" },
+{ "كنافة", "/images/Knafha1.jpeg" },
+{ "الحلويات الغربية",
+"https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+{ "الشوكلاتة والهدايا والمناسبات الخاصة",
+"https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+{ "عبوات خاصة",
+"https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" },
+{ "البوظة",
+"https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" }
+};
+
+    var routeCategoryMap = new Dictionary<string, string>
+{
+{ "حلويات عربية", "Arabic Sweets" },
+{ "كنافة", "Kunafa" },
+{ "الحلويات الغربية", "Cakes" },
+{ "الشوكلاتة والهدايا والمناسبات الخاصة", "Candies" },
+{ "البوظة", "Ice Cream" }
+};
+}
+
+<div class="row g-4 mb-5">
+    @foreach (var catName in categoriesToShow)
+    {
+        var category = Model.Categories.FirstOrDefault(c => c.Name == catName);
+        var imageUrl = categoryImages.ContainsKey(catName) ? categoryImages[catName] :
+        "https://via.placeholder.com/400x300";
+        var routeCat = routeCategoryMap.ContainsKey(catName) ? routeCategoryMap[catName] : catName;
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <a asp-controller="Product" asp-action="List" asp-route-category="@routeCat" class="text-decoration-none">
+                <div class="card h-100 border-0 shadow-lg category-card overflow-hidden"
+                    style="border-radius: 15px; transition: transform 0.3s ease;">
+                    <div class="card-img-wrapper" style="height: 250px; overflow: hidden; position: relative;">
+                        <!-- Gradient Overlay -->
+                        <div
+                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)); z-index: 1;">
+                        </div>
+                        <img src="@imageUrl" class="card-img-top w-100 h-100" alt="@catName"
+                            style="object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div class="card-img-overlay d-flex align-items-end justify-content-center" style="z-index: 2;">
+                        <h3 class="text-white text-center mb-3"
+                            style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7); font-weight: bold; letter-spacing: 1px;">
+                            @catName
+                        </h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<style>
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+    }
+
+    .category-card:hover img {
+        transform: scale(1.1);
+    }
+</style>

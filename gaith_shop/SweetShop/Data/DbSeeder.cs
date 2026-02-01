@@ -10,7 +10,7 @@ namespace SweetShop.Data;
 
 public class DbSeeder
 {
-    public static void Seed(IApplicationBuilder applicationBuilder)
+    public static async Task SeedAsync(IApplicationBuilder applicationBuilder)
     {
         using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
         var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
@@ -19,18 +19,17 @@ public class DbSeeder
 
         if (context == null || userManager == null || roleManager == null) return;
 
-        context.Database.Migrate();
+        await context.Database.MigrateAsync();
 
         // Seed Roles
+        if (!await roleManager.RoleExistsAsync("Admin"))
+            await roleManager.CreateAsync(new IdentityRole("Admin"));
 
-        if (!roleManager.RoleExistsAsync("Admin").Result)
-            roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
-
-        if (!roleManager.RoleExistsAsync("Customer").Result)
-            roleManager.CreateAsync(new IdentityRole("Customer")).Wait();
+        if (!await roleManager.RoleExistsAsync("Customer"))
+            await roleManager.CreateAsync(new IdentityRole("Customer"));
 
         // Seed Admin
-        if (userManager.FindByEmailAsync("admin@sweetshop.com").Result == null)
+        if (await userManager.FindByEmailAsync("admin@sweetshop.com") == null)
         {
             var user = new ApplicationUser
             {
@@ -39,20 +38,23 @@ public class DbSeeder
                 EmailConfirmed = true,
                 FullName = "Admin User"
             };
-            var result = userManager.CreateAsync(user, "Password123!").Result;
+            var result = await userManager.CreateAsync(user, "Password123!");
 
             if (result.Succeeded)
             {
-                userManager.AddToRoleAsync(user, "Admin").Wait();
+                await userManager.AddToRoleAsync(user, "Admin");
             }
         }
 
-        if (!context.Categories.Any())
-
+        // Seed Categories (Ensure all exist)
+        foreach (var category in Categories.Values)
         {
-            context.Categories.AddRange(Categories.Select(c => c.Value));
-            context.SaveChanges();
+            if (!context.Categories.Any(c => c.Name == category.Name))
+            {
+                context.Categories.Add(category);
+            }
         }
+        await context.SaveChangesAsync();
 
         if (!context.Products.Any())
         {
@@ -300,7 +302,7 @@ public class DbSeeder
                     IsPreferredSweet = false
                 }
             );
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
         if (!context.Products.Any(p => p.Name == "Blueberry Muffin"))
@@ -357,8 +359,213 @@ public class DbSeeder
                     IsPreferredSweet = true
                 }
             );
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
+
+        // --- Reset and Reseed Arabic Sweets (Enforce exactly 4 items) ---
+
+        var arabicSweetsCategory = Categories["Arabic Sweets"];
+
+        // 1. Fetch all existing Arabic Sweets
+        var existingArabicSweets = context.Products
+            .Where(p => p.Category.Name == "Arabic Sweets")
+            .ToList();
+
+        // 2. Remove them all to clear duplicates/messy state
+        if (existingArabicSweets.Count > 0)
+        {
+            context.Products.RemoveRange(existingArabicSweets);
+            await context.SaveChangesAsync();
+        }
+
+        // 3. Add the 4 specific requested products
+        context.Products.AddRange(
+            new Product
+            {
+                Name = "صندوق الجواهر الشرقية",
+                Price = 15.00M,
+                Description = "Delicious traditional Arabic sweet.",
+                Category = arabicSweetsCategory,
+                ImageUrl = "/images/ArabicSweets.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            },
+            new Product
+            {
+                Name = "صينية السلطان للضيافة",
+                Price = 12.50M,
+                Description = "Sweet and nutty traditional dessert.",
+                Category = arabicSweetsCategory,
+                ImageUrl = "/images/ArabicSweets2.jpeg", // Swapped to ensure unique image
+                InStock = true,
+                IsPreferredSweet = true
+            },
+            new Product
+            {
+                Name = "تشكيلة التراث الشامي",
+                Price = 20.00M,
+                Description = "Exquisite Arabic sweet delicacy.",
+                Category = arabicSweetsCategory,
+                ImageUrl = "/images/ArabicSweets3.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            },
+            new Product
+            {
+                Name = "باقة الفستق العاشق",
+                Price = 18.00M,
+                Description = "Premium assortment of Arabic desserts.",
+                Category = arabicSweetsCategory,
+                ImageUrl = "/images/ArabicSweets1.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            }
+        );
+
+
+
+        // Update preferred status for all products to ensure only Arabic Sweets are shown on Home
+        var allProducts = await context.Products.Include(p => p.Category).ToListAsync();
+        foreach (var product in allProducts)
+        {
+            if (product.Category != null && product.Category.Name == "Arabic Sweets")
+            {
+                product.IsPreferredSweet = true;
+            }
+            else
+            {
+                product.IsPreferredSweet = false;
+            }
+        }
+
+        // --- Reset and Reseed Kunafa (Enforce exactly 7 items) ---
+        var kunafaCategory = Categories["Kunafa"];
+        var existingKunafa = context.Products.Where(p => p.Category.Name == "Kunafa").ToList();
+
+        if (existingKunafa.Count > 0)
+        {
+            context.Products.RemoveRange(existingKunafa);
+            await context.SaveChangesAsync();
+        }
+
+        context.Products.AddRange(
+            new Product
+            {
+                Name = "كنافة ناعمة",
+                Price = 15.00M,
+                Description = "Soft and cheesy traditional Kunafa.",
+                Category = kunafaCategory,
+                ImageUrl = "/images/Knafha1.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            },
+            new Product
+            {
+                Name = "كنافة خشنة",
+                Price = 15.00M,
+                Description = "Crispy and cheesy traditional Kunafa.",
+                Category = kunafaCategory,
+                ImageUrl = "/images/Knafha4.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            },
+             new Product
+             {
+                 Name = "كنافة مكس",
+                 Price = 16.00M,
+                 Description = "A delicious mix of soft and coarse Kunafa.",
+                 Category = kunafaCategory,
+                 ImageUrl = "/images/Knafha6.jpeg",
+                 InStock = true,
+                 IsPreferredSweet = true
+             },
+            new Product
+            {
+                Name = "كنافة وبوظة",
+                Price = 18.00M,
+                Description = "Hot Kunafa served with cold ice cream.",
+                Category = kunafaCategory,
+                ImageUrl = "/images/Knafha2.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            },
+            new Product
+            {
+                Name = "وربات كنافة",
+                Price = 12.00M,
+                Description = "Triangular pastry filled with cream or cheese.",
+                Category = kunafaCategory,
+                ImageUrl = "/images/Asab3.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            },
+             new Product
+             {
+                 Name = "فطاير مثلثه",
+                 Price = 10.00M,
+                 Description = "Sweet triangle pastries.",
+                 Category = kunafaCategory,
+                 ImageUrl = "/images/Fataer.jpeg",
+                 InStock = true,
+                 IsPreferredSweet = true
+             },
+            new Product
+            {
+                Name = "مخدات",
+                Price = 8.00M,
+                Description = "Sweet pillow-shaped pastries.",
+                Category = kunafaCategory,
+                ImageUrl = "/images/Fataer1.jpeg",
+                InStock = true,
+                IsPreferredSweet = true
+            }
+        );
+        await context.SaveChangesAsync();
+    }
+
+    private static async Task MergeProductAsync(ApplicationDbContext context, string oldName, Product newProductDetails)
+    {
+        var oldProduct = await context.Products.FirstOrDefaultAsync(p => p.Name == oldName);
+        var newProduct = await context.Products.FirstOrDefaultAsync(p => p.Name == newProductDetails.Name);
+
+        if (oldProduct != null && newProduct != null)
+        {
+            // Scenario A: Both exist - Duplicate!
+            // Delete the 'new' one (the duplicate we don't want, usually the one with less history if we assume old one has orders)
+            // Actually, usually we'd keep the one with ID that matches orders. But here we can't easily know. 
+            // However, usually the 'old' one is the one we want to keep if we are 'renaming' it in spirit. 
+            // BUT, if the new one was just added by a previous run of the buggy seeder, it likely has no orders yet.
+            // So deleting the new one is safer.
+            context.Products.Remove(newProduct);
+
+            // Update the old one to match the new details
+            oldProduct.Name = newProductDetails.Name;
+            oldProduct.Price = newProductDetails.Price;
+            oldProduct.Description = newProductDetails.Description;
+            oldProduct.ImageUrl = newProductDetails.ImageUrl;
+            oldProduct.Category = newProductDetails.Category; // Ensure category is correct
+            oldProduct.InStock = newProductDetails.InStock;
+            oldProduct.IsPreferredSweet = newProductDetails.IsPreferredSweet;
+        }
+        else if (oldProduct != null && newProduct == null)
+        {
+            // Scenario B: Only Old exists - Rename it
+            oldProduct.Name = newProductDetails.Name;
+            oldProduct.Price = newProductDetails.Price;
+            oldProduct.Description = newProductDetails.Description;
+            oldProduct.ImageUrl = newProductDetails.ImageUrl;
+            oldProduct.Category = newProductDetails.Category;
+            oldProduct.InStock = newProductDetails.InStock;
+            oldProduct.IsPreferredSweet = newProductDetails.IsPreferredSweet;
+        }
+        else if (oldProduct == null && newProduct == null)
+        {
+            // Scenario C: Neither exists - Add new
+            context.Products.Add(newProductDetails);
+        }
+        // Scenario D: Only New exists - Do nothing (it's already there)
+
+        await context.SaveChangesAsync();
     }
 
     private static Dictionary<string, Category>? _categories;
@@ -367,24 +574,23 @@ public class DbSeeder
     {
         get
         {
-            if (_categories == null)
+            _categories ??= new Category[]
             {
-                var list = new Category[]
-                {
-                    new Category { Name = "Cakes", Description = "Delicious cakes" },
-                    new Category { Name = "Candies", Description = "Sweet candies" },
-                    new Category { Name = "Ice Cream", Description = "Frozen desserts" },
-                    new Category { Name = "Pastries", Description = "Baked pastries" },
-                    new Category { Name = "Cookies", Description = "Delightful cookies" }
-                };
-
-                _categories = new Dictionary<string, Category>();
-
-                foreach (var genre in list)
-                {
-                    _categories.Add(genre.Name, genre);
-                }
-            }
+                // Old Categories
+                new() { Name = "Cakes", Description = "Delicious cakes" },
+                new() { Name = "Candies", Description = "Sweet candies" },
+                new() { Name = "Ice Cream", Description = "Frozen desserts" },
+                new() { Name = "Pies", Description = "Tasty pies" },
+                new() { Name = "Arabic Sweets", Description = "Traditional Arabic sweets" },
+                new() { Name = "Kunafa", Description = "Authentic Kunafa varieties" },
+                // New Arabic Categories
+                new() { Name = "حلويات عربية", Description = "حلويات شرقية تقليدية" },
+                new() { Name = "كنافة", Description = "أنواع الكنافة الأصيلة" },
+                new() { Name = "الحلويات الغربية", Description = "كيك وحلويات غربية" },
+                new() { Name = "الشوكلاتة والهدايا والمناسبات الخاصة", Description = "شوكلاتة وهدايا فاخرة" },
+                new() { Name = "عبوات خاصة", Description = "عبوات مميزة للمناسبات" },
+                new() { Name = "البوظة", Description = "بوظة بنكهات متنوعة" }
+            }.ToDictionary(c => c.Name);
 
             return _categories;
         }
