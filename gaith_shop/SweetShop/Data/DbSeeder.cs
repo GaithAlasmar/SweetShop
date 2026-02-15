@@ -46,7 +46,7 @@ public class DbSeeder
             }
         }
 
-        // Seed Categories (Ensure all exist)
+        // Seed Categories - التصنيفات الستة فقط
         foreach (var category in Categories.Values)
         {
             if (!context.Categories.Any(c => c.Name == category.Name))
@@ -56,515 +56,231 @@ public class DbSeeder
         }
         await context.SaveChangesAsync();
 
-        if (!context.Products.Any())
+        // --- 1. حلويات عربية (للبقلاوة والمعمول) ---
+        var arabicSweetsCategory = Categories["حلويات عربية"];
+
+        var arabicSweetsToSeed = new[]
         {
-            context.Products.AddRange(
-                new Product
-                {
-                    Name = "Chocolate Cake",
-                    Price = 12.95M,
-                    Description = "Rich chocolate cake with fudge frosting.",
-                    Category = Categories["Cakes"],
-                    ImageUrl = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Strawberry Cheesecake",
-                    Price = 15.50M,
-                    Description = "Classic cheesecake with fresh strawberries.",
-                    Category = Categories["Cakes"],
-                    ImageUrl = "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Gummy Bears",
-                    Price = 4.50M,
-                    Description = "Assorted fruit flavored gummy bears.",
-                    Category = Categories["Candies"],
-                    ImageUrl = "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Chocolate Chip Cookies",
-                    Price = 8.00M,
-                    Description = "Homemade style chocolate chip cookies.",
-                    Category = Categories["Cookies"],
-                    ImageUrl = "https://images.unsplash.com/photo-1499636138143-bd630f5cf38b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                // 10 New Sweet Products
-                new Product
-                {
-                    Name = "Vanilla Ice Cream",
-                    Price = 6.50M,
-                    Description = "Creamy vanilla ice cream made with real vanilla beans.",
-                    Category = Categories["Ice Cream"],
-                    ImageUrl = "https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Tiramisu",
-                    Price = 14.00M,
-                    Description = "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.",
-                    Category = Categories["Cakes"],
-                    ImageUrl = "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Red Velvet Cake",
-                    Price = 13.50M,
-                    Description = "Moist red velvet cake with cream cheese frosting.",
-                    Category = Categories["Cakes"],
-                    ImageUrl = "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Baklava",
-                    Price = 10.00M,
-                    Description = "Traditional Middle Eastern pastry with honey and pistachios.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "https://images.unsplash.com/photo-1519676867240-f03562e64548?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Croissant",
-                    Price = 5.00M,
-                    Description = "Buttery, flaky French croissant.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Macaron",
-                    Price = 18.00M,
-                    Description = "Elegant French macarons in assorted flavors.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "https://images.unsplash.com/photo-1569864358642-9d1684040f43?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Lollipops",
-                    Price = 3.50M,
-                    Description = "Colorful fruit-flavored lollipops.",
-                    Category = Categories["Candies"],
-                    ImageUrl = "https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Chocolate Truffles",
-                    Price = 16.00M,
-                    Description = "Premium handcrafted chocolate truffles.",
-                    Category = Categories["Candies"],
-                    ImageUrl = "https://images.unsplash.com/photo-1548848864-005a6b7f2e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Brownies",
-                    Price = 9.00M,
-                    Description = "Fudgy chocolate brownies with walnuts.",
-                    Category = Categories["Cookies"],
-                    ImageUrl = "https://images.unsplash.com/photo-1607920591413-4ec007e70023?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Cinnamon Rolls",
-                    Price = 7.50M,
-                    Description = "Warm cinnamon rolls with cream cheese icing.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                // 10 Additional Products without Images
-                new Product
-                {
-                    Name = "Caramel Fudge",
-                    Price = 11.00M,
-                    Description = "Smooth and creamy caramel fudge with a buttery finish.",
-                    Category = Categories["Candies"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Lemon Tart",
-                    Price = 9.50M,
-                    Description = "Tangy lemon tart with a crispy pastry crust.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Peanut Butter Cookies",
-                    Price = 7.00M,
-                    Description = "Classic peanut butter cookies with a soft center.",
-                    Category = Categories["Cookies"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Mint Chocolate Ice Cream",
-                    Price = 7.50M,
-                    Description = "Refreshing mint ice cream with chocolate chips.",
-                    Category = Categories["Ice Cream"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Carrot Cake",
-                    Price = 12.00M,
-                    Description = "Moist carrot cake with cream cheese frosting and walnuts.",
-                    Category = Categories["Cakes"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Cotton Candy",
-                    Price = 4.00M,
-                    Description = "Light and fluffy cotton candy in various flavors.",
-                    Category = Categories["Candies"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Oatmeal Raisin Cookies",
-                    Price = 6.50M,
-                    Description = "Hearty oatmeal cookies with sweet raisins.",
-                    Category = Categories["Cookies"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Pistachio Ice Cream",
-                    Price = 8.00M,
-                    Description = "Rich pistachio ice cream made with real nuts.",
-                    Category = Categories["Ice Cream"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Apple Pie",
-                    Price = 10.50M,
-                    Description = "Traditional apple pie with cinnamon and a flaky crust.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                },
-                new Product
-                {
-                    Name = "Salted Caramels",
-                    Price = 12.50M,
-                    Description = "Gourmet salted caramels with a perfect sweet-savory balance.",
-                    Category = Categories["Candies"],
-                    ImageUrl = "",
-                    InStock = true,
-                    IsPreferredSweet = false
-                }
-            );
-            await context.SaveChangesAsync();
-        }
+            new { Name = "بقلاوة بالفستق", Price = 14.00M, Description = "بقلاوة طازجة محشوة بالفستق الحلبي", ImageUrl = "/images/ArabicSweets.jpeg" },
+            new { Name = "بقلاوة بالجوز", Price = 13.00M, Description = "بقلاوة مقرمشة محشوة بالجوز", ImageUrl = "/images/ArabicSweets2.jpeg" },
+            new { Name = "معمول بالتمر", Price = 10.00M, Description = "معمول طازج محشو بالتمر الفاخر", ImageUrl = "/images/ArabicSweets3.jpeg" },
+            new { Name = "معمول بالجوز", Price = 11.00M, Description = "معمول طازج محشو بالجوز المحمص", ImageUrl = "/images/ArabicSweets1.jpeg" },
+            new { Name = "Baklava", Price = 10.00M, Description = "Traditional Middle Eastern pastry with honey and pistachios", ImageUrl = "https://images.unsplash.com/photo-1519676867240-f03562e64548?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" }
+        };
 
-        if (!context.Products.Any(p => p.Name == "Blueberry Muffin"))
+        foreach (var item in arabicSweetsToSeed)
         {
-            context.Products.AddRange(
-                new Product
-                {
-                    Name = "Blueberry Muffin",
-                    Price = 5.50M,
-                    Description = "Freshly baked muffin bursting with blueberries.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Berry Tart",
-                    Price = 11.00M,
-                    Description = "Crispy tart shell filled with custard and topped with mixed berries.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Dark Chocolate Bar",
-                    Price = 6.00M,
-                    Description = "Rich 70% dark chocolate bar.",
-                    Category = Categories["Candies"],
-                    ImageUrl = "https://images.unsplash.com/photo-1548848864-005a6b7f2e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Cookies and Cream Cake",
-                    Price = 14.50M,
-                    Description = "Layers of chocolate cake with cookies and cream filling.",
-                    Category = Categories["Cakes"],
-                    ImageUrl = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                },
-                new Product
-                {
-                    Name = "Glazed Donut",
-                    Price = 3.50M,
-                    Description = "Classic fluffy donut with a sweet glaze.",
-                    Category = Categories["Pastries"],
-                    ImageUrl = "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-                    InStock = true,
-                    IsPreferredSweet = true
-                }
-            );
-            await context.SaveChangesAsync();
-        }
-
-        // --- Reset and Reseed Arabic Sweets (Enforce exactly 4 items) ---
-
-        var arabicSweetsCategory = Categories["Arabic Sweets"];
-
-        // 1. Fetch all existing Arabic Sweets
-        var existingArabicSweets = context.Products
-            .Where(p => p.Category.Name == "Arabic Sweets")
-            .ToList();
-
-        // 2. Remove them all to clear duplicates/messy state
-        if (existingArabicSweets.Count > 0)
-        {
-            context.Products.RemoveRange(existingArabicSweets);
-            await context.SaveChangesAsync();
-        }
-
-        // 3. Add the 4 specific requested products
-        context.Products.AddRange(
-            new Product
+            if (!context.Products.Any(p => p.Name == item.Name))
             {
-                Name = "صندوق الجواهر الشرقية",
-                Price = 15.00M,
-                Description = "Delicious traditional Arabic sweet.",
-                Category = arabicSweetsCategory,
-                ImageUrl = "/images/ArabicSweets.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
-            },
-            new Product
-            {
-                Name = "صينية السلطان للضيافة",
-                Price = 12.50M,
-                Description = "Sweet and nutty traditional dessert.",
-                Category = arabicSweetsCategory,
-                ImageUrl = "/images/ArabicSweets2.jpeg", // Swapped to ensure unique image
-                InStock = true,
-                IsPreferredSweet = true
-            },
-            new Product
-            {
-                Name = "تشكيلة التراث الشامي",
-                Price = 20.00M,
-                Description = "Exquisite Arabic sweet delicacy.",
-                Category = arabicSweetsCategory,
-                ImageUrl = "/images/ArabicSweets3.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
-            },
-            new Product
-            {
-                Name = "باقة الفستق العاشق",
-                Price = 18.00M,
-                Description = "Premium assortment of Arabic desserts.",
-                Category = arabicSweetsCategory,
-                ImageUrl = "/images/ArabicSweets1.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
+                context.Products.Add(new Product
+                {
+                    Name = item.Name,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Category = arabicSweetsCategory,
+                    ImageUrl = item.ImageUrl,
+                    InStock = true,
+                    IsPreferredSweet = true
+                });
             }
-        );
+        }
+        await context.SaveChangesAsync();
 
+        // --- 2. كنافة (لجميع أنواع الكنافة) ---
+        var kunafaCategory = Categories["كنافة"];
 
+        var kunafaToSeed = new[]
+        {
+            new { Name = "كنافة ناعمة", Price = 15.00M, Description = "كنافة ناعمة طازجة بالجبنة والقطر", ImageUrl = "/images/Knafha1.jpeg" },
+            new { Name = "كنافة خشنة", Price = 15.00M, Description = "كنافة خشنة مقرمشة بالجبنة الطازجة", ImageUrl = "/images/Knafha4.jpeg" },
+            new { Name = "كنافة مكس", Price = 16.00M, Description = "مزيج لذيذ من الكنافة الناعمة والخشنة", ImageUrl = "/images/Knafha6.jpeg" },
+            new { Name = "كنافة وبوظة", Price = 18.00M, Description = "كنافة ساخنة مع بوظة باردة", ImageUrl = "/images/Knafha2.jpeg" },
+            new { Name = "وربات كنافة", Price = 12.00M, Description = "وربات محشوة بالقشطة أو الجبنة", ImageUrl = "/images/Asab3.jpeg" },
+            new { Name = "فطاير مثلثه", Price = 10.00M, Description = "فطاير مثلثة محشوة بالجبنة", ImageUrl = "/images/Fataer.jpeg" },
+            new { Name = "مخدات", Price = 8.00M, Description = "معجنات على شكل مخدات محشوة بالجبنة", ImageUrl = "/images/Fataer1.jpeg" }
+        };
 
-        // Update preferred status for all products to ensure only Arabic Sweets are shown on Home
+        foreach (var item in kunafaToSeed)
+        {
+            if (!context.Products.Any(p => p.Name == item.Name))
+            {
+                context.Products.Add(new Product
+                {
+                    Name = item.Name,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Category = kunafaCategory,
+                    ImageUrl = item.ImageUrl,
+                    InStock = true,
+                    IsPreferredSweet = true
+                });
+            }
+        }
+        await context.SaveChangesAsync();
+
+        // --- 3. الحلويات الغربية (للكيك، التشيز كيك، الدونات، الكرواسون، البراونيز، والمافن) ---
+        var westernSweetsCategory = Categories["الحلويات الغربية"];
+
+        var westernSweetsToSeed = new[]
+        {
+            // منتجات عربية
+            new { Name = "ليزي كيك", Price = 3.50M, Description = "كيكة البسكويت بالشوكولاتة اللذيذة", ImageUrl = "/images/Laizy.jpeg" },
+            new { Name = "مولتن كيك", Price = 4.50M, Description = "كيكة الشوكولاتة الدافئة بقلب غني يذوب عند أول قضمة", ImageUrl = "/images/Molten.jpeg" },
+            new { Name = "تيراميسو", Price = 5.00M, Description = "الحلوى الإيطالية الفاخرة بطبقات البسكويت المشبعة بالقهوة", ImageUrl = "/images/Tiramisu.jpeg" },
+            new { Name = "ميل فوي", Price = 3.00M, Description = "رقائق الهشاشة الفرنسية التقليدية مع طبقات الكاسترد", ImageUrl = "/images/Mille-feuille.jpeg" },
+            // كيك
+            new { Name = "Chocolate Cake", Price = 12.95M, Description = "كيكة الشوكولاتة الغنية مع كريمة الفدج", ImageUrl = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Strawberry Cheesecake", Price = 15.50M, Description = "تشيز كيك كلاسيكي مع الفراولة الطازجة", ImageUrl = "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Red Velvet Cake", Price = 13.50M, Description = "كيكة ريد فيلفيت رطبة مع كريمة الجبن", ImageUrl = "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Carrot Cake", Price = 12.00M, Description = "كيكة الجزر الرطبة مع كريمة الجبن والجوز", ImageUrl = "" },
+            new { Name = "Cookies and Cream Cake", Price = 14.50M, Description = "طبقات من كيك الشوكولاتة مع حشوة الأوريو", ImageUrl = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Tiramisu", Price = 14.00M, Description = "الحلوى الإيطالية الكلاسيكية", ImageUrl = "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            // دونات وكرواسون
+            new { Name = "Glazed Donut", Price = 3.50M, Description = "دونات كلاسيكي طازج مع طبقة سكر لامعة", ImageUrl = "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Croissant", Price = 5.00M, Description = "كرواسون فرنسي مخبوز بالزبدة", ImageUrl = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            // براونيز وكوكيز
+            new { Name = "Brownies", Price = 9.00M, Description = "براونيز الشوكولاتة الغنية مع الجوز", ImageUrl = "https://images.unsplash.com/photo-1607920591413-4ec007e70023?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Chocolate Chip Cookies", Price = 8.00M, Description = "كوكيز الشوكولاتة المنزلي", ImageUrl = "https://images.unsplash.com/photo-1499636138143-bd630f5cf38b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Peanut Butter Cookies", Price = 7.00M, Description = "كوكيز زبدة الفول السوداني الكلاسيكي", ImageUrl = "" },
+            new { Name = "Oatmeal Raisin Cookies", Price = 6.50M, Description = "كوكيز الشوفان بالزبيب", ImageUrl = "" },
+            // مافن ومعجنات
+            new { Name = "Blueberry Muffin", Price = 5.50M, Description = "مافن طازج محشو بالتوت الأزرق", ImageUrl = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Cinnamon Rolls", Price = 7.50M, Description = "رول القرفة الدافئ مع كريمة الجبن", ImageUrl = "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" }
+        };
+
+        foreach (var item in westernSweetsToSeed)
+        {
+            if (!context.Products.Any(p => p.Name == item.Name))
+            {
+                context.Products.Add(new Product
+                {
+                    Name = item.Name,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Category = westernSweetsCategory,
+                    ImageUrl = item.ImageUrl,
+                    InStock = true,
+                    IsPreferredSweet = true
+                });
+            }
+        }
+        await context.SaveChangesAsync();
+
+        // --- 4. الشوكلاتة والهدايا (للسكاكر، ألواح الشوكولاتة، الترافل، وغزل البنات) ---
+        var chocolateGiftsCategory = Categories["الشوكلاتة والهدايا"];
+
+        var chocolateGiftsToSeed = new[]
+        {
+            new { Name = "Chocolate Truffles", Price = 16.00M, Description = "ترافل الشوكولاتة المصنوع يدوياً", ImageUrl = "https://images.unsplash.com/photo-1548848864-005a6b7f2e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Dark Chocolate Bar", Price = 6.00M, Description = "لوح شوكولاتة داكنة 70%", ImageUrl = "https://images.unsplash.com/photo-1548848864-005a6b7f2e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Gummy Bears", Price = 4.50M, Description = "سكاكر جيلي بنكهات الفواكه المتنوعة", ImageUrl = "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Lollipops", Price = 3.50M, Description = "مصاصات ملونة بنكهات الفواكه", ImageUrl = "https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Cotton Candy", Price = 4.00M, Description = "غزل البنات الخفيف بنكهات متنوعة", ImageUrl = "" },
+            new { Name = "Caramel Fudge", Price = 11.00M, Description = "فدج الكراميل الناعم والكريمي", ImageUrl = "" },
+            new { Name = "Salted Caramels", Price = 12.50M, Description = "كراميل فاخر بالملح المتوازن", ImageUrl = "" }
+        };
+
+        foreach (var item in chocolateGiftsToSeed)
+        {
+            if (!context.Products.Any(p => p.Name == item.Name))
+            {
+                context.Products.Add(new Product
+                {
+                    Name = item.Name,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Category = chocolateGiftsCategory,
+                    ImageUrl = item.ImageUrl,
+                    InStock = true,
+                    IsPreferredSweet = false
+                });
+            }
+        }
+        await context.SaveChangesAsync();
+
+        // --- 5. عبوات خاصة (للمنتجات الفاخرة) ---
+        var specialPackagesCategory = Categories["عبوات خاصة"];
+
+        var specialPackagesToSeed = new[]
+        {
+            // المنتجات العربية الفاخرة
+            new { Name = "صندوق الجواهر الشرقية", Price = 15.00M, Description = "تشكيلة فاخرة من أرقى الحلويات العربية", ImageUrl = "/images/ArabicSweets.jpeg" },
+            new { Name = "باقة الفستق العاشق", Price = 18.00M, Description = "حلويات عربية فاخرة محشوة بالفستق الحلبي", ImageUrl = "/images/ArabicSweets1.jpeg" },
+            new { Name = "صينية السلطان للضيافة", Price = 12.50M, Description = "مجموعة مميزة من الحلويات العربية للمناسبات", ImageUrl = "/images/ArabicSweets2.jpeg" },
+            new { Name = "تشكيلة التراث الشامي", Price = 20.00M, Description = "أرقى أنواع الحلويات الشامية التقليدية", ImageUrl = "/images/ArabicSweets3.jpeg" },
+            // منتجات غربية فاخرة
+            new { Name = "Macaron", Price = 18.00M, Description = "ماكارون فرنسي أنيق بنكهات متنوعة", ImageUrl = "https://images.unsplash.com/photo-1569864358642-9d1684040f43?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Berry Tart", Price = 11.00M, Description = "تارت هش محشو بالكاسترد ومغطى بالتوت المشكل", ImageUrl = "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Lemon Tart", Price = 9.50M, Description = "تارت الليمون اللاذع مع قشرة مقرمشة", ImageUrl = "" }
+        };
+
+        foreach (var item in specialPackagesToSeed)
+        {
+            if (!context.Products.Any(p => p.Name == item.Name))
+            {
+                context.Products.Add(new Product
+                {
+                    Name = item.Name,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Category = specialPackagesCategory,
+                    ImageUrl = item.ImageUrl,
+                    InStock = true,
+                    IsPreferredSweet = true
+                });
+            }
+        }
+        await context.SaveChangesAsync();
+
+        // --- 6. بوظة (لجميع أنواع الآيس كريم) ---
+        var iceCreamCategory = Categories["بوظة"];
+
+        var iceCreamToSeed = new[]
+        {
+            new { Name = "Vanilla Ice Cream", Price = 6.50M, Description = "بوظة فانيليا كريمية مع حبوب الفانيليا الطبيعية", ImageUrl = "https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+            new { Name = "Mint Chocolate Ice Cream", Price = 7.50M, Description = "بوظة النعناع المنعشة مع رقائق الشوكولاتة", ImageUrl = "" },
+            new { Name = "Pistachio Ice Cream", Price = 8.00M, Description = "بوظة الفستق الغنية المصنوعة من المكسرات الطبيعية", ImageUrl = "" }
+        };
+
+        foreach (var item in iceCreamToSeed)
+        {
+            if (!context.Products.Any(p => p.Name == item.Name))
+            {
+                context.Products.Add(new Product
+                {
+                    Name = item.Name,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Category = iceCreamCategory,
+                    ImageUrl = item.ImageUrl,
+                    InStock = true,
+                    IsPreferredSweet = true
+                });
+            }
+        }
+        await context.SaveChangesAsync();
+
+        // تحديث حالة IsPreferredSweet للمنتجات حسب التصنيف
         var allProducts = await context.Products.Include(p => p.Category).ToListAsync();
         foreach (var product in allProducts)
         {
-            if (product.Category != null && product.Category.Name == "Arabic Sweets")
+            if (product.Category != null)
             {
-                product.IsPreferredSweet = true;
+                // جميع المنتجات في التصنيفات الجديدة تكون مفضلة ماعدا "الشوكلاتة والهدايا"
+                if (product.Category.Name == "حلويات عربية" ||
+                    product.Category.Name == "كنافة" ||
+                    product.Category.Name == "الحلويات الغربية" ||
+                    product.Category.Name == "عبوات خاصة" ||
+                    product.Category.Name == "بوظة")
+                {
+                    product.IsPreferredSweet = true;
+                }
+                else if (product.Category.Name == "الشوكلاتة والهدايا")
+                {
+                    product.IsPreferredSweet = false;
+                }
             }
-            else
-            {
-                product.IsPreferredSweet = false;
-            }
         }
-
-        // --- Reset and Reseed Kunafa (Enforce exactly 7 items) ---
-        var kunafaCategory = Categories["Kunafa"];
-        var existingKunafa = context.Products.Where(p => p.Category.Name == "Kunafa").ToList();
-
-        if (existingKunafa.Count > 0)
-        {
-            context.Products.RemoveRange(existingKunafa);
-            await context.SaveChangesAsync();
-        }
-
-        context.Products.AddRange(
-            new Product
-            {
-                Name = "كنافة ناعمة",
-                Price = 15.00M,
-                Description = "Soft and cheesy traditional Kunafa.",
-                Category = kunafaCategory,
-                ImageUrl = "/images/Knafha1.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
-            },
-            new Product
-            {
-                Name = "كنافة خشنة",
-                Price = 15.00M,
-                Description = "Crispy and cheesy traditional Kunafa.",
-                Category = kunafaCategory,
-                ImageUrl = "/images/Knafha4.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
-            },
-             new Product
-             {
-                 Name = "كنافة مكس",
-                 Price = 16.00M,
-                 Description = "A delicious mix of soft and coarse Kunafa.",
-                 Category = kunafaCategory,
-                 ImageUrl = "/images/Knafha6.jpeg",
-                 InStock = true,
-                 IsPreferredSweet = true
-             },
-            new Product
-            {
-                Name = "كنافة وبوظة",
-                Price = 18.00M,
-                Description = "Hot Kunafa served with cold ice cream.",
-                Category = kunafaCategory,
-                ImageUrl = "/images/Knafha2.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
-            },
-            new Product
-            {
-                Name = "وربات كنافة",
-                Price = 12.00M,
-                Description = "Triangular pastry filled with cream or cheese.",
-                Category = kunafaCategory,
-                ImageUrl = "/images/Asab3.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
-            },
-             new Product
-             {
-                 Name = "فطاير مثلثه",
-                 Price = 10.00M,
-                 Description = "Sweet triangle pastries.",
-                 Category = kunafaCategory,
-                 ImageUrl = "/images/Fataer.jpeg",
-                 InStock = true,
-                 IsPreferredSweet = true
-             },
-            new Product
-            {
-                Name = "مخدات",
-                Price = 8.00M,
-                Description = "Sweet pillow-shaped pastries.",
-                Category = kunafaCategory,
-                ImageUrl = "/images/Fataer1.jpeg",
-                InStock = true,
-                IsPreferredSweet = true
-            }
-        );
-        await context.SaveChangesAsync();
-    }
-
-    private static async Task MergeProductAsync(ApplicationDbContext context, string oldName, Product newProductDetails)
-    {
-        var oldProduct = await context.Products.FirstOrDefaultAsync(p => p.Name == oldName);
-        var newProduct = await context.Products.FirstOrDefaultAsync(p => p.Name == newProductDetails.Name);
-
-        if (oldProduct != null && newProduct != null)
-        {
-            // Scenario A: Both exist - Duplicate!
-            // Delete the 'new' one (the duplicate we don't want, usually the one with less history if we assume old one has orders)
-            // Actually, usually we'd keep the one with ID that matches orders. But here we can't easily know. 
-            // However, usually the 'old' one is the one we want to keep if we are 'renaming' it in spirit. 
-            // BUT, if the new one was just added by a previous run of the buggy seeder, it likely has no orders yet.
-            // So deleting the new one is safer.
-            context.Products.Remove(newProduct);
-
-            // Update the old one to match the new details
-            oldProduct.Name = newProductDetails.Name;
-            oldProduct.Price = newProductDetails.Price;
-            oldProduct.Description = newProductDetails.Description;
-            oldProduct.ImageUrl = newProductDetails.ImageUrl;
-            oldProduct.Category = newProductDetails.Category; // Ensure category is correct
-            oldProduct.InStock = newProductDetails.InStock;
-            oldProduct.IsPreferredSweet = newProductDetails.IsPreferredSweet;
-        }
-        else if (oldProduct != null && newProduct == null)
-        {
-            // Scenario B: Only Old exists - Rename it
-            oldProduct.Name = newProductDetails.Name;
-            oldProduct.Price = newProductDetails.Price;
-            oldProduct.Description = newProductDetails.Description;
-            oldProduct.ImageUrl = newProductDetails.ImageUrl;
-            oldProduct.Category = newProductDetails.Category;
-            oldProduct.InStock = newProductDetails.InStock;
-            oldProduct.IsPreferredSweet = newProductDetails.IsPreferredSweet;
-        }
-        else if (oldProduct == null && newProduct == null)
-        {
-            // Scenario C: Neither exists - Add new
-            context.Products.Add(newProductDetails);
-        }
-        // Scenario D: Only New exists - Do nothing (it's already there)
-
         await context.SaveChangesAsync();
     }
 
@@ -576,20 +292,12 @@ public class DbSeeder
         {
             _categories ??= new Category[]
             {
-                // Old Categories
-                new() { Name = "Cakes", Description = "Delicious cakes" },
-                new() { Name = "Candies", Description = "Sweet candies" },
-                new() { Name = "Ice Cream", Description = "Frozen desserts" },
-                new() { Name = "Pies", Description = "Tasty pies" },
-                new() { Name = "Arabic Sweets", Description = "Traditional Arabic sweets" },
-                new() { Name = "Kunafa", Description = "Authentic Kunafa varieties" },
-                // New Arabic Categories
-                new() { Name = "حلويات عربية", Description = "حلويات شرقية تقليدية" },
-                new() { Name = "كنافة", Description = "أنواع الكنافة الأصيلة" },
-                new() { Name = "الحلويات الغربية", Description = "كيك وحلويات غربية" },
-                new() { Name = "الشوكلاتة والهدايا والمناسبات الخاصة", Description = "شوكلاتة وهدايا فاخرة" },
-                new() { Name = "عبوات خاصة", Description = "عبوات مميزة للمناسبات" },
-                new() { Name = "البوظة", Description = "بوظة بنكهات متنوعة" }
+                new() { Name = "حلويات عربية", Description = "بقلاوة ومعمول وحلويات عربية تقليدية" },
+                new() { Name = "كنافة", Description = "جميع أنواع الكنافة الأصيلة" },
+                new() { Name = "الحلويات الغربية", Description = "كيك، تشيز كيك، دونات، كرواسون، براونيز، ومافن" },
+                new() { Name = "الشوكلاتة والهدايا", Description = "سكاكر، ألواح شوكولاتة، ترافل، وغزل البنات" },
+                new() { Name = "عبوات خاصة", Description = "منتجات فاخرة ومميزة للمناسبات" },
+                new() { Name = "بوظة", Description = "جميع أنواع الآيس كريم" }
             }.ToDictionary(c => c.Name);
 
             return _categories;

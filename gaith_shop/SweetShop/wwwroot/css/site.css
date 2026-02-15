@@ -28,6 +28,23 @@ html {
   min-height: 100%;
 }
 
+/* GLOBAL RESPONSIVE RULES */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive Container Padding */
+@media (max-width: 576px) {
+
+  .container,
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+
 body {
   margin-bottom: 60px;
   color: var(--text-color);
@@ -108,7 +125,7 @@ header {
 }
 
 .nav-link-custom {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   padding: 0.5rem 0;
   position: relative;
   transition: color 0.2s ease;
@@ -127,6 +144,8 @@ header {
 .top-header {
   font-size: 0.75rem;
   font-weight: 400;
+  padding-top: 11px;
+  padding-bottom: 11px;
 }
 
 .fs-custom {

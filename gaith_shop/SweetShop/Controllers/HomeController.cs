@@ -19,9 +19,13 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var preferredProducts = _productRepository.GetPreferredProducts();
+        var iceCreamFavorites = _productRepository.GetAllProducts()
+            .Where(p => p.Category.Name == "Ice Cream" && p.IsPreferredSweet);
+
         var homeViewModel = new HomeViewModel
         {
             PreferredSweets = preferredProducts,
+            IceCreamFavorites = iceCreamFavorites,
             Categories = _context.Categories.ToList()
         };
         return View(homeViewModel);

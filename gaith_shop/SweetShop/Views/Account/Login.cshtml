@@ -1,0 +1,92 @@
+@model SweetShop.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "تسجيل الدخول";
+}
+
+<div class="container py-5" style="min-height: 80vh;">
+    <div class="row g-5 justify-content-center">
+        <!-- New Customer Section -->
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card h-100 shadow-custom border-0 rounded-4">
+                <div class="card-body p-5 d-flex flex-column justify-content-center text-center">
+                    <h2 class="fw-bold mb-4" style="color: #1A8CB0;">عميل جديد؟</h2>
+                    <h3 class="mb-4 text-dark fs-5">التسجيل في حلويات الاسمر سريع وسهل!</h3>
+                    <p class="text-muted mb-4 lh-lg">
+                        بإنشاء حساب معنا، ستتمكن من:
+                        <br>
+                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> إتمام الطلب بشكل أسرع
+                        <br>
+                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> حفظ عناوين للشحن المتعدد
+                        <br>
+                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> تتبع طلباتك بسهولة
+                    </p>
+                    <a asp-action="Register" class="btn btn-outline-primary btn-lg rounded-pill px-5 mt-auto"
+                        style="border-color: #1A8CB0; color: #1A8CB0;">
+                        إنشاء حساب
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing User Section -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-custom border-0 rounded-4">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold" style="color: #1A8CB0;">عميل حالي</h2>
+                        <p class="text-muted">مرحباً بك مجدداً</p>
+                    </div>
+
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-bold text-dark"></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="bi bi-envelope text-primary-custom"></i></span>
+                                <input asp-for="Email" class="form-control border-start-0 ps-0"
+                                    placeholder="example@email.com" />
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-bold text-dark"></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i
+                                        class="bi bi-lock text-primary-custom"></i></span>
+                                <input asp-for="Password" class="form-control border-start-0 ps-0"
+                                    placeholder="********" />
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input class="form-check-input" asp-for="RememberMe" />
+                            <label class="form-check-label" asp-for="RememberMe"></label>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill"
+                                style="background-color: #1A8CB0; border-color: #1A8CB0;">
+                                دخول
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <a href="#" class="text-decoration-none text-muted small">نسيت كلمة المرور؟</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

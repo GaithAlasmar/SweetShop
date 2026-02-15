@@ -1,0 +1,82 @@
+@model SearchViewModel
+
+@{
+    ViewData["Title"] = string.IsNullOrEmpty(Model.SearchQuery) ? "البحث" : $"نتائج البحث عن: {Model.SearchQuery}";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="text-end">
+                @if (string.IsNullOrEmpty(Model.SearchQuery))
+                {
+                    <span>البحث في المنتجات</span>
+                }
+                else
+                {
+                    <span>نتائج البحث عن: <strong>"@Model.SearchQuery"</strong></span>
+                }
+            </h2>
+            @if (!string.IsNullOrEmpty(Model.SearchQuery))
+            {
+                <p class="text-end text-muted">تم العثور على @Model.ResultCount منتج</p>
+            }
+        </div>
+    </div>
+
+    @if (string.IsNullOrEmpty(Model.SearchQuery))
+    {
+        <div class="alert alert-info text-end" role="alert">
+            <i class="bi bi-info-circle me-2"></i>
+            الرجاء إدخال كلمة بحث للعثور على المنتجات
+        </div>
+    }
+    else if (!Model.Products.Any())
+    {
+        <div class="alert alert-warning text-end" role="alert">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            عذراً، لم يتم العثور على منتجات تطابق بحثك عن "<strong>@Model.SearchQuery</strong>"
+        </div>
+        <div class="text-end mt-3">
+            <p>جرب:</p>
+            <ul class="list-unstyled text-end">
+                <li>التحقق من الإملاء</li>
+                <li>استخدام كلمات بحث أكثر عمومية</li>
+                <li>تقليل عدد الكلمات</li>
+            </ul>
+            <a asp-controller="Product" asp-action="List" class="btn btn-primary mt-2">
+                <i class="bi bi-grid me-2"></i>
+                تصفح جميع المنتجات
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="row equal-height-cards">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text">@product.Price.ToString("c")</p>
+                            @if (!string.IsNullOrEmpty(product.Description))
+                            {
+                                <p class="card-text text-muted small">@product.Description</p>
+                            }
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"
+                                        class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
+                                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@product.Id"
+                                        class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SweetShop.Models;
 using SweetShop.Models.Interfaces;
 using SweetShop.ViewModels;
 
@@ -43,5 +44,18 @@ public class ProductController : Controller
             return NotFound();
         }
         return View(product);
+    }
+
+    public IActionResult Search(string q)
+    {
+        var searchViewModel = new SearchViewModel
+        {
+            SearchQuery = q ?? string.Empty,
+            Products = string.IsNullOrWhiteSpace(q)
+                ? Enumerable.Empty<Product>()
+                : _productRepository.SearchProducts(q)
+        };
+
+        return View(searchViewModel);
     }
 }

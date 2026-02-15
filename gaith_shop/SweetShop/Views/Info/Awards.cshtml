@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "الجوائز";
+}
+
+<div class="container py-5" dir="rtl">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary mb-3">جوائزنا وإنجازاتنا</h1>
+        <p class="lead text-muted">فخرنا لا يكمن في الجوائز، بل في ثقتكم التي منحتونا إياها</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Award 1 -->
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm hover-up text-center pt-5">
+                <img src="https://placehold.co/150x150/png?text=Best+Sweet+2025"
+                    class="rounded-circle mx-auto border border-4 border-warning p-1" alt="Best Sweet" width="120"
+                    height="120">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mt-3">أفضل محل حلويات 2025</h5>
+                    <p class="card-text text-muted small">جائزة التميز في صناعة الحلويات العربية - مهرجان المذاق العربي.
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-0 pb-4">
+                    <i class="fa-solid fa-trophy text-warning"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Award 2 -->
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm hover-up text-center pt-5">
+                <img src="https://placehold.co/150x150/png?text=Quality+Cert"
+                    class="rounded-circle mx-auto border border-4 border-primary p-1" alt="ISO" width="120"
+                    height="120">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mt-3">شهادة الآيزو 22000</h5>
+                    <p class="card-text text-muted small">شهادة عالمية في إدارة سلامة الغذاء وجودة التصنيع.</p>
+                </div>
+                <div class="card-footer bg-white border-0 pb-4">
+                    <i class="fa-solid fa-certificate text-primary"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Award 3 -->
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm hover-up text-center pt-5">
+                <img src="https://placehold.co/150x150/png?text=Community"
+                    class="rounded-circle mx-auto border border-4 border-success p-1" alt="Community" width="120"
+                    height="120">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mt-3">درع الخدمة المجتمعية</h5>
+                    <p class="card-text text-muted small">تكريم لجهودنا في دعم الأنشطة الخيرية والمجتمعية.</p>
+                </div>
+                <div class="card-footer bg-white border-0 pb-4">
+                    <i class="fa-solid fa-hand-holding-heart text-success"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-primary {
+        color: #1A8CB0 !important;
+    }
+
+    .text-warning {
+        color: #C7AE6A !important;
+    }
+
+    .border-warning {
+        border-color: #C7AE6A !important;
+    }
+
+    .border-primary {
+        border-color: #1A8CB0 !important;
+    }
+
+    .hover-up {
+        transition: transform 0.3s ease;
+    }
+
+    .hover-up:hover {
+        transform: translateY(-10px);
+    }
+</style>

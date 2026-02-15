@@ -1,0 +1,257 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+    .footer-custom {
+        background-color: #1A8CB0;
+        /* User requested Blue */
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+        font-family: 'Readex Pro', sans-serif;
+        position: relative;
+        overflow: hidden;
+        color: #C7AE6A;
+        /* User requested Gold font */
+        text-align: right;
+    }
+
+    /* Watermark Logo */
+    .footer-custom::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        /* Large size */
+        height: 80%;
+        background-image: url('/images/logo.png');
+        /* Assuming this path */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.1;
+        /* Faint watermark */
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* Ensure content is above watermark */
+    .footer-custom .container-fluid {
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer-custom h5 {
+        color: #C7AE6A;
+        /* Gold */
+        font-weight: bold;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .footer-custom h5::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 2px;
+        background-color: #C7AE6A;
+        margin-top: 5px;
+    }
+
+    .footer-custom p,
+    .footer-custom span,
+    .footer-custom td {
+        color: #fff;
+        /* White text for readability on blue, keeping headings Gold */
+    }
+
+    .footer-custom a {
+        color: #e0e0e0;
+        /* Light grey/white for links */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-custom a:hover {
+        color: #C7AE6A;
+        /* Gold on hover */
+    }
+
+    .social-icon {
+        font-size: 1.5rem;
+        color: #fff;
+        /* White base */
+        margin-left: 15px;
+        transition: color 0.3s ease;
+        text-decoration: none;
+    }
+
+    .social-icon:hover {
+        color: #C7AE6A;
+        /* Gold on hover */
+    }
+
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 99;
+        width: 45px;
+        height: 45px;
+        border: none;
+        outline: none;
+        background-color: #C7AE6A;
+        /* Gold button on blue theme? Or keep blue? User didn't specify button color, but gold contrasts well on the page if footer is blue. Let's try Gold. */
+        color: #1A8CB0;
+        /* Blue icon */
+        cursor: pointer;
+        padding: 0;
+        display: none;
+        transition: opacity 0.3s, background-color 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: #bfa055;
+    }
+
+    /* Contact Link Hover Effect */
+    .contact-link {
+        transition: all 0.3s ease;
+    }
+
+    .contact-link:hover span {
+        color: #C7AE6A !important;
+        /* Gold on hover */
+    }
+
+    /* Responsive Adjustments for Desktop Offsets */
+    @@media(min-width: 992px) {
+        .footer-offset-col-2 {
+            padding-right: 35px;
+        }
+
+        .footer-offset-col-3 {
+            transform: translateX(50px);
+        }
+
+        .footer-offset-title-3 {
+            padding-right: 40px;
+        }
+
+        .footer-offset-col-4 {
+            padding-right: 110px;
+        }
+    }
+</style>
+
+<footer class="footer-custom" dir="rtl">
+    <div class="container-fluid px-3 px-lg-5"> <!-- Adjusted padding/margins -->
+        <div class="row g-4 justify-content-start">
+            <!-- Column 1: Brand -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <img src="~/images/logo.png" alt="Sweet Shop Logo"
+                        style="height: 60px; border: 2px solid #C7AE6A !important; border-radius: 50%; padding: 5px;">
+                    <!-- White logo variant if needed, or keeping original -->
+                    <h4 class="m-0" style="color: #C7AE6A; font-weight: bold;">حلويات الاسمر</h4>
+                </div>
+                <p class="mb-4" style="line-height: 1.8; color: #fff;">
+                    ارتق بلحظاتك مع حلويات الاسمر أفضل محل حلويات في الشرق الأوسط. نقدم لكم أجود أنواع الحلويات العربية
+                    والغربية المحضرة بحب واتقان.
+                </p>
+                <div class="d-flex gap-2">
+                    <img src="https://placehold.co/50x50/png?text=ISO" alt="ISO Certified" class="img-fluid"
+                        style="height: 50px;">
+                    <img src="https://placehold.co/50x50/png?text=FDA" alt="FDA Approved" class="img-fluid"
+                        style="height: 50px;">
+                    <img src="https://placehold.co/50x50/png?text=Halal" alt="Halal Certified" class="img-fluid"
+                        style="height: 50px;">
+                </div>
+            </div>
+
+            <!-- Column 2: About Us -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
+                <h5 class="footer-offset-col-2">نبذة عنا</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Story">قصتنا</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Vision">رؤيتنا</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Mission">مهمتنا</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Factory">المصنع</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Articles">المقالات</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Important Links -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 footer-offset-col-3">
+                <h5 class="footer-offset-title-3">روابط مهمة</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Privacy">سياسة الخصوصية</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Terms">الشروط والأحكام</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Shipping">سياسة الشحن</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Awards">الجوائز</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact -->
+            <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 d-flex flex-column align-items-start footer-offset-col-4">
+                <h5>ابقى على تواصل</h5>
+
+                <div class="d-flex flex-column gap-2 mb-3">
+                    <a href="tel:+962791234567"
+                        class="d-flex align-items-center gap-2 text-decoration-none contact-link">
+                        <i class="fa-solid fa-phone" style="color: #C7AE6A;"></i>
+                        <span dir="ltr" style="color: #fff; transition: color 0.3s ease;">+962 79 123 4567</span>
+                    </a>
+                    <a href="mailto:info@sweetshop.com"
+                        class="d-flex align-items-center gap-2 text-decoration-none contact-link">
+                        <i class="fa-solid fa-envelope" style="color: #C7AE6A;"></i>
+                        <span style="color: #fff; transition: color 0.3s ease;">info@sweetshop.com</span>
+                    </a>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <a href="#" class="social-icon m-0"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon m-0"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="social-icon m-0"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon m-0"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon m-0"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-top pt-3 mt-4 text-center" style="border-color: rgba(255,255,255,0.1) !important;">
+            <p class="mb-0" style="color: #ddd;">&copy; @DateTime.Now.Year حلويات الاسمر. جميع الحقوق محفوظة.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll To Top Button -->
+<button onclick="topFunction()" id="scrollToTopBtn" title="Go to top">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script>
+    // Get the button
+    let mybutton = document.getElementById("scrollToTopBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>

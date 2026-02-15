@@ -1,0 +1,94 @@
+@{
+    ViewData["Title"] = "المقالات";
+}
+
+<div class="container py-5" dir="rtl">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary display-5">مدونة الحلويات</h1>
+        <p class="text-muted lead">اكتشف أسرار الحلويات، نصائح التقديم، وقصص من التراث</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Article 1 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm hover-up">
+                <img src="https://placehold.co/400x250/png?text=Kunafa+History" class="card-img-top"
+                    alt="تاريخ الكنافة">
+                <div class="card-body p-4">
+                    <div class="badge bg-primary mb-2">تراث</div>
+                    <h5 class="card-title fw-bold mb-3">تاريخ الكنافة: رحلة عبر الزمن</h5>
+                    <p class="card-text text-muted mb-4">هل تعلم أن الكنافة تعود جذورها إلى العصر الأموي؟ اكتشف القصة
+                        الكاملة لهذا الطبق الشهي وكيف تطور عبر العصور.</p>
+                    <a href="#" class="btn btn-outline-primary stretched-link rounded-pill px-4">اقرأ المزيد</a>
+                </div>
+                <div class="card-footer bg-white border-0 text-muted small">
+                    <i class="fa-regular fa-calendar me-2"></i> 14 فبراير 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm hover-up">
+                <img src="https://placehold.co/400x250/png?text=Coffee+Sweets" class="card-img-top"
+                    alt="القهوة والحلويات">
+                <div class="card-body p-4">
+                    <div class="badge bg-warning text-dark mb-2">نصائح</div>
+                    <h5 class="card-title fw-bold mb-3">فن تقديم القهوة مع الحلويات الشرقية</h5>
+                    <p class="card-text text-muted mb-4">تعرف على أفضل أنواع القهوة التي تبرز نكهة البقلاوة والمعمول،
+                        وكيفية تنسيق مائدة ضيافة تبهر ضيوفك.</p>
+                    <a href="#" class="btn btn-outline-primary stretched-link rounded-pill px-4">اقرأ المزيد</a>
+                </div>
+                <div class="card-footer bg-white border-0 text-muted small">
+                    <i class="fa-regular fa-calendar me-2"></i> 10 فبراير 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm hover-up">
+                <img src="https://placehold.co/400x250/png?text=Healthy+Sweets" class="card-img-top" alt="حلويات صحية">
+                <div class="card-body p-4">
+                    <div class="badge bg-success mb-2">صحة</div>
+                    <h5 class="card-title fw-bold mb-3">هل يمكن أن تكون الحلويات صحية؟</h5>
+                    <p class="card-text text-muted mb-4">اكتشف خياراتنا الجديدة من الحلويات قليلة السكر والمحضرة بمكونات
+                        طبيعية، للاستمتاع بالطعم دون تأنيب الضمير.</p>
+                    <a href="#" class="btn btn-outline-primary stretched-link rounded-pill px-4">اقرأ المزيد</a>
+                </div>
+                <div class="card-footer bg-white border-0 text-muted small">
+                    <i class="fa-regular fa-calendar me-2"></i> 05 فبراير 2026
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-primary {
+        color: #1A8CB0 !important;
+    }
+
+    .btn-outline-primary {
+        color: #1A8CB0;
+        border-color: #1A8CB0;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #1A8CB0;
+        color: white;
+    }
+
+    .bg-primary {
+        background-color: #1A8CB0 !important;
+    }
+
+    .hover-up {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-up:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    }
+</style>

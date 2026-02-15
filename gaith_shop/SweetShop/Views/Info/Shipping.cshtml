@@ -1,0 +1,104 @@
+@{
+    ViewData["Title"] = "سياسة الشحن";
+}
+
+<div class="container py-5" dir="rtl">
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-primary mb-4">التوصيل والشحن</h1>
+            <p class="lead mb-4">نحن ندرك أنكم تنتظرون حلوياتنا بفارغ الصبر، لذا نعمل جاهدين لتوصيلها لكم بأسرع وقت
+                وبأفضل حال.</p>
+
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle bg-light text-primary me-3">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-1">توصيل سريع</h5>
+                    <p class="mb-0 text-muted">توصيل في نفس اليوم للطلبات قبل الساعة 12 ظهراً.</p>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle bg-light text-primary me-3">
+                    <i class="fa-solid fa-snowflake"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-1">توصيل مبرد</h5>
+                    <p class="mb-0 text-muted">سيارات مجهزة للحفاظ على جودة وطراوة الحلويات.</p>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+                <div class="icon-circle bg-light text-primary me-3">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-1">تغطية واسعة</h5>
+                    <p class="mb-0 text-muted">نصل إليكم أينما كنتم في جميع أنحاء المملكة.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://placehold.co/600x400/png?text=Delivery+Van" alt="Delivery"
+                class="img-fluid rounded-3 shadow-lg hover-scale">
+        </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4">
+                <div class="mb-3 text-secondary">
+                    <i class="fa-solid fa-city fa-3x"></i>
+                </div>
+                <h5 class="fw-bold">داخل عمان</h5>
+                <p class="text-muted">التوصيل خلال 2-4 ساعات</p>
+                <span class="badge bg-primary rounded-pill px-3 py-2">3.00 دينار</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4">
+                <div class="mb-3 text-secondary">
+                    <i class="fa-solid fa-road fa-3x"></i>
+                </div>
+                <h5 class="fw-bold">المحافظات الأخرى</h5>
+                <p class="text-muted">التوصيل خلال 24 ساعة</p>
+                <span class="badge bg-primary rounded-pill px-3 py-2">5.00 دينار</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-primary {
+        color: #1A8CB0 !important;
+    }
+
+    .text-secondary {
+        color: #C7AE6A !important;
+    }
+
+    .bg-primary {
+        background-color: #1A8CB0 !important;
+    }
+
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        margin-left: 15px;
+        /* RTL fix */
+    }
+
+    .hover-scale {
+        transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.02);
+    }
+</style>

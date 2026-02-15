@@ -220,7 +220,6 @@ C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\a3
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
-C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\k2qsj7h0z7-r4onhqvz31.gz
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\mvyhd55stk-61n19gt1b8.gz
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\ejcjtl7ikz-1031ln2gtu.gz
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\pvbgcru99f-uippd5qh76.gz
@@ -597,3 +596,4 @@ C:\Users\HP\Desktop\training\gaith_shop\SweetShop\bin\Debug\net9.0\refs\System.X
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\bin\Debug\net9.0\refs\System.Xml.XPath.XDocument.dll
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\bin\Debug\net9.0\refs\WindowsBase.dll
 C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\ref\SweetShop.dll
+C:\Users\HP\Desktop\training\gaith_shop\SweetShop\obj\Debug\net9.0\compressed\k2qsj7h0z7-mh0fegvysj.gz

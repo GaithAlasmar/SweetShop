@@ -29,19 +29,35 @@ public class ProductRepository : IProductRepository
     {
         return _context.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == productId);
     }
-    
+
+    public IEnumerable<Product> SearchProducts(string searchTerm)
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            return Enumerable.Empty<Product>();
+        }
+
+        return _context.Products
+            .Include(p => p.Category)
+            .Where(p =>
+                (p.Name.Contains(searchTerm) ||
+                 (p.Description != null && p.Description.Contains(searchTerm))) &&
+                p.InStock)
+            .ToList();
+    }
+
     public void CreateProduct(Product product)
     {
         _context.Products.Add(product);
         _context.SaveChanges();
     }
-    
+
     public void UpdateProduct(Product product)
     {
         _context.Products.Update(product);
         _context.SaveChanges();
     }
-    
+
     public void DeleteProduct(Product product)
     {
         _context.Products.Remove(product);
