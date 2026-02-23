@@ -1,7 +1,9 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { useLanguage } from '../context/LanguageContext';
 
 const TopProducts = ({ products }) => {
+    const { t } = useLanguage();
     // الحصول على أفضل 5 منتجات حسب المبيعات
     const topProducts = [...products]
         .sort((a, b) => b.sales - a.sales)
@@ -12,8 +14,8 @@ const TopProducts = ({ products }) => {
     return (
         <div className="chart-card">
             <div className="chart-header">
-                <h2>المنتجات الأكثر مبيعاً</h2>
-                <p className="chart-subtitle">أفضل 5 منتجات هذا الشهر</p>
+                <h2>{t('topProducts')}</h2>
+                <p className="chart-subtitle">{t('top5Products')}</p>
             </div>
             <div className="chart-container">
                 <ResponsiveContainer width="100%" height={300}>
@@ -28,7 +30,7 @@ const TopProducts = ({ products }) => {
                                 borderRadius: '8px',
                                 boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
                             }}
-                            formatter={(value) => [`${value} وحدة`, 'المبيعات']}
+                            formatter={(value) => [`${value} ${t('units')}`, t('sales')]}
                         />
                         <Bar dataKey="sales" radius={[0, 8, 8, 0]}>
                             {topProducts.map((entry, index) => (

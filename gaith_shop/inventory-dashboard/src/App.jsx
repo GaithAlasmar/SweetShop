@@ -1,4 +1,6 @@
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from './context/LanguageContext';
+import LanguageToggle from './components/LanguageToggle';
 import { FaBox, FaExclamationTriangle, FaDollarSign, FaChartLine } from 'react-icons/fa';
 import StatCard from './components/StatCard';
 import TopProducts from './components/TopProducts';
@@ -10,8 +12,10 @@ import { inventoryData } from './data/mockData';
 import './App.css';
 
 function App() {
+  const { t, direction } = useLanguage();
+
   const [filters, setFilters] = useState({
-    category: 'الكل',
+    category: 'all',
     status: 'الكل',
     priceRange: 'all'
   });
@@ -19,8 +23,8 @@ function App() {
   // منطق الفلترة
   const filteredProducts = useMemo(() => {
     return inventoryData.products.filter(product => {
-      // فلتر الفئة
-      if (filters.category !== 'الكل' && product.category !== filters.category) {
+      // Category Filter
+      if (filters.category !== 'all' && product.category !== filters.category) {
         return false;
       }
 
@@ -55,8 +59,8 @@ function App() {
   const handleFilterChange = (filterType, value) => {
     if (filterType === 'reset') {
       setFilters({
-        category: 'الكل',
-        status: 'الكل',
+        category: 'all',
+        status: 'all',
         priceRange: 'all'
       });
     } else {
@@ -76,11 +80,14 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="app" dir={direction}>
       <header className="dashboard-header">
         <div className="header-content">
-          <h1>لوحة تحكم المخزون</h1>
-          <p className="header-subtitle">إدارة ومتابعة المخزون بشكل تفاعلي</p>
+          <div className="header-top">
+            <h1>{t('appTitle')}</h1>
+            <LanguageToggle />
+          </div>
+          <p className="header-subtitle">{t('appSubtitle')}</p>
         </div>
       </header>
 
@@ -93,7 +100,7 @@ function App() {
           {/* بطاقات الإحصائيات */}
           <section className="stats-grid">
             <StatCard
-              title="إجمالي المنتجات"
+              title={t('totalProducts')}
               value={stats.totalProducts}
               icon={FaBox}
               trend="up"
@@ -101,7 +108,7 @@ function App() {
               colorClass="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
             />
             <StatCard
-              title="مخزون منخفض"
+              title={t('lowStock')}
               value={stats.lowStock}
               icon={FaExclamationTriangle}
               trend="down"
@@ -109,15 +116,15 @@ function App() {
               colorClass="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
             />
             <StatCard
-              title="إجمالي الإيرادات"
-              value={`${stats.totalRevenue.toLocaleString()} ريال`}
+              title={t('totalRevenue')}
+              value={`${stats.totalRevenue.toLocaleString()} ${t('currency')}`}
               icon={FaDollarSign}
               trend="up"
               trendValue={stats.monthlySalesGrowth}
               colorClass="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
             />
             <StatCard
-              title="نمو المبيعات"
+              title={t('salesGrowth')}
               value={`${stats.monthlySalesGrowth}%`}
               icon={FaChartLine}
               trend="up"

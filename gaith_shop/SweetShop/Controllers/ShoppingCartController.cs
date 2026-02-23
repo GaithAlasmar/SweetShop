@@ -1,107 +1,70 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SweetShop.Models.Interfaces;
-using SweetShop.Models;
-using SweetShop.ViewModels;
+using SweetShop.Features.ShoppingCart.Commands;
+using SweetShop.Features.ShoppingCart.Queries;
 
 namespace SweetShop.Controllers;
 
-public class ShoppingCartController : Controller
+/// <summary>
+/// Thin controller — dispatches all cart operations to MediatR handlers.
+/// No repository or ShoppingCart injected directly.
+/// </summary>
+public class ShoppingCartController(IMediator mediator) : Controller
 {
-    private readonly IProductRepository _productRepository;
-    private readonly ShoppingCart _shoppingCart;
-
-    public ShoppingCartController(IProductRepository productRepository, ShoppingCart shoppingCart)
+    // GET: /ShoppingCart
+    public async Task<IActionResult> Index()
     {
-        _productRepository = productRepository;
-        _shoppingCart = shoppingCart;
+        var viewModel = await mediator.Send(new GetCartQuery());
+        return View(viewModel);
     }
 
-    public IActionResult Index()
+    // GET: /ShoppingCart/AddToShoppingCart/5
+    public async Task<IActionResult> AddToShoppingCart(int productId)
     {
-        var items = _shoppingCart.GetShoppingCartItems();
-        _shoppingCart.ShoppingCartItems = items;
-
-        var shoppingCartViewModel = new ShoppingCartViewModel
-        {
-            ShoppingCart = _shoppingCart,
-            ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-        };
-
-        return View(shoppingCartViewModel);
-    }
-
-    public RedirectToActionResult AddToShoppingCart(int productId)
-    {
-        var selectedProduct = _productRepository.GetAllProducts().FirstOrDefault(p => p.Id == productId);
-
-        if (selectedProduct != null)
-        {
-            _shoppingCart.AddToCart(selectedProduct, 1);
-        }
+        await mediator.Send(new AddToCartCommand(productId));
+        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            return Ok();
         return RedirectToAction("Index");
     }
 
-    public RedirectToActionResult RemoveFromShoppingCart(int productId)
+    // GET: /ShoppingCart/RemoveFromShoppingCart/5
+    public async Task<IActionResult> RemoveFromShoppingCart(int productId)
     {
-        var selectedProduct = _productRepository.GetAllProducts().FirstOrDefault(p => p.Id == productId);
-
-        if (selectedProduct != null)
-        {
-            _shoppingCart.RemoveTotalFromCart(selectedProduct);
-        }
+        await mediator.Send(new RemoveFromCartCommand(productId));
+        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            return Ok();
         return RedirectToAction("Index");
     }
 
-    public RedirectToActionResult IncreaseQuantity(int productId)
+    // GET: /ShoppingCart/IncreaseQuantity/5
+    public async Task<IActionResult> IncreaseQuantity(int productId)
     {
-        var selectedProduct = _productRepository.GetAllProducts().FirstOrDefault(p => p.Id == productId);
-
-        if (selectedProduct != null)
-        {
-            _shoppingCart.AddToCart(selectedProduct, 1);
-        }
+        await mediator.Send(new ChangeCartQuantityCommand(productId, QuantityChange.Increase));
+        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            return Ok();
         return RedirectToAction("Index");
     }
 
-    public RedirectToActionResult DecreaseQuantity(int productId)
+    // GET: /ShoppingCart/DecreaseQuantity/5
+    public async Task<IActionResult> DecreaseQuantity(int productId)
     {
-        var selectedProduct = _productRepository.GetAllProducts().FirstOrDefault(p => p.Id == productId);
-
-        if (selectedProduct != null)
-        {
-            var cartItem = _shoppingCart.GetShoppingCartItems()
-                .FirstOrDefault(item => item.Product.Id == productId);
-
-            if (cartItem != null && cartItem.Amount > 1)
-            {
-                // Decrease by 1
-                _shoppingCart.RemoveFromCart(selectedProduct);
-            }
-            else if (cartItem != null && cartItem.Amount == 1)
-            {
-                // Remove item if quantity is 1
-                _shoppingCart.RemoveFromCart(selectedProduct);
-            }
-        }
+        await mediator.Send(new ChangeCartQuantityCommand(productId, QuantityChange.Decrease));
+        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            return Ok();
         return RedirectToAction("Index");
     }
 
-    public IActionResult GetCartPartial()
+    // GET: /ShoppingCart/GetCartPartial
+    public async Task<IActionResult> GetCartPartial()
     {
-        var items = _shoppingCart.GetShoppingCartItems();
-        _shoppingCart.ShoppingCartItems = items;
-
-        var shoppingCartViewModel = new ShoppingCartViewModel
-        {
-            ShoppingCart = _shoppingCart,
-            ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-        };
-
-        return PartialView("_CartPartial", shoppingCartViewModel);
+        var viewModel = await mediator.Send(new GetCartQuery());
+        return PartialView("_CartPartial", viewModel);
     }
-    public IActionResult GetCartCount()
+
+    // GET: /ShoppingCart/GetCartCount
+    public async Task<IActionResult> GetCartCount()
     {
-        var count = _shoppingCart.GetShoppingCartTotalCount();
+        var count = await mediator.Send(new GetCartCountQuery());
         return Ok(count);
     }
 }

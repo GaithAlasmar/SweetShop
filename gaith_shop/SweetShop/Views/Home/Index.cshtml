@@ -43,70 +43,24 @@
     </button>
 </div>
 
-<div class="text-center mb-4" style="position: relative; top: -17px;">
-    <h1 class="display-4" style="color: #C7AE6A; font-weight: bold;">حلويات عربية</h1>
-</div>
-
-<div class="row equal-height-cards">
-    @foreach (var sweet in Model.PreferredSweets.Where(p => p.Category.Name == "Arabic Sweets"))
-    {
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card mb-4 shadow-sm">
-                <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h5 class="card-title">@sweet.Name</h5>
-                    <p class="card-text">@sweet.Price.ToString("c")</p>
-                    <p class="card-text">@sweet.Description</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
-                                class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
-                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
-                                class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-</div>
-
-<div class="text-center mb-3 mt-4" style="position: relative; top: -25px;">
-    <h1 class="display-4" style="color: #C7AE6A; font-weight: bold;">كنافة</h1>
-</div>
-
-<div class="row equal-height-cards">
-    @foreach (var sweet in Model.PreferredSweets.Where(p => p.Category.Name == "Kunafa"))
-    {
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card mb-4 shadow-sm">
-                <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h5 class="card-title">@sweet.Name</h5>
-                    <p class="card-text">@sweet.Price.ToString("c")</p>
-                    <p class="card-text">@sweet.Description</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
-                                class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
-                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
-                                class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-</div>
-
-@if (Model.IceCreamFavorites != null && Model.IceCreamFavorites.Any())
+@{
+    var productSections = new List<(string Title, IEnumerable<Product> Products)>
 {
-    <div class="text-center mb-3 mt-4" style="position: relative; top: -25px;">
-        <h1 class="display-4" style="color: #C7AE6A; font-weight: bold;">بوظة</h1>
+("حلويات عربية", Model.PreferredSweets.Where(p => p.Category?.Name == "حلويات عربية")),
+("كنافة", Model.PreferredSweets.Where(p => p.Category?.Name == "كنافة")),
+("بوظة", Model.IceCreamFavorites ?? new List<Product>()),
+("حلويات غربية", Model.PreferredSweets.Where(p => p.Category?.Name == "الحلويات الغربية"))
+};
+}
+
+@foreach (var prodSection in productSections.Where(s => s.Products != null && s.Products.Any()))
+{
+    <div class="text-center mb-3 mt-4">
+        <h1 class="display-4" style="color: #C7AE6A; font-weight: bold;">@prodSection.Title</h1>
     </div>
 
     <div class="row equal-height-cards">
-        @foreach (var sweet in Model.IceCreamFavorites)
+        @foreach (var sweet in prodSection.Products)
         {
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card mb-4 shadow-sm">
@@ -129,34 +83,6 @@
         }
     </div>
 }
-
-<div class="text-center mb-3 mt-4" style="position: relative; top: -25px;">
-    <h1 class="display-4" style="color: #C7AE6A; font-weight: bold;">Western Sweets</h1>
-</div>
-
-<div class="row equal-height-cards">
-    @foreach (var sweet in Model.PreferredSweets.Where(p => p.Category.Name == "الحلويات الغربية"))
-    {
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card mb-4 shadow-sm">
-                <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h5 class="card-title">@sweet.Name</h5>
-                    <p class="card-text">@sweet.Price.ToString("c")</p>
-                    <p class="card-text">@sweet.Description</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
-                                class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
-                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
-                                class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-</div>
 
 
 <div class="text-center mb-5 mt-5" style="position: relative;">

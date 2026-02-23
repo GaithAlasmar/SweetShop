@@ -30,4 +30,40 @@ public class HomeController : Controller
         };
         return View(homeViewModel);
     }
+
+    public IActionResult Branches()
+    {
+        var branches = new List<BranchViewModel>
+        {
+            new()
+            {
+                Name = "فرع عمّان - الدوار السابع",
+                Address = "عمّان، الدوار السابع، شارع عبدالله غوشة، مجمع السابع التجاري",
+                PhoneNumber = "+962 6 581 1234",
+                WorkingHours = "9:00 صباحاً - 11:00 مساءً",
+                GoogleMapsDirectionUrl = "https://maps.google.com/?q=31.9539,35.8753",
+                PhotoUrl = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop"
+            },
+            new()
+            {
+                Name = "فرع الزرقاء - السوق الجديد",
+                Address = "الزرقاء، السوق الجديد، شارع الملك عبدالله الثاني، بجانب البنك العربي",
+                PhoneNumber = "+962 5 386 5678",
+                WorkingHours = "8:30 صباحاً - 10:30 مساءً",
+                GoogleMapsDirectionUrl = "https://maps.google.com/?q=32.0728,36.0880",
+                PhotoUrl = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop"
+            },
+            new()
+            {
+                Name = "فرع إربد - شارع الجامعة",
+                Address = "إربد، شارع الجامعة، مقابل بوابة جامعة اليرموك الشمالية",
+                PhoneNumber = "+962 2 721 9012",
+                WorkingHours = "9:00 صباحاً - 11:30 مساءً",
+                GoogleMapsDirectionUrl = "https://maps.google.com/?q=32.5568,35.8469",
+                PhotoUrl = "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&h=400&fit=crop"
+            }
+        };
+
+        return View(branches);
+    }
 }

@@ -1,0 +1,137 @@
+@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "إدارة الطلبات";
+    Layout = "_AdminLayout";
+    var statusColors = new Dictionary<string, string>
+            {
+                ["معلق"] = "badge-pending",
+                ["قيد المعالجة"] = "badge-process",
+                ["مكتمل"] = "badge-done",
+                ["ملغى"] = "badge-cancelled"
+            };
+    var pending = Model.Count(o => o.Status == "معلق");
+    var processing = Model.Count(o => o.Status == "قيد المعالجة");
+    var completed = Model.Count(o => o.Status == "مكتمل");
+    var cancelled = Model.Count(o => o.Status == "ملغى");
+}
+
+<!-- Stats -->
+<div class="row g-3 mb-4">
+
+    <div class="col-6 col-md-3">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#fef3c7;"><i class="bi bi-clock" style="color:#92400e;"></i></div>
+            <div>
+                <div class="stat-value">@pending</div>
+                <div class="stat-label">معلق</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#dbeafe;"><i class="bi bi-arrow-repeat" style="color:#1e40af;"></i>
+            </div>
+            <div>
+                <div class="stat-value">@processing</div>
+                <div class="stat-label">قيد المعالجة</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#d1fae5;"><i class="bi bi-check-circle" style="color:#065f46;"></i>
+            </div>
+            <div>
+                <div class="stat-value">@completed</div>
+                <div class="stat-label">مكتمل</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#fee2e2;"><i class="bi bi-x-circle" style="color:#991b1b;"></i>
+            </div>
+            <div>
+                <div class="stat-value">@cancelled</div>
+                <div class="stat-label">ملغى</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Orders Table -->
+<div class="admin-card">
+    <div class="admin-card-header">
+        <h5><i class="bi bi-bag-fill me-2" style="color:#1A8CB0;"></i>جميع الطلبات (@Model.Count())</h5>
+    </div>
+    <div class="admin-card-body p-0">
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-bag" style="font-size:48px;color:#cbd5e1;"></i>
+                <p class="mt-3 text-muted">لا توجد طلبات بعد</p>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>رقم الطلب</th>
+                            <th>العميل</th>
+                            <th>الهاتف</th>
+                            <th>المدينة</th>
+                            <th>الإجمالي</th>
+                            <th>تاريخ الطلب</th>
+                            <th>الحالة</th>
+                            <th>تحديث الحالة</th>
+                            <th>تفاصيل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model.OrderByDescending(o => o.OrderPlaced))
+                        {
+                            var badgeCss = statusColors.ContainsKey(order.Status) ? statusColors[order.Status] :
+                            "badge-pending";
+                            <tr>
+                                <td style="font-weight:600;color:#1A8CB0;">#@order.Id</td>
+                                <td style="font-weight:500;">@order.FirstName @order.LastName</td>
+                                <td style="color:#64748b;font-size:13px;" dir="ltr">@order.PhoneNumber</td>
+                                <td style="color:#64748b;font-size:13px;">@order.City</td>
+                                <td style="font-weight:600;">@order.OrderTotal.ToString("0.00") د.أ</td>
+                                <td style="font-size:13px;color:#64748b;">@order.OrderPlaced.ToString("yyyy/MM/dd")</td>
+                                <td><span class="status-badge @badgeCss">@order.Status</span></td>
+                                <td>
+                                    <form asp-action="UpdateOrderStatus" method="post"
+                                        style="display:flex;gap:6px;align-items:center;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@order.Id" />
+                                        <select name="status" class="admin-form-control admin-form-select"
+                                            style="padding:5px 8px;font-size:12px;min-width:130px;">
+                                            <option value="معلق" selected="@(order.Status == "معلق")">⏳ معلق</option>
+                                            <option value="قيد المعالجة" selected="@(order.Status == "قيد المعالجة")">🔄 قيد
+                                                المعالجة</option>
+                                            <option value="مكتمل" selected="@(order.Status == "مكتمل")">✅ مكتمل</option>
+                                            <option value="ملغى" selected="@(order.Status == "ملغى")">❌ ملغى</option>
+                                        </select>
+                                        <button type="submit"
+                                            style="padding:5px 10px;border-radius:7px;background:#1A8CB0;color:white;border:none;font-size:12px;cursor:pointer;">
+                                            <i class="bi bi-check2"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a asp-action="OrderDetails" asp-route-id="@order.Id" class="btn-admin-warning"
+                                        style="font-size:12px;padding:5px 10px;">
+                                        <i class="bi bi-eye-fill"></i> عرض
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

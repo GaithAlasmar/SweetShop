@@ -1,29 +1,144 @@
 @model IEnumerable<Product>
+@{
+    ViewData["Title"] = "إدارة المنتجات";
+    Layout = "_AdminLayout";
+    var total = Model.Count();
+    var inStock = Model.Count(p => p.InStock);
+    var preferred = Model.Count(p => p.IsPreferredSweet);
+}
 
-<h2>إدارة المنتجات</h2>
-<a asp-action="Add" class="btn btn-primary mb-3">إضافة حلوى جديدة</a>
+<!-- Stats Row -->
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon" style="background: linear-gradient(135deg,#dbeafe,#bfdbfe);">
+                <i class="bi bi-box-seam" style="color:#1e40af;"></i>
+            </div>
+            <div>
+                <div class="stat-value">@total</div>
+                <div class="stat-label">إجمالي المنتجات</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon" style="background: linear-gradient(135deg,#d1fae5,#a7f3d0);">
+                <i class="bi bi-check-circle" style="color:#065f46;"></i>
+            </div>
+            <div>
+                <div class="stat-value">@inStock</div>
+                <div class="stat-label">متوفر بالمخزون</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon" style="background: linear-gradient(135deg,#fef3c7,#fde68a);">
+                <i class="bi bi-star-fill" style="color:#92400e;"></i>
+            </div>
+            <div>
+                <div class="stat-value">@preferred</div>
+                <div class="stat-label">حلوى مفضلة</div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>الاسم</th>
-            <th>السعر</th>
-            <th>الفئة</th>
-            <th>الإجراءات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+<!-- Products Table -->
+<div class="admin-card">
+    <div class="admin-card-header">
+        <h5><i class="bi bi-grid me-2" style="color:#1A8CB0;"></i>قائمة المنتجات</h5>
+        <a asp-action="Add" class="btn-admin-primary">
+            <i class="bi bi-plus-lg"></i> إضافة منتج جديد
+        </a>
+    </div>
+    <div class="admin-card-body p-0">
+        @if (!Model.Any())
         {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Price.ToString("c")</td>
-                <td>@item.Category?.Name</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">تعديل</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">حذف</a>
-                </td>
-            </tr>
+            <div class="text-center py-5">
+                <i class="bi bi-inbox" style="font-size:48px;color:#cbd5e1;"></i>
+                <p class="mt-3 text-muted">لا توجد منتجات بعد</p>
+                <a asp-action="Add" class="btn-admin-primary">
+                    <i class="bi bi-plus-lg"></i> أضف أول منتج
+                </a>
+            </div>
         }
-    </tbody>
-</table>
+        else
+        {
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>الصورة</th>
+                            <th>اسم المنتج</th>
+                            <th>التصنيف</th>
+                            <th>السعر</th>
+                            <th>المخزون</th>
+                            <th>مفضل</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="color:#94a3b8;font-size:13px;">@item.Id</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@item.ImageUrl" alt="@item.Name"
+                                             style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #e2e8f0;">
+                                    }
+                                    else
+                                    {
+                                        <div style="width:44px;height:44px;border-radius:8px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;">
+                                            <i class="bi bi-image" style="color:#94a3b8;"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td style="font-weight:500;">@item.Name</td>
+                                <td>
+                                    <span style="background:#f1f5f9;padding:3px 10px;border-radius:6px;font-size:12px;color:#64748b;">
+                                        @item.Category?.Name
+                                    </span>
+                                </td>
+                                <td style="font-weight:600;color:#1A8CB0;">@item.Price.ToString("0.00") د.أ</td>
+                                <td>
+                                    @if (item.InStock)
+                                    {
+                                        <span class="status-badge badge-done"><i class="bi bi-check me-1"></i>متوفر</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="status-badge badge-cancelled">نفد</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.IsPreferredSweet)
+                                    {
+                                        <i class="bi bi-star-fill" style="color:#C7AE6A;font-size:16px;"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="bi bi-star" style="color:#cbd5e1;font-size:16px;"></i>
+                                    }
+                                </td>
+                                <td>
+                                    <div style="display:flex;gap:6px;">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-admin-warning">
+                                            <i class="bi bi-pencil-fill"></i> تعديل
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-admin-danger">
+                                            <i class="bi bi-trash-fill"></i> حذف
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

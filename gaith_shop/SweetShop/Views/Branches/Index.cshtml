@@ -1,0 +1,413 @@
+@model List<SweetShop.ViewModels.BranchViewModel>
+
+@{
+    ViewData["Title"] = "فروعنا - حلويات الاسمر";
+}
+
+<!-- Hero Banner -->
+<div class="branches-hero" dir="rtl">
+    <div class="branches-hero-overlay"></div>
+    <div class="branches-hero-content">
+        <h1><i class="fas fa-store-alt me-3"></i>فروعنا</h1>
+        <p>نتشرف بخدمتكم في فروعنا المنتشرة في مختلف المحافظات</p>
+        <div class="branches-hero-divider"></div>
+    </div>
+</div>
+
+<div class="container py-5" dir="rtl">
+    <!-- Branches Grid -->
+    <div class="row g-4">
+        @{
+            int idx = 0;
+        }
+        @foreach (var branch in Model)
+        {
+            idx++;
+            <div class="col-lg-6">
+                <div class="branch-card">
+                    <!-- Branch Image -->
+                    <div class="branch-card-image">
+                        <img src="@branch.PhotoUrl" alt="@branch.Name"
+                            onerror="this.src='https://via.placeholder.com/800x400?text=فرع+حلويات+الاسمر'">
+                        <div class="branch-card-image-overlay"></div>
+                        <div class="branch-card-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>فرع @idx
+                        </div>
+                        <h3 class="branch-card-title">@branch.Name</h3>
+                    </div>
+
+                    <!-- Branch Details -->
+                    <div class="branch-card-body">
+                        <!-- Address -->
+                        <div class="branch-info-row">
+                            <div class="branch-info-icon">
+                                <i class="fas fa-map-pin"></i>
+                            </div>
+                            <div>
+                                <span class="branch-info-label">العنوان</span>
+                                <p class="branch-info-text">@branch.Address</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="branch-info-row">
+                            <div class="branch-info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <span class="branch-info-label">رقم الهاتف</span>
+                                <a href="tel:@branch.PhoneNumber" class="branch-info-text branch-phone">
+                                    <span dir="ltr">@branch.PhoneNumber</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Working Hours -->
+                        <div class="branch-info-row">
+                            <div class="branch-info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <span class="branch-info-label">ساعات العمل</span>
+                                <p class="branch-info-text">@branch.WorkingHours</p>
+                            </div>
+                        </div>
+
+                        <!-- Map -->
+                        <div class="branch-map">
+                            <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
+                                <iframe src="@branch.GoogleMapsEmbedUrl" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="branch-actions">
+                            <a href="@branch.GoogleMapsDirectionUrl" target="_blank" class="branch-btn-directions">
+                                <i class="fas fa-directions me-1"></i>احصل على الاتجاهات
+                            </a>
+                            <a href="tel:@branch.PhoneNumber" class="branch-btn-call">
+                                <i class="fas fa-phone-alt me-1"></i>اتصل الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Contact CTA Section -->
+    <div class="branch-cta-section mt-5">
+        <div class="branch-cta-card">
+            <div class="row align-items-center">
+                <div class="col-md-8 text-md-start">
+                    <h3><i class="fas fa-headset me-2"></i>هل لديك استفسار؟</h3>
+                    <p class="mb-md-0">نسعد بتواصلكم معنا عبر الهاتف أو البريد الإلكتروني في أي وقت</p>
+                </div>
+                <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
+                    <a href="mailto:info@sweetshop.com" class="branch-cta-btn">
+                        <i class="fas fa-envelope me-1"></i>راسلنا
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ========== Branches Hero Banner ========== */
+    .branches-hero {
+        position: relative;
+        background: linear-gradient(135deg, #1A8CB0 0%, #0d6d8a 50%, #0a5a73 100%);
+        padding: 80px 0 60px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .branches-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -10%;
+        width: 120%;
+        height: 200%;
+        background: radial-gradient(ellipse, rgba(199, 174, 106, 0.08) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .branches-hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .branches-hero-content h1 {
+        color: white;
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .branches-hero-content p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .branches-hero-divider {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #C7AE6A, #E6C87C);
+        margin: 25px auto 0;
+        border-radius: 2px;
+    }
+
+    /* ========== Branch Card ========== */
+    .branch-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .branch-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(199, 174, 106, 0.3), 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Image Section */
+    .branch-card-image {
+        position: relative;
+        height: 260px;
+        overflow: hidden;
+    }
+
+    .branch-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .branch-card:hover .branch-card-image img {
+        transform: scale(1.08);
+    }
+
+    .branch-card-image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+    }
+
+    .branch-card-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: linear-gradient(135deg, #C7AE6A, #E6C87C);
+        color: #1a3a4a;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        box-shadow: 0 3px 10px rgba(199, 174, 106, 0.4);
+    }
+
+    .branch-card-title {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        padding: 20px;
+        color: white;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Body Section */
+    .branch-card-body {
+        padding: 24px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .branch-info-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+
+    .branch-info-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        background: #E6F3FB;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1A8CB0;
+        font-size: 1rem;
+    }
+
+    .branch-info-label {
+        font-size: 0.8rem;
+        color: #C7AE6A;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .branch-info-text {
+        font-size: 0.95rem;
+        color: #555;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .branch-phone {
+        text-decoration: none;
+        color: #1A8CB0;
+        font-weight: 600;
+        display: block;
+        transition: color 0.2s;
+    }
+
+    .branch-phone:hover {
+        color: #C7AE6A;
+    }
+
+    /* Map */
+    .branch-map {
+        margin: 8px 0 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid #E6F3FB;
+    }
+
+    /* Action Buttons */
+    .branch-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: auto;
+    }
+
+    .branch-btn-directions {
+        flex: 1;
+        text-align: center;
+        padding: 12px 20px;
+        background: linear-gradient(135deg, #C7AE6A, #E6C87C);
+        color: #1a3a4a;
+        font-weight: 700;
+        font-size: 0.9rem;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 12px rgba(199, 174, 106, 0.3);
+    }
+
+    .branch-btn-directions:hover {
+        background: linear-gradient(135deg, #b39b5b, #C7AE6A);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 18px rgba(199, 174, 106, 0.45);
+        color: white;
+    }
+
+    .branch-btn-call {
+        flex: 1;
+        text-align: center;
+        padding: 12px 20px;
+        background: #1A8CB0;
+        color: white;
+        font-weight: 700;
+        font-size: 0.9rem;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 12px rgba(26, 140, 176, 0.25);
+    }
+
+    .branch-btn-call:hover {
+        background: #156a8a;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 18px rgba(26, 140, 176, 0.4);
+        color: white;
+    }
+
+    /* ========== CTA Section ========== */
+    .branch-cta-card {
+        background: linear-gradient(135deg, #1A8CB0, #0d6d8a);
+        border-radius: 16px;
+        padding: 40px;
+        color: white;
+        box-shadow: 0 8px 30px rgba(26, 140, 176, 0.25);
+    }
+
+    .branch-cta-card h3 {
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .branch-cta-card p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1rem;
+    }
+
+    .branch-cta-btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: linear-gradient(135deg, #C7AE6A, #E6C87C);
+        color: #1a3a4a;
+        font-weight: 700;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(199, 174, 106, 0.35);
+    }
+
+    .branch-cta-btn:hover {
+        background: linear-gradient(135deg, #b39b5b, #C7AE6A);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(199, 174, 106, 0.5);
+        color: white;
+    }
+
+    /* ========== Responsive ========== */
+    @@media (max-width: 768px) {
+        .branches-hero {
+            padding: 50px 20px 40px;
+        }
+
+        .branches-hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .branches-hero-content p {
+            font-size: 1rem;
+        }
+
+        .branch-card-image {
+            height: 200px;
+        }
+
+        .branch-actions {
+            flex-direction: column;
+        }
+
+        .branch-cta-card {
+            padding: 24px;
+            text-align: center;
+        }
+    }
+</style>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaExclamationTriangle } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const LowStockAlerts = ({ products }) => {
+    const { t } = useLanguage();
     const lowStockProducts = products.filter(p => p.stock < p.minStock);
 
     const getStockLevel = (current, min) => {
@@ -14,13 +16,13 @@ const LowStockAlerts = ({ products }) => {
     return (
         <div className="chart-card">
             <div className="chart-header">
-                <h2>تنبيهات المخزون</h2>
-                <p className="chart-subtitle">{lowStockProducts.length} منتج يحتاج إلى إعادة تعبئة</p>
+                <h2>{t('lowStockAlerts')}</h2>
+                <p className="chart-subtitle">{lowStockProducts.length} {t('needsRestock')}</p>
             </div>
             <div className="alerts-container">
                 {lowStockProducts.length === 0 ? (
                     <div className="empty-state">
-                        <p>جميع المنتجات متوفرة بكميات كافية 🎉</p>
+                        <p>{t('allStockOk')}</p>
                     </div>
                 ) : (
                     lowStockProducts.map((product) => {
@@ -31,11 +33,11 @@ const LowStockAlerts = ({ products }) => {
                                     <FaExclamationTriangle size={20} />
                                 </div>
                                 <div className="alert-content">
-                                    <h4>{product.name}</h4>
-                                    <p className="alert-category">{product.category}</p>
+                                    <h4>{t(product.name) || product.name}</h4>
+                                    <p className="alert-category">{t(product.category) || product.category}</p>
                                     <div className="stock-info">
-                                        <span className="current-stock">الكمية الحالية: <strong>{product.stock}</strong></span>
-                                        <span className="min-stock">الحد الأدنى: {product.minStock}</span>
+                                        <span className="current-stock">{t('currentStock')}: <strong>{product.stock}</strong></span>
+                                        <span className="min-stock">{t('minStockLabel')}: {product.minStock}</span>
                                     </div>
                                     <div className="stock-bar">
                                         <div
@@ -45,7 +47,7 @@ const LowStockAlerts = ({ products }) => {
                                     </div>
                                 </div>
                                 <div className="alert-badge">
-                                    {level === 'critical' ? 'حرج' : 'تحذير'}
+                                    {level === 'critical' ? t('critical') : t('warning')}
                                 </div>
                             </div>
                         );

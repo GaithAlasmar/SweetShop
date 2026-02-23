@@ -1,23 +1,14 @@
-using System.ComponentModel.DataAnnotations;
+namespace SweetShop.ViewModels;
 
-namespace SweetShop.ViewModels
+/// <summary>
+/// Enhanced registration model with full name and phone number.
+/// Replaces DataAnnotations — all validation is handled by FluentValidation.
+/// </summary>
+public class RegisterViewModel
 {
-    public class RegisterViewModel
-    {
-        [Required(ErrorMessage = "البريد الإلكتروني مطلوب")]
-        [EmailAddress(ErrorMessage = "صيغة البريد الإلكتروني غير صحيحة")]
-        [Display(Name = "البريد الإلكتروني")]
-        public required string Email { get; set; }
-
-        [Required(ErrorMessage = "كلمة المرور مطلوبة")]
-        [StringLength(100, ErrorMessage = "{0} يجب أن تكون بطول {2} على الأقل.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "كلمة المرور")]
-        public required string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "تأكيد كلمة المرور")]
-        [Compare("Password", ErrorMessage = "كلمة المرور وتأكيدها غير متطابقين.")]
-        public required string ConfirmPassword { get; set; }
-    }
+    public string FullName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string PhoneNumber { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
+    public string ConfirmPassword { get; set; } = string.Empty;
 }

@@ -26,14 +26,14 @@ public class ShoppingCart(ApplicationDbContext context)
     public void AddToCart(Product product, int amount)
     {
         var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(
-            s => s.Product.Id == product.Id && s.ShoppingCartId == ShoppingCartId);
+            s => s.ProductId == product.Id && s.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem == null)
         {
             shoppingCartItem = new ShoppingCartItem
             {
                 ShoppingCartId = ShoppingCartId,
-                Product = product,
+                ProductId = product.Id,
                 Amount = amount
             };
 
@@ -49,7 +49,7 @@ public class ShoppingCart(ApplicationDbContext context)
     public int RemoveFromCart(Product product)
     {
         var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(
-            s => s.Product.Id == product.Id && s.ShoppingCartId == ShoppingCartId);
+            s => s.ProductId == product.Id && s.ShoppingCartId == ShoppingCartId);
 
         var localAmount = 0;
 
@@ -74,7 +74,7 @@ public class ShoppingCart(ApplicationDbContext context)
     public void RemoveTotalFromCart(Product product)
     {
         var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(
-            s => s.Product.Id == product.Id && s.ShoppingCartId == ShoppingCartId);
+            s => s.ProductId == product.Id && s.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem != null)
         {

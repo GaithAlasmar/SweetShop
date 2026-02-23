@@ -1,35 +1,42 @@
 $(document).ready(function () {
-    // Load cart when offcanvas is opened
-    var cartOffcanvas = document.getElementById('cartOffcanvas');
-    cartOffcanvas.addEventListener('show.bs.offcanvas', function () {
-        loadCart();
-    });
+    // Shared Offcanvas instance
+    const cartOffcanvasEl = document.getElementById('cartOffcanvas');
+    let bsOffcanvas = null;
+
+    if (cartOffcanvasEl) {
+        bsOffcanvas = new bootstrap.Offcanvas(cartOffcanvasEl);
+
+        cartOffcanvasEl.addEventListener('show.bs.offcanvas', function () {
+            loadCart();
+        });
+    }
+
+    // Reuseable AJAX config
+    const ajaxHeaders = { "X-Requested-With": "XMLHttpRequest" };
 
     // Intercept "Add to Cart" clicks
     $(document).on('click', '.ajax-add-to-cart', function (e) {
         e.preventDefault();
-        var btn = $(this);
-        var url = btn.attr('href');
+        const btn = $(this);
+        const url = btn.attr('href');
 
-        // Show loading state on button (optional)
-        var originalText = btn.html();
-        btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> جار الإضافة...');
+        if (btn.hasClass('disabled')) return;
+
+        // Show loading state
+        const originalText = btn.html();
+        btn.html('<span class="spinner-border spinner-border-sm" role="status"></span>');
         btn.addClass('disabled');
 
         $.ajax({
             url: url,
-            type: 'GET', // Or POST if changed in controller, defaulting to GET based on current implementation
-            success: function (result) {
-                // Determine if we need to redirect or if we can just update cart
-                // Since controller returns RedirectToActionResult, fetch might follow it.
-                // ideally, we update controller to return OK or check responseURL.
-                // For now, let's assume successful add and reload cart.
-
-                loadCart();
-
-                // Open offcanvas
-                var bsOffcanvas = new bootstrap.Offcanvas(cartOffcanvas);
-                bsOffcanvas.show();
+            type: 'GET',
+            headers: ajaxHeaders,
+            success: function () {
+                // 1. Refresh internal content
+                loadCart(function () {
+                    // 2. Open offcanvas ONLY after content is loaded to avoid "Empty" flash
+                    if (bsOffcanvas) bsOffcanvas.show();
+                });
 
                 // Reset button
                 btn.html(originalText);
@@ -46,28 +53,20 @@ $(document).ready(function () {
     // Intercept "Remove from Cart" clicks
     $(document).on('click', '.ajax-remove-from-cart', function (e) {
         e.preventDefault();
-        var btn = $(this);
-        var url = btn.attr('href');
+        const btn = $(this);
+        const url = btn.attr('href');
 
-        // Show loading state
-        var originalHtml = btn.html();
-        btn.html('<span class="spinner-border spinner-border-sm" role="status"></span>');
         btn.addClass('disabled');
 
         $.ajax({
             url: url,
             type: 'GET',
-            success: function (result) {
-                // Reload cart to show updated items
+            headers: ajaxHeaders,
+            success: function () {
                 loadCart();
-
-                // Reset button (in case it's still visible)
-                btn.html(originalHtml);
-                btn.removeClass('disabled');
             },
             error: function (err) {
                 console.error("Error removing from cart", err);
-                btn.html(originalHtml);
                 btn.removeClass('disabled');
                 alert('حدث خطأ أثناء حذف المنتج');
             }
@@ -77,28 +76,22 @@ $(document).ready(function () {
     // Increase quantity
     $(document).on('click', '.ajax-increase-quantity', function (e) {
         e.preventDefault();
-        var btn = $(this);
-        var productId = btn.data('product-id');
-        var url = '/ShoppingCart/IncreaseQuantity?productId=' + productId;
+        const btn = $(this);
+        const productId = btn.data('product-id');
+        const url = '/ShoppingCart/IncreaseQuantity?productId=' + productId;
 
-        // Show loading state
-        var originalHtml = btn.html();
-        btn.html('<span class="spinner-border spinner-border-sm" role="status"></span>');
         btn.addClass('disabled');
 
         $.ajax({
             url: url,
             type: 'GET',
-            success: function (result) {
+            headers: ajaxHeaders,
+            success: function () {
                 loadCart();
-                btn.html(originalHtml);
-                btn.removeClass('disabled');
             },
             error: function (err) {
                 console.error("Error increasing quantity", err);
-                btn.html(originalHtml);
                 btn.removeClass('disabled');
-                alert('حدث خطأ أثناء زيادة الكمية');
             }
         });
     });
@@ -106,46 +99,45 @@ $(document).ready(function () {
     // Decrease quantity
     $(document).on('click', '.ajax-decrease-quantity', function (e) {
         e.preventDefault();
-        var btn = $(this);
-        var productId = btn.data('product-id');
-        var url = '/ShoppingCart/DecreaseQuantity?productId=' + productId;
+        const btn = $(this);
+        const productId = btn.data('product-id');
+        const url = '/ShoppingCart/DecreaseQuantity?productId=' + productId;
 
-        // Show loading state
-        var originalHtml = btn.html();
-        btn.html('<span class="spinner-border spinner-border-sm" role="status"></span>');
         btn.addClass('disabled');
 
         $.ajax({
             url: url,
             type: 'GET',
-            success: function (result) {
+            headers: ajaxHeaders,
+            success: function () {
                 loadCart();
-                btn.html(originalHtml);
-                btn.removeClass('disabled');
             },
             error: function (err) {
                 console.error("Error decreasing quantity", err);
-                btn.html(originalHtml);
                 btn.removeClass('disabled');
-                alert('حدث خطأ أثناء تقليل الكمية');
             }
         });
     });
 });
 
-function loadCart() {
+/**
+ * Loads the cart partial view from the server
+ * @param {Function} callback - Optional function to execute after load
+ */
+function loadCart(callback) {
+    const container = $('#cart-offcanvas-content');
+
     $.ajax({
         url: '/ShoppingCart/GetCartPartial',
         type: 'GET',
         success: function (data) {
-            $('#cart-offcanvas-content').html(data);
-            updateCartBadge(); // Update badge count whenever cart is loaded
-            // Update badge count if needed (requires parsing data or separate API)
-            // Simple badge update logic could be added here if partial includes it or specific API exists
+            container.html(data);
+            updateCartBadge();
+            if (typeof callback === 'function') callback();
         },
         error: function (xhr, status, error) {
             console.error("Cart load error:", status, error);
-            $('#cart-offcanvas-content').html('<div class="text-center p-3"><i class="bi bi-exclamation-circle text-danger fs-1"></i><p class="text-danger mt-2">حدث خطأ: ' + xhr.status + ' ' + error + '</p><p class="text-muted small">يرجى إعادة تشغيل السيرفر لتحديث التغييرات.</p></div>');
+            container.html('<div class="text-center p-4"><p class="text-danger">حدث خطأ في تحميل السلة</p></div>');
         }
     });
 }
@@ -155,11 +147,13 @@ function updateCartBadge() {
         url: '/ShoppingCart/GetCartCount',
         type: 'GET',
         success: function (count) {
-            $('#cart-badge').text(count);
-            $('#sticky-cart-badge').text(count);
+            const badge = $('#cart-badge, #sticky-cart-badge');
+            badge.text(count);
+            // Optional: Hide badge if count is 0
+            count > 0 ? badge.show() : badge.hide();
         },
         error: function (err) {
-            console.error("Error updating cart badge", err);
+            console.log("Badge sync error (non-critical)");
         }
     });
 }

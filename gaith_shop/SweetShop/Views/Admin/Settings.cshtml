@@ -1,0 +1,108 @@
+@model SiteSettings
+@{
+    ViewData["Title"] = "إعدادات الموقع";
+    Layout = "_AdminLayout";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div
+                style="padding:14px 18px;background:#d1fae5;border:1px solid #6ee7b7;border-radius:10px;margin-bottom:20px;display:flex;align-items:center;gap:10px;color:#065f46;">
+                <i class="bi bi-check-circle-fill" style="font-size:18px;color:#10b981;"></i>
+                <span>@TempData["SuccessMessage"]</span>
+            </div>
+        }
+
+        <div class="admin-card">
+            <div class="admin-card-header">
+                <h5><i class="bi bi-gear-fill me-2" style="color:#1A8CB0;"></i>إعدادات الموقع العامة</h5>
+            </div>
+            <div class="admin-card-body">
+                <form asp-action="Settings" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="admin-form-group">
+                                <label asp-for="SiteName">
+                                    <i class="bi bi-shop me-1" style="color:#1A8CB0;"></i> اسم الموقع
+                                </label>
+                                <input asp-for="SiteName" class="admin-form-control"
+                                    placeholder="مثال: حلويات الاسمر" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="admin-form-group">
+                                <label asp-for="ContactPhone">
+                                    <i class="bi bi-telephone-fill me-1" style="color:#1A8CB0;"></i> رقم التواصل
+                                </label>
+                                <input asp-for="ContactPhone" class="admin-form-control" dir="ltr"
+                                    placeholder="+962 79 123 4567" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="admin-form-group">
+                                <label asp-for="ContactEmail">
+                                    <i class="bi bi-envelope-fill me-1" style="color:#1A8CB0;"></i> البريد الإلكتروني
+                                </label>
+                                <input asp-for="ContactEmail" class="admin-form-control" dir="ltr"
+                                    placeholder="info@sweetshop.com" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="admin-form-group">
+                                <label asp-for="Address">
+                                    <i class="bi bi-geo-alt-fill me-1" style="color:#1A8CB0;"></i> العنوان
+                                </label>
+                                <input asp-for="Address" class="admin-form-control" placeholder="عمان، الأردن" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="admin-form-group">
+                                <label asp-for="WelcomeMessage">
+                                    <i class="bi bi-chat-quote-fill me-1" style="color:#1A8CB0;"></i> رسالة الترحيب
+                                </label>
+                                <textarea asp-for="WelcomeMessage" class="admin-form-control" rows="2"
+                                    placeholder="رسالة تظهر في الصفحة الرئيسية..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="admin-form-group">
+                                <label asp-for="FooterMessage">
+                                    <i class="bi bi-layout-text-window-reverse me-1" style="color:#1A8CB0;"></i> رسالة
+                                    التذييل
+                                </label>
+                                <input asp-for="FooterMessage" class="admin-form-control"
+                                    placeholder="جميع الحقوق محفوظة ..." />
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr style="margin:24px 0;border-color:#f1f5f9;">
+
+                    <div style="display:flex;gap:12px;justify-content:flex-end;">
+                        <button type="submit" class="btn-admin-primary">
+                            <i class="bi bi-save-fill"></i> حفظ الإعدادات
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Info Card -->
+        <div style="margin-top:16px;padding:14px 18px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;">
+            <div style="display:flex;align-items:flex-start;gap:10px;color:#1e40af;">
+                <i class="bi bi-info-circle-fill"
+                    style="font-size:18px;color:#3b82f6;flex-shrink:0;margin-top:2px;"></i>
+                <div style="font-size:14px;">
+                    <strong>ملاحظة:</strong> هذه الإعدادات تُحفظ في قاعدة البيانات ويمكنك تحديثها في أي وقت.
+                    بعض الإعدادات تظهر في الموقع بعد إعادة التشغيل.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

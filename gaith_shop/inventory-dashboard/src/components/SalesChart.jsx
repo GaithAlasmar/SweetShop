@@ -1,12 +1,15 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { useLanguage } from '../context/LanguageContext';
 
 const SalesChart = ({ data }) => {
+    const { t } = useLanguage();
+
     return (
         <div className="chart-card">
             <div className="chart-header">
-                <h2>المبيعات الشهرية</h2>
-                <p className="chart-subtitle">مقارنة المبيعات والمصروفات</p>
+                <h2>{t('monthlySales')}</h2>
+                <p className="chart-subtitle">{t('salesExpensesCompare')}</p>
             </div>
             <div className="chart-container">
                 <ResponsiveContainer width="100%" height={300}>
@@ -21,7 +24,7 @@ const SalesChart = ({ data }) => {
                                 borderRadius: '8px',
                                 boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
                             }}
-                            formatter={(value) => `${value.toLocaleString()} ريال`}
+                            formatter={(value) => `${value.toLocaleString()} ${t('currency')}`}
                         />
                         <Legend />
                         <Line
@@ -29,7 +32,7 @@ const SalesChart = ({ data }) => {
                             dataKey="sales"
                             stroke="#3b82f6"
                             strokeWidth={3}
-                            name="المبيعات"
+                            name={t('sales')}
                             dot={{ fill: '#3b82f6', r: 5 }}
                         />
                         <Line
@@ -37,7 +40,7 @@ const SalesChart = ({ data }) => {
                             dataKey="expenses"
                             stroke="#ef4444"
                             strokeWidth={3}
-                            name="المصروفات"
+                            name={t('expenses')}
                             dot={{ fill: '#ef4444', r: 5 }}
                         />
                     </LineChart>

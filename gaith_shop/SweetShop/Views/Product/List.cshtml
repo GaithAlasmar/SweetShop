@@ -1,27 +1,49 @@
 @model ProductListViewModel
 
-<h1>@Model.CurrentCategory</h1>
+@{
+    ViewData["Title"] = Model.CurrentCategory;
+}
 
-<div class="row equal-height-cards">
-    @foreach (var sweet in Model.Products)
+<div class="container my-5">
+    <h1 class="text-center mb-4">@Model.CurrentCategory</h1>
+
+    @if (Model.Products != null && Model.Products.Any())
     {
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card mb-4 shadow-sm">
-                <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    <h5 class="card-title">@sweet.Name</h5>
-                    <p class="card-text">@sweet.Price.ToString("c")</p>
-                    <p class="card-text">@sweet.Description</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
-                                class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
-                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
-                                class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
+        <div class="row equal-height-cards">
+            @foreach (var sweet in Model.Products)
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@sweet.Name</h5>
+                            <p class="card-text text-primary fw-bold">@sweet.Price.ToString("c")</p>
+                            @if (!string.IsNullOrEmpty(sweet.Description))
+                            {
+                                <p class="card-text text-muted small">@sweet.Description</p>
+                            }
+                            <div class="mt-auto">
+                                <div class="d-flex flex-column gap-2">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
+                                        class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
+                                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
+                                        class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center py-5" role="alert">
+            <i class="bi bi-info-circle fs-1 d-block mb-3"></i>
+            <h4 class="alert-heading">لا توجد منتجات</h4>
+            <p class="mb-0">عذراً، لا توجد منتجات متاحة في هذا القسم حالياً.</p>
+            <hr>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3">العودة للصفحة الرئيسية</a>
         </div>
     }
 </div>

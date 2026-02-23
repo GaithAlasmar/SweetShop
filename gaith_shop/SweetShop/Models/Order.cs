@@ -32,6 +32,9 @@ public class Order
     public decimal OrderTotal { get; set; }
 
     public DateTime OrderPlaced { get; set; }
+
+    [Display(Name = "الحالة")]
+    public string Status { get; set; } = "معلق";
 }
 
 public class OrderDetail

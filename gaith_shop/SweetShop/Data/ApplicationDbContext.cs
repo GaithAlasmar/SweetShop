@@ -12,5 +12,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; } = default!;
     public DbSet<Order> Orders { get; set; } = default!;
     public DbSet<OrderDetail> OrderDetails { get; set; } = default!;
+    public DbSet<SiteSettings> SiteSettings { get; set; } = default!;
 }
 

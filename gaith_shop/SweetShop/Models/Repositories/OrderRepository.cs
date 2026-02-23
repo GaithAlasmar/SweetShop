@@ -1,7 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using SweetShop.Data;
 using SweetShop.Models;
 using SweetShop.Models.Interfaces;
-
 
 namespace SweetShop.Models.Repositories;
 
@@ -16,6 +16,7 @@ public class OrderRepository : IOrderRepository
         _shoppingCart = shoppingCart;
     }
 
+    /// <summary>Creates an order using items from the ShoppingCart session.</summary>
     public void CreateOrder(Order order)
     {
         order.OrderPlaced = DateTime.Now;
@@ -23,7 +24,7 @@ public class OrderRepository : IOrderRepository
         order.OrderTotal = _shoppingCart.GetShoppingCartTotal();
 
         _context.Orders.Add(order);
-        _context.SaveChanges(); // Save to generate Order Id
+        _context.SaveChanges();
 
         foreach (var shoppingCartItem in shoppingCartItems)
         {
@@ -39,5 +40,16 @@ public class OrderRepository : IOrderRepository
         }
 
         _context.SaveChanges();
+    }
+
+    /// <summary>
+    /// Persists an order that was built manually from a ViewModel (CQRS path).
+    /// The order's OrderDetails must already be populated before calling this.
+    /// </summary>
+    public async Task CreateOrderFromViewModelAsync(Order order)
+    {
+        order.OrderPlaced = DateTime.Now;
+        _context.Orders.Add(order);
+        await _context.SaveChangesAsync();
     }
 }
