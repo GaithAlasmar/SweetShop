@@ -1,79 +1,200 @@
 @model Order
 
-<h2>إتمام الطلب</h2>
+@{
+    ViewData["Title"] = "إتمام الطلب";
+}
 
-<form asp-action="Checkout" method="post" role="form">
-    <h4>الرجاء إدخال بياناتك</h4>
-    <hr />
-    <div asp-validation-summary="All" class="text-danger"></div>
-
-    <div class="form-group mb-3">
-        <label asp-for="LastName" class="col-md-2 control-label">الاسم الأخير</label>
-        <div class="col-md-5">
-            <input asp-for="LastName" class="form-control" />
-            <span asp-validation-for="LastName" class="text-danger"></span>
-        </div>
+<div class="checkout-wrapper">
+    <div class="checkout-header text-center mb-5">
+        <h2 class="display-5 fw-bold text-primary-custom mb-3" data-i18n="checkout.title">إتمام الطلب</h2>
+        <p class="text-muted fs-5" data-i18n="checkout.subtitle">الرجاء إدخال بياناتك لإيصال طلبك بأمان</p>
+        <div class="title-divider mx-auto mt-3"></div>
     </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="FirstName" class="col-md-2 control-label">الاسم الأول</label>
-        <div class="col-md-5">
-            <input asp-for="FirstName" class="form-control" />
-            <span asp-validation-for="FirstName" class="text-danger"></span>
-        </div>
-    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="card-body p-5">
+                    <form asp-action="Checkout" method="post" role="form" class="checkout-form">
+                        <div asp-validation-summary="ModelOnly"
+                            class="alert alert-danger mb-4 rounded-3 border-0 shadow-sm" style="display:none;"
+                            role="alert"></div>
 
-    <div class="form-group mb-3">
-        <label asp-for="AddressLine1" class="col-md-2 control-label">العنوان</label>
-        <div class="col-md-5">
-            <input asp-for="AddressLine1" class="form-control" />
-            <span asp-validation-for="AddressLine1" class="text-danger"></span>
-        </div>
-    </div>
+                        <div class="row g-4">
+                            <!-- First Name -->
+                            <div class="col-md-6">
+                                <div class="form-floating text-end">
+                                    <input asp-for="FirstName" class="form-control bg-light border-0 px-4"
+                                        placeholder="الاسم الأول" data-i18n-placeholder="checkout.firstName" />
+                                    <label asp-for="FirstName" class="text-muted px-4"
+                                        data-i18n="checkout.firstName">الاسم الأول</label>
+                                    <span asp-validation-for="FirstName" class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
 
-     <div class="form-group mb-3">
-        <label asp-for="ZipCode" class="col-md-2 control-label">الرمز البريدي</label>
-        <div class="col-md-5">
-            <input asp-for="ZipCode" class="form-control" />
-            <span asp-validation-for="ZipCode" class="text-danger"></span>
-        </div>
-    </div>
+                            <!-- Last Name -->
+                            <div class="col-md-6">
+                                <div class="form-floating text-end">
+                                    <input asp-for="LastName" class="form-control bg-light border-0 px-4"
+                                        placeholder="الاسم الأخير" data-i18n-placeholder="checkout.lastName" />
+                                    <label asp-for="LastName" class="text-muted px-4"
+                                        data-i18n="checkout.lastName">الاسم الأخير</label>
+                                    <span asp-validation-for="LastName" class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="City" class="col-md-2 control-label">المدينة</label>
-        <div class="col-md-5">
-            <input asp-for="City" class="form-control" />
-            <span asp-validation-for="City" class="text-danger"></span>
-        </div>
-    </div>
+                            <!-- Phone -->
+                            <div class="col-md-6">
+                                <div class="form-floating text-end">
+                                    <input asp-for="PhoneNumber" class="form-control bg-light border-0 px-4"
+                                        placeholder="رقم الهاتف" dir="ltr" style="text-align: right;" />
+                                    <label asp-for="PhoneNumber" class="text-muted px-4" data-i18n="checkout.phone">رقم
+                                        الهاتف</label>
+                                    <span asp-validation-for="PhoneNumber"
+                                        class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="Country" class="col-md-2 control-label">الدولة</label>
-        <div class="col-md-5">
-            <input asp-for="Country" class="form-control" />
-            <span asp-validation-for="Country" class="text-danger"></span>
-        </div>
-    </div>
+                            <!-- Email -->
+                            <div class="col-md-6">
+                                <div class="form-floating text-end">
+                                    <input asp-for="Email" class="form-control bg-light border-0 px-4"
+                                        placeholder="البريد الإلكتروني" />
+                                    <label asp-for="Email" class="text-muted px-4" data-i18n="checkout.email">البريد
+                                        الإلكتروني</label>
+                                    <span asp-validation-for="Email" class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="PhoneNumber" class="col-md-2 control-label">رقم الهاتف</label>
-        <div class="col-md-5">
-            <input asp-for="PhoneNumber" class="form-control" />
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-        </div>
-    </div>
+                            <!-- Address -->
+                            <div class="col-12">
+                                <div class="form-floating text-end">
+                                    <input asp-for="AddressLine1" class="form-control bg-light border-0 px-4"
+                                        placeholder="العنوان التفصيلي" data-i18n-placeholder="checkout.address" />
+                                    <label asp-for="AddressLine1" class="text-muted px-4"
+                                        data-i18n="checkout.address">العنوان التفصيلي</label>
+                                    <span asp-validation-for="AddressLine1"
+                                        class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
 
-     <div class="form-group mb-3">
-        <label asp-for="Email" class="col-md-2 control-label">البريد الإلكتروني</label>
-        <div class="col-md-5">
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-    </div>
+                            <!-- City -->
+                            <div class="col-md-4">
+                                <div class="form-floating text-end">
+                                    <input asp-for="City" class="form-control bg-light border-0 px-4"
+                                        placeholder="المدينة" data-i18n-placeholder="checkout.city" />
+                                    <label asp-for="City" class="text-muted px-4"
+                                        data-i18n="checkout.city">المدينة</label>
+                                    <span asp-validation-for="City" class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-5">
-            <input type="submit" class="btn btn-primary" value="إتمام الطلب" />
+                            <!-- Country -->
+                            <div class="col-md-4">
+                                <div class="form-floating text-end">
+                                    <input asp-for="Country" class="form-control bg-light border-0 px-4"
+                                        placeholder="الدولة" data-i18n-placeholder="checkout.country" />
+                                    <label asp-for="Country" class="text-muted px-4"
+                                        data-i18n="checkout.country">الدولة</label>
+                                    <span asp-validation-for="Country" class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
+
+                            <!-- ZIP -->
+                            <div class="col-md-4">
+                                <div class="form-floating text-end">
+                                    <input asp-for="ZipCode" class="form-control bg-light border-0 px-4"
+                                        placeholder="الرمز البريدي" />
+                                    <label asp-for="ZipCode" class="text-muted px-4" data-i18n="checkout.zip">الرمز
+                                        البريدي</label>
+                                    <span asp-validation-for="ZipCode" class="text-danger small mt-1 d-block"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm fw-bold">
+                                <i class="bi bi-check-circle-fill ms-2"></i> <span data-i18n="checkout.submit">تأكيد
+                                    الطلب</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</form>
+</div>
+
+<style>
+    .checkout-wrapper {
+        padding: 60px 0;
+        background-color: #f8f9fa;
+        min-height: calc(100vh - 200px);
+    }
+
+    .text-primary-custom {
+        color: #1A8CB0 !important;
+    }
+
+    .title-divider {
+        height: 3px;
+        width: 60px;
+        background-color: #C7AE6A;
+        border-radius: 3px;
+    }
+
+    .form-floating>label {
+        right: 0;
+        left: auto;
+        transform-origin: top right;
+    }
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label {
+        transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+    }
+
+    .form-control {
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        background-color: #fff !important;
+        box-shadow: 0 0 0 4px rgba(26, 140, 176, 0.15) !important;
+        outline: none;
+    }
+
+    .btn-primary {
+        background-color: #1A8CB0;
+        border-color: #1A8CB0;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #136a87;
+        border-color: #136a87;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(26, 140, 176, 0.2) !important;
+    }
+
+    html[dir="ltr"] .form-floating>label {
+        left: 0;
+        right: auto;
+        transform-origin: top left;
+    }
+
+    html[dir="ltr"] .form-floating>.form-control:focus~label,
+    html[dir="ltr"] .form-floating>.form-control:not(:placeholder-shown)~label {
+        transform: scale(.85) translateY(-.5rem) translateX(-.15rem);
+    }
+
+    html[dir="ltr"] .text-end {
+        text-align: left !important;
+    }
+
+    html[dir="ltr"] .ms-2 {
+        margin-right: 0.5rem !important;
+        margin-left: 0 !important;
+    }
+</style>

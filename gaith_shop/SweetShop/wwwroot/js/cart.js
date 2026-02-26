@@ -6,8 +6,15 @@ $(document).ready(function () {
     if (cartOffcanvasEl) {
         bsOffcanvas = new bootstrap.Offcanvas(cartOffcanvasEl);
 
+        // Show overlay when cart opens
         cartOffcanvasEl.addEventListener('show.bs.offcanvas', function () {
             loadCart();
+            showCartOverlay();
+        });
+
+        // Hide overlay when cart closes
+        cartOffcanvasEl.addEventListener('hide.bs.offcanvas', function () {
+            hideCartOverlay();
         });
     }
 
@@ -133,6 +140,12 @@ function loadCart(callback) {
         success: function (data) {
             container.html(data);
             updateCartBadge();
+            if (typeof I18n !== 'undefined' && I18n.apply) {
+                I18n.apply(I18n.getSaved());
+            }
+            if (typeof Currency !== 'undefined' && Currency.apply) {
+                Currency.apply(Currency.getSaved());
+            }
             if (typeof callback === 'function') callback();
         },
         error: function (xhr, status, error) {
@@ -157,3 +170,35 @@ function updateCartBadge() {
         }
     });
 }
+
+/* ── Cart Overlay Helpers ── */
+function showCartOverlay() {
+    const ol = document.getElementById('cartOverlay');
+    if (!ol) return;
+    ol.style.display = 'block';
+    // Force reflow so transition plays
+    ol.offsetHeight;
+    ol.classList.add('active');
+}
+
+function hideCartOverlay() {
+    const ol = document.getElementById('cartOverlay');
+    if (!ol) return;
+    ol.classList.remove('active');
+    // Remove from layout after transition ends
+    ol.addEventListener('transitionend', function handler() {
+        ol.style.display = 'none';
+        ol.removeEventListener('transitionend', handler);
+    });
+}
+
+/* Called when user clicks the backdrop */
+function closeCartOverlay() {
+    const cartEl = document.getElementById('cartOffcanvas');
+    if (cartEl) {
+        const bs = bootstrap.Offcanvas.getInstance(cartEl);
+        if (bs) bs.hide();
+    }
+    hideCartOverlay();
+}
+

@@ -166,7 +166,7 @@
 <div class="login-card">
     <div class="login-header">
         <img src="~/images/logo.png" alt="حلويات الاسمر" class="login-logo">
-        <h1 class="login-title">حلويات الاسمر</h1>
+        <h1 class="login-title" data-i18n="login.brandTitle">حلويات الاسمر</h1>
     </div>
 
     <div class="login-body">
@@ -174,40 +174,42 @@
             <div asp-validation-summary="ModelOnly" class="text-danger validation-summary" role="alert"></div>
 
             <div class="form-group">
-                <label asp-for="Input.Email">البريد الإلكتروني</label>
+                <label asp-for="Input.Email" data-i18n="login.email">البريد الإلكتروني</label>
                 <input asp-for="Input.Email" type="email" class="form-control" autocomplete="username"
                     aria-required="true" placeholder="name@example.com" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Input.Password">كلمة المرور</label>
+                <label asp-for="Input.Password" data-i18n="login.password">كلمة المرور</label>
                 <input asp-for="Input.Password" type="password" class="form-control" autocomplete="current-password"
-                    aria-required="true" placeholder="كلمة المرور" />
+                    aria-required="true" placeholder="كلمة المرور" data-i18n-placeholder="login.password" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
 
             <div class="form-check">
                 <input class="form-check-input" asp-for="Input.RememberMe" type="checkbox" />
-                <label class="form-check-label" asp-for="Input.RememberMe">
+                <label class="form-check-label" asp-for="Input.RememberMe" data-i18n="login.rememberMe">
                     @Html.DisplayNameFor(m => m.Input.RememberMe)
                 </label>
             </div>
 
             <div>
-                <button id="login-submit" type="submit" class="btn-login">تسجيل الدخول</button>
+                <button id="login-submit" type="submit" class="btn-login" data-i18n="login.signIn">تسجيل الدخول</button>
             </div>
 
             <div class="login-links">
                 <p>
-                    <a id="forgot-password" asp-page="./ForgotPassword">هل نسيت كلمة المرور؟</a>
+                    <a id="forgot-password" asp-page="./ForgotPassword" data-i18n="login.forgotPw">هل نسيت كلمة
+                        المرور؟</a>
                 </p>
                 <p>
-                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">تسجيل كمستخدم جديد</a>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" data-i18n="login.registerNew">تسجيل
+                        كمستخدم جديد</a>
                 </p>
                 <p>
-                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">إعادة إرسال تأكيد البريد
-                        الإلكتروني</a>
+                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" data-i18n="login.resendConf">إعادة
+                        إرسال تأكيد البريد الإلكتروني</a>
                 </p>
             </div>
         </form>

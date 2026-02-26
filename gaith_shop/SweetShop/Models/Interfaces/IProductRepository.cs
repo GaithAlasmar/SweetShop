@@ -5,6 +5,7 @@ namespace SweetShop.Models.Interfaces;
 public interface IProductRepository
 {
     IEnumerable<Product> GetAllProducts();
+    IEnumerable<Product> GetAllProductsWithDeleted();
     IEnumerable<Product> GetPreferredProducts();
     Product? GetProductById(int productId);
     IEnumerable<Product> SearchProducts(string searchTerm);

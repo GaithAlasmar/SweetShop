@@ -13,8 +13,8 @@
             <div class="so-hero-icon">
                 <i class="bi bi-box-seam-fill"></i>
             </div>
-            <h1>طلبيات خاصة</h1>
-            <p>أنشئ طلبك المخصص بالكمية والمنتجات التي تناسبك</p>
+            <h1 data-i18n="orders.heroTitle">طلبيات خاصة</h1>
+            <p data-i18n="orders.heroSub">أنشئ طلبك المخصص بالكمية والمنتجات التي تناسبك</p>
         </div>
     </div>
 
@@ -32,24 +32,26 @@
                     <div class="so-card so-card-info">
                         <div class="so-card-header">
                             <div class="so-card-icon"><i class="bi bi-person-badge-fill"></i></div>
-                            <h3>معلومات العميل</h3>
+                            <h3 data-i18n="orders.customerInfo">معلومات العميل</h3>
                         </div>
                         <div class="so-card-body">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="so-field">
                                         <label asp-for="CustomerName" class="so-label">
-                                            <i class="bi bi-person-fill"></i> اسم العميل
+                                            <i class="bi bi-person-fill"></i> <span data-i18n="orders.custNameLabel">اسم
+                                                العميل</span>
                                         </label>
                                         <input asp-for="CustomerName" class="form-control so-input"
-                                            placeholder="أدخل اسمك الكامل" />
+                                            placeholder="أدخل اسمك الكامل" data-i18n-placeholder="orders.namePh" />
                                         <span asp-validation-for="CustomerName" class="text-danger small"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="so-field">
                                         <label asp-for="PhoneNumber" class="so-label">
-                                            <i class="bi bi-telephone-fill"></i> رقم الهاتف
+                                            <i class="bi bi-telephone-fill"></i> <span data-i18n="orders.phoneLabel">رقم
+                                                الهاتف</span>
                                         </label>
                                         <input asp-for="PhoneNumber" class="form-control so-input"
                                             placeholder="07xxxxxxxx" dir="ltr" style="text-align: right;" />
@@ -59,7 +61,8 @@
                                 <div class="col-md-6">
                                     <div class="so-field">
                                         <label asp-for="EventDate" class="so-label">
-                                            <i class="bi bi-calendar-event-fill"></i> تاريخ المناسبة
+                                            <i class="bi bi-calendar-event-fill"></i> <span
+                                                data-i18n="orders.dateLabel">تاريخ المناسبة</span>
                                         </label>
                                         <input asp-for="EventDate" class="form-control so-input" type="date" />
                                         <span asp-validation-for="EventDate" class="text-danger small"></span>
@@ -68,10 +71,11 @@
                                 <div class="col-md-6">
                                     <div class="so-field">
                                         <label asp-for="AdditionalNotes" class="so-label">
-                                            <i class="bi bi-chat-dots-fill"></i> ملاحظات إضافية
+                                            <i class="bi bi-chat-dots-fill"></i> <span data-i18n="orders.notesLabel">ملاحظات إضافية</span>
                                         </label>
                                         <textarea asp-for="AdditionalNotes" class="form-control so-input" rows="2"
-                                            placeholder="أي ملاحظات أو طلبات خاصة..."></textarea>
+                                            placeholder="أي ملاحظات أو طلبات خاصة..."
+                                            data-i18n-placeholder="orders.notesPh"></textarea>
                                         <span asp-validation-for="AdditionalNotes" class="text-danger small"></span>
                                     </div>
                                 </div>
@@ -83,39 +87,41 @@
                     <div class="so-card so-card-search">
                         <div class="so-card-header">
                             <div class="so-card-icon"><i class="bi bi-search-heart-fill"></i></div>
-                            <h3>إضافة المنتجات</h3>
+                            <h3 data-i18n="orders.addProducts">إضافة المنتجات</h3>
                         </div>
                         <div class="so-card-body">
                             <div class="so-search-grid">
                                 <!-- Product Search -->
                                 <div class="so-search-field">
-                                    <label class="so-label"><i class="bi bi-box-fill"></i> البحث عن منتج</label>
+                                    <label class="so-label"><i class="bi bi-box-fill"></i> <span
+                                            data-i18n="orders.searchProduct">البحث عن منتج</span></label>
                                     <select id="productSearch" class="form-control" style="width: 100%;">
                                         <option></option>
                                     </select>
                                 </div>
                                 <!-- Quantity -->
                                 <div class="so-qty-field">
-                                    <label class="so-label"><i class="bi bi-hash"></i> الكمية</label>
-                                    <input type="number" id="itemQuantity" class="form-control so-input"
-                                        min="0.1" max="1000" step="0.5" value="1" />
+                                    <label class="so-label"><i class="bi bi-hash"></i> <span data-i18n="orders.qty">الكمية</span></label>
+                                    <input type="number" id="itemQuantity" class="form-control so-input" min="0.5"
+                                        max="1000" step="0.5" value="1" />
                                 </div>
                                 <!-- Unit -->
                                 <div class="so-unit-field">
-                                    <label class="so-label"><i class="bi bi-rulers"></i> الوحدة</label>
+                                    <label class="so-label"><i class="bi bi-rulers"></i> <span data-i18n="orders.unit">الوحدة</span></label>
                                     <select id="itemUnit" class="form-select so-input">
-                                        <option value="كيلو">كيلو</option>
-                                        <option value="صينية">صينية</option>
-                                        <option value="قطعة">قطعة</option>
-                                        <option value="حبة">حبة</option>
-                                        <option value="علبة">علبة</option>
+                                        <option value="كيلو" data-i18n="orders.unit.kilo">كيلو</option>
+                                        <option value="صينية" data-i18n="orders.unit.tray">صينية</option>
+                                        <option value="قطعة" data-i18n="orders.unit.piece">قطعة</option>
+                                        <option value="حبة" data-i18n="orders.unit.item">حبة</option>
+                                        <option value="علبة" data-i18n="orders.unit.pack">علبة</option>
                                     </select>
                                 </div>
                                 <!-- Add Button -->
                                 <div class="so-add-field">
                                     <label class="so-label d-none d-md-block">&nbsp;</label>
                                     <button type="button" id="addItemBtn" class="btn so-btn-add w-100">
-                                        <i class="bi bi-plus-circle-fill ms-1"></i> إضافة صنف
+                                        <i class="bi bi-plus-circle-fill ms-1"></i> <span
+                                            data-i18n="orders.addItem">إضافة صنف</span>
                                     </button>
                                 </div>
                             </div>
@@ -142,8 +148,8 @@
                                 <div class="so-empty-icon">
                                     <i class="bi bi-inbox-fill"></i>
                                 </div>
-                                <h5>لم تتم إضافة أي منتجات بعد</h5>
-                                <p>ابحث عن منتج أعلاه وأضفه إلى طلبك</p>
+                                <h5 data-i18n="orders.emptyTitle">لم تتم إضافة أي منتجات بعد</h5>
+                                <p data-i18n="orders.emptyDesc">ابحث عن منتج أعلاه وأضفه إلى طلبك</p>
                             </div>
 
                             <!-- Table -->
@@ -153,12 +159,12 @@
                                         <thead>
                                             <tr>
                                                 <th width="50">#</th>
-                                                <th>المنتج</th>
-                                                <th width="100">الكمية</th>
-                                                <th width="100">الوحدة</th>
-                                                <th width="130">السعر</th>
-                                                <th width="130">المجموع</th>
-                                                <th width="60">حذف</th>
+                                                <th data-i18n="orders.colProduct">المنتج</th>
+                                                <th width="100" data-i18n="orders.colQty">الكمية</th>
+                                                <th width="100" data-i18n="orders.colUnit">الوحدة</th>
+                                                <th width="130" data-i18n="orders.colPrice">السعر</th>
+                                                <th width="130" data-i18n="orders.colTotal">المجموع</th>
+                                                <th width="60" data-i18n="orders.colDelete">حذف</th>
                                             </tr>
                                         </thead>
                                         <tbody id="itemsBody"></tbody>
@@ -168,7 +174,7 @@
                                 <div class="so-total-bar">
                                     <div class="so-total-label">
                                         <i class="bi bi-calculator-fill ms-2"></i>
-                                        الإجمالي الكلي
+                                        <span data-i18n="orders.totalLabel">الإجمالي الكلي</span>
                                     </div>
                                     <div class="so-total-amount" id="totalPrice">0.00 د.أ</div>
                                 </div>
@@ -183,7 +189,7 @@
                     <div class="so-submit-wrapper">
                         <button type="submit" id="submitBtn" class="btn so-btn-submit" disabled>
                             <i class="bi bi-send-check-fill ms-2"></i>
-                            إرسال الطلب
+                            <span data-i18n="orders.submit">إرسال الطلب</span>
                         </button>
                     </div>
                 </form>
@@ -194,8 +200,8 @@
                         <i class="bi bi-info-circle-fill"></i>
                     </div>
                     <div>
-                        <strong>ملاحظة هامة</strong>
-                        <p class="mb-0 mt-1">
+                        <strong data-i18n="orders.noticeTip">ملاحظة هامة</strong>
+                        <p class="mb-0 mt-1" data-i18n="orders.noticeText">
                             سيتم التواصل معكم خلال 24 ساعة لتأكيد الطلب والاتفاق على التفاصيل النهائية والأسعار.
                             الطلبيات الكبيرة تحتاج إلى حجز مسبق بـ 3-5 أيام على الأقل.
                         </p>
@@ -208,738 +214,767 @@
 </div>
 
 @section Scripts {
-        <!-- Select2 CSS & JS -->
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"
-            rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Select2 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-        <style>
-            /* ═══════════════════════════════════════════
-               SPECIAL ORDERS — PREMIUM DASHBOARD THEME
-               Colors: #1A8CB0 (teal), #C7AE6A (gold), #E6F3FB (ice)
-               ═══════════════════════════════════════════ */
+    <style>
+        /* ═══════════════════════════════════════════
+                               SPECIAL ORDERS — PREMIUM DASHBOARD THEME
+                               Colors: #1A8CB0 (teal), #C7AE6A (gold), #E6F3FB (ice)
+                               ═══════════════════════════════════════════ */
 
-            .special-order-page {
-                font-family: 'Readex Pro', 'Segoe UI', Tahoma, sans-serif;
-                background-color: #f4f7fa;
-                min-height: 100vh;
+        .special-order-page {
+            font-family: 'Readex Pro', 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f4f7fa;
+            min-height: 100vh;
+        }
+
+        /* ─── HERO BANNER ─── */
+        .so-hero {
+            position: relative;
+            background: linear-gradient(135deg, #1A8CB0 0%, #156d8a 50%, #0f4f65 100%);
+            padding: 60px 0 50px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .so-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(199, 174, 106, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .so-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(230, 243, 251, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .so-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .so-hero-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(199, 174, 106, 0.4);
+        }
+
+        .so-hero-icon i {
+            font-size: 2.2rem;
+            color: #C7AE6A;
+        }
+
+        .so-hero h1 {
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .so-hero p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* ─── CARDS ─── */
+        .so-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            margin-bottom: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(26, 140, 176, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .so-card:hover {
+            box-shadow: 0 4px 30px rgba(26, 140, 176, 0.12);
+        }
+
+        .so-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 28px;
+            background: linear-gradient(135deg, #E6F3FB 0%, #f0f8fc 100%);
+            border-bottom: 2px solid rgba(199, 174, 106, 0.25);
+        }
+
+        .so-card-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1A8CB0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .so-card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #1A8CB0, #156d8a);
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .so-card-icon i {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .so-card-body {
+            padding: 28px;
+        }
+
+        /* ─── FORM FIELDS ─── */
+        .so-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1A8CB0;
+            margin-bottom: 6px;
+        }
+
+        .so-label i {
+            color: #C7AE6A;
+        }
+
+        .so-input {
+            border: 2px solid #e0e8ef;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .so-input:focus {
+            border-color: #1A8CB0;
+            box-shadow: 0 0 0 3px rgba(26, 140, 176, 0.15);
+        }
+
+        /* ─── SEARCH GRID ─── */
+        .so-search-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 16px;
+            align-items: end;
+        }
+
+        @@media (max-width: 768px) {
+            .so-search-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── ADD BUTTON ─── */
+        .so-btn-add {
+            background: linear-gradient(135deg, #C7AE6A 0%, #b39b5b 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(199, 174, 106, 0.3);
+        }
+
+        .so-btn-add:hover {
+            background: linear-gradient(135deg, #b39b5b 0%, #a08b4e 100%);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(199, 174, 106, 0.4);
+        }
+
+        .so-btn-add:active {
+            transform: translateY(0);
+        }
+
+        /* ─── ERROR TOAST ─── */
+        .so-error-toast {
+            background: linear-gradient(135deg, #fee2e2, #fef2f2);
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            animation: shakeX 0.5s ease;
+        }
+
+        @@keyframes shakeX {
+
+            0%,
+            100% {
+                transform: translateX(0);
             }
 
-            /* ─── HERO BANNER ─── */
+            20% {
+                transform: translateX(-6px);
+            }
+
+            40% {
+                transform: translateX(6px);
+            }
+
+            60% {
+                transform: translateX(-4px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
+        }
+
+        /* ─── BADGE ─── */
+        .so-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 26px;
+            height: 26px;
+            background: #C7AE6A;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 0 8px;
+        }
+
+        /* ─── EMPTY STATE ─── */
+        .so-empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #94a3b8;
+        }
+
+        .so-empty-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: #E6F3FB;
+            border-radius: 50%;
+            margin-bottom: 16px;
+            animation: floatBounce 3s ease-in-out infinite;
+        }
+
+        .so-empty-icon i {
+            font-size: 2rem;
+            color: #1A8CB0;
+        }
+
+        .so-empty-state h5 {
+            color: #64748b;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .so-empty-state p {
+            font-size: 0.9rem;
+        }
+
+        @@keyframes floatBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ─── TABLE ─── */
+        .so-table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .so-table thead tr {
+            background: linear-gradient(135deg, #1A8CB0, #156d8a);
+        }
+
+        .so-table thead th {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 14px 16px;
+            border: none;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .so-table thead th:first-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .so-table thead th:last-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .so-table tbody td {
+            padding: 14px 16px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.92rem;
+        }
+
+        .so-table tbody tr {
+            transition: all 0.25s ease;
+        }
+
+        .so-table tbody tr:hover {
+            background-color: #E6F3FB;
+        }
+
+        .so-table .product-name {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .so-table .line-total {
+            font-weight: 700;
+            color: #1A8CB0;
+        }
+
+        .so-remove-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 2px solid #fca5a5;
+            background: #fff;
+            color: #ef4444;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .so-remove-btn:hover {
+            background: #ef4444;
+            color: #fff;
+            border-color: #ef4444;
+            transform: scale(1.1);
+        }
+
+        /* ─── TOTAL BAR ─── */
+        .so-total-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 28px;
+            background: linear-gradient(135deg, #faf6eb 0%, #fdf8f0 100%);
+            border-top: 3px solid #C7AE6A;
+        }
+
+        .so-total-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #92791c;
+        }
+
+        .so-total-amount {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1A8CB0;
+            letter-spacing: -0.02em;
+        }
+
+        /* ─── SUBMIT BUTTON ─── */
+        .so-submit-wrapper {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+
+        .so-btn-submit {
+            background: linear-gradient(135deg, #1A8CB0 0%, #156d8a 100%);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.25rem;
+            border: none;
+            border-radius: 14px;
+            padding: 16px 60px;
+            letter-spacing: 0.02em;
+            transition: all 0.35s ease;
+            box-shadow: 0 4px 20px rgba(26, 140, 176, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .so-btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .so-btn-submit:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(26, 140, 176, 0.45);
+            color: #fff;
+        }
+
+        .so-btn-submit:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .so-btn-submit:disabled {
+            background: #b0bec5;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .so-btn-submit:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        /* ─── NOTICE ─── */
+        .so-notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: linear-gradient(135deg, #E6F3FB 0%, #f4f9fd 100%);
+            border: 1px solid rgba(26, 140, 176, 0.2);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-top: 24px;
+            color: #1A8CB0;
+        }
+
+        .so-notice-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(26, 140, 176, 0.12);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .so-notice-icon i {
+            font-size: 1.2rem;
+            color: #1A8CB0;
+        }
+
+        .so-notice strong {
+            color: #156d8a;
+        }
+
+        .so-notice p {
+            color: #4a7a8c;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ─── ROW ANIMATION ─── */
+        .so-row-enter {
+            animation: fadeSlideIn 0.35s ease-out;
+        }
+
+        @@keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ─── SELECT2 OVERRIDES ─── */
+        .select2-container--bootstrap-5 .select2-selection--single {
+            height: 44px !important;
+            border: 2px solid #e0e8ef;
+            border-radius: 10px;
+            padding: 8px 14px;
+            transition: all 0.25s ease;
+        }
+
+        .select2-container--bootstrap-5 .select2-selection--single:focus,
+        .select2-container--bootstrap-5.select2-container--focus .select2-selection--single,
+        .select2-container--bootstrap-5.select2-container--open .select2-selection--single {
+            border-color: #1A8CB0;
+            box-shadow: 0 0 0 3px rgba(26, 140, 176, 0.15);
+        }
+
+        .select2-container {
+            direction: rtl;
+        }
+
+        .select2-results__option--highlighted {
+            background-color: #1A8CB0 !important;
+        }
+
+        .select2-results__option--selected {
+            background-color: #E6F3FB !important;
+            color: #1A8CB0 !important;
+        }
+
+        .select2-dropdown {
+            border: 2px solid #1A8CB0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(26, 140, 176, 0.15);
+        }
+
+        .select2-search__field {
+            border-radius: 8px !important;
+            border: 2px solid #e0e8ef !important;
+            padding: 8px 12px !important;
+        }
+
+        .select2-search__field:focus {
+            border-color: #1A8CB0 !important;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @@media (max-width: 576px) {
             .so-hero {
-                position: relative;
-                background: linear-gradient(135deg, #1A8CB0 0%, #156d8a 50%, #0f4f65 100%);
-                padding: 60px 0 50px;
-                text-align: center;
-                overflow: hidden;
-            }
-
-            .so-hero::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                right: -20%;
-                width: 500px;
-                height: 500px;
-                background: radial-gradient(circle, rgba(199, 174, 106, 0.15) 0%, transparent 70%);
-                border-radius: 50%;
-            }
-
-            .so-hero::after {
-                content: '';
-                position: absolute;
-                bottom: -30%;
-                left: -10%;
-                width: 400px;
-                height: 400px;
-                background: radial-gradient(circle, rgba(230, 243, 251, 0.1) 0%, transparent 70%);
-                border-radius: 50%;
-            }
-
-            .so-hero-content {
-                position: relative;
-                z-index: 2;
-            }
-
-            .so-hero-icon {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 80px;
-                height: 80px;
-                background: rgba(255, 255, 255, 0.15);
-                backdrop-filter: blur(10px);
-                border-radius: 20px;
-                margin-bottom: 20px;
-                border: 2px solid rgba(199, 174, 106, 0.4);
-            }
-
-            .so-hero-icon i {
-                font-size: 2.2rem;
-                color: #C7AE6A;
+                padding: 40px 16px 35px;
             }
 
             .so-hero h1 {
-                color: #fff;
-                font-size: 2.4rem;
-                font-weight: 800;
-                margin-bottom: 10px;
-                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                font-size: 1.8rem;
             }
 
             .so-hero p {
-                color: rgba(255, 255, 255, 0.85);
-                font-size: 1.1rem;
-                margin: 0;
-            }
-
-            /* ─── CARDS ─── */
-            .so-card {
-                background: #fff;
-                border-radius: 16px;
-                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
-                margin-bottom: 24px;
-                overflow: hidden;
-                border: 1px solid rgba(26, 140, 176, 0.08);
-                transition: box-shadow 0.3s ease;
-            }
-
-            .so-card:hover {
-                box-shadow: 0 4px 30px rgba(26, 140, 176, 0.12);
-            }
-
-            .so-card-header {
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                padding: 20px 28px;
-                background: linear-gradient(135deg, #E6F3FB 0%, #f0f8fc 100%);
-                border-bottom: 2px solid rgba(199, 174, 106, 0.25);
-            }
-
-            .so-card-header h3 {
-                margin: 0;
-                font-size: 1.2rem;
-                font-weight: 700;
-                color: #1A8CB0;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .so-card-icon {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 44px;
-                height: 44px;
-                background: linear-gradient(135deg, #1A8CB0, #156d8a);
-                border-radius: 12px;
-                flex-shrink: 0;
-            }
-
-            .so-card-icon i {
-                font-size: 1.2rem;
-                color: #fff;
+                font-size: 0.95rem;
             }
 
             .so-card-body {
-                padding: 28px;
+                padding: 20px 16px;
             }
 
-            /* ─── FORM FIELDS ─── */
-            .so-label {
-                display: block;
-                font-weight: 600;
-                font-size: 0.9rem;
-                color: #1A8CB0;
-                margin-bottom: 6px;
+            .so-card-header {
+                padding: 16px 18px;
             }
 
-            .so-label i {
-                color: #C7AE6A;
-            }
-
-            .so-input {
-                border: 2px solid #e0e8ef;
-                border-radius: 10px;
-                padding: 10px 14px;
-                font-size: 0.95rem;
-                transition: all 0.25s ease;
-            }
-
-            .so-input:focus {
-                border-color: #1A8CB0;
-                box-shadow: 0 0 0 3px rgba(26, 140, 176, 0.15);
-            }
-
-            /* ─── SEARCH GRID ─── */
-            .so-search-grid {
-                display: grid;
-                grid-template-columns: 2fr 1fr 1fr auto;
-                gap: 16px;
-                align-items: end;
-            }
-
-            @@media (max-width: 768px) {
-                .so-search-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            /* ─── ADD BUTTON ─── */
-            .so-btn-add {
-                background: linear-gradient(135deg, #C7AE6A 0%, #b39b5b 100%);
-                color: #fff;
-                font-weight: 700;
-                font-size: 0.95rem;
-                border: none;
-                border-radius: 10px;
-                padding: 10px 20px;
-                transition: all 0.3s ease;
-                box-shadow: 0 3px 12px rgba(199, 174, 106, 0.3);
-            }
-
-            .so-btn-add:hover {
-                background: linear-gradient(135deg, #b39b5b 0%, #a08b4e 100%);
-                color: #fff;
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(199, 174, 106, 0.4);
-            }
-
-            .so-btn-add:active {
-                transform: translateY(0);
-            }
-
-            /* ─── ERROR TOAST ─── */
-            .so-error-toast {
-                background: linear-gradient(135deg, #fee2e2, #fef2f2);
-                color: #991b1b;
-                border: 1px solid #fca5a5;
-                border-radius: 10px;
-                padding: 12px 18px;
-                margin-top: 16px;
-                font-size: 0.9rem;
-                font-weight: 500;
-                animation: shakeX 0.5s ease;
-            }
-
-            @@keyframes shakeX {
-                0%, 100% { transform: translateX(0); }
-                20% { transform: translateX(-6px); }
-                40% { transform: translateX(6px); }
-                60% { transform: translateX(-4px); }
-                80% { transform: translateX(4px); }
-            }
-
-            /* ─── BADGE ─── */
-            .so-badge {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-width: 26px;
-                height: 26px;
-                background: #C7AE6A;
-                color: #fff;
-                font-size: 0.75rem;
-                font-weight: 700;
-                border-radius: 50px;
-                padding: 0 8px;
-            }
-
-            /* ─── EMPTY STATE ─── */
-            .so-empty-state {
-                text-align: center;
-                padding: 50px 20px;
-                color: #94a3b8;
-            }
-
-            .so-empty-icon {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 80px;
-                height: 80px;
-                background: #E6F3FB;
-                border-radius: 50%;
-                margin-bottom: 16px;
-                animation: floatBounce 3s ease-in-out infinite;
-            }
-
-            .so-empty-icon i {
-                font-size: 2rem;
-                color: #1A8CB0;
-            }
-
-            .so-empty-state h5 {
-                color: #64748b;
-                font-weight: 700;
-                margin-bottom: 6px;
-            }
-
-            .so-empty-state p {
-                font-size: 0.9rem;
-            }
-
-            @@keyframes floatBounce {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-8px); }
-            }
-
-            /* ─── TABLE ─── */
-            .so-table {
-                border-collapse: separate;
-                border-spacing: 0;
-            }
-
-            .so-table thead tr {
-                background: linear-gradient(135deg, #1A8CB0, #156d8a);
-            }
-
-            .so-table thead th {
-                color: #fff;
-                font-weight: 600;
-                font-size: 0.85rem;
-                padding: 14px 16px;
-                border: none;
-                letter-spacing: 0.02em;
-                white-space: nowrap;
-            }
-
-            .so-table thead th:first-child {
-                border-radius: 0 8px 0 0;
-            }
-
-            .so-table thead th:last-child {
-                border-radius: 8px 0 0 0;
-            }
-
-            .so-table tbody td {
-                padding: 14px 16px;
-                vertical-align: middle;
-                border-bottom: 1px solid #f0f0f0;
-                font-size: 0.92rem;
-            }
-
-            .so-table tbody tr {
-                transition: all 0.25s ease;
-            }
-
-            .so-table tbody tr:hover {
-                background-color: #E6F3FB;
-            }
-
-            .so-table .product-name {
-                font-weight: 700;
-                color: #1e293b;
-            }
-
-            .so-table .line-total {
-                font-weight: 700;
-                color: #1A8CB0;
-            }
-
-            .so-remove-btn {
-                width: 36px;
-                height: 36px;
-                border-radius: 10px;
-                border: 2px solid #fca5a5;
-                background: #fff;
-                color: #ef4444;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                transition: all 0.25s ease;
-            }
-
-            .so-remove-btn:hover {
-                background: #ef4444;
-                color: #fff;
-                border-color: #ef4444;
-                transform: scale(1.1);
-            }
-
-            /* ─── TOTAL BAR ─── */
             .so-total-bar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 18px 28px;
-                background: linear-gradient(135deg, #faf6eb 0%, #fdf8f0 100%);
-                border-top: 3px solid #C7AE6A;
-            }
-
-            .so-total-label {
-                font-size: 1.1rem;
-                font-weight: 700;
-                color: #92791c;
-            }
-
-            .so-total-amount {
-                font-size: 1.5rem;
-                font-weight: 800;
-                color: #1A8CB0;
-                letter-spacing: -0.02em;
-            }
-
-            /* ─── SUBMIT BUTTON ─── */
-            .so-submit-wrapper {
+                padding: 14px 18px;
+                flex-direction: column;
+                gap: 6px;
                 text-align: center;
-                margin: 30px 0 10px;
             }
 
             .so-btn-submit {
-                background: linear-gradient(135deg, #1A8CB0 0%, #156d8a 100%);
-                color: #fff;
-                font-weight: 800;
-                font-size: 1.25rem;
-                border: none;
-                border-radius: 14px;
-                padding: 16px 60px;
-                letter-spacing: 0.02em;
-                transition: all 0.35s ease;
-                box-shadow: 0 4px 20px rgba(26, 140, 176, 0.3);
-                position: relative;
-                overflow: hidden;
-            }
-
-            .so-btn-submit::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
                 width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-                transition: left 0.5s ease;
+                padding: 14px 30px;
+                font-size: 1.1rem;
             }
+        }
+    </style>
 
-            .so-btn-submit:hover:not(:disabled) {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 30px rgba(26, 140, 176, 0.45);
-                color: #fff;
-            }
+    <script>
+        $(document).ready(function () {
+            var items = [];
 
-            .so-btn-submit:hover:not(:disabled)::before {
-                left: 100%;
-            }
-
-            .so-btn-submit:disabled {
-                background: #b0bec5;
-                box-shadow: none;
-                cursor: not-allowed;
-            }
-
-            .so-btn-submit:active:not(:disabled) {
-                transform: translateY(0);
-            }
-
-            /* ─── NOTICE ─── */
-            .so-notice {
-                display: flex;
-                align-items: flex-start;
-                gap: 14px;
-                background: linear-gradient(135deg, #E6F3FB 0%, #f4f9fd 100%);
-                border: 1px solid rgba(26, 140, 176, 0.2);
-                border-radius: 14px;
-                padding: 20px 24px;
-                margin-top: 24px;
-                color: #1A8CB0;
-            }
-
-            .so-notice-icon {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 40px;
-                height: 40px;
-                background: rgba(26, 140, 176, 0.12);
-                border-radius: 10px;
-                flex-shrink: 0;
-            }
-
-            .so-notice-icon i {
-                font-size: 1.2rem;
-                color: #1A8CB0;
-            }
-
-            .so-notice strong {
-                color: #156d8a;
-            }
-
-            .so-notice p {
-                color: #4a7a8c;
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-
-            /* ─── ROW ANIMATION ─── */
-            .so-row-enter {
-                animation: fadeSlideIn 0.35s ease-out;
-            }
-
-            @@keyframes fadeSlideIn {
-                from {
-                    opacity: 0;
-                    transform: translateX(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-
-            /* ─── SELECT2 OVERRIDES ─── */
-            .select2-container--bootstrap-5 .select2-selection--single {
-                height: 44px !important;
-                border: 2px solid #e0e8ef;
-                border-radius: 10px;
-                padding: 8px 14px;
-                transition: all 0.25s ease;
-            }
-
-            .select2-container--bootstrap-5 .select2-selection--single:focus,
-            .select2-container--bootstrap-5.select2-container--focus .select2-selection--single,
-            .select2-container--bootstrap-5.select2-container--open .select2-selection--single  {
-                border-color: #1A8CB0;
-                box-shadow: 0 0 0 3px rgba(26, 140, 176, 0.15);
-            }
-
-            .select2-container {
-                direction: rtl;
-            }
-
-            .select2-results__option--highlighted {
-                background-color: #1A8CB0 !important;
-            }
-
-            .select2-results__option--selected {
-                background-color: #E6F3FB !important;
-                color: #1A8CB0 !important;
-            }
-
-            .select2-dropdown {
-                border: 2px solid #1A8CB0;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 8px 30px rgba(26, 140, 176, 0.15);
-            }
-
-            .select2-search__field {
-                border-radius: 8px !important;
-                border: 2px solid #e0e8ef !important;
-                padding: 8px 12px !important;
-            }
-
-            .select2-search__field:focus {
-                border-color: #1A8CB0 !important;
-            }
-
-            /* ─── RESPONSIVE ─── */
-            @@media (max-width: 576px) {
-                .so-hero {
-                    padding: 40px 16px 35px;
-                }
-
-                .so-hero h1 {
-                    font-size: 1.8rem;
-                }
-
-                .so-hero p {
-                    font-size: 0.95rem;
-                }
-
-                .so-card-body {
-                    padding: 20px 16px;
-                }
-
-                .so-card-header {
-                    padding: 16px 18px;
-                }
-
-                .so-total-bar {
-                    padding: 14px 18px;
-                    flex-direction: column;
-                    gap: 6px;
-                    text-align: center;
-                }
-
-                .so-btn-submit {
-                    width: 100%;
-                    padding: 14px 30px;
-                    font-size: 1.1rem;
-                }
-            }
-        </style>
-
-        <script>
-            $(document).ready(function () {
-                var items = [];
-
-                // ─── Initialize Select2 ───
-                $('#productSearch').select2({
-                    theme: 'bootstrap-5',
-                    placeholder: 'اكتب اسم المنتج للبحث...',
-                    allowClear: true,
-                    dir: 'rtl',
-                    minimumInputLength: 1,
-                    ajax: {
-                        url: '@Url.Action("SearchProducts", "Orders")',
-                        dataType: 'json',
-                        delay: 300,
-                        data: function (params) {
-                            return { term: params.term };
-                        },
-                        processResults: function (data) {
-                            return {
-                                results: data.map(function (item) {
-                                    return {
-                                        id: item.id,
-                                        text: item.text,
-                                        price: item.price
-                                    };
-                                })
-                            };
-                        },
-                        cache: true
+            // ─── Initialize Select2 ───
+            $('#productSearch').select2({
+                theme: 'bootstrap-5',
+                placeholder: typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'Type product name to search...' : 'اكتب اسم المنتج للبحث...',
+                allowClear: true,
+                dir: 'rtl',
+                minimumInputLength: 1,
+                ajax: {
+                    url: '@Url.Action("SearchProducts", "Orders")',
+                    dataType: 'json',
+                    delay: 300,
+                    data: function (params) {
+                        return { term: params.term };
                     },
-                    templateResult: function (data) {
-                        if (data.loading) return data.text;
-                        var $el = $('<div style="display:flex; justify-content:space-between; align-items:center;">' +
-                            '<span style="font-weight:600;">' + data.text + '</span>' +
-                            '<span style="color:#C7AE6A; font-weight:700; font-size:0.85rem;">' +
-                            parseFloat(data.price).toFixed(2) + ' د.أ</span></div>');
-                        return $el;
+                    processResults: function (data) {
+                        return {
+                            results: data.map(function (item) {
+                                return {
+                                    id: item.id,
+                                    text: item.text,
+                                    price: item.price
+                                };
+                            })
+                        };
                     },
-                    templateSelection: function (data) {
-                        if (!data.id) return data.text;
-                        return data.text + ' — ' + parseFloat(data.price).toFixed(2) + ' د.أ';
-                    }
-                });
-
-                // ─── Add Item ───
-                $('#addItemBtn').on('click', function () {
-                    var selectedData = $('#productSearch').select2('data')[0];
-                    var quantity = parseFloat($('#itemQuantity').val());
-                    var unit = $('#itemUnit').val();
-
-                    // Validate
-                    if (!selectedData || !selectedData.id) {
-                        showError('الرجاء اختيار منتج من القائمة');
-                        return;
-                    }
-                    if (!quantity || quantity <= 0) {
-                        showError('الرجاء إدخال كمية صحيحة');
-                        return;
-                    }
-
-                    // Check for duplicate
-                    var duplicate = items.find(function (i) { return i.productId == selectedData.id; });
-                    if (duplicate) {
-                        showError('هذا المنتج مضاف مسبقاً. يمكنك حذفه وإعادة إضافته بكمية مختلفة.');
-                        return;
-                    }
-
-                    hideError();
-
-                    // Add to items array
-                    var item = {
-                        productId: parseInt(selectedData.id),
-                        productName: selectedData.text,
-                        quantity: quantity,
-                        unit: unit,
-                        price: parseFloat(selectedData.price)
-                    };
-                    items.push(item);
-
-                    renderTable();
-                    resetInputs();
-                });
-
-                // ─── Render Table ───
-                function renderTable() {
-                    var tbody = $('#itemsBody');
-                    var hiddenInputs = $('#hiddenInputs');
-                    tbody.empty();
-                    hiddenInputs.empty();
-
-                    if (items.length === 0) {
-                        $('#emptyState').removeClass('d-none');
-                        $('#itemsTableWrapper').addClass('d-none');
-                        $('#submitBtn').prop('disabled', true);
-                        $('#itemCount').text('0');
-                        return;
-                    }
-
-                    $('#emptyState').addClass('d-none');
-                    $('#itemsTableWrapper').removeClass('d-none');
-                    $('#submitBtn').prop('disabled', false);
-                    $('#itemCount').text(items.length);
-
-                    var total = 0;
-
-                    items.forEach(function (item, index) {
-                        var lineTotal = item.price * item.quantity;
-                        total += lineTotal;
-
-                        // Table row
-                        var row = '<tr class="so-row-enter">' +
-                            '<td class="text-muted">' + (index + 1) + '</td>' +
-                            '<td class="product-name">' + item.productName + '</td>' +
-                            '<td>' + item.quantity + '</td>' +
-                            '<td><span class="badge" style="background:#E6F3FB; color:#1A8CB0; font-weight:600; padding:6px 12px; border-radius:8px;">' + item.unit + '</span></td>' +
-                            '<td>' + item.price.toFixed(2) + ' د.أ</td>' +
-                            '<td class="line-total">' + lineTotal.toFixed(2) + ' د.أ</td>' +
-                            '<td><button type="button" class="so-remove-btn" data-index="' + index + '" title="حذف">' +
-                            '<i class="bi bi-trash3-fill"></i></button></td>' +
-                            '</tr>';
-                        tbody.append(row);
-
-                        // Hidden inputs for model binding
-                        hiddenInputs.append('<input type="hidden" name="Items[' + index + '].ProductId" value="' + item.productId + '" />');
-                        hiddenInputs.append('<input type="hidden" name="Items[' + index + '].ProductName" value="' + item.productName + '" />');
-                        hiddenInputs.append('<input type="hidden" name="Items[' + index + '].Quantity" value="' + item.quantity + '" />');
-                        hiddenInputs.append('<input type="hidden" name="Items[' + index + '].Unit" value="' + item.unit + '" />');
-                        hiddenInputs.append('<input type="hidden" name="Items[' + index + '].Price" value="' + item.price + '" />');
-                    });
-
-                    $('#totalPrice').text(total.toFixed(2) + ' د.أ');
+                    cache: true
+                },
+                templateResult: function (data) {
+                    if (data.loading) return data.text;
+                    var $el = $('<div style="display:flex; justify-content:space-between; align-items:center;">' +
+                        '<span style="font-weight:600;">' + data.text + '</span>' +
+                        '<span style="color:#C7AE6A; font-weight:700; font-size:0.85rem;">' +
+                        parseFloat(data.price).toFixed(2) + ' د.أ</span></div>');
+                    return $el;
+                },
+                templateSelection: function (data) {
+                    if (!data.id) return data.text;
+                    return data.text + ' — ' + parseFloat(data.price).toFixed(2) + ' د.أ';
                 }
-
-                // ─── Remove item (event delegation) ───
-                $(document).on('click', '.so-remove-btn', function () {
-                    var index = $(this).data('index');
-                    items.splice(index, 1);
-                    renderTable();
-                });
-
-                // ─── Reset Inputs ───
-                function resetInputs() {
-                    $('#productSearch').val(null).trigger('change');
-                    $('#itemQuantity').val(1);
-                    $('#itemUnit').val('كيلو');
-                }
-
-                // ─── Error Handling ───
-                function showError(message) {
-                    $('#errorText').text(message);
-                    $('#addItemError').removeClass('d-none');
-                    setTimeout(function () { hideError(); }, 4000);
-                }
-
-                function hideError() {
-                    $('#addItemError').addClass('d-none');
-                }
-
-                // ─── Form validation before submit ───
-                $('#orderForm').on('submit', function (e) {
-                    if (items.length === 0) {
-                        e.preventDefault();
-                        showError('الرجاء إضافة منتج واحد على الأقل قبل إرسال الطلب');
-                    }
-                });
             });
-        </script>
+
+            // ─── Add Item ───
+            $('#addItemBtn').on('click', function () {
+                var selectedData = $('#productSearch').select2('data')[0];
+                var quantity = parseFloat($('#itemQuantity').val());
+                var unit = $('#itemUnit').val();
+
+                // Validate
+                if (!selectedData || !selectedData.id) {
+                    showError(typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'Please select a product from the list' : 'الرجاء اختيار منتج من القائمة');
+                    return;
+                }
+                if (!quantity || quantity <= 0) {
+                    showError(typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'Please enter a valid quantity' : 'الرجاء إدخال كمية صحيحة');
+                    return;
+                }
+
+                // Check for duplicate
+                var duplicate = items.find(function (i) { return i.productId == selectedData.id; });
+                if (duplicate) {
+                    showError(typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'This product is already added. You can remove it and add it again with a different quantity.' : 'هذا المنتج مضاف مسبقاً. يمكنك حذفه وإعادة إضافته بكمية مختلفة.');
+                    return;
+                }
+
+                hideError();
+
+                // Add to items array
+                var item = {
+                    productId: parseInt(selectedData.id),
+                    productName: selectedData.text,
+                    quantity: quantity,
+                    unit: unit,
+                    price: parseFloat(selectedData.price)
+                };
+                items.push(item);
+
+                renderTable();
+                resetInputs();
+            });
+
+            // ─── Render Table ───
+            function renderTable() {
+                var tbody = $('#itemsBody');
+                var hiddenInputs = $('#hiddenInputs');
+                tbody.empty();
+                hiddenInputs.empty();
+
+                if (items.length === 0) {
+                    $('#emptyState').removeClass('d-none');
+                    $('#itemsTableWrapper').addClass('d-none');
+                    $('#submitBtn').prop('disabled', true);
+                    $('#itemCount').text('0');
+                    return;
+                }
+
+                $('#emptyState').addClass('d-none');
+                $('#itemsTableWrapper').removeClass('d-none');
+                $('#submitBtn').prop('disabled', false);
+                $('#itemCount').text(items.length);
+
+                var total = 0;
+
+                items.forEach(function (item, index) {
+                    var lineTotal = item.price * item.quantity;
+                    total += lineTotal;
+
+                    // Table row
+                    var unitKey = item.unit === 'كيلو' ? 'orders.unit.kilo' : item.unit === 'صينية' ? 'orders.unit.tray' : item.unit === 'قطعة' ? 'orders.unit.piece' : item.unit === 'حبة' ? 'orders.unit.item' : item.unit === 'علبة' ? 'orders.unit.pack' : '';
+                    var unitTranslation = typeof I18n !== 'undefined' && I18n.translations[unitKey] ? (I18n.getSaved() === 'en' ? I18n.translations[unitKey].en : item.unit) : item.unit;
+                    var nameTranslation = typeof I18n !== 'undefined' && I18n.translations[item.productName] ? (I18n.getSaved() === 'en' ? I18n.translations[item.productName].en : item.productName) : item.productName;
+                    var currTranslation = typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'JOD' : 'د.أ';
+
+                    var row = '<tr class="so-row-enter">' +
+                        '<td class="text-muted">' + (index + 1) + '</td>' +
+                        '<td class="product-name" data-i18n="' + item.productName + '">' + nameTranslation + '</td>' +
+                        '<td>' + item.quantity + '</td>' +
+                        '<td><span class="badge" style="background:#E6F3FB; color:#1A8CB0; font-weight:600; padding:6px 12px; border-radius:8px;" data-i18n="' + unitKey + '">' + unitTranslation + '</span></td>' +
+                        '<td>' + item.price.toFixed(2) + ' <span data-i18n="currency.jod">' + currTranslation + '</span></td>' +
+                        '<td class="line-total">' + lineTotal.toFixed(2) + ' <span data-i18n="currency.jod">' + currTranslation + '</span></td>' +
+                        '<td><button type="button" class="so-remove-btn" data-index="' + index + '" title="حذف">' +
+                        '<i class="bi bi-trash3-fill"></i></button></td>' +
+                        '</tr>';
+                    tbody.append(row);
+
+                    // Hidden inputs for model binding
+                    hiddenInputs.append('<input type="hidden" name="Items[' + index + '].ProductId" value="' + item.productId + '" />');
+                    hiddenInputs.append('<input type="hidden" name="Items[' + index + '].ProductName" value="' + item.productName + '" />');
+                    hiddenInputs.append('<input type="hidden" name="Items[' + index + '].Quantity" value="' + item.quantity + '" />');
+                    hiddenInputs.append('<input type="hidden" name="Items[' + index + '].Unit" value="' + item.unit + '" />');
+                    hiddenInputs.append('<input type="hidden" name="Items[' + index + '].Price" value="' + item.price + '" />');
+                });
+
+                var currTranslation = typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'JOD' : 'د.أ';
+                $('#totalPrice').html(total.toFixed(2) + ' <span data-i18n="currency.jod">' + currTranslation + '</span>');
+            }
+
+            // ─── Remove item (event delegation) ───
+            $(document).on('click', '.so-remove-btn', function () {
+                var index = $(this).data('index');
+                items.splice(index, 1);
+                renderTable();
+            });
+
+            // ─── Reset Inputs ───
+            function resetInputs() {
+                $('#productSearch').val(null).trigger('change');
+                $('#itemQuantity').val(1);
+                $('#itemUnit').val('كيلو');
+            }
+
+            // ─── Error Handling ───
+            function showError(message) {
+                $('#errorText').text(message);
+                $('#addItemError').removeClass('d-none');
+                setTimeout(function () { hideError(); }, 4000);
+            }
+
+            function hideError() {
+                $('#addItemError').addClass('d-none');
+            }
+
+            $('#orderForm').on('submit', function (e) {
+                if (items.length === 0) {
+                    e.preventDefault();
+                    showError(typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'Please add at least one product before submitting the order' : 'الرجاء إضافة منتج واحد على الأقل قبل إرسال الطلب');
+                }
+            });
+        });
+    </script>
 }

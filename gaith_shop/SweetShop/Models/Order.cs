@@ -34,7 +34,14 @@ public class Order
     public DateTime OrderPlaced { get; set; }
 
     [Display(Name = "الحالة")]
-    public string Status { get; set; } = "معلق";
+    public string Status { get; set; } = "Pending";
+
+    [Display(Name = "حالة الدفع")]
+    public string PaymentStatus { get; set; } = "Pending";
+
+    public string? TransactionId { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
 }
 
 public class OrderDetail
@@ -42,8 +49,11 @@ public class OrderDetail
     public int Id { get; set; }
     public int OrderId { get; set; }
     public int ProductId { get; set; }
+
+    public int? ProductVariantId { get; set; }
+    public ProductVariant? ProductVariant { get; set; }
     public int Amount { get; set; }
-    
+
     [Column(TypeName = "decimal(18,2)")]
     public decimal Price { get; set; }
 

@@ -7,7 +7,13 @@
 
 html {
   font-size: 14px;
+  overflow-x: hidden;
 }
+
+body {
+  overflow-x: hidden;
+}
+
 
 @media (min-width: 768px) {
   html {
@@ -152,6 +158,16 @@ header {
   font-size: 0.75rem;
 }
 
+.topbar-contact-link {
+  color: inherit;
+  transition: color 0.25s ease;
+}
+
+.topbar-contact-link:hover,
+.topbar-contact-link:hover .text-primary-custom {
+  color: #C7AE6A !important;
+}
+
 /* Responsive adjustments for top header */
 @media (max-width: 576px) {
   .top-header .container {
@@ -209,49 +225,356 @@ header {
 
 /* Adjust for LTR/RTL mixed content if needed, but existing layout is RTL base */
 
-/* Sticky Header Styles */
+/* ============================================================
+   STICKY HEADER — Dark Navy Luxury Design
+   تصميم الهيدر الثابت — خلفية كحلية داكنة فاخرة
+   RTL | Flexbox | Full Animations | Fully Responsive
+   ============================================================ */
+
+/* ── 1. إخفاء الشريط العلوي (Top Bar) عند تفعيل وضع الإلصاق ── */
 body.sticky-mode .top-header {
   display: none;
 }
 
+/* ── 2. تثبيت الـ Header — خلفية كحلية داكنة فاخرة ── */
 body.sticky-mode header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1050;
-  animation: slideDown 0.3s ease-in-out;
+  /* ❌ لا overflow:hidden — لأنه يخفي قائمة الـ Dropdown */
+
+  /* خلفية كحلية داكنة متدرجة أنيقة */
+  background: linear-gradient(135deg,
+      #0b1929 0%,
+      #0f2233 35%,
+      #0c2040 65%,
+      #0b1929 100%) !important;
+
+  /* حد سفلي ذهبي خفيف يُعطي لمسة فاخرة */
+  border-bottom: 1px solid rgba(199, 174, 106, 0.35) !important;
+
+  /* ظل داكن عميق */
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.55),
+    0 1px 0 rgba(199, 174, 106, 0.18) inset !important;
+
+  /* انيميشن الظهور من الأعلى */
+  animation: stickySlideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-body.sticky-mode .main-header {
-  padding-top: 15px !important;
-  padding-bottom: 15px !important;
-  min-height: 80px;
+/* ── نجوم متلألئة في خلفية الهيدر ──
+   clip-path تحتوي النجوم داخل الهيدر فقط بدون overflow:hidden ── */
+body.sticky-mode header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* clip-path تمنع النجوم من الخروج خارج الهيدر */
+  clip-path: inset(0);
+  background-image:
+    radial-gradient(1px 1px at 8% 25%, rgba(255, 255, 255, 0.50) 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 70%, rgba(255, 255, 255, 0.35) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 33% 40%, rgba(255, 255, 255, 0.45) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 15%, rgba(255, 255, 255, 0.30) 0%, transparent 100%),
+    radial-gradient(1px 1px at 57% 80%, rgba(255, 255, 255, 0.40) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 68% 30%, rgba(255, 255, 255, 0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 60%, rgba(199, 174, 106, 0.30) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 20%, rgba(255, 255, 255, 0.50) 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 75%, rgba(255, 255, 255, 0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 42% 55%, rgba(199, 174, 106, 0.20) 0%, transparent 100%);
+  animation: starsTwinkle 5s ease-in-out infinite alternate;
 }
 
-body.sticky-mode .main-header .container-fluid {
-  justify-content: center !important;
-  position: relative;
-  padding-right: 0 !important;
-  padding-left: 0 !important;
+@keyframes starsTwinkle {
+  0% {
+    opacity: 0.45;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.60;
+  }
+
+  100% {
+    opacity: 0.85;
+  }
 }
 
-body.sticky-mode .main-header img {
-  height: 65px !important;
-  /* Larger logo size for better visibility */
-  transition: height 0.3s ease;
+/* ── 3. أنيميشن الانزلاق للأسفل عند ظهور الهيدر ── */
+@keyframes stickySlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Hide Search and Cart in Sticky Mode */
-body.sticky-mode .main-header form,
-body.sticky-mode .main-header .d-flex.align-items-center.gap-4 {
+/* ── 4. إخفاء عناصر الهيدر الأصلي (بحث، شعار كبير، أيقونات الأكشن) ── */
+body.sticky-mode .mh-logo-default,
+body.sticky-mode .mh-search-wrap,
+body.sticky-mode .mh-actions,
+body.sticky-mode .mh-mobile-search {
   display: none !important;
 }
 
-/* Center the Logo Group */
-body.sticky-mode .main-header a[asp-controller="Home"] {
-  margin: 0 auto;
+/* ── 5. إظهار العناصر الخاصة بوضع الإلصاق ── */
+body.sticky-mode .sticky-center-logo,
+body.sticky-mode .sticky-extras,
+body.sticky-mode .sticky-categories,
+body.sticky-mode .sticky-user-icon {
+  display: flex !important;
 }
 
+/* ── 6. ضبط ارتفاع وتوزيع الـ mh-inner في وضع الإلصاق ── */
+body.sticky-mode .mh-inner {
+  min-height: 72px;
+  align-items: center;
+  position: relative;
+  /* مهم لتحديد مواضع العناصر المُطلقة بداخله */
+}
+
+/* ── 7. اللوجو المركزي — في المنتصف تماماً مع تأثير تكبير عند Hover ── */
+body.sticky-mode .sticky-center-logo {
+  position: absolute !important;
+  /* تحديد الموضع مطلق داخل mh-inner */
+  left: 50%;
+  transform: translateX(-50%);
+  /* توسيط مثالي بغض النظر عن حجم الشعار */
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+/* تأثير التكبير عند مرور الماوس على اللوجو */
+body.sticky-mode .sticky-center-logo:hover {
+  transform: translateX(-50%) scale(1.07);
+}
+
+/* ── 8. مجموعة الأيقونات على اليسار (عربة، بحث، هاتف) ──
+   نستخدم position:absolute على اليسار لضمان الفصل الصحيح عن اللوجو المركزي ── */
+body.sticky-mode .sticky-extras {
+  display: flex !important;
+  align-items: center;
+  gap: 20px;
+  /* مسافة متناسقة بين الأيقونات */
+  position: absolute !important;
+  left: 40px;
+  /* يسار الشاشة في RTL = اليسار الفعلي للصفحة */
+}
+
+/* تنسيق أيقونات sticky-extras (عربة، بحث، هاتف) — بيضاء على الخلفية الداكنة */
+body.sticky-mode .sticky-extras a {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.25s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* تأثير الارتفاع وتغيير اللون الذهبي عند Hover على الأيقونات */
+body.sticky-mode .sticky-extras a:hover {
+  color: #C7AE6A !important;
+  /* اللون الذهبي */
+  transform: translateY(-3px);
+  /* ارتفاع خفيف للأعلى */
+}
+
+/* ── 9. شارة عدد منتجات السلة — دائرية، ذهبية، بحدود بيضاء ── */
+body.sticky-mode #sticky-cart-badge {
+  /* إعادة تعريف شكل البادج ليطابق المتطلبات */
+  position: absolute !important;
+  top: -8px !important;
+  right: -8px !important;
+  /* في RTL هذا على اليمين/الخارج */
+  left: auto !important;
+  transform: none !important;
+
+  /* شكل دائري واضح */
+  width: 18px;
+  height: 18px;
+  border-radius: 50% !important;
+  padding: 0 !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* لون ذهبي مع حدود بيضاء */
+  background-color: #C7AE6A !important;
+  color: #fff !important;
+  border: 2px solid #fff;
+
+  font-size: 0.6rem !important;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(199, 174, 106, 0.5);
+}
+
+/* ── 10. زر "جميع الأصناف" — Pill-shape بتدرج ازرق مخضر، يرتفع عند Hover ──
+    يقع على اليمين في نظام RTL ── */
+body.sticky-mode .sticky-categories {
+  display: flex !important;
+  align-items: center;
+  position: absolute !important;
+  right: 80px;
+  /* يمين الشاشة في RTL (بجانب أيقونة المستخدم) */
+}
+
+/* تنسيق زر جميع الأصناف */
+body.sticky-mode .sticky-categories .btn,
+body.sticky-mode #stickyCategoriesDropdown {
+  /* تصميم Pill-shape بحواف دائرية كاملة */
+  border-radius: 50px !important;
+
+  /* خلفية متدرجة باللون الأزرق المخضر */
+  background: linear-gradient(135deg, #1A8CB0 0%, #1578a0 60%, #127090 100%) !important;
+  border: none !important;
+  color: #fff !important;
+
+  /* حجم وحشو مناسبان */
+  padding: 8px 20px !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  gap: 8px;
+
+  /* انتقال سلس */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease !important;
+  box-shadow: 0 3px 12px rgba(26, 140, 176, 0.3);
+}
+
+/* تأثير الارتفاع والظل عند Hover على زر الأصناف */
+body.sticky-mode .sticky-categories .btn:hover,
+body.sticky-mode #stickyCategoriesDropdown:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(26, 140, 176, 0.45) !important;
+  background: linear-gradient(135deg, #1d97bf 0%, #1A8CB0 100%) !important;
+}
+
+/* قائمة الـ Dropdown الخاصة بالأصناف */
+body.sticky-mode .sticky-categories .dropdown-menu {
+  /* خلفية داكنة تتناسق مع الهيدر */
+  background: #0d1e30 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(199, 174, 106, 0.25) !important;
+  animation: stickyFadeIn 0.22s ease;
+}
+
+/* عناصر الـ Dropdown — نص أبيض */
+body.sticky-mode .sticky-categories .dropdown-menu .dropdown-item {
+  color: rgba(255, 255, 255, 0.82) !important;
+  transition: background 0.2s ease, color 0.2s ease, padding-right 0.2s ease;
+}
+
+body.sticky-mode .sticky-categories .dropdown-menu .dropdown-item:hover {
+  background: rgba(26, 140, 176, 0.2) !important;
+  color: #C7AE6A !important;
+  /* تتحول ذهبية عند Hover */
+  padding-right: 1.4rem !important;
+}
+
+@keyframes stickyFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 11. أيقونة المستخدم — أقصى اليمين، Outline تمتلئ عند Hover ── */
+body.sticky-mode .sticky-user-icon {
+  display: flex !important;
+  align-items: center;
+  position: absolute !important;
+  right: 20px;
+  /* أقصى اليمين في RTL */
+}
+
+/* تصميم أيقونة المستخدم: دائرة مفرغة (Outline) */
+body.sticky-mode .sticky-user-icon a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Outline أبيض شفاف — يظهر بوضوح على الخلفية الداكنة */
+  background: transparent !important;
+  border: 2px solid rgba(255, 255, 255, 0.75) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+
+  /* انتقال سلس للامتلاء */
+  transition: background 0.28s ease, border-color 0.28s ease,
+    color 0.28s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.28s ease;
+}
+
+/* عند Hover: الأيقونة تمتلئ باللون الفيروزي */
+body.sticky-mode .sticky-user-icon a:hover {
+  background: #1A8CB0 !important;
+  border-color: #1A8CB0 !important;
+  color: #fff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(26, 140, 176, 0.55);
+}
+
+/* ── 12. Responsive — شاشات الموبايل (أقل من 992px) ──
+   إخفاء زر الأصناف النصي والإبقاء على الأيقونات الأساسية فقط ── */
+@media (max-width: 992px) {
+
+  /* إخفاء زر "جميع الأصناف" كاملاً في الموبايل لمنع التداخل */
+  body.sticky-mode .sticky-categories {
+    display: none !important;
+  }
+
+  /* تقليل المسافة بين الأيقونات على الشاشات الصغيرة */
+  body.sticky-mode .sticky-extras {
+    gap: 14px;
+    left: 16px;
+  }
+
+  /* تقليل حجم أيقونة المستخدم قليلاً */
+  body.sticky-mode .sticky-user-icon a {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* تقليل ارتفاع الهيدر الثابت في الموبايل */
+  body.sticky-mode .mh-inner {
+    min-height: 60px;
+  }
+
+  /* تصغير حجم الشعار في الموبايل */
+  body.sticky-mode .sticky-center-logo img {
+    height: 45px !important;
+  }
+}
+
+/* ── تعريف slideDown للاستخدام العام (كان موجوداً سابقاً) ── */
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
@@ -260,38 +583,6 @@ body.sticky-mode .main-header a[asp-controller="Home"] {
   to {
     transform: translateY(0);
   }
-}
-
-/* Show Sticky Extras */
-body.sticky-mode .sticky-extras {
-  display: flex !important;
-  position: absolute;
-  left: 20px;
-}
-
-/* Hide Default Logo and Slogan in Sticky Mode */
-body.sticky-mode .default-logo {
-  display: none !important;
-}
-
-/* Hide the old sticky logo */
-body.sticky-mode .sticky-logo {
-  display: none !important;
-}
-
-/* Show Center Logo in Sticky Mode */
-body.sticky-mode .sticky-center-logo {
-  display: flex !important;
-}
-
-/* Show User Icon on Right in Sticky Mode */
-body.sticky-mode .sticky-user-icon {
-  display: flex !important;
-}
-
-/* Show Categories Dropdown on Right in Sticky Mode */
-body.sticky-mode .sticky-categories {
-  display: flex !important;
 }
 
 /* Hero Carousel Styles */
@@ -968,5 +1259,940 @@ body.sticky-mode .sticky-categories {
 
   .category-overlay {
     padding: 1rem 0.75rem;
+  }
+}
+
+/* ════════════════════════════════════
+   CART OVERLAY BACKDROP
+════════════════════════════════════ */
+.cart-overlay-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 47, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1059;
+  /* below offcanvas (1060) but above everything else */
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  cursor: pointer;
+}
+
+.cart-overlay-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════
+   CATEGORIES NAV BAR  (cn-*)  — Luxury Minimalist
+══════════════════════════════════════════════ */
+
+/* ── Bar wrapper ── */
+.cn-bar {
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+  /* رفيع يفصله عن الهيدر */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .07);
+  /* يطفو فوق البانر */
+  position: relative;
+  z-index: 100;
+}
+
+/* ── Inner flex row ── */
+.cn-inner {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  padding: 0 16px;
+  direction: rtl;
+}
+
+/* ── All Categories button ── */
+.cn-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #178ca4;
+  color: #fff;
+  font-family: 'Cairo', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 30px;
+  /* حواف دائرية ناعمة */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .22s ease, box-shadow .22s ease;
+  box-shadow: 0 3px 12px rgba(23, 140, 164, .25);
+}
+
+.cn-all-btn:hover,
+.cn-all-btn:focus {
+  background: #126e82;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 5px 18px rgba(23, 140, 164, .38);
+}
+
+.cn-chevron {
+  font-size: .68rem;
+  transition: transform .22s;
+}
+
+.cn-all-btn[aria-expanded="true"] .cn-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown menu ── */
+.cn-dropdown-menu {
+  font-family: 'Cairo', sans-serif;
+  min-width: 210px;
+  border: 1px solid rgba(0, 0, 0, .07);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .11);
+  border-radius: 12px;
+  padding: 8px 0;
+  direction: rtl;
+}
+
+.cn-dd-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: .88rem;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  transition: color .18s;
+}
+
+.cn-dd-item i {
+  color: #178ca4;
+  font-size: .82rem;
+  width: 18px;
+  text-align: center;
+}
+
+.cn-dd-item:hover {
+  background: transparent;
+  /* no bg on hover */
+  color: #cda45e;
+  /* golden */
+}
+
+.cn-dd-item:hover i {
+  color: #cda45e;
+}
+
+/* ── Vertical separator ── */
+.cn-sep {
+  width: 1px;
+  height: 28px;
+  background: #e8e8e8;
+  margin: 0 14px;
+  flex-shrink: 0;
+}
+
+/* ── Desktop links wrapper ── */
+.cn-links-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Links list ── */
+.cn-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  height: 100%;
+  flex-wrap: nowrap;
+}
+
+/* ── Individual link ── */
+.cn-link {
+  font-family: 'Cairo', sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
+  color: #222;
+  text-decoration: none;
+  padding: 0 16px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  transition: color .22s;
+}
+
+/* Golden dot under link on hover */
+.cn-link::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #cda45e;
+  transition: transform .22s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.cn-link:hover,
+.cn-link:focus {
+  color: #cda45e;
+  text-decoration: none;
+  outline: none;
+}
+
+.cn-link:hover::after,
+.cn-link:focus::after {
+  transform: translateX(-50%) scale(1);
+}
+
+/* ── Admin special link ── */
+.cn-admin-link {
+  color: #178ca4 !important;
+  border: 1px solid #178ca4;
+  border-radius: 20px;
+  padding: 4px 14px;
+  height: auto;
+  margin: auto 8px;
+}
+
+.cn-admin-link:hover {
+  background: #178ca4;
+  color: #fff !important;
+}
+
+.cn-admin-link::after {
+  display: none;
+}
+
+/* ══════════════════════════════
+   OFF-CANVAS (Mobile)
+══════════════════════════════ */
+.cn-offcanvas {
+  width: 280px;
+  border-left: none;
+}
+
+.cn-oc-header {
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: 'Cairo', sans-serif;
+  padding: 18px 20px;
+  direction: rtl;
+}
+
+.cn-oc-header .offcanvas-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cn-mob-links {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  direction: rtl;
+}
+
+.cn-mob-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 24px;
+  font-family: 'Cairo', sans-serif;
+  font-size: .92rem;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  transition: color .18s, background .18s;
+}
+
+.cn-mob-link i {
+  color: #178ca4;
+  font-size: .9rem;
+  width: 20px;
+  text-align: center;
+}
+
+.cn-mob-link:hover {
+  background: #faf8f4;
+  color: #cda45e;
+}
+
+.cn-mob-link:hover i {
+  color: #cda45e;
+}
+
+.cn-mob-sep {
+  border-top: 1px solid #f0f0f0;
+  margin: 6px 0;
+}
+
+.cn-mob-admin {
+  color: #178ca4 !important;
+  font-weight: 700;
+}
+
+.cn-mob-admin:hover {
+  color: #126e82 !important;
+}
+
+/* Mobile: hide desktop links, show only the btn */
+@media (max-width: 767.98px) {
+  .cn-sep {
+    display: none;
+  }
+
+  .cn-inner {
+    padding: 0 12px;
+    height: 50px;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   MAIN HEADER (mh-*)  — Luxury Redesign
+   3 columns: Logo | Pill Search | Account+Cart
+══════════════════════════════════════════════════ */
+
+/* ── Outer wrapper ── */
+.mh-wrap {
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .055);
+  position: relative;
+}
+
+/* ── Inner flex row ── */
+.mh-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 14px 80px;
+}
+
+/* ────────────────────────────
+   Logo section
+──────────────────────────── */
+.mh-logo-link {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.mh-logo-default {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mh-logo-img {
+  height: 76px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.mh-brand {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #c7ae6a;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.mh-logo-sticky {
+  height: 58px;
+}
+
+/* ────────────────────────────
+   Pill Search Bar
+──────────────────────────── */
+.mh-search-wrap {
+  flex: 1;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.mh-search-form {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 50px;
+  /* full pill */
+  overflow: hidden;
+  transition: border-color .22s ease, box-shadow .22s ease;
+}
+
+.mh-search-form:focus-within {
+  border-color: #178ca4;
+  box-shadow: 0 0 0 4px rgba(23, 140, 164, .10);
+}
+
+.mh-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Cairo', sans-serif;
+  font-size: .92rem;
+  color: #333;
+  padding: 11px 22px;
+  direction: rtl;
+  /* remove browser default clear button */
+}
+
+.mh-search-input::placeholder {
+  color: #aaa;
+  font-weight: 400;
+}
+
+.mh-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.mh-search-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin: 4px;
+  border-radius: 50%;
+  background: #178ca4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background .22s ease, transform .18s ease;
+}
+
+.mh-search-btn:hover {
+  background: #126e82;
+  transform: scale(1.06);
+}
+
+/* ────────────────────────────
+   Action Buttons (Account & Cart)
+──────────────────────────── */
+.mh-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mh-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #333;
+  font-family: 'Cairo', sans-serif;
+  transition: color .22s, background .22s;
+}
+
+.mh-action-btn:hover,
+.mh-action-btn:focus {
+  color: #178ca4;
+  background: rgba(23, 140, 164, .07);
+  outline: none;
+  text-decoration: none;
+}
+
+.mh-icon {
+  font-size: 1.45rem;
+  line-height: 1;
+  font-weight: 300;
+  /* outline feel */
+}
+
+.mh-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #178ca4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  margin-bottom: -1px;
+  /* Align slightly if needed */
+}
+
+
+.mh-action-label {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+/* ── Cart icon wrapper ── */
+.mh-cart-icon-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Cart badge (golden, circle) ── */
+.mh-badge {
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  /* RTL: right side = visual left on badge */
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 50px;
+  background: #cda45e;
+  color: #fff;
+  font-family: 'Cairo', sans-serif;
+  font-size: .6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(205, 164, 94, .4);
+}
+
+/* Hide badge when 0 */
+.mh-badge:empty,
+.mh-badge[data-count="0"] {
+  display: none;
+}
+
+/* ── User avatar circle ── */
+.mh-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #178ca4, #0e6475);
+  color: #fff;
+  font-family: 'Cairo', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: .02em;
+}
+
+/* ────────────────────────────
+   Mobile: bottom search row
+──────────────────────────── */
+.mh-mobile-search {
+  background: #ffffff;
+  padding: 8px 16px 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mh-mobile-search .mh-search-form {
+  border-radius: 50px;
+}
+
+.mh-mobile-search .mh-search-input {
+  font-size: .88rem;
+  padding: 9px 18px;
+}
+
+.mh-mobile-search .mh-search-btn {
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+  font-size: .9rem;
+}
+
+/* ────────────────────────────
+   Responsive tweaks
+──────────────────────────── */
+@media (max-width: 991.98px) {
+  .mh-inner {
+    padding: 10px 24px;
+    gap: 16px;
+  }
+
+  .mh-logo-img {
+    height: 62px;
+  }
+
+  .mh-brand {
+    font-size: 1.2rem;
+  }
+}
+
+/* On mobile: hide centre search (it moves below), compact logo */
+@media (max-width: 767.98px) {
+  .mh-search-wrap {
+    display: none;
+  }
+
+  .mh-inner {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .mh-logo-img {
+    height: 52px;
+  }
+
+  .mh-brand {
+    font-size: 1rem;
+  }
+
+  .mh-action-btn {
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 991.98px) {
+
+  body.sticky-mode .sticky-categories,
+  body.sticky-mode .sticky-user-icon {
+    display: none !important;
+    /* إخفاء الأزرار الكبيرة في الجوال لتجنب التداخل */
+  }
+
+  body.sticky-mode .sticky-extras {
+    left: 20px;
+    /* تقليل المسافة في الجوال */
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   LANGUAGE SWITCHER DROPDOWN
+   ============================================================ */
+
+/* Wrapper — positioned relative so the dropdown is anchored to it */
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Trigger button */
+.lang-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  font-size: 0.75rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: 500;
+  color: #333;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.lang-switcher-btn:hover,
+.lang-switcher-btn:focus {
+  color: #1A8CB0;
+  border-color: rgba(26, 140, 176, 0.3);
+  background: rgba(26, 140, 176, 0.06);
+  outline: none;
+}
+
+/* Chevron icon — rotates when open */
+.lang-chevron {
+  font-size: 0.65rem;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lang-switcher.is-open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel */
+.lang-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  position: absolute;
+  /* In RTL the button is on the right side of the page, so align the panel to the right */
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 130px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 2000;
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  pointer-events: none;
+}
+
+/* Open state */
+.lang-switcher.is-open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Individual option buttons */
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #444;
+  text-align: start;
+  transition: background 0.18s ease, color 0.18s ease;
+  border-radius: 0;
+}
+
+.lang-option:hover {
+  background: rgba(26, 140, 176, 0.09);
+  color: #1A8CB0;
+}
+
+/* Active / selected language */
+.lang-option--active {
+  color: #1A8CB0;
+  font-weight: 700;
+}
+
+.lang-option--active::after {
+  content: '✓';
+  margin-inline-start: auto;
+  font-size: 0.75rem;
+  color: #C7AE6A;
+}
+
+/* Flag emoji sizing */
+.lang-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ============================================================
+   PAYMENT PAGE — Luxury Design
+   ============================================================ */
+
+.payment-card-luxury {
+  border: 1px solid rgba(199, 174, 106, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
+.payment-header-luxury {
+  background: linear-gradient(135deg, #0b1929 0%, #0f2233 35%, #0c2040 65%, #0b1929 100%) !important;
+  border-bottom: 2px solid rgba(199, 174, 106, 0.4) !important;
+  color: #fff !important;
+}
+
+.payment-header-luxury h3,
+.payment-header-luxury p {
+  color: #fff !important;
+}
+
+.payment-header-luxury h3 {
+  font-family: 'Readex Pro', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.payment-input-luxury {
+  border-radius: 50px !important;
+  background-color: #f8f9fa !important;
+  border: 1px solid #e0e0e0 !important;
+  transition: all 0.3s ease;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02) inset;
+}
+
+.payment-input-luxury:focus {
+  background-color: #fff !important;
+  border-color: #1A8CB0 !important;
+  box-shadow: 0 0 0 4px rgba(26, 140, 176, 0.15) !important;
+  outline: none;
+}
+
+.payment-input-group-luxury {
+  border-radius: 50px !important;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02) inset;
+}
+
+.payment-input-group-luxury:focus-within {
+  background-color: #fff;
+  border-color: #1A8CB0;
+  box-shadow: 0 0 0 4px rgba(26, 140, 176, 0.15);
+}
+
+.payment-input-group-luxury .form-control {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+.payment-input-group-luxury .input-group-text {
+  background-color: transparent !important;
+  border: none !important;
+  color: #1A8CB0 !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.btn-payment-luxury {
+  background: linear-gradient(135deg, #1A8CB0 0%, #1578a0 60%, #127090 100%) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  padding: 14px 30px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  box-shadow: 0 4px 15px rgba(26, 140, 176, 0.3) !important;
+}
+
+.btn-payment-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(26, 140, 176, 0.45) !important;
+  background: linear-gradient(135deg, #1d97bf 0%, #1A8CB0 100%) !important;
+}
+
+.payment-cancel-link {
+  color: #6c757d;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.payment-cancel-link:hover {
+  color: #1A8CB0 !important;
+  transform: translateY(-1px);
+}
+
+.payment-amount-box {
+  background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  border: 1px solid rgba(199, 174, 106, 0.2);
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS FIXES (max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 1. Top Bar Fixes */
+  .top-header .container-fluid {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 10px !important;
+  }
+  .top-header .header-divider-group {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px !important;
+  }
+  .top-header .header-divider-group > :not(:last-child)::after {
+    display: none !important;
+  }
+  .topbar-contact-link[href^="mailto:"] {
+    display: none !important; /* Hide email to save space */
+  }
+  
+  /* 2. Header Icons Fixes */
+  .mh-inner {
+    flex-wrap: wrap;
+  }
+  .mh-actions {
+    gap: 10px !important;
+  }
+  .sticky-extras {
+    left: 10px !important;
+    gap: 10px !important;
+  }
+  .mh-brand {
+    font-size: 20px !important;
+  }
+  
+  /* 3. Hero Section Fixes */
+  .hc-title {
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+  }
+  .hc-sub {
+    font-size: 1rem !important;
+    margin-bottom: 20px !important;
+  }
+  .hc-btns {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .hc-btns .hc-btn-primary, .hc-btns .hc-btn-ghost {
+    width: 90% !important;
+    justify-content: center !important;
+    margin-bottom: 10px;
+    padding: 15px 20px !important;
+  }
+  
+  /* Fix overlapping of Lang Switcher and Currency */
+  .lang-switcher-btn {
+    font-size: 0.85rem !important;
+    padding: 4px 8px !important;
+  }
+
+  /* 4. Floating Button Fixes */
+  #scrollToTopBtn {
+    bottom: 80px !important;
+    z-index: 1040 !important;
   }
 }

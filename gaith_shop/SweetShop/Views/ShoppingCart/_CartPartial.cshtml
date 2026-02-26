@@ -1,75 +1,87 @@
 @model ShoppingCartViewModel
 
+<!-- ═══════════════════════════════════════
+     SIDE DRAWER CART — Arabic RTL
+═══════════════════════════════════════ -->
+
 <!-- Header -->
-<div class="cart-offcanvas-header d-flex justify-content-between align-items-center">
-    <h5 class="cart-title">سلة المشتريات</h5>
-    <button type="button" class="cart-close-btn btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<div class="sc-header">
+    <h5 class="sc-title">
+        <i class="bi bi-bag-heart sc-title-icon"></i>
+        <span data-i18n="cart.title">سلة المشتريات</span>
+    </h5>
+    <button type="button" class="sc-close-btn" data-bs-dismiss="offcanvas" aria-label="إغلاق">
+        <i class="bi bi-x-lg"></i>
+    </button>
 </div>
+<div class="sc-header-divider"></div>
 
 <!-- Body -->
-<div class="cart-body offcanvas-body p-0">
+<div class="sc-body offcanvas-body p-0">
+
     @if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
     {
-        <!-- Items Container -->
-        <div class="cart-items-container">
+        <!-- Items -->
+        <div class="sc-items-wrap">
             @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
             {
-                <div class="cart-item-card">
-                    <div class="d-flex gap-3 align-items-start">
-                        <!-- Product Image (Right side for RTL) -->
-                        <img src="@line.Product.ImageUrl" alt="@line.Product.Name" class="cart-item-image">
+                <div class="sc-item">
 
-                        <!-- Product Details -->
-                        <div class="cart-item-details">
-                            <!-- Name and Remove Button -->
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <h6 class="cart-item-name">@line.Product.Name</h6>
-                                    <small class="cart-item-price">@line.Product.Price.ToString("c")</small>
-                                </div>
-                                <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart"
-                                    asp-route-productId="@line.Product.Id" class="cart-remove-btn ajax-remove-from-cart"
-                                    title="حذف">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </div>
+                    <!-- ① Image — far right -->
+                    <img src="@line.Product.ImageUrl" alt="@line.Product.Name" class="sc-item-img" />
 
-                            <!-- Quantity and Total -->
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                                <div class="cart-quantity-controls">
-                                    <button class="cart-quantity-btn ajax-decrease-quantity" data-product-id="@line.Product.Id"
-                                        title="تقليل">
-                                        <i class="bi bi-dash"></i>
-                                    </button>
-                                    <span class="cart-quantity-display">@line.Amount</span>
-                                    <button class="cart-quantity-btn ajax-increase-quantity" data-product-id="@line.Product.Id"
-                                        title="زيادة">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                </div>
-                                <strong class="cart-item-total">@((line.Amount * line.Product.Price).ToString("c"))</strong>
-                            </div>
-                        </div>
+                    <!-- ② Name + unit price -->
+                    <div class="sc-item-info">
+                        <span class="sc-item-name">@line.Product.Name</span>
+                        <small class="sc-item-unit-price"><span
+                                data-price="@line.Product.Price">@line.Product.Price.ToString("c")</span> <span
+                                data-i18n="cart.unitPiece">/
+                                قطعة</span></small>
                     </div>
+
+                    <!-- ③ Quantity pill — centre -->
+                    <div class="sc-qty-pill">
+                        <button class="sc-qty-btn ajax-decrease-quantity" data-product-id="@line.Product.Id" title="تقليل">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <span class="sc-qty-num">@line.Amount</span>
+                        <button class="sc-qty-btn ajax-increase-quantity" data-product-id="@line.Product.Id" title="زيادة">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+
+                    <!-- ④ Total + delete — far left -->
+                    <div class="sc-item-end">
+                        <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart"
+                            asp-route-productId="@line.Product.Id" class="sc-delete-btn ajax-remove-from-cart" title="حذف">
+                            <i class="bi bi-trash3-fill"></i>
+                        </a>
+                        <strong class="sc-item-total" data-price="@(line.Amount * line.Product.Price)">
+                            @((line.Amount * line.Product.Price).ToString("c"))
+                        </strong>
+                    </div>
+
                 </div>
             }
         </div>
 
         <!-- Footer -->
-        <div class="cart-footer">
-            <!-- Total Row -->
-            <div class="cart-total-row">
-                <span class="cart-total-label">المجموع</span>
-                <strong class="cart-total-amount">@Model.ShoppingCartTotal.ToString("c")</strong>
+        <div class="sc-footer">
+
+            <!-- Total box -->
+            <div class="sc-total-box">
+                <span class="sc-total-label" data-i18n="cart.total">المجموع</span>
+                <strong class="sc-total-amount"
+                    data-price="@Model.ShoppingCartTotal">@Model.ShoppingCartTotal.ToString("c")</strong>
             </div>
 
-            <!-- Checkout Button -->
-            <a class="cart-checkout-btn" asp-controller="Order" asp-action="Checkout">
-                إتمام الطلب
+            <!-- Checkout -->
+            <a class="sc-checkout-btn" asp-controller="Order" asp-action="Checkout" data-i18n="cart.checkout">
+                إتمام الطلب &nbsp;<i class="bi bi-arrow-left"></i>
             </a>
 
-            <!-- View Cart Link -->
-            <a class="cart-view-link" asp-controller="ShoppingCart" asp-action="Index">
+            <!-- View cart link -->
+            <a class="sc-view-link" asp-controller="ShoppingCart" asp-action="Index" data-i18n="cart.viewFull">
                 عرض السلة كاملة
             </a>
         </div>
@@ -77,15 +89,364 @@
     else
     {
         <!-- Empty State -->
-        <div class="cart-empty-state">
-            <i class="bi bi-cart-x cart-empty-icon"></i>
-            <p class="cart-empty-message">
-                لم تقم بإضافة حلويات بعد<br>
-                <small>ابدأ بتصفح منتجاتنا اللذيذة</small>
+        <div class="sc-empty">
+            <i class="bi bi-cart-x sc-empty-icon"></i>
+            <p class="sc-empty-msg">
+                <span data-i18n="cart.emptyMsg">لم تقم بإضافة حلويات بعد</span><br />
+                <small data-i18n="cart.emptySmall">ابدأ بتصفح منتجاتنا اللذيذة</small>
             </p>
-            <a class="cart-browse-btn" asp-controller="Product" asp-action="List" data-bs-dismiss="offcanvas">
+            <a class="sc-browse-btn" asp-controller="Product" asp-action="List" data-bs-dismiss="offcanvas"
+                data-i18n="cart.browse">
                 تصفح القائمة
             </a>
         </div>
     }
 </div>
+
+
+<!-- ═══════════════════════════════════════
+     STYLES — scoped to .sc-* classes
+═══════════════════════════════════════ -->
+<style>
+    /* ── tokens ── */
+    :root {
+        --sc-gold: #C7AE6A;
+        --sc-gold-lite: #f5edd9;
+        --sc-teal: #1A8CB0;
+        --sc-teal-dk: #136a87;
+        --sc-red: #e05252;
+        --sc-bg: #f8fafc;
+        --sc-border: #e8f0f5;
+        --sc-muted: #8ba3b4;
+        --sc-radius: 14px;
+        --sc-trans: 0.25s ease;
+    }
+
+    /* ── Header ── */
+    .sc-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px 14px;
+        direction: rtl;
+    }
+
+    .sc-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--sc-gold);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .sc-title-icon {
+        font-size: 1.2rem;
+    }
+
+    .sc-close-btn {
+        background: none;
+        border: none;
+        font-size: 1.15rem;
+        color: var(--sc-muted);
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 6px;
+        transition: color var(--sc-trans), background var(--sc-trans);
+        line-height: 1;
+    }
+
+    .sc-close-btn:hover {
+        color: var(--sc-red);
+        background: #fff0f0;
+    }
+
+    .sc-header-divider {
+        height: 1px;
+        background: var(--sc-border);
+        margin: 0 20px;
+    }
+
+    /* ── Body / scroll area ── */
+    .sc-body {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .sc-items-wrap {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px 14px;
+        direction: rtl;
+    }
+
+    .sc-items-wrap::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .sc-items-wrap::-webkit-scrollbar-thumb {
+        background: var(--sc-border);
+        border-radius: 99px;
+    }
+
+    /* ── Cart Item ── */
+    .sc-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        border: 1.5px solid var(--sc-border);
+        border-radius: var(--sc-radius);
+        padding: 12px 14px;
+        margin-bottom: 10px;
+        transition: border-color var(--sc-trans), box-shadow var(--sc-trans);
+        direction: rtl;
+    }
+
+    .sc-item:hover {
+        border-color: var(--sc-teal);
+        box-shadow: 0 4px 16px rgba(26, 140, 176, .10);
+    }
+
+    /* ① Image */
+    .sc-item-img {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--sc-gold);
+        flex-shrink: 0;
+    }
+
+    /* ② Info */
+    .sc-item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .sc-item-name {
+        font-size: .88rem;
+        font-weight: 700;
+        color: #1a2b38;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .sc-item-unit-price {
+        font-size: .72rem;
+        color: var(--sc-muted);
+    }
+
+    /* ③ Quantity pill */
+    .sc-qty-pill {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--sc-bg);
+        border: 1.5px solid var(--sc-border);
+        border-radius: 50px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+        padding: 2px 4px;
+        flex-shrink: 0;
+    }
+
+    .sc-qty-btn {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: none;
+        background: none;
+        color: var(--sc-teal);
+        font-size: .85rem;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: background var(--sc-trans), color var(--sc-trans);
+        line-height: 1;
+        padding: 0;
+    }
+
+    .sc-qty-btn:hover {
+        background: var(--sc-teal);
+        color: #fff;
+    }
+
+    .sc-qty-num {
+        min-width: 24px;
+        text-align: center;
+        font-size: .88rem;
+        font-weight: 700;
+        color: #1a2b38;
+    }
+
+    /* ④ End: delete + total */
+    .sc-item-end {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        flex-shrink: 0;
+    }
+
+    .sc-delete-btn {
+        color: var(--sc-red);
+        font-size: .9rem;
+        text-decoration: none;
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 6px;
+        transition: background var(--sc-trans);
+    }
+
+    .sc-delete-btn:hover {
+        background: #fff0f0;
+    }
+
+    .sc-item-total {
+        font-size: .85rem;
+        font-weight: 800;
+        color: var(--sc-teal);
+        white-space: nowrap;
+    }
+
+    /* ── Footer ── */
+    .sc-footer {
+        padding: 14px 16px 18px;
+        border-top: 1px solid var(--sc-border);
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        direction: rtl;
+        background: #fff;
+    }
+
+    /* Total box */
+    .sc-total-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--sc-bg);
+        border: 1.5px solid var(--sc-border);
+        border-radius: 12px;
+        padding: 12px 18px;
+    }
+
+    .sc-total-label {
+        font-size: .9rem;
+        font-weight: 700;
+        color: var(--sc-teal);
+    }
+
+    .sc-total-amount {
+        font-size: 1.15rem;
+        font-weight: 900;
+        color: var(--sc-gold);
+    }
+
+    /* Checkout button */
+    .sc-checkout-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 13px;
+        border-radius: 50px;
+        background: var(--sc-teal-dk);
+        color: #fff;
+        font-weight: 800;
+        font-size: .92rem;
+        text-decoration: none;
+        transition: background var(--sc-trans), box-shadow var(--sc-trans), transform var(--sc-trans);
+        box-shadow: 0 4px 14px rgba(19, 106, 135, .30);
+    }
+
+    .sc-checkout-btn:hover {
+        background: var(--sc-teal);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(26, 140, 176, .35);
+    }
+
+    /* View cart link */
+    .sc-view-link {
+        display: block;
+        text-align: center;
+        font-size: .82rem;
+        font-weight: 700;
+        color: var(--sc-teal-dk);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color var(--sc-trans);
+    }
+
+    .sc-view-link:hover {
+        color: var(--sc-gold);
+    }
+
+    /* ── Empty State ── */
+    .sc-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 60px 24px;
+        text-align: center;
+        direction: rtl;
+        flex: 1;
+    }
+
+    .sc-empty-icon {
+        font-size: 3.5rem;
+        color: var(--sc-border);
+    }
+
+    .sc-empty-msg {
+        color: var(--sc-muted);
+        font-size: .9rem;
+        line-height: 1.8;
+        margin: 0;
+    }
+
+    .sc-browse-btn {
+        padding: 10px 28px;
+        border-radius: 50px;
+        background: var(--sc-teal-dk);
+        color: #fff;
+        font-weight: 700;
+        font-size: .85rem;
+        text-decoration: none;
+        transition: background var(--sc-trans), transform var(--sc-trans);
+    }
+
+    .sc-browse-btn:hover {
+        background: var(--sc-teal);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    /* ── Responsive ── */
+    @@media (max-width: 400px) {
+        .sc-item {
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .sc-item-img {
+            width: 44px;
+            height: 44px;
+        }
+
+        .sc-qty-num {
+            min-width: 18px;
+        }
+    }
+</style>

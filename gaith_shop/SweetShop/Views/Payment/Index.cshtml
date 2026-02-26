@@ -1,0 +1,113 @@
+@model SweetShop.Models.Order
+
+@{
+    ViewData["Title"] = "بوابة الدفع";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card payment-card-luxury border-0 rounded-4 overflow-hidden">
+                <div class="card-header payment-header-luxury text-center py-4">
+                    <h3 class="fw-bold mb-0" data-i18n="payment.secureTitle">بوابة الدفع الآمنة</h3>
+                    <p class="mb-0 text-white-50 small mt-1"><i class="bi bi-shield-lock"></i> <span
+                            data-i18n="payment.mockDesc">تجربة دفع آمنة (Mock Environment)</span></p>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <!-- Order Summary -->
+                    <div class="payment-amount-box p-4 mb-4 text-center">
+                        <span class="text-muted d-block mb-2" data-i18n="payment.orderAmount">مبلغ الطلب للإيداع:</span>
+                        <h2 class="display-6 fw-bold text-dark mb-0" data-price="@Model.OrderTotal">
+                            @Model.OrderTotal.ToString("c")</h2>
+                        <span class="badge mt-2 px-3 py-2 rounded-pill shadow-sm" style="background-color: #C7AE6A; color: #fff;">
+                            <i class="bi bi-clock-history"></i> رقم الطلب: #@Model.Id
+                        </span>
+                    </div>
+
+                    <!-- Payment Form -->
+                    <form asp-controller="Payment" asp-action="ProcessPayment" method="post" id="mockPaymentForm">
+                        <input type="hidden" name="orderId" value="@Model.Id" />
+
+                        <h5 class="fw-bold mb-3 text-secondary" data-i18n="payment.cardDetails">تفاصيل البطاقة البنكية
+                        </h5>
+
+                        <div class="mb-4">
+                            <label class="form-label text-muted" data-i18n="payment.cardName">الاسم على البطاقة</label>
+                            <input type="text" name="cardName"
+                                class="form-control form-control-lg payment-input-luxury"
+                                value="@Model.FirstName @Model.LastName" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-muted" data-i18n="payment.cardNumber">رقم البطاقة</label>
+                            <div class="input-group payment-input-group-luxury">
+                                <span class="input-group-text"><i
+                                        class="bi bi-credit-card"></i></span>
+                                <input type="text" name="cardNumber"
+                                    class="form-control form-control-lg"
+                                    placeholder="0000 0000 0000 0000" maxlength="19" required>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-5">
+                            <div class="col-6">
+                                <label class="form-label text-muted" data-i18n="payment.expiry">تاريخ الانتهاء</label>
+                                <input type="text" name="expiry"
+                                    class="form-control form-control-lg payment-input-luxury text-center"
+                                    placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label text-muted">CVV</label>
+                                <div class="input-group payment-input-group-luxury">
+                                    <input type="password" name="cvv"
+                                        class="form-control form-control-lg text-center"
+                                        placeholder="***" maxlength="3" required>
+                                    <span class="input-group-text" data-bs-toggle="tooltip"
+                                        title="3 digits on back of card"><i
+                                            class="bi bi-question-circle"></i></span>
+                                </div>
+                                <small class="text-muted d-block mt-1" style="font-size:0.75rem;">(Use CVV
+                                    <strong>000</strong> to test payment failure)</small>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-3">
+                            <button type="submit"
+                                class="btn btn-payment-luxury btn-lg position-relative"
+                                id="payButton">
+                                <span class="btn-text" data-i18n="payment.payNow">دفع الآن</span>
+                                <span
+                                    class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle d-none text-white"
+                                    role="status" aria-hidden="true" id="paySpinner"></span>
+                            </button>
+                            <a asp-controller="Payment" asp-action="Cancel" asp-route-orderId="@Model.Id"
+                                class="payment-cancel-link text-center fw-bold text-decoration-none mt-2"
+                                data-i18n="payment.cancelBtn">إلغاء والعودة للمتجر</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer bg-light border-top-0 text-center py-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png"
+                        height="20" class="mx-2 opacity-75" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png"
+                        height="20" class="mx-2 opacity-75" alt="Mastercard">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('mockPaymentForm').addEventListener('submit', function () {
+        const btn = document.getElementById('payButton');
+        const text = btn.querySelector('.btn-text');
+        const spinner = document.getElementById('paySpinner');
+
+        btn.disabled = true;
+        text.style.opacity = '0';
+        spinner.classList.remove('d-none');
+    });
+</script>

@@ -2,12 +2,13 @@
 @{
     ViewData["Title"] = "تفاصيل الطلب";
     Layout = "_AdminLayout";
-    var statusColors = new Dictionary<string, string> {
-        ["معلق"] = "badge-pending",
-        ["قيد المعالجة"] = "badge-process",
-        ["مكتمل"] = "badge-done",
-        ["ملغى"] = "badge-cancelled"
-    };
+    var statusColors = new Dictionary<string, string>
+            {
+                ["Pending"] = "badge-pending",
+                ["Processing"] = "badge-process",
+                ["Shipped"] = "badge-done",
+                ["Delivered"] = "badge-done"
+            };
     var badgeCss = statusColors.ContainsKey(Model.Status) ? statusColors[Model.Status] : "badge-pending";
 }
 
@@ -29,12 +30,25 @@
                 </div>
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
                     <span style="color:#64748b;font-size:14px;">الحالة</span>
-                    <span class="status-badge @badgeCss">@Model.Status</span>
+                    <span class="status-badge @badgeCss">
+                        @{
+                            string translatedStatus = Model.Status switch
+                            {
+                                "Pending" => "معلق",
+                                "Processing" => "قيد المعالجة",
+                                "Shipped" => "مشحون",
+                                "Delivered" => "تم التوصيل",
+                                _ => Model.Status
+                            };
+                        }
+                        @translatedStatus
+                    </span>
                 </div>
                 <hr style="border-color:#f1f5f9;">
                 <div style="display:flex;justify-content:space-between;align-items:center;">
                     <span style="font-weight:600;font-size:15px;">الإجمالي</span>
-                    <span style="font-weight:700;color:#1A8CB0;font-size:18px;">@Model.OrderTotal.ToString("0.00") د.أ</span>
+                    <span style="font-weight:700;color:#1A8CB0;font-size:18px;">@Model.OrderTotal.ToString("0.00")
+                        د.أ</span>
                 </div>
             </div>
         </div>
@@ -45,18 +59,26 @@
                 <h5><i class="bi bi-person-fill me-2" style="color:#1A8CB0;"></i>بيانات العميل</h5>
             </div>
             <div class="admin-card-body" style="font-size:14px;">
-                <div style="margin-bottom:10px;"><span style="color:#94a3b8;display:block;font-size:12px;">الاسم</span><span style="font-weight:500;">@Model.FirstName @Model.LastName</span></div>
-                <div style="margin-bottom:10px;"><span style="color:#94a3b8;display:block;font-size:12px;">الهاتف</span><span dir="ltr">@Model.PhoneNumber</span></div>
-                <div style="margin-bottom:10px;"><span style="color:#94a3b8;display:block;font-size:12px;">البريد</span><span>@Model.Email</span></div>
+                <div style="margin-bottom:10px;"><span
+                        style="color:#94a3b8;display:block;font-size:12px;">الاسم</span><span
+                        style="font-weight:500;">@Model.FirstName @Model.LastName</span></div>
+                <div style="margin-bottom:10px;"><span
+                        style="color:#94a3b8;display:block;font-size:12px;">الهاتف</span><span
+                        dir="ltr">@Model.PhoneNumber</span></div>
+                <div style="margin-bottom:10px;"><span
+                        style="color:#94a3b8;display:block;font-size:12px;">البريد</span><span>@Model.Email</span></div>
                 <div><span style="color:#94a3b8;display:block;font-size:12px;">العنوان</span>
-                    <span>@Model.AddressLine1@(Model.AddressLine2 != null ? ", " + Model.AddressLine2 : ""), @Model.City, @Model.Country</span>
+                    <span>@Model.AddressLine1@(Model.AddressLine2 != null ? ", " + Model.AddressLine2 : ""),
+                        @Model.City, @Model.Country</span>
                 </div>
             </div>
         </div>
 
         <!-- Update Status -->
         <div class="admin-card">
-            <div class="admin-card-header"><h5><i class="bi bi-arrows-angle-contract me-2"></i>تحديث الحالة</h5></div>
+            <div class="admin-card-header">
+                <h5><i class="bi bi-arrows-angle-contract me-2"></i>تحديث الحالة</h5>
+            </div>
             <div class="admin-card-body">
                 <form asp-action="UpdateOrderStatus" method="post">
                     @Html.AntiForgeryToken()
@@ -64,10 +86,11 @@
                     <div class="admin-form-group">
                         <label>الحالة الجديدة</label>
                         <select name="status" class="admin-form-control admin-form-select">
-                            <option value="معلق" selected="@(Model.Status == "معلق")">⏳ معلق</option>
-                            <option value="قيد المعالجة" selected="@(Model.Status == "قيد المعالجة")">🔄 قيد المعالجة</option>
-                            <option value="مكتمل" selected="@(Model.Status == "مكتمل")">✅ مكتمل</option>
-                            <option value="ملغى" selected="@(Model.Status == "ملغى")">❌ ملغى</option>
+                            <option value="Pending" selected="@(Model.Status == "Pending")">⏳ معلق</option>
+                            <option value="Processing" selected="@(Model.Status == "Processing")">🔄 قيد المعالجة
+                            </option>
+                            <option value="Shipped" selected="@(Model.Status == "Shipped")">📦 مشحون</option>
+                            <option value="Delivered" selected="@(Model.Status == "Delivered")">✅ تم التوصيل</option>
                         </select>
                     </div>
                     <button type="submit" class="btn-admin-primary" style="width:100%;justify-content:center;">
@@ -82,7 +105,8 @@
     <div class="col-lg-8">
         <div class="admin-card">
             <div class="admin-card-header">
-                <h5><i class="bi bi-cart-fill me-2" style="color:#1A8CB0;"></i>المنتجات المطلوبة (@Model.OrderDetails.Count عنصر)</h5>
+                <h5><i class="bi bi-cart-fill me-2" style="color:#1A8CB0;"></i>المنتجات المطلوبة
+                    (@Model.OrderDetails.Count عنصر)</h5>
                 <a asp-action="Orders" style="color:#94a3b8;font-size:13px;text-decoration:none;">
                     <i class="bi bi-arrow-right me-1"></i>العودة للطلبات
                 </a>
@@ -105,7 +129,8 @@
                                     <div style="display:flex;align-items:center;gap:10px;">
                                         @if (!string.IsNullOrEmpty(detail.Product?.ImageUrl))
                                         {
-                                            <img src="@detail.Product.ImageUrl" style="width:40px;height:40px;border-radius:8px;object-fit:cover;">
+                                            <img src="@detail.Product.ImageUrl"
+                                                style="width:40px;height:40px;border-radius:8px;object-fit:cover;">
                                         }
                                         <span style="font-weight:500;">@detail.Product?.Name</span>
                                     </div>

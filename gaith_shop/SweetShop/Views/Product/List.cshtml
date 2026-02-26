@@ -4,46 +4,339 @@
     ViewData["Title"] = Model.CurrentCategory;
 }
 
-<div class="container my-5">
-    <h1 class="text-center mb-4">@Model.CurrentCategory</h1>
+
+<!-- ── Page Header ── -->
+<div class="hp-page-hero">
+    <div class="hp-page-hero-inner">
+        <h1 class="hp-page-hero-title" data-i18n="@Model.CurrentCategory">@Model.CurrentCategory</h1>
+        <div class="hp-title-line"></div>
+        @if (Model.Products != null && Model.Products.Any())
+        {
+            <p class="hp-page-hero-sub">@Model.Products.Count() <span data-i18n="list.prodCountText">منتج متاح في هذا
+                    القسم</span></p>
+        }
+    </div>
+</div>
+
+<div class="hp-page-wrap">
 
     @if (Model.Products != null && Model.Products.Any())
     {
-        <div class="row equal-height-cards">
+        <div class="hp-products-grid">
+            @{
+                int d = 0;
+            }
             @foreach (var sweet in Model.Products)
             {
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="@sweet.ImageUrl" class="card-img-top" alt="@sweet.Name" style="height: 200px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">@sweet.Name</h5>
-                            <p class="card-text text-primary fw-bold">@sweet.Price.ToString("c")</p>
-                            @if (!string.IsNullOrEmpty(sweet.Description))
-                            {
-                                <p class="card-text text-muted small">@sweet.Description</p>
-                            }
-                            <div class="mt-auto">
-                                <div class="d-flex flex-column gap-2">
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id"
-                                        class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
-                                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
-                                        class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
-                                </div>
-                            </div>
+                <div class="hp-card" data-aos="fade-up" data-aos-delay="@d" data-aos-duration="650">
+
+                    <div class="hp-card-img-wrap">
+                        <img src="@sweet.ImageUrl" alt="@sweet.Name" loading="lazy" />
+                        <div class="hp-card-overlay">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@sweet.Id" class="hp-overlay-btn"
+                                title="التفاصيل">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
+                                class="hp-overlay-btn ajax-add-to-cart" title="أضف للسلة">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </a>
                         </div>
                     </div>
+
+                    <div class="hp-card-body">
+                        <span class="hp-card-cat" data-i18n="@Model.CurrentCategory">@Model.CurrentCategory</span>
+                        <h5 class="hp-card-title" data-i18n="@sweet.Name">@sweet.Name</h5>
+                        @if (!string.IsNullOrEmpty(sweet.Description))
+                        {
+                            <p class="hp-card-desc" data-i18n="desc.@sweet.Name">@sweet.Description</p>
+                        }
+                    </div>
+
+                    <div class="hp-card-footer">
+                        <span class="hp-card-price" data-price="@sweet.Price">@sweet.Price.ToString("c")</span>
+                        <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@sweet.Id"
+                            class="hp-btn-detail ajax-add-to-cart" data-i18n="card.addToCart">أضف إلى السلة</a>
+                    </div>
                 </div>
+                d += 80;
+                if (d > 320) { d = 0; }
             }
         </div>
     }
     else
     {
-        <div class="alert alert-info text-center py-5" role="alert">
-            <i class="bi bi-info-circle fs-1 d-block mb-3"></i>
-            <h4 class="alert-heading">لا توجد منتجات</h4>
-            <p class="mb-0">عذراً، لا توجد منتجات متاحة في هذا القسم حالياً.</p>
-            <hr>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3">العودة للصفحة الرئيسية</a>
+        <div class="hp-empty-state">
+            <i class="bi bi-basket2 hp-empty-icon"></i>
+            <h4 data-i18n="list.emptyTitle">لا توجد منتجات</h4>
+            <p data-i18n="list.emptyDesc">عذراً، لا توجد منتجات متاحة في هذا القسم حالياً.</p>
+            <a asp-controller="Home" asp-action="Index" class="hp-browse-btn" data-i18n="list.backHome">العودة للرئيسية</a>
         </div>
     }
+
 </div>
+
+<!-- ══════ SHARED PRODUCT CARD STYLES ══════ -->
+<style>
+    :root {
+        --hp-primary: #1A8CB0;
+        --hp-primary-dk: #136a87;
+        --hp-gold: #C7AE6A;
+        --hp-border: #ddeef6;
+        --hp-shadow-sm: 0 2px 12px rgba(26, 140, 176, .10);
+        --hp-shadow-hover: 0 18px 42px rgba(26, 140, 176, .22);
+        --hp-radius: 16px;
+        --hp-trans: 0.32s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* Hero header */
+    .hp-page-hero {
+        background: linear-gradient(135deg, var(--hp-primary-dk), var(--hp-primary) 60%, #22b8e4);
+        padding: 52px 20px 68px;
+        text-align: center;
+        position: relative;
+        margin-bottom: 0;
+    }
+
+    .hp-page-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 45px;
+        background: #f0f7fb;
+        clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .hp-page-hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .hp-page-hero-sub {
+        color: rgba(255, 255, 255, .8);
+        font-size: .95rem;
+        margin: 10px 0 0;
+    }
+
+    .hp-title-line {
+        width: 56px;
+        height: 4px;
+        background: linear-gradient(90deg, #fff, var(--hp-gold));
+        border-radius: 99px;
+        margin: 0 auto;
+    }
+
+    /* Page wrap */
+    .hp-page-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 48px 24px 80px;
+        background: #f0f7fb;
+    }
+
+    /* Grid — 4 columns */
+    .hp-products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    /* Card */
+    .hp-card {
+        background: #fff;
+        border-radius: var(--hp-radius);
+        border: 2px solid var(--hp-border);
+        box-shadow: var(--hp-shadow-sm);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: transform var(--hp-trans), box-shadow var(--hp-trans), border-color var(--hp-trans);
+    }
+
+    .hp-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--hp-shadow-hover);
+        border-color: var(--hp-primary);
+    }
+
+    .hp-card-img-wrap {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+        padding: 12px 12px 0 12px;
+        background-color: #fff;
+    }
+
+    .hp-card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform .5s ease;
+    }
+
+    .hp-card:hover .hp-card-img-wrap img {
+        transform: scale(1.07);
+    }
+
+    .hp-card-overlay {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(26, 140, 176, .38), transparent);
+        border-radius: 10px;
+        opacity: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 14px;
+        transition: opacity var(--hp-trans);
+    }
+
+    .hp-card:hover .hp-card-overlay {
+        opacity: 1;
+    }
+
+    .hp-overlay-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--hp-primary);
+        display: grid;
+        place-items: center;
+        font-size: .95rem;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+        transition: background var(--hp-trans), color var(--hp-trans);
+    }
+
+    .hp-overlay-btn:hover {
+        background: var(--hp-primary);
+        color: #fff;
+    }
+
+    .hp-card-body {
+        padding: 16px 18px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+    }
+
+    .hp-card-cat {
+        font-size: .7rem;
+        font-weight: 700;
+        color: var(--hp-primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .hp-card-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a2b38;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    .hp-card-desc {
+        font-size: .8rem;
+        color: #6b8fa6;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    .hp-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 18px;
+        border-top: 1px solid var(--hp-border);
+        gap: 10px;
+    }
+
+    .hp-card-price {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--hp-primary-dk);
+    }
+
+    .hp-btn-detail {
+        padding: 8px 18px;
+        border-radius: 50px;
+        border: 2px solid var(--hp-primary);
+        background: transparent;
+        color: var(--hp-primary);
+        font-size: .82rem;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background var(--hp-trans), color var(--hp-trans), box-shadow var(--hp-trans);
+    }
+
+    .hp-card:hover .hp-btn-detail {
+        background: var(--hp-primary);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(26, 140, 176, .35);
+    }
+
+    /* Empty state */
+    .hp-empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 80px 20px;
+        text-align: center;
+    }
+
+    .hp-empty-icon {
+        font-size: 4rem;
+        color: #bee3f7;
+    }
+
+    .hp-browse-btn {
+        padding: 12px 32px;
+        border-radius: 50px;
+        background: var(--hp-primary);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background var(--hp-trans);
+    }
+
+    .hp-browse-btn:hover {
+        background: var(--hp-primary-dk);
+        color: #fff;
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .hp-products-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hp-products-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+    }
+
+    @@media (max-width: 460px) {
+        .hp-products-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+

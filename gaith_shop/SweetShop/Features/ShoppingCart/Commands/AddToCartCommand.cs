@@ -5,7 +5,7 @@ using SweetShop.Models.Interfaces;
 namespace SweetShop.Features.ShoppingCart.Commands;
 
 // ── Command ───────────────────────────────────────────────────────────
-public record AddToCartCommand(int ProductId) : IRequest<Unit>;
+public record AddToCartCommand(int ProductId, int? VariantId = null) : IRequest<Unit>;
 
 // ── Handler ───────────────────────────────────────────────────────────
 public class AddToCartCommandHandler(
@@ -15,11 +15,10 @@ public class AddToCartCommandHandler(
 {
     public Task<Unit> Handle(AddToCartCommand request, CancellationToken cancellationToken)
     {
-        var product = productRepository.GetAllProducts()
-                                       .FirstOrDefault(p => p.Id == request.ProductId);
+        var product = productRepository.GetProductById(request.ProductId);
         if (product != null)
         {
-            shoppingCart.AddToCart(product, 1);
+            shoppingCart.AddToCart(product, 1, request.VariantId);
         }
 
         return Task.FromResult(Unit.Value);

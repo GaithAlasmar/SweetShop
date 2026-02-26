@@ -1,38 +1,189 @@
 @model ShoppingCartViewModel
 
-<h2>سلة المشتريات الخاصة بك</h2>
+@{
+    ViewData["Title"] = "سلة المشتريات";
+}
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>الكمية</th>
-            <th>الحلوى</th>
-            <th class="text-end">السعر</th>
-            <th class="text-end">المجموع الفرعي</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+<div class="cart-page-wrapper">
+    <div class="cart-header text-center mb-5">
+        <h2 class="display-5 fw-bold text-primary-custom mb-3" data-i18n="cartpage.title">سلة المشتريات الخاصة بك</h2>
+        <div class="title-divider mx-auto mt-3"></div>
+    </div>
+
+    <div class="container">
+        @if (Model.ShoppingCart.ShoppingCartItems.Any())
         {
-            <tr>
-                <td class="text-center">@line.Amount</td>
-                <td class="text-start">@line.Product.Name</td>
-                <td class="text-end">@line.Product.Price.ToString("c")</td>
-                <td class="text-end">@((line.Amount * line.Product.Price).ToString("c"))</td>
-                <td class="text-center"><a class="btn btn-danger" asp-controller="ShoppingCart"
-                        asp-action="RemoveFromShoppingCart" asp-route-productId="@line.Product.Id">إزالة</a></td>
-            </tr>
-        }
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3" class="text-end">المجموع:</td>
-            <td class="text-end">@Model.ShoppingCartTotal.ToString("c")</td>
-        </tr>
-    </tfoot>
-</table>
+            <div class="row align-items-start gx-5">
+                <!-- Cart Items Table -->
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0 custom-cart-table">
+                                <thead class="bg-light text-muted">
+                                    <tr>
+                                        <th class="ps-4 py-3 border-0" data-i18n="cartpage.sweet">المنتج</th>
+                                        <th class="text-center py-3 border-0" data-i18n="cartpage.qty">الكمية</th>
+                                        <th class="text-center py-3 border-0" data-i18n="cartpage.price">السعر</th>
+                                        <th class="text-end py-3 border-0" data-i18n="cartpage.subtotal">المجموع</th>
+                                        <th class="pe-4 py-3 border-0 text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+                                    {
+                                        <tr>
+                                            <td class="ps-4 py-4">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="cart-product-img me-3">
+                                                        @if(!string.IsNullOrEmpty(line.Product.ImageUrl))
+                                                        {
+                                                            <img src="@line.Product.ImageUrl" alt="@line.Product.Name" class="img-fluid rounded-3 object-fit-cover shadow-sm" style="width: 70px; height: 70px;" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="placeholder-img bg-light rounded-3 d-flex align-items-center justify-content-center text-primary-custom fw-bold shadow-sm" style="width: 70px; height: 70px; font-size: 1.2rem;">
+                                                                <i class="bi bi-box-seam"></i>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="mb-0 fw-bold text-dark" data-i18n="@line.Product.Name">@line.Product.Name</h6>
+                                                        <span class="text-muted small" data-i18n="@line.Product.Category?.Name">@line.Product.Category?.Name</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center py-4">
+                                                <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm border">@line.Amount</span>
+                                            </td>
+                                            <td class="text-center py-4 text-muted fw-medium" data-price="@line.Product.Price">@line.Product.Price.ToString("c")</td>
+                                            <td class="text-end py-4 fw-bold text-primary-custom" data-price="@(line.Amount * line.Product.Price)">@((line.Amount * line.Product.Price).ToString("c"))</td>
+                                            <td class="pe-4 py-4 text-center">
+                                                <a class="btn btn-outline-danger btn-sm rounded-circle shadow-sm remove-cart-btn" asp-controller="ShoppingCart"
+                                                    asp-action="RemoveFromShoppingCart" asp-route-productId="@line.Product.Id"
+                                                    title="إزالة">
+                                                    <i class="bi bi-trash3-fill"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-<div class="text-center">
-    <a class="btn btn-primary btn-checkout-custom" asp-controller="Order" asp-action="Checkout">إتمام الشراء الآن!</a>
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="card shadow-sm border-0 rounded-4">
+                        <div class="card-body p-4 p-xl-5">
+                            <h4 class="fw-bold mb-4 text-dark" data-i18n="cartpage.summaryTitle">ملخص الطلب</h4>
+                            
+                            <div class="d-flex justify-content-between mb-4 pb-4 border-bottom">
+                                <span class="text-muted fs-5"><i class="bi bi-receipt me-2"></i> <span data-i18n="cartpage.total">الإجمالي:</span></span>
+                                <span class="fw-bold fs-4 text-primary-custom" data-price="@Model.ShoppingCartTotal">@Model.ShoppingCartTotal.ToString("c")</span>
+                            </div>
+
+                            <a class="btn btn-primary d-block w-100 py-3 rounded-pill shadow-sm fw-bold fs-5 btn-checkout-anim" asp-controller="Order" asp-action="Checkout">
+                                <span data-i18n="cartpage.checkout">إتمام الشراء الآن!</span> <i class="bi bi-arrow-left-circle-fill ms-2 rtl-flip me-2"></i>
+                            </a>
+                            
+                            <div class="mt-4 text-center text-muted small">
+                                <i class="bi bi-shield-check text-success"></i> <span data-i18n="cartpage.secureCheckout">دفع آمن وموثوق بنسبة 100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <div class="empty-cart-icon mb-4 mx-auto text-muted" style="font-size: 5rem; opacity: 0.5;">
+                    <i class="bi bi-cart-x"></i>
+                </div>
+                <h3 class="fw-bold text-dark mb-3" data-i18n="cartpage.emptyTitle">سلة المشتريات فارغة</h3>
+                <p class="text-muted mb-5 fs-5" data-i18n="cartpage.emptyDesc">لم تقم بإضافة أي حلويات بعد، تصفح منتجاتنا اللذيذة وابدأ التسوق!</p>
+                <a asp-controller="Product" asp-action="List" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm">
+                    <i class="bi bi-shop ms-2"></i> <span data-i18n="cartpage.browseSweets">تصفح الحلويات</span>
+                </a>
+            </div>
+        }
+    </div>
 </div>
+
+<style>
+    .cart-page-wrapper {
+        padding: 50px 0 80px;
+        background-color: #f8f9fa;
+        min-height: calc(100vh - 200px);
+    }
+    
+    .text-primary-custom {
+        color: #1A8CB0 !important;
+    }
+
+    .title-divider {
+        height: 3px;
+        width: 60px;
+        background-color: #C7AE6A;
+        border-radius: 3px;
+    }
+
+    .custom-cart-table th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .custom-cart-table td {
+        vertical-align: middle;
+    }
+    
+    .remove-cart-btn {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .remove-cart-btn:hover {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .btn-primary {
+        background-color: #1A8CB0;
+        border-color: #1A8CB0;
+        transition: all 0.3s ease;
+    }
+
+    .btn-checkout-anim:hover {
+        background-color: #136a87;
+        border-color: #136a87;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(26, 140, 176, 0.2) !important;
+    }
+    
+    html[dir="rtl"] .rtl-flip {
+        transform: scaleX(-1);
+    }
+    
+    html[dir="ltr"] .me-3 {
+        margin-right: 0 !important;
+        margin-left: 1rem !important;
+    }
+    html[dir="ltr"] .ms-2 {
+        margin-left: 0 !important;
+        margin-right: 0.5rem !important;
+    }
+    html[dir="ltr"] .ps-4 {
+        padding-left: 0 !important;
+        padding-right: 1.5rem !important;
+    }
+    html[dir="ltr"] .pe-4 {
+        padding-right: 0 !important;
+        padding-left: 1.5rem !important;
+    }
+</style>

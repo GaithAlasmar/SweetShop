@@ -25,6 +25,9 @@ public class DbSeeder
         if (!await roleManager.RoleExistsAsync("Admin"))
             await roleManager.CreateAsync(new IdentityRole("Admin"));
 
+        if (!await roleManager.RoleExistsAsync("Manager"))
+            await roleManager.CreateAsync(new IdentityRole("Manager"));
+
         if (!await roleManager.RoleExistsAsync("Customer"))
             await roleManager.CreateAsync(new IdentityRole("Customer"));
 

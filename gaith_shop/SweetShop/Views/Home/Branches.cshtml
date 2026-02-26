@@ -12,8 +12,8 @@
             <div class="br-hero-icon">
                 <i class="bi bi-geo-alt-fill"></i>
             </div>
-            <h1>فروعنا</h1>
-            <p>تفضلوا بزيارتنا في أقرب فرع إليكم</p>
+            <h1 data-i18n="branches.heroTitle">فروعنا</h1>
+            <p data-i18n="branches.heroSub">تفضلوا بزيارتنا في أقرب فرع إليكم</p>
         </div>
     </div>
 
@@ -28,18 +28,19 @@
                             <img src="@branch.PhotoUrl" alt="@branch.Name" class="br-card-img" />
                             <div class="br-card-img-overlay">
                                 <span class="br-open-badge">
-                                    <i class="bi bi-clock-fill ms-1"></i> مفتوح الآن
+                                    <i class="bi bi-clock-fill ms-1"></i> <span data-i18n="branches.openNow">مفتوح
+                                        الآن</span>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Body -->
                         <div class="br-card-body">
-                            <h4 class="br-card-title">@branch.Name</h4>
+                            <h4 class="br-card-title" data-i18n="@branch.Name">@branch.Name</h4>
 
                             <div class="br-info-row">
                                 <div class="br-info-icon"><i class="bi bi-pin-map-fill"></i></div>
-                                <span>@branch.Address</span>
+                                <span data-i18n="@branch.Address">@branch.Address</span>
                             </div>
 
                             <div class="br-info-row">
@@ -49,17 +50,17 @@
 
                             <div class="br-info-row">
                                 <div class="br-info-icon"><i class="bi bi-clock-fill"></i></div>
-                                <span>@branch.WorkingHours</span>
+                                <span data-i18n="@branch.WorkingHours">@branch.WorkingHours</span>
                             </div>
                         </div>
 
                         <!-- Actions -->
                         <div class="br-card-actions">
                             <a href="@branch.GoogleMapsDirectionUrl" target="_blank" class="btn br-btn-map">
-                                <i class="bi bi-geo-alt-fill ms-1"></i> الموقع
+                                <i class="bi bi-geo-alt-fill ms-1"></i> <span data-i18n="branches.location">الموقع</span>
                             </a>
                             <a href="tel:@branch.PhoneNumber.Replace(" ", "")" class="btn br-btn-call">
-                                <i class="bi bi-telephone-fill ms-1"></i> اتصل بنا
+                                <i class="bi bi-telephone-fill ms-1"></i> <span data-i18n="branches.call">اتصل بنا</span>
                             </a>
                         </div>
                     </div>
@@ -72,9 +73,9 @@
 @section Scripts {
     <style>
         /* ═══════════════════════════════════════════
-               BRANCHES PAGE — MODERN LUXURY THEME
-               Colors: #1A8CB0, #C7AE6A, #E6F3FB
-               ═══════════════════════════════════════════ */
+                       BRANCHES PAGE — MODERN LUXURY THEME
+                       Colors: #1A8CB0, #C7AE6A, #E6F3FB
+                       ═══════════════════════════════════════════ */
 
         .branches-page {
             font-family: 'Readex Pro', 'Segoe UI', Tahoma, sans-serif;

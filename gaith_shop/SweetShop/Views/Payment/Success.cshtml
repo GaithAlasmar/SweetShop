@@ -1,0 +1,83 @@
+@model SweetShop.Models.Order
+
+@{
+    ViewData["Title"] = "نتيجة الدفع";
+    Layout = "_Layout";
+}
+
+<div class="container py-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow border-0 rounded-4 p-5">
+
+                @if (Model.PaymentStatus == "Completed")
+                {
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+                    </div>
+                    <h2 class="fw-bold mb-3" data-i18n="payment.successTitle">تم الدفع بنجاح!</h2>
+                    <p class="text-muted mb-4" data-i18n="payment.successDesc">شكرًا لك. لقد تلقينا طلبك بنجاح وتم تأكيد
+                        عملية الدفع.</p>
+                }
+                else if (Model.PaymentStatus == "Pending")
+                {
+                    <div class="mb-4">
+                        <i class="bi bi-hourglass-split text-warning" style="font-size: 5rem;"></i>
+                    </div>
+                    <h2 class="fw-bold mb-3" data-i18n="payment.pendingTitle">جاري معالجة الدفع...</h2>
+                    <p class="text-muted mb-4" data-i18n="payment.pendingDesc">طلبك قيد الانتظار حالياً، نحن بانتظار تأكيد
+                        بوابة الدفع. سيتم تحديث حالة الطلب تلقائياً قريباً.</p>
+                }
+                else
+                {
+                    <div class="mb-4">
+                        <i class="bi bi-x-circle-fill text-danger" style="font-size: 5rem;"></i>
+                    </div>
+                    <h2 class="fw-bold mb-3" data-i18n="payment.failedTitle">فشلت عملية الدفع</h2>
+                    <p class="text-muted mb-4" data-i18n="payment.failedDesc">عذراً، لم نتمكن من معالجة الدفع. يرجى المحاولة
+                        مرة أخرى أو استخدام بطاقة مختلفة.</p>
+                }
+
+                <div class="bg-light p-3 rounded-3 mb-4 text-start">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted" data-i18n="payment.orderNo">رقم الطلب:</span>
+                        <span class="fw-bold">#@Model.Id</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted" data-i18n="payment.totalAmount">المبلغ الإجمالي:</span>
+                        <span class="fw-bold text-primary-custom"
+                            data-price="@Model.OrderTotal">@Model.OrderTotal.ToString("c")</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted" data-i18n="payment.transId">رقم المعاملة (المرجع):</span>
+                        <span class="fw-bold text-secondary">@(string.IsNullOrEmpty(Model.TransactionId) ? "---" :
+                            Model.TransactionId)</span>
+                    </div>
+                </div>
+
+                <div>
+                    @if (Model.PaymentStatus == "Failed")
+                    {
+                        <a asp-controller="Payment" asp-action="Index" asp-route-orderId="@Model.Id"
+                            class="btn btn-warning rounded-pill px-4 me-2 fw-bold" data-i18n="payment.tryAgain">المحاولة مرة
+                            أخرى</a>
+                    }
+                    <a asp-controller="Home" asp-action="Index"
+                        class="btn btn-primary btn-primary-custom rounded-pill px-4 fw-bold"
+                        data-i18n="payment.returnHome">العودة للرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-primary-custom {
+        background-color: #1A8CB0 !important;
+        border-color: #1A8CB0 !important;
+    }
+
+    .text-primary-custom {
+        color: #1A8CB0 !important;
+    }
+</style>

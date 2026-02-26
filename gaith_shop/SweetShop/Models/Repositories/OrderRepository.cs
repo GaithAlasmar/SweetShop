@@ -32,8 +32,9 @@ public class OrderRepository : IOrderRepository
             {
                 Amount = shoppingCartItem.Amount,
                 ProductId = shoppingCartItem.Product.Id,
+                ProductVariantId = shoppingCartItem.ProductVariantId,
                 OrderId = order.Id,
-                Price = shoppingCartItem.Product.Price
+                Price = shoppingCartItem.ProductVariant?.Price ?? shoppingCartItem.Product.Price
             };
 
             _context.OrderDetails.Add(orderDetail);

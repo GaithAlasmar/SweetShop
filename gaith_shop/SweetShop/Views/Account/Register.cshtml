@@ -9,18 +9,41 @@
         <div class="card shadow-lg border-0 rounded-4">
             <div class="card-body p-5">
                 <div class="text-center mb-4">
-                    <h2 class="fw-bold" style="color: #1A8CB0;">إنشاء حساب</h2>
-                    <p class="text-muted">انضم إلى عائلة حلويات الاسمر وتمتع بمزايا حصرية</p>
+                    <h2 class="fw-bold" style="color: #1A8CB0;" data-i18n="register.title">إنشاء حساب</h2>
+                    <p class="text-muted" data-i18n="register.subtitle">انضم إلى عائلة حلويات الاسمر وتمتع بمزايا حصرية
+                    </p>
                 </div>
 
-                <form asp-action="Register" method="post">
+                <form asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="FullName" class="form-label fw-bold text-dark"></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-person text-primary-custom"></i></span>
+                            <input asp-for="FullName" class="form-control border-start-0 ps-0" placeholder="الاسم الكامل" />
+                        </div>
+                        <span asp-validation-for="FullName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label fw-bold text-dark"></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-telephone text-primary-custom"></i></span>
+                            <input asp-for="PhoneNumber" class="form-control border-start-0 ps-0 text-start" dir="ltr" placeholder="07XXXXXXXX" />
+                        </div>
+                        <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                    </div>
 
                     <div class="mb-3">
                         <label asp-for="Email" class="form-label fw-bold text-dark"></label>
                         <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope text-primary-custom"></i></span>
-                            <input asp-for="Email" class="form-control border-start-0 ps-0" placeholder="example@email.com" />
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-envelope text-primary-custom"></i></span>
+                            <input asp-for="Email" type="email" class="form-control border-start-0 ps-0"
+                                placeholder="example@email.com" />
                         </div>
                         <span asp-validation-for="Email" class="text-danger small"></span>
                     </div>
@@ -28,8 +51,10 @@
                     <div class="mb-3">
                         <label asp-for="Password" class="form-label fw-bold text-dark"></label>
                         <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock text-primary-custom"></i></span>
-                            <input asp-for="Password" class="form-control border-start-0 ps-0" placeholder="********" />
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-lock text-primary-custom"></i></span>
+                            <input asp-for="Password" type="password" class="form-control border-start-0 ps-0"
+                                placeholder="********" />
                         </div>
                         <span asp-validation-for="Password" class="text-danger small"></span>
                     </div>
@@ -37,21 +62,26 @@
                     <div class="mb-3">
                         <label asp-for="ConfirmPassword" class="form-label fw-bold text-dark"></label>
                         <div class="input-group">
-                            <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock-fill text-primary-custom"></i></span>
-                            <input asp-for="ConfirmPassword" class="form-control border-start-0 ps-0" placeholder="********" />
+                            <span class="input-group-text bg-light border-end-0"><i
+                                    class="bi bi-lock-fill text-primary-custom"></i></span>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control border-start-0 ps-0"
+                                placeholder="********" />
                         </div>
                         <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
                     </div>
 
                     <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill" style="background-color: #1A8CB0; border-color: #1A8CB0;">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill"
+                            style="background-color: #1A8CB0; border-color: #1A8CB0;" data-i18n="register.submit">
                             إنشاء حساب
                         </button>
                     </div>
 
                     <div class="text-center mt-3">
-                        <span class="text-muted">لديك حساب بالفعل؟ </span>
-                        <a asp-action="Login" class="text-decoration-none fw-bold" style="color: #C7AE6A;">تسجيل الدخول</a>
+                        <span class="text-muted" data-i18n="register.haveAccount">لديك حساب بالفعل؟ </span>
+                        <a asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]"
+                            class="text-decoration-none fw-bold" style="color: #C7AE6A;"
+                            data-i18n="register.signIn">تسجيل الدخول</a>
                     </div>
                 </form>
             </div>
@@ -60,5 +90,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

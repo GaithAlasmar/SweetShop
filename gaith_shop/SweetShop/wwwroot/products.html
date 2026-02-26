@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>متجر غيث | منتجاتنا</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        /* ==================== RESET & BASE ==================== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #1A8CB0;
+            --primary-dark: #136a87;
+            --primary-light: #d0eef7;
+            --gold: #C7AE6A;
+            --gold-dark: #a8913a;
+            --bg: #f0f7fb;
+            --card-bg: #ffffff;
+            --text-dark: #1a2b38;
+            --text-muted: #6b8fa6;
+            --border: #ddeef6;
+            --shadow-sm: 0 2px 10px rgba(26, 140, 176, .10);
+            --shadow-hover: 0 16px 40px rgba(26, 140, 176, .22);
+            --radius: 16px;
+            --transition: 0.35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text-dark);
+            direction: rtl;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #22b8e4 100%);
+            padding: 70px 20px 90px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: -40px;
+            background: radial-gradient(ellipse at 70% 40%, rgba(199, 174, 106, .18) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .35);
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            backdrop-filter: blur(6px);
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        header h1 span {
+            color: var(--gold);
+        }
+
+        header p {
+            color: rgba(255, 255, 255, .82);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* gold wave divider */
+        .wave-divider {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 55px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        /* ==================== FILTER BAR ==================== */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 42px 20px 28px;
+        }
+
+        .filter-btn {
+            padding: 8px 22px;
+            border-radius: 50px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text-muted);
+            font-family: 'Cairo', sans-serif;
+            font-size: .88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(26, 140, 176, .30);
+        }
+
+        /* ==================== SECTION TITLE ==================== */
+        .section-header {
+            text-align: center;
+            padding: 10px 20px 36px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 span {
+            color: var(--primary);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: .95rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .divider-line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            border-radius: 99px;
+            margin: 14px auto 0;
+        }
+
+        /* ==================== PRODUCTS GRID ==================== */
+        .products-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 28px;
+        }
+
+        /* ==================== PRODUCT CARD ==================== */
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+            position: relative;
+        }
+
+        /* ── Hover: lift + glow ── */
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        /* badge on card */
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--gold);
+            color: #fff;
+            font-size: .7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-badge.new {
+            background: var(--primary);
+        }
+
+        .card-badge.sale {
+            background: #e05252;
+        }
+
+        /* image wrapper */
+        .card-img-wrap {
+            position: relative;
+            height: 210px;
+            overflow: hidden;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .card-img-wrap img {
+            transform: scale(1.07);
+        }
+
+        /* overlay icons */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 140, 176, .35), transparent);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 16px;
+            gap: 10px;
+        }
+
+        .product-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .overlay-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--primary);
+            border: none;
+            font-size: .95rem;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .overlay-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* card body */
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .card-category {
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.45;
+        }
+
+        .card-description {
+            font-size: .83rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* stars */
+        .card-stars {
+            color: var(--gold);
+            font-size: .82rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-stars span {
+            color: var(--text-muted);
+            font-size: .78rem;
+        }
+
+        /* price + button row */
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-top: 1px solid var(--border);
+            gap: 10px;
+        }
+
+        .card-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-price .price-now {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        .card-price .price-old {
+            font-size: .76rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        /* ── Detail button — changes background on card hover ── */
+        .btn-detail {
+            padding: 9px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            font-family: 'Cairo', sans-serif;
+            font-size: .85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition),
+                border-color var(--transition), box-shadow var(--transition);
+            white-space: nowrap;
+        }
+
+        .product-card:hover .btn-detail {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(26, 140, 176, .35);
+        }
+
+        /* ==================== LOAD MORE ==================== */
+        .load-more-wrap {
+            text-align: center;
+            padding: 20px 0 60px;
+        }
+
+        .btn-load-more {
+            padding: 14px 42px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), #22b8e4);
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: .95rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(26, 140, 176, .35);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .btn-load-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(26, 140, 176, .45);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 18px;
+            }
+
+            header {
+                padding: 50px 20px 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HERO HEADER ===== -->
+    <header>
+        <div class="badge">✦ تصفح تشكيلتنا الكاملة</div>
+        <h1>منتجاتنا <span>المميزة</span></h1>
+        <p>اكتشف تشكيلة واسعة من أشهى الحلويات الشرقية والغربية المصنوعة بأجود المكونات</p>
+        <div class="wave-divider"></div>
+    </header>
+
+    <!-- ===== FILTER BAR ===== -->
+    <div class="filter-bar">
+        <button class="filter-btn active">الكل</button>
+        <button class="filter-btn">حلويات شرقية</button>
+        <button class="filter-btn">حلويات غربية</button>
+        <button class="filter-btn">تورتات</button>
+        <button class="filter-btn">مشروبات</button>
+        <button class="filter-btn">عروض خاصة</button>
+    </div>
+
+    <!-- ===== SECTION TITLE ===== -->
+    <div class="section-header">
+        <h2>أبرز <span>المنتجات</span></h2>
+        <p>جودة عالية وطعم لا مثيل له — كل حلوى قصة نكهة</p>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ===== PRODUCTS GRID ===== -->
+    <section class="products-section">
+        <div class="products-grid">
+
+            <!-- Card 1 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-aos-duration="700">
+                <span class="card-badge new">جديد</span>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?w=500&auto=format&fit=crop"
+                        alt="كنافة نابلسية" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">حلويات شرقية</span>
+                    <h3 class="card-title">كنافة نابلسية بالجبن</h3>
+                    <p class="card-description">عجينة ذهبية مقرمشة محشوة بالجبن العربي الطازج مع قطر العسل العطري</p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-half-stroke"></i>
+                        <span>(٤.٥) · ١٢٨ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">٨.٥٠ د.أ</span>
+                        <span class="price-old">١٠.٠٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                <span class="card-badge sale">خصم</span>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop"
+                        alt="تيراميسو" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">حلويات غربية</span>
+                    <h3 class="card-title">تيراميسو إيطالي الأصيل</h3>
+                    <p class="card-description">طبقات من كريمة المسكاربوني مع بسكويت السافويارد المنقوع بالقهوة
+                        الإيطالية</p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-regular fa-star"></i>
+                        <span>(٤.٠) · ٩٤ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">٦.٠٠ د.أ</span>
+                        <span class="price-old">٨.٠٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&auto=format&fit=crop"
+                        alt="لازي كيك" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">حلويات غربية</span>
+                    <h3 class="card-title">لازي كيك بالشوكولاتة</h3>
+                    <p class="card-description">كيكة طبقات باردة بالبسكويت والشوكولاتة الداكنة الفاخرة وكريمة الهيلة</p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                        <span>(٥.٠) · ٢١٠ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">٥.٥٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
+                <span class="card-badge">الأكثر طلبًا</span>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&auto=format&fit=crop"
+                        alt="بقلاوة" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">حلويات شرقية</span>
+                    <h3 class="card-title">بقلاوة مشكّلة فاخرة</h3>
+                    <p class="card-description">تشكيلة راقية من البقلاوة بالفستق الحلبي واللوز والجوز محلاة بشراب الوردة
+                    </p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-half-stroke"></i>
+                        <span>(٤.٧) · ٣٤٥ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">١٢.٠٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="0" data-aos-duration="700">
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&auto=format&fit=crop"
+                        alt="تورتة" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">تورتات</span>
+                    <h3 class="card-title">تورتة الفراولة والكريمة</h3>
+                    <p class="card-description">إسفنجية طرية بكريمة الشانتيه الطازجة وشرائح الفراولة الحمراء المزينة
+                        بالميكسد بري</p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-regular fa-star"></i>
+                        <span>(٤.١) · ٧٦ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">١٨.٠٠ د.أ</span>
+                        <span class="price-old">٢٢.٠٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                <span class="card-badge new">جديد</span>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&auto=format&fit=crop"
+                        alt="ملتن كيك" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">حلويات غربية</span>
+                    <h3 class="card-title">ملتن كيك بالشوكولاتة</h3>
+                    <p class="card-description">كيكة دافئة بقلب سائل من الشوكولاتة البلجيكية الداكنة مع آيس كريم
+                        الفانيليا</p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                        <span>(٤.٩) · ١٨٩ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">٧.٠٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop"
+                        alt="معمول" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">حلويات شرقية</span>
+                    <h3 class="card-title">معمول بالتمر والسمنة</h3>
+                    <p class="card-description">معمول على الطريقة التراثية محشو بعجوة المدينة وعطر الهيل والمسك الأبيض
+                    </p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-half-stroke"></i>
+                        <span>(٤.٦) · ٢٢٢ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">٩.٠٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
+                <span class="card-badge sale">خصم ٢٠٪</span>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1548391350-968f58dedaed?w=500&auto=format&fit=crop"
+                        alt="ميل فوي" loading="lazy" />
+                    <div class="card-overlay">
+                        <button class="overlay-btn" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                        <button class="overlay-btn" title="عرض سريع"><i class="fa-regular fa-eye"></i></button>
+                        <button class="overlay-btn" title="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="card-category">حلويات غربية</span>
+                    <h3 class="card-title">ميل فوي بالكريمة والتوت</h3>
+                    <p class="card-description">طبقات عجين النفخ الهش مع كريمة الباتيسيير والتوت الأحمر الطازج</p>
+                    <div class="card-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-regular fa-star"></i>
+                        <span>(٤.٢) · ١١٠ تقييم</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <span class="price-now">٧.٢٠ د.أ</span>
+                        <span class="price-old">٩.٠٠ د.أ</span>
+                    </div>
+                    <button class="btn-detail">التفاصيل</button>
+                </div>
+            </div>
+
+        </div><!-- /products-grid -->
+
+        <!-- Load More -->
+        <div class="load-more-wrap" data-aos="fade-up" data-aos-delay="100">
+            <button class="btn-load-more">تحميل المزيد &nbsp;<i class="fa-solid fa-arrow-down"></i></button>
+        </div>
+    </section>
+
+    <!-- ===== AOS JS ===== -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // ── Init AOS ──
+        AOS.init({
+            once: true,          // play animation only once
+            easing: 'ease-out-quart',
+            offset: 60,
+        });
+
+        // ── Filter buttons ──
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

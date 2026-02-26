@@ -1,0 +1,739 @@
+[00:47:03 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[00:47:04 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[00:47:04 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 01:12:55 at 02:00.
+[00:47:04 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[00:47:04 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[00:47:04 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[00:47:04 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[00:47:05 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[00:47:05 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 275.9754 ms
+[00:55:59 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[00:56:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[00:56:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 01:03:59 at 02:00.
+[00:56:00 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[00:56:00 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[00:56:00 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[00:56:00 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[00:56:01 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[00:56:01 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 210.5498 ms
+[00:56:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 217.7726 ms
+[00:56:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 5.7064 ms
+[00:56:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 49.8139 ms
+[00:56:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 4.3643 ms
+[00:56:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 7.9085 ms
+[00:56:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 5.3364 ms
+[00:56:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 4.8847 ms
+[00:56:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 3.4168 ms
+[00:56:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 176.0935 ms
+[00:56:51 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 200 in 104.2242 ms
+[00:56:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 49.0219 ms
+[00:57:10 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 55.2045 ms
+[00:57:30 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 8.4024 ms
+[00:57:39 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 7.2547 ms
+[00:57:50 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 8.0119 ms
+[00:57:56 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 18.1146 ms
+[00:58:00 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 20.7203 ms
+[00:58:05 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 14.8940 ms
+[01:02:17 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[01:02:18 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[01:02:18 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 00:57:41 at 02:00.
+[01:02:18 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[01:02:18 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[01:02:18 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[01:02:18 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[01:02:19 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[01:02:19 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 376.7941 ms
+[01:02:21 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 186.8602 ms
+[01:02:22 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 77.1219 ms
+[01:03:10 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 500 in 2461.7456 ms
+System.Net.Mail.SmtpException: Failure sending mail.
+ ---> System.Net.Sockets.SocketException (11004): The requested name is valid, but no data of the requested type was found.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.TaskToAsyncResult.End(IAsyncResult asyncResult)
+   at System.Net.Sockets.TcpClient.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Mail.SmtpConnection.ConnectAndHandshakeAsyncResult.InitializeConnectionCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SmtpClient.ConnectCallback(IAsyncResult result)
+   --- End of inner exception stack trace ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 42
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+[01:03:12 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.Net.Mail.SmtpException: Failure sending mail.
+ ---> System.Net.Sockets.SocketException (11004): The requested name is valid, but no data of the requested type was found.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.TaskToAsyncResult.End(IAsyncResult asyncResult)
+   at System.Net.Sockets.TcpClient.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Mail.SmtpConnection.ConnectAndHandshakeAsyncResult.InitializeConnectionCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SmtpClient.ConnectCallback(IAsyncResult result)
+   --- End of inner exception stack trace ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 42
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:05:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 75.9410 ms
+[01:05:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 34.2256 ms
+[01:06:15 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 500 in 1916.0481 ms
+System.Net.Mail.SmtpException: Failure sending mail.
+ ---> System.Net.Sockets.SocketException (11004): The requested name is valid, but no data of the requested type was found.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.TaskToAsyncResult.End(IAsyncResult asyncResult)
+   at System.Net.Sockets.TcpClient.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Mail.SmtpConnection.ConnectAndHandshakeAsyncResult.InitializeConnectionCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SmtpClient.ConnectCallback(IAsyncResult result)
+   --- End of inner exception stack trace ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 42
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+[01:06:16 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.Net.Mail.SmtpException: Failure sending mail.
+ ---> System.Net.Sockets.SocketException (11004): The requested name is valid, but no data of the requested type was found.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.TaskToAsyncResult.End(IAsyncResult asyncResult)
+   at System.Net.Sockets.TcpClient.EndConnect(IAsyncResult asyncResult)
+   at System.Net.Mail.SmtpConnection.ConnectAndHandshakeAsyncResult.InitializeConnectionCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SmtpClient.ConnectCallback(IAsyncResult result)
+   --- End of inner exception stack trace ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 42
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:14:15 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[01:14:16 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[01:14:16 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 00:45:43 at 02:00.
+[01:14:16 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[01:14:16 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[01:14:16 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[01:14:16 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[01:14:16 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[01:14:17 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 442.2079 ms
+[01:14:22 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 187.8133 ms
+[01:14:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 200 in 98.5394 ms
+[01:14:26 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 56.3766 ms
+[01:15:05 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 80.0428 ms
+[01:15:44 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 500 in 3618.1317 ms
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[01:15:45 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:20:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 20.9627 ms
+[01:20:39 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 8.1269 ms
+[01:20:58 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 500 in 2585.3958 ms
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[01:21:00 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:23:19 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account responded 404 in 0.2899 ms
+[01:23:22 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 20.5465 ms
+[01:23:24 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 5.9362 ms
+[01:23:27 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 6.9464 ms
+[01:23:33 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 5.3286 ms
+[01:23:50 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 200 in 13.8872 ms
+[01:24:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 50.7416 ms
+[01:24:10 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[01:24:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 287.4440 ms
+[01:24:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 142.9927 ms
+[01:24:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 20.6541 ms
+[01:24:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 90.5267 ms
+[01:24:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 3.6537 ms
+[01:24:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 41.5242 ms
+[01:24:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 29.1975 ms
+[01:24:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 3.8145 ms
+[01:24:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 26.4435 ms
+[01:24:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.6591 ms
+[01:24:15 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart responded 200 in 82.6867 ms
+[01:24:17 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 302 in 13.0427 ms
+[01:24:17 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 8.9771 ms
+[01:24:22 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 5.3196 ms
+[01:24:51 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 200 in 11.3872 ms
+[01:25:20 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 500 in 2580.6656 ms
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[01:25:21 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:25:26 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 9.3575 ms
+[01:25:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 4.6055 ms
+[01:25:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 5.2305 ms
+[01:32:28 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Register responded 500 in 2929.6033 ms
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[01:32:29 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.EndSend(IAsyncResult result)
+   at System.Net.Mail.SendMailAsyncResult.SendMailFromCompleted(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at System.Net.Mail.SendMailAsyncResult.End(IAsyncResult result)
+   at System.Net.Mail.SmtpClient.SendMailCallback(IAsyncResult result)
+--- End of stack trace from previous location ---
+   at SweetShop.Services.SmtpEmailSender.SendEmailAsync(String email, String subject, String htmlMessage) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\SmtpEmailSender.cs:line 51
+   at SweetShop.Controllers.AccountController.Register(RegisterViewModel model, String returnUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\AccountController.cs:line 97
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:35:50 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[01:35:51 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[01:35:51 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 00:24:08 at 02:00.
+[01:35:51 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[01:35:51 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[01:35:51 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[01:35:51 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[01:35:51 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[01:35:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 443.4951 ms
+[01:35:59 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 101.8930 ms
+[01:36:08 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[01:36:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 448.7664 ms
+[01:36:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 133.9608 ms
+[01:36:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 8.3775 ms
+[01:36:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 67.7810 ms
+[01:36:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 4.9673 ms
+[01:36:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 302 in 14.3647 ms
+[01:36:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 340.1672 ms
+[01:36:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Info/Privacy responded 200 in 20.3203 ms
+[01:36:28 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Info/Factory responded 200 in 10.4415 ms
+[01:36:35 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 13.8462 ms
+[01:51:05 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[01:51:06 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[01:51:06 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 00:08:53 at 02:00.
+[01:51:06 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[01:51:06 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[01:51:06 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[01:51:06 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[01:51:07 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[01:51:07 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 373.2905 ms
+[01:51:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 222.1444 ms
+[01:51:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 302 in 357.2935 ms
+[01:51:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 29.6799 ms
+[01:51:36 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 500 in 495.5621 ms
+System.InvalidOperationException: Unable to resolve service for type 'SweetShop.Models.Interfaces.IImageService' while attempting to activate 'SweetShop.Controllers.AdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method618(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+[01:51:36 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'SweetShop.Models.Interfaces.IImageService' while attempting to activate 'SweetShop.Controllers.AdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method618(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:51:41 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Home/Branches responded 200 in 25.4864 ms
+[01:51:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/Create responded 200 in 78.9649 ms
+[01:51:43 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 500 in 344.3766 ms
+System.InvalidOperationException: Unable to resolve service for type 'SweetShop.Models.Interfaces.IImageService' while attempting to activate 'SweetShop.Controllers.AdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method618(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[01:51:43 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'SweetShop.Models.Interfaces.IImageService' while attempting to activate 'SweetShop.Controllers.AdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method618(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:53:46 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/Create responded 200 in 13.3409 ms
+[01:53:48 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 500 in 317.2158 ms
+System.InvalidOperationException: Unable to resolve service for type 'SweetShop.Models.Interfaces.IImageService' while attempting to activate 'SweetShop.Controllers.AdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method618(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[01:53:49 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'SweetShop.Models.Interfaces.IImageService' while attempting to activate 'SweetShop.Controllers.AdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method618(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[01:53:56 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 14.6249 ms
+[01:54:10 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[01:54:11 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[01:54:11 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 00:05:48 at 02:00.
+[01:54:11 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[01:54:11 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[01:54:11 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[01:54:11 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[01:54:11 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[01:54:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 403.1131 ms
+[01:55:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 334.3022 ms
+[01:55:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 302 in 305.7392 ms
+[01:55:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 34.8167 ms
+[01:55:40 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 222.4020 ms
+[01:55:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Dashboard responded 200 in 11.5950 ms
+[01:55:43 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/GetMonthlySalesData responded 200 in 172.1224 ms
+[01:55:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 15.8847 ms
+[01:55:49 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Add responded 200 in 611.3144 ms
+[01:55:53 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Orders responded 200 in 95.4385 ms
+[01:56:00 WRN] [Microsoft.EntityFrameworkCore.Query] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+[01:56:00 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Settings responded 200 in 57.0653 ms
+[01:56:08 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 17.5532 ms
+[01:56:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Add responded 200 in 6.1135 ms
+[01:56:10 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 10.4764 ms
+[01:56:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Dashboard responded 200 in 1.7751 ms
+[01:56:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/GetMonthlySalesData responded 200 in 11.7185 ms
+[01:56:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 9.9231 ms
+[01:56:23 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[01:56:24 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/24 responded 200 in 297.3573 ms
+[01:56:51 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/24 responded 200 in 86.5115 ms
+[01:57:21 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/24 responded 200 in 10.4452 ms
+[01:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/24 responded 200 in 4.3647 ms
+[01:57:26 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 9.8909 ms
+[01:57:27 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 39.6353 ms
+[01:57:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 188.8667 ms
+[01:57:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 106.4383 ms
+[01:57:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 8.9144 ms
+[01:57:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 40.2395 ms
+[01:57:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 4.0689 ms
+[01:57:33 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/RemoveFromShoppingCart responded 200 in 45.4113 ms
+[01:57:33 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 10.3829 ms
+[01:57:33 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 6.2180 ms
+[01:57:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 14.9673 ms
+[01:57:49 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/29 responded 200 in 29.2120 ms
+[01:57:56 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/29 responded 200 in 5.2290 ms
+[01:58:05 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/29 responded 200 in 5.2894 ms
+[01:58:08 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 6.5269 ms
+[01:58:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 7.9335 ms
+[01:58:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 8.8632 ms
+[01:58:19 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 15.5431 ms
+[02:00:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Attempt 1 — Generating report for "2026-02-26".
+[02:00:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Report built: 6 orders, Revenue=¤105.00
+[02:00:00 ERR] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] ❌ Attempt 1 failed. Retrying in "00:01:00".
+System.InvalidOperationException: Email:Smtp:Host not configured
+   at SweetShop.Services.Reports.ReportEmailService.SendReportAsync(DailyFinancialReport report, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\ReportEmailService.cs:line 25
+   at SweetShop.Services.Reports.NightlyReportWorker.GenerateAndSendReportAsync(DateOnly reportDate, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 138
+   at SweetShop.Services.Reports.NightlyReportWorker.GenerateAndSendReportAsync(DateOnly reportDate, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 138
+   at SweetShop.Services.Reports.NightlyReportWorker.RunReportWithRetryAsync(CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 83
+[02:01:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Attempt 2 — Generating report for "2026-02-26".
+[02:01:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Report built: 6 orders, Revenue=¤105.00
+[02:01:00 ERR] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] ❌ Attempt 2 failed. Retrying in "00:05:00".
+System.InvalidOperationException: Email:Smtp:Host not configured
+   at SweetShop.Services.Reports.ReportEmailService.SendReportAsync(DailyFinancialReport report, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\ReportEmailService.cs:line 25
+   at SweetShop.Services.Reports.NightlyReportWorker.GenerateAndSendReportAsync(DateOnly reportDate, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 138
+   at SweetShop.Services.Reports.NightlyReportWorker.GenerateAndSendReportAsync(DateOnly reportDate, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 138
+   at SweetShop.Services.Reports.NightlyReportWorker.RunReportWithRetryAsync(CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 83
+[02:06:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Attempt 3 — Generating report for "2026-02-26".
+[02:06:00 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Report built: 6 orders, Revenue=¤105.00
+[02:06:00 ERR] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] ❌ Attempt 3 failed. Retrying in "00:15:00".
+System.InvalidOperationException: Email:Smtp:Host not configured
+   at SweetShop.Services.Reports.ReportEmailService.SendReportAsync(DailyFinancialReport report, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\ReportEmailService.cs:line 25
+   at SweetShop.Services.Reports.NightlyReportWorker.GenerateAndSendReportAsync(DateOnly reportDate, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 138
+   at SweetShop.Services.Reports.NightlyReportWorker.GenerateAndSendReportAsync(DateOnly reportDate, CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 138
+   at SweetShop.Services.Reports.NightlyReportWorker.RunReportWithRetryAsync(CancellationToken ct) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\Reports\NightlyReportWorker.cs:line 83
+[02:07:00 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 13.7754 ms
+[02:10:10 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[02:10:11 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[02:10:11 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 23:49:48 at 02:00.
+[02:10:11 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[02:10:11 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[02:10:11 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[02:10:11 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[02:10:11 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[02:10:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 411.5487 ms
+[02:10:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 215.9438 ms
+[02:10:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 302 in 318.8378 ms
+[02:10:55 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 42.1304 ms
+[02:10:56 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 239.4277 ms
+[02:11:09 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[02:11:10 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/13 responded 200 in 712.7758 ms
+[02:11:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/13 responded 200 in 51.3062 ms
+[02:11:28 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 15.4512 ms
+[02:11:30 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 41.8453 ms
+[02:11:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 175.5922 ms
+[02:11:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 89.4321 ms
+[02:11:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 5.2958 ms
+[02:11:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 59.0648 ms
+[02:11:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.7248 ms
+[02:11:44 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 39.6973 ms
+[02:11:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 155.5583 ms
+[02:11:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 60.1584 ms

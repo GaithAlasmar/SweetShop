@@ -4,79 +4,347 @@
     ViewData["Title"] = string.IsNullOrEmpty(Model.SearchQuery) ? "البحث" : $"نتائج البحث عن: {Model.SearchQuery}";
 }
 
-<div class="container mt-4">
-    <div class="row mb-4">
-        <div class="col-12">
-            <h2 class="text-end">
-                @if (string.IsNullOrEmpty(Model.SearchQuery))
-                {
-                    <span>البحث في المنتجات</span>
-                }
-                else
-                {
-                    <span>نتائج البحث عن: <strong>"@Model.SearchQuery"</strong></span>
-                }
-            </h2>
-            @if (!string.IsNullOrEmpty(Model.SearchQuery))
-            {
-                <p class="text-end text-muted">تم العثور على @Model.ResultCount منتج</p>
-            }
-        </div>
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- ── Page Header ── -->
+<div class="hp-page-hero">
+    <div class="hp-page-hero-inner">
+        @if (string.IsNullOrEmpty(Model.SearchQuery))
+        {
+            <h1 class="hp-page-hero-title">البحث في المنتجات</h1>
+        }
+        else
+        {
+            <h1 class="hp-page-hero-title">نتائج: <span style="color:#C7AE6A">"@Model.SearchQuery"</span></h1>
+            <p class="hp-page-hero-sub">تم العثور على @Model.ResultCount منتج</p>
+        }
+        <div class="hp-title-line"></div>
     </div>
+</div>
+
+<div class="hp-page-wrap">
 
     @if (string.IsNullOrEmpty(Model.SearchQuery))
     {
-        <div class="alert alert-info text-end" role="alert">
-            <i class="bi bi-info-circle me-2"></i>
-            الرجاء إدخال كلمة بحث للعثور على المنتجات
+        <div class="hp-empty-state">
+            <i class="bi bi-search hp-empty-icon"></i>
+            <h4 data-i18n="search.enterQuery">أدخل كلمة البحث</h4>
+            <p data-i18n="search.enterQueryDesc">استخدم شريط البحث للعثور على منتجك المفضل</p>
         </div>
     }
     else if (!Model.Products.Any())
     {
-        <div class="alert alert-warning text-end" role="alert">
-            <i class="bi bi-exclamation-triangle me-2"></i>
-            عذراً، لم يتم العثور على منتجات تطابق بحثك عن "<strong>@Model.SearchQuery</strong>"
-        </div>
-        <div class="text-end mt-3">
-            <p>جرب:</p>
-            <ul class="list-unstyled text-end">
-                <li>التحقق من الإملاء</li>
-                <li>استخدام كلمات بحث أكثر عمومية</li>
-                <li>تقليل عدد الكلمات</li>
+        <div class="hp-empty-state">
+            <i class="bi bi-emoji-frown hp-empty-icon"></i>
+            <h4 data-i18n="search.noResults">لا توجد نتائج</h4>
+            <p>عذراً، لم يتم العثور على منتجات تطابق "<strong>@Model.SearchQuery</strong>"</p>
+            <ul style="text-align:right; color:#6b8fa6; font-size:.88rem; line-height:2;">
+                <li data-i18n="search.tipSpelling">تحقق من الإملاء</li>
+                <li data-i18n="search.tipGeneral">استخدم كلمات أكثر عمومية</li>
+                <li data-i18n="search.tipFewer">قلّل عدد الكلمات</li>
             </ul>
-            <a asp-controller="Product" asp-action="List" class="btn btn-primary mt-2">
-                <i class="bi bi-grid me-2"></i>
-                تصفح جميع المنتجات
-            </a>
+            <a asp-controller="Home" asp-action="Index" class="hp-browse-btn" data-i18n="search.browseAll">تصفح جميع
+                المنتجات</a>
         </div>
     }
     else
     {
-        <div class="row equal-height-cards">
+        <div class="hp-products-grid">
+            @{
+                int d = 0;
+            }
             @foreach (var product in Model.Products)
             {
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">@product.Name</h5>
-                            <p class="card-text">@product.Price.ToString("c")</p>
-                            @if (!string.IsNullOrEmpty(product.Description))
-                            {
-                                <p class="card-text text-muted small">@product.Description</p>
-                            }
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"
-                                        class="btn btn-sm btn-outline-secondary btn-view-details">عرض التفاصيل</a>
-                                    <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@product.Id"
-                                        class="btn btn-sm btn-success ajax-add-to-cart">أضف إلى السلة</a>
-                                </div>
-                            </div>
+                <div class="hp-card" data-aos="fade-up" data-aos-delay="@d" data-aos-duration="650">
+
+                    <div class="hp-card-img-wrap">
+                        <img src="@product.ImageUrl" alt="@product.Name" loading="lazy" />
+                        <div class="hp-card-overlay">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="hp-overlay-btn"
+                                title="التفاصيل">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@product.Id"
+                                class="hp-overlay-btn ajax-add-to-cart" title="أضف للسلة">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </a>
                         </div>
                     </div>
+
+                    <div class="hp-card-body">
+                        <span class="hp-card-cat">@product.Category?.Name</span>
+                        <h5 class="hp-card-title">@product.Name</h5>
+                        @if (!string.IsNullOrEmpty(product.Description))
+                        {
+                            <p class="hp-card-desc">@product.Description</p>
+                        }
+                    </div>
+
+                    <div class="hp-card-footer">
+                        <span class="hp-card-price" data-price="@product.Price">@product.Price.ToString("c")</span>
+                        <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-productId="@product.Id"
+                            class="hp-btn-detail ajax-add-to-cart" data-i18n="card.addToCart">أضف إلى السلة</a>
+                    </div>
                 </div>
+                d += 80;
+                if (d > 320) { d = 0; }
             }
         </div>
     }
+
 </div>
+
+<!-- ══════ SHARED PRODUCT CARD STYLES ══════ -->
+<style>
+    :root {
+        --hp-primary: #1A8CB0;
+        --hp-primary-dk: #136a87;
+        --hp-gold: #C7AE6A;
+        --hp-border: #ddeef6;
+        --hp-shadow-sm: 0 2px 12px rgba(26, 140, 176, .10);
+        --hp-shadow-hover: 0 18px 42px rgba(26, 140, 176, .22);
+        --hp-radius: 16px;
+        --hp-trans: 0.32s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .hp-page-hero {
+        background: linear-gradient(135deg, var(--hp-primary-dk), var(--hp-primary) 60%, #22b8e4);
+        padding: 52px 20px 68px;
+        text-align: center;
+        position: relative;
+    }
+
+    .hp-page-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 45px;
+        background: #f0f7fb;
+        clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .hp-page-hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .hp-page-hero-sub {
+        color: rgba(255, 255, 255, .8);
+        font-size: .95rem;
+        margin: 10px 0 0;
+    }
+
+    .hp-title-line {
+        width: 56px;
+        height: 4px;
+        background: linear-gradient(90deg, #fff, var(--hp-gold));
+        border-radius: 99px;
+        margin: 10px auto 0;
+    }
+
+    .hp-page-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 48px 24px 80px;
+        background: #f0f7fb;
+    }
+
+    .hp-products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .hp-card {
+        background: #fff;
+        border-radius: var(--hp-radius);
+        border: 2px solid var(--hp-border);
+        box-shadow: var(--hp-shadow-sm);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: transform var(--hp-trans), box-shadow var(--hp-trans), border-color var(--hp-trans);
+    }
+
+    .hp-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--hp-shadow-hover);
+        border-color: var(--hp-primary);
+    }
+
+    .hp-card-img-wrap {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .hp-card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .5s ease;
+    }
+
+    .hp-card:hover .hp-card-img-wrap img {
+        transform: scale(1.07);
+    }
+
+    .hp-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(26, 140, 176, .38), transparent);
+        opacity: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 14px;
+        transition: opacity var(--hp-trans);
+    }
+
+    .hp-card:hover .hp-card-overlay {
+        opacity: 1;
+    }
+
+    .hp-overlay-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--hp-primary);
+        display: grid;
+        place-items: center;
+        font-size: .95rem;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+        transition: background var(--hp-trans), color var(--hp-trans);
+    }
+
+    .hp-overlay-btn:hover {
+        background: var(--hp-primary);
+        color: #fff;
+    }
+
+    .hp-card-body {
+        padding: 16px 18px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+    }
+
+    .hp-card-cat {
+        font-size: .7rem;
+        font-weight: 700;
+        color: var(--hp-primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .hp-card-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a2b38;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    .hp-card-desc {
+        font-size: .8rem;
+        color: #6b8fa6;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    .hp-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 18px;
+        border-top: 1px solid var(--hp-border);
+        gap: 10px;
+    }
+
+    .hp-card-price {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--hp-primary-dk);
+    }
+
+    .hp-btn-detail {
+        padding: 8px 18px;
+        border-radius: 50px;
+        border: 2px solid var(--hp-primary);
+        background: transparent;
+        color: var(--hp-primary);
+        font-size: .82rem;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background var(--hp-trans), color var(--hp-trans), box-shadow var(--hp-trans);
+    }
+
+    .hp-card:hover .hp-btn-detail {
+        background: var(--hp-primary);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(26, 140, 176, .35);
+    }
+
+    .hp-empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 80px 20px;
+        text-align: center;
+    }
+
+    .hp-empty-icon {
+        font-size: 4rem;
+        color: #bee3f7;
+    }
+
+    .hp-browse-btn {
+        padding: 12px 32px;
+        border-radius: 50px;
+        background: var(--hp-primary);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background var(--hp-trans);
+    }
+
+    .hp-browse-btn:hover {
+        background: var(--hp-primary-dk);
+        color: #fff;
+    }
+
+    @@media (max-width: 992px) {
+        .hp-products-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hp-products-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+    }
+
+    @@media (max-width: 460px) {
+        .hp-products-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+@section Scripts {
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true, easing: 'ease-out-quart', offset: 50 });</script>
+}

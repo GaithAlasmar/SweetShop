@@ -1,0 +1,38 @@
+name: .NET Core CI
+
+# تشغيل الـ Workflow عند عمل Push أو Pull Request على الـ main branch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    # بيئة التشغيل يمكن أن تكون ubuntu لأنها الأسرع والأرخص على GitHub
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. سحب الكود من المستودع (Checkout)
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 2. إعداد بيئة .NET 9.0 (حسب نسختك الحالية في المشروع)
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    # 3. استعادة الحزم والمكاتب (Restore)
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 4. بناء المشروع (Build)
+    # نضيف --no-restore لأننا قمنا بالاستعادة مسبقاً
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    # 5. تشغيل الاختبارات الآلية (Test)
+    # نضيف --no-build لأننا قمنا بالبناء مسبقاً
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal

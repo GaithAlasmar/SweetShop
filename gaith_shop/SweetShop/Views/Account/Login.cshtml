@@ -10,19 +10,24 @@
         <div class="col-md-6 mb-4 mb-md-0">
             <div class="card h-100 shadow-custom border-0 rounded-4">
                 <div class="card-body p-5 d-flex flex-column justify-content-center text-center">
-                    <h2 class="fw-bold mb-4" style="color: #1A8CB0;">عميل جديد؟</h2>
-                    <h3 class="mb-4 text-dark fs-5">التسجيل في حلويات الاسمر سريع وسهل!</h3>
+                    <h2 class="fw-bold mb-4" style="color: #1A8CB0;" data-i18n="login.newCustomer">عميل جديد؟</h2>
+                    <h3 class="mb-4 text-dark fs-5" data-i18n="login.newSubtitle">التسجيل في حلويات الاسمر سريع وسهل!
+                    </h3>
                     <p class="text-muted mb-4 lh-lg">
-                        بإنشاء حساب معنا، ستتمكن من:
+                        <span data-i18n="login.benefitsText">بإنشاء حساب معنا، ستتمكن من:</span>
                         <br>
-                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> إتمام الطلب بشكل أسرع
+                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> <span
+                            data-i18n="login.benefit1">إتمام الطلب بشكل أسرع</span>
                         <br>
-                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> حفظ عناوين للشحن المتعدد
+                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> <span
+                            data-i18n="login.benefit2">حفظ عناوين للشحن المتعدد</span>
                         <br>
-                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> تتبع طلباتك بسهولة
+                        <i class="bi bi-check-circle-fill text-primary-custom me-2"></i> <span
+                            data-i18n="login.benefit3">تتبع طلباتك بسهولة</span>
                     </p>
-                    <a asp-action="Register" class="btn btn-outline-primary btn-lg rounded-pill px-5 mt-auto"
-                        style="border-color: #1A8CB0; color: #1A8CB0;">
+                    <a asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]"
+                        class="btn btn-outline-primary btn-lg rounded-pill px-5 mt-auto"
+                        style="border-color: #1A8CB0; color: #1A8CB0;" data-i18n="login.createAccount">
                         إنشاء حساب
                     </a>
                 </div>
@@ -34,15 +39,15 @@
             <div class="card h-100 shadow-custom border-0 rounded-4">
                 <div class="card-body p-5">
                     <div class="text-center mb-4">
-                        <h2 class="fw-bold" style="color: #1A8CB0;">عميل حالي</h2>
-                        <p class="text-muted">مرحباً بك مجدداً</p>
+                        <h2 class="fw-bold" style="color: #1A8CB0;" data-i18n="login.existingTitle">عميل حالي</h2>
+                        <p class="text-muted" data-i18n="login.welcomeBack">مرحباً بك مجدداً</p>
                     </div>
 
-                    <form asp-action="Login" method="post">
+                    <form asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
 
                         <div class="mb-3">
-                            <label asp-for="Email" class="form-label fw-bold text-dark"></label>
+                            <label asp-for="Email" class="form-label fw-bold text-dark" data-i18n="login.email"></label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0"><i
                                         class="bi bi-envelope text-primary-custom"></i></span>
@@ -53,7 +58,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Password" class="form-label fw-bold text-dark"></label>
+                            <label asp-for="Password" class="form-label fw-bold text-dark"
+                                data-i18n="login.password"></label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0"><i
                                         class="bi bi-lock text-primary-custom"></i></span>
@@ -65,18 +71,19 @@
 
                         <div class="mb-3 form-check">
                             <input class="form-check-input" asp-for="RememberMe" />
-                            <label class="form-check-label" asp-for="RememberMe"></label>
+                            <label class="form-check-label" asp-for="RememberMe" data-i18n="login.rememberMe"></label>
                         </div>
 
                         <div class="d-grid gap-2 mt-4">
                             <button type="submit" class="btn btn-primary btn-lg rounded-pill"
-                                style="background-color: #1A8CB0; border-color: #1A8CB0;">
+                                style="background-color: #1A8CB0; border-color: #1A8CB0;" data-i18n="login.signIn">
                                 دخول
                             </button>
                         </div>
 
                         <div class="text-center mt-3">
-                            <a href="#" class="text-decoration-none text-muted small">نسيت كلمة المرور؟</a>
+                            <a href="#" class="text-decoration-none text-muted small" data-i18n="login.forgotPw">نسيت
+                                كلمة المرور؟</a>
                         </div>
                     </form>
                 </div>

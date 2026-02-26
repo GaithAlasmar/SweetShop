@@ -66,6 +66,15 @@ public class CachedProductRepository(
     }
 
     /// <summary>
+    /// Admin view that includes deleted products.
+    /// Not cached to ensure admins always see real-time deletion status.
+    /// </summary>
+    public IEnumerable<Product> GetAllProductsWithDeleted()
+    {
+        return inner.GetAllProductsWithDeleted();
+    }
+
+    /// <summary>
     /// Homepage "featured" section — cached independently from the full catalogue.
     /// </summary>
     public IEnumerable<Product> GetPreferredProducts()

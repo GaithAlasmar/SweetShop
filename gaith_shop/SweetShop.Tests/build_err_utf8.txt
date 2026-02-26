@@ -1,0 +1,12 @@
+﻿  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SweetShop -> C:\Users\HP\Desktop\training\gaith_shop\SweetShop\bin\Debug\net9.0\SweetShop.dll
+C:\Users\HP\Desktop\training\gaith_shop\SweetShop.Tests\Features\Orders\SaveOrderCommandHandlerTests.cs(67,52): error CS0117: 'Product' does not contain a definition for 'ProductId' [C:\Users\HP\Desktop\training\gaith_shop\SweetShop.Tests\SweetShop.Tests.csproj]
+
+Build FAILED.
+
+C:\Users\HP\Desktop\training\gaith_shop\SweetShop.Tests\Features\Orders\SaveOrderCommandHandlerTests.cs(67,52): error CS0117: 'Product' does not contain a definition for 'ProductId' [C:\Users\HP\Desktop\training\gaith_shop\SweetShop.Tests\SweetShop.Tests.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.79

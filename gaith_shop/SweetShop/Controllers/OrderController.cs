@@ -35,9 +35,13 @@ public class OrderController : Controller
 
         if (ModelState.IsValid)
         {
+            order.Status = "معلق"; // Pending fulfillment
+            order.PaymentStatus = "Pending";
+
             _orderRepository.CreateOrder(order);
-            _shoppingCart.ClearCart();
-            return RedirectToAction("CheckoutComplete");
+
+            // Redirect to the Mock Payment Gateway, passing the newly generated Order ID
+            return RedirectToAction("Index", "Payment", new { orderId = order.Id });
         }
 
         return View(order);

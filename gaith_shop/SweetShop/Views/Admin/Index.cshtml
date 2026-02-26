@@ -82,8 +82,14 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td style="color:#94a3b8;font-size:13px;">@item.Id</td>
+                            var rowStyle = item.IsDeleted ? "opacity: 0.6; background-color: #f8fafc;" : "";
+                            <tr style="@rowStyle">
+                                <td style="color:#94a3b8;font-size:13px;">
+                                    @item.Id
+                                    @if(item.IsDeleted) {
+                                        <br/><span class="badge bg-danger" style="font-size: 10px;">محذوف</span>
+                                    }
+                                </td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(item.ImageUrl))
                                     {
@@ -97,7 +103,9 @@
                                         </div>
                                     }
                                 </td>
-                                <td style="font-weight:500;">@item.Name</td>
+                                <td style="font-weight:500;">
+                                    @if(item.IsDeleted) { <del>@item.Name</del> } else { @item.Name }
+                                </td>
                                 <td>
                                     <span style="background:#f1f5f9;padding:3px 10px;border-radius:6px;font-size:12px;color:#64748b;">
                                         @item.Category?.Name
@@ -126,12 +134,24 @@
                                 </td>
                                 <td>
                                     <div style="display:flex;gap:6px;">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-admin-warning">
-                                            <i class="bi bi-pencil-fill"></i> تعديل
-                                        </a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-admin-danger">
-                                            <i class="bi bi-trash-fill"></i> حذف
-                                        </a>
+                                        @if(item.IsDeleted)
+                                        {
+                                            <form asp-action="Restore" method="post" style="display:inline;">
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <button type="submit" class="btn btn-sm btn-outline-success" style="border-radius: 8px;">
+                                                    <i class="bi bi-arrow-counterclockwise"></i> استعادة
+                                                </button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn-admin-warning">
+                                                <i class="bi bi-pencil-fill"></i> تعديل
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn-admin-danger">
+                                                <i class="bi bi-trash-fill"></i> حذف
+                                            </a>
+                                        }
                                     </div>
                                 </td>
                             </tr>

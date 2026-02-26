@@ -1,0 +1,116 @@
+@{
+    ViewData["Title"] = "لوحة القيادة الرئيسية";
+    Layout = "_AdminLayout";
+}
+
+<!-- Content Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0" style="color:#1e293b;font-weight:700;">لوحة القيادة الرئيسية</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="admin-card">
+            <div class="admin-card-header">
+                <h5><i class="bi bi-bar-chart-fill me-2" style="color:#1A8CB0;"></i>إحصائيات المبيعات الشهرية</h5>
+            </div>
+            <div class="admin-card-body">
+                <div style="position: relative; height:400px; width:100%;">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Import Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('/Admin/GetMonthlySalesData')
+                .then(response => response.json())
+                .then(data => {
+                    // Extract labels (e.g., "1/2026") and datapoints
+                    const labels = data.map(item => `${item.month}/${item.year}`);
+                    const amounts = data.map(item => item.totalSales);
+
+                    const ctx = document.getElementById('salesChart').getContext('2d');
+
+                    // Creates a gradient for the bar chart
+                    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                    gradient.addColorStop(0, 'rgba(26, 140, 176, 0.8)');
+                    gradient.addColorStop(1, 'rgba(26, 140, 176, 0.2)');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'إجمالي المبيعات (د.أ)',
+                                data: amounts,
+                                backgroundColor: gradient,
+                                borderColor: 'rgba(26, 140, 176, 1)',
+                                borderWidth: 1,
+                                borderRadius: 4,
+                                barPercentage: 0.6
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        font: {
+                                            family: "'Tajawal', 'Cairo', sans-serif",
+                                            size: 14
+                                        }
+                                    }
+                                },
+                                tooltip: {
+                                    titleFont: { family: "'Tajawal', 'Cairo', sans-serif", size: 14 },
+                                    bodyFont: { family: "'Tajawal', 'Cairo', sans-serif", size: 13 },
+                                    callbacks: {
+                                        label: function (context) {
+                                            let label = context.dataset.label || '';
+                                            if (label) {
+                                                label += ': ';
+                                            }
+                                            if (context.parsed.y !== null) {
+                                                label += new Intl.NumberFormat('ar-JO', { style: 'currency', currency: 'JOD' }).format(context.parsed.y);
+                                            }
+                                            return label;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        font: { family: "'Tajawal', 'Cairo', sans-serif" }
+                                    },
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.05)'
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        font: { family: "'Tajawal', 'Cairo', sans-serif" }
+                                    },
+                                    grid: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching chart data:", error);
+                });
+        });
+    </script>
+}

@@ -1,0 +1,295 @@
+[18:22:30 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 213
+[18:23:38 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 213
+[18:30:54 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 213
+[18:32:50 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 213
+[19:18:15 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 214
+[19:18:54 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 214
+[19:49:21 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Order' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:49:21 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductVariant'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:49:21 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ShoppingCartItem'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:49:21 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'Coupon'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[19:49:22 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[19:49:22 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 06:10:37 at 02:00.
+[19:49:22 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[19:49:22 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[19:49:22 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[19:49:22 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[19:49:23 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[19:49:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 710.0656 ms
+[19:49:24 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 1.9119 ms
+[19:56:40 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Order' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:56:40 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductVariant'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:56:40 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ShoppingCartItem'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:56:40 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'Coupon'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[19:56:41 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[19:56:41 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 06:03:18 at 02:00.
+[19:56:41 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[19:56:41 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[19:56:41 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[19:56:41 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[19:56:41 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[19:56:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 408.4025 ms
+[19:56:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 1.2551 ms
+[19:56:56 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Home/SetLanguage responded 302 in 52.5032 ms
+[19:56:56 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 92.5249 ms
+[19:56:56 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.2343 ms
+[19:57:03 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 317.1983 ms
+[19:57:03 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 118.9197 ms
+[19:57:03 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 7.1857 ms
+[19:57:03 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 78.7497 ms
+[19:57:03 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 4.4200 ms
+[19:57:06 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart responded 200 in 64.7711 ms
+[19:57:06 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.1571 ms
+[19:57:08 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 302 in 14.2677 ms
+[19:57:08 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Identity/Account/Login responded 200 in 239.2608 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/js/bootstrap.bundle.min.493y06b0oq.js responded 304 in 10.3517 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/jquery/dist/jquery.min.o1o13a6vjx.js responded 304 in 52.4577 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.3231 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/theName.vuynjl2tod.png responded 304 in 0.8156 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/logo.zaa9i9nvyb.png responded 304 in 0.9831 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/i18n.8m6c9esi6c.js responded 200 in 145.4823 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/site.cehqpg4pge.js responded 200 in 19.8700 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /css/site.tl2uyi9zry.css responded 200 in 145.7978 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /SweetShop.0pbvnpdpr0.styles.css responded 200 in 145.7894 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/currency.0yzbnuny04.js responded 200 in 19.8660 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/cart.edd4xof4tk.js responded 200 in 2.3562 ms
+[19:57:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/css/bootstrap.min.46ein0sx1k.css responded 200 in 174.8205 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Identity/Account/ForgotPassword responded 200 in 37.0488 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /SweetShop.0pbvnpdpr0.styles.css responded 200 in 1.2250 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/i18n.8m6c9esi6c.js responded 200 in 1.9039 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /css/site.tl2uyi9zry.css responded 200 in 2.3310 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/css/bootstrap.min.46ein0sx1k.css responded 200 in 27.8991 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/logo.zaa9i9nvyb.png responded 304 in 0.3044 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/currency.0yzbnuny04.js responded 200 in 2.3644 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/cart.edd4xof4tk.js responded 200 in 2.3282 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/site.cehqpg4pge.js responded 200 in 3.5640 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.1631 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/theName.vuynjl2tod.png responded 304 in 0.4074 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/jquery/dist/jquery.min.o1o13a6vjx.js responded 304 in 0.3816 ms
+[19:57:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/js/bootstrap.bundle.min.493y06b0oq.js responded 304 in 0.3735 ms
+[19:57:17 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Identity/Account/ForgotPassword responded 302 in 47.0884 ms
+[19:57:17 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Identity/Account/ForgotPasswordConfirmation responded 500 in 291.7787 ms
+System.InvalidOperationException: A suitable constructor for type 'Microsoft.AspNetCore.Mvc.RazorPages.PageModel' could not be located. Ensure the type is concrete and all parameters of a public constructor are either registered as services or passed as arguments. Also ensure no extraneous arguments are provided.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfoEx[] constructors, ConstructorInfo& matchingConstructor, Nullable`1[]& matchingParameterMap)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.CreateFactoryInternal(Type instanceType, Type[] argumentTypes, ParameterExpression& provider, ParameterExpression& argumentArray, Expression& factoryExpressionBody)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.CreateFactory(Type instanceType, Type[] argumentTypes)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageModelActivatorProvider.CreateActivator(CompiledPageActionDescriptor actionDescriptor)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageModelFactoryProvider.CreateModelFactory(CompiledPageActionDescriptor descriptor)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerCache.CreateCacheEntry(CompiledPageActionDescriptor compiledActionDescriptor, FilterItem[] cachedFilters)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerCache.GetCachedResult(ActionContext actionContext)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageRequestDelegateFactory.<>c__DisplayClass13_0.<CreateRequestDelegate>b__0(HttpContext context)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[19:57:18 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: A suitable constructor for type 'Microsoft.AspNetCore.Mvc.RazorPages.PageModel' could not be located. Ensure the type is concrete and all parameters of a public constructor are either registered as services or passed as arguments. Also ensure no extraneous arguments are provided.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfoEx[] constructors, ConstructorInfo& matchingConstructor, Nullable`1[]& matchingParameterMap)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.CreateFactoryInternal(Type instanceType, Type[] argumentTypes, ParameterExpression& provider, ParameterExpression& argumentArray, Expression& factoryExpressionBody)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.CreateFactory(Type instanceType, Type[] argumentTypes)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageModelActivatorProvider.CreateActivator(CompiledPageActionDescriptor actionDescriptor)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageModelFactoryProvider.CreateModelFactory(CompiledPageActionDescriptor descriptor)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerCache.CreateCacheEntry(CompiledPageActionDescriptor compiledActionDescriptor, FilterItem[] cachedFilters)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerCache.GetCachedResult(ActionContext actionContext)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageRequestDelegateFactory.<>c__DisplayClass13_0.<CreateRequestDelegate>b__0(HttpContext context)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Identity/Account/Register responded 200 in 42.3642 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/jquery/dist/jquery.min.o1o13a6vjx.js responded 304 in 0.1892 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/js/bootstrap.bundle.min.493y06b0oq.js responded 304 in 0.1884 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /SweetShop.0pbvnpdpr0.styles.css responded 200 in 1.2718 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /css/site.tl2uyi9zry.css responded 200 in 2.4476 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/i18n.8m6c9esi6c.js responded 200 in 2.4031 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/site.cehqpg4pge.js responded 200 in 1.9577 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/currency.0yzbnuny04.js responded 200 in 1.8333 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/css/bootstrap.min.46ein0sx1k.css responded 200 in 6.7819 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/logo.zaa9i9nvyb.png responded 304 in 0.4523 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/cart.edd4xof4tk.js responded 200 in 2.0222 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.0987 ms
+[19:57:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/theName.vuynjl2tod.png responded 304 in 0.2390 ms
+[21:53:49 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 214
+[21:54:22 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 214
+[21:55:28 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 214
+[22:01:59 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Order' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:01:59 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductReview'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:01:59 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductVariant'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:01:59 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ShoppingCartItem'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:01:59 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'Coupon'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[22:02:01 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[22:02:01 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 03:57:58 at 02:00.
+[22:02:01 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[22:02:01 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[22:02:01 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[22:02:01 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[22:02:01 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[22:02:03 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 886.5466 ms
+[22:02:03 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 1.6553 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Identity/Account/Register responded 200 in 452.3614 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/jquery/dist/jquery.min.o1o13a6vjx.js responded 304 in 4.6267 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/js/bootstrap.bundle.min.493y06b0oq.js responded 304 in 1.5690 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/i18n.8m6c9esi6c.js responded 200 in 76.7487 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /SweetShop.0pbvnpdpr0.styles.css responded 200 in 147.9549 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /css/site.tl2uyi9zry.css responded 200 in 147.9426 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 30.8230 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/theName.vuynjl2tod.png responded 304 in 2.3775 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/logo.zaa9i9nvyb.png responded 304 in 2.3416 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/currency.0yzbnuny04.js responded 200 in 3.2517 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/cart.edd4xof4tk.js responded 200 in 3.7326 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /js/site.cehqpg4pge.js responded 200 in 4.9039 ms
+[22:02:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /lib/bootstrap/dist/css/bootstrap.min.46ein0sx1k.css responded 200 in 229.4372 ms
+[22:09:37 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Order' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:09:37 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductReview'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:09:37 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ProductVariant'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:09:37 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'ShoppingCartItem'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:09:37 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] No store type was specified for the decimal property 'DiscountPercentage' on entity type 'Coupon'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[22:09:38 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[22:09:38 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 03:50:21 at 02:00.
+[22:09:39 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[22:09:39 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[22:09:39 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[22:09:39 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[22:09:40 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[22:09:41 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 949.5979 ms
+[22:09:41 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 2.6653 ms
+[22:10:17 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 463.2607 ms
+[22:10:17 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.4686 ms
+[22:10:20 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 38.0966 ms
+[22:10:20 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.3430 ms
+[22:10:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 27.6729 ms
+[22:10:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.3805 ms
+[22:10:37 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[22:10:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 1051.2689 ms
+[22:10:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 155.4757 ms
+[22:10:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 12.7594 ms
+[22:10:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 150.1226 ms
+[22:10:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 14.1955 ms
+[22:10:40 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 302 in 33.4738 ms
+[22:10:40 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 316.7507 ms
+[22:10:40 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.3340 ms
+[22:10:43 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 200 in 185.0513 ms
+[22:10:43 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.7144 ms
+[22:10:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 200 in 61.1567 ms
+[22:10:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /images/sticky-logo.png responded 404 in 0.2872 ms
+[22:19:02 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 221
+[22:19:29 FTL] [] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Program.cs:line 221
+[22:19:55 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[22:19:56 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[22:19:56 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 03:40:03 at 02:00.
+[22:19:56 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5076
+[22:19:56 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[22:19:56 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[22:19:56 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[22:20:13 INF] [Microsoft.Hosting.Lifetime] Application is shutting down...
+[22:20:13 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] StopAsync called — finishing gracefully.
+[22:20:13 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Shutdown requested while waiting. Exiting.
+[22:20:13 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Stopped.
+[22:20:13 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Stopped cleanly.

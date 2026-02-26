@@ -99,23 +99,22 @@
         z-index: 99;
         width: 45px;
         height: 45px;
-        border: none;
+        border: 2px solid #C7AE6A;
+        border-radius: 50%;
         outline: none;
-        background-color: #C7AE6A;
-        /* Gold button on blue theme? Or keep blue? User didn't specify button color, but gold contrasts well on the page if footer is blue. Let's try Gold. */
-        color: #1A8CB0;
-        /* Blue icon */
+        background-color: transparent;
+        color: #C7AE6A;
         cursor: pointer;
         padding: 0;
         display: none;
-        transition: opacity 0.3s, background-color 0.3s;
-        display: flex;
+        transition: all 0.3s ease;
         align-items: center;
         justify-content: center;
     }
 
     #scrollToTopBtn:hover {
-        background-color: #bfa055;
+        background-color: #C7AE6A;
+        color: #fff;
     }
 
     /* Contact Link Hover Effect */
@@ -159,7 +158,7 @@
                     <!-- White logo variant if needed, or keeping original -->
                     <h4 class="m-0" style="color: #C7AE6A; font-weight: bold;">حلويات الاسمر</h4>
                 </div>
-                <p class="mb-4" style="line-height: 1.8; color: #fff;">
+                <p class="mb-4" style="line-height: 1.8; color: #fff;" data-i18n="footer.brand.desc">
                     ارتق بلحظاتك مع حلويات الاسمر أفضل محل حلويات في الشرق الأوسط. نقدم لكم أجود أنواع الحلويات العربية
                     والغربية المحضرة بحب واتقان.
                 </p>
@@ -175,30 +174,38 @@
 
             <!-- Column 2: About Us -->
             <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
-                <h5 class="footer-offset-col-2">نبذة عنا</h5>
+                <h5 class="footer-offset-col-2" data-i18n="footer.aboutUs">نبذة عنا</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Story">قصتنا</a></li>
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Vision">رؤيتنا</a></li>
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Mission">مهمتنا</a></li>
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Factory">المصنع</a></li>
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Articles">المقالات</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Story" data-i18n="footer.story">قصتنا</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Vision" data-i18n="footer.vision">رؤيتنا</a>
+                    </li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Mission" data-i18n="footer.mission">مهمتنا</a>
+                    </li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Factory" data-i18n="footer.factory">المصنع</a>
+                    </li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Articles"
+                            data-i18n="footer.articles">المقالات</a></li>
                 </ul>
             </div>
 
             <!-- Column 3: Important Links -->
             <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 footer-offset-col-3">
-                <h5 class="footer-offset-title-3">روابط مهمة</h5>
+                <h5 class="footer-offset-title-3" data-i18n="footer.importantLinks">روابط مهمة</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Privacy">سياسة الخصوصية</a></li>
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Terms">الشروط والأحكام</a></li>
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Shipping">سياسة الشحن</a></li>
-                    <li class="mb-2"><a asp-controller="Info" asp-action="Awards">الجوائز</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Privacy" data-i18n="footer.privacy">سياسة
+                            الخصوصية</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Terms" data-i18n="footer.terms">الشروط
+                            والأحكام</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Shipping" data-i18n="footer.shipping">سياسة
+                            الشحن</a></li>
+                    <li class="mb-2"><a asp-controller="Info" asp-action="Awards" data-i18n="footer.awards">الجوائز</a>
+                    </li>
                 </ul>
             </div>
 
             <!-- Column 4: Contact -->
             <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 d-flex flex-column align-items-start footer-offset-col-4">
-                <h5>ابقى على تواصل</h5>
+                <h5 data-i18n="footer.contact">ابقى على تواصل</h5>
 
                 <div class="d-flex flex-column gap-2 mb-3">
                     <a href="tel:+962791234567"
@@ -224,7 +231,8 @@
         </div>
 
         <div class="border-top pt-3 mt-4 text-center" style="border-color: rgba(255,255,255,0.1) !important;">
-            <p class="mb-0" style="color: #ddd;">&copy; @DateTime.Now.Year حلويات الاسمر. جميع الحقوق محفوظة.</p>
+            <p class="mb-0" style="color: #ddd;">&copy; @DateTime.Now.Year حلويات الاسمر. <span
+                    data-i18n="footer.rights">جميع الحقوق محفوظة.</span></p>
         </div>
     </div>
 </footer>
@@ -243,7 +251,7 @@
 
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
+            mybutton.style.display = "flex";
         } else {
             mybutton.style.display = "none";
         }

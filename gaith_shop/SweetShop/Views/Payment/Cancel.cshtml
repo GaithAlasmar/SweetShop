@@ -1,0 +1,30 @@
+@model SweetShop.Models.Order
+
+@{
+    ViewData["Title"] = "إلغاء الدفع";
+    Layout = "_Layout";
+}
+
+<div class="container py-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow border-warning border-2 rounded-4 p-5">
+                <div class="mb-4">
+                    <i class="bi bi-exclamation-triangle-fill text-warning" style="font-size: 5rem;"></i>
+                </div>
+                <h2 class="fw-bold mb-3" data-i18n="payment.cancelHeading">تم إلغاء عملية الدفع</h2>
+                <p class="text-muted mb-4" data-i18n="payment.cancelMessage">لم يتم سحب أي مبالغ من بطاقتك والمشتروات لا
+                    تزال في سلتك في حال أردت استكمال الشراء لاحقاً.</p>
+
+                <div>
+                    <a asp-controller="Payment" asp-action="Index" asp-route-orderId="@Model.Id"
+                        class="btn btn-warning rounded-pill px-4 me-2 fw-bold" data-i18n="payment.resumePayment">استكمال
+                        الدفع</a>
+                    <a asp-controller="ShoppingCart" asp-action="Index"
+                        class="btn btn-outline-secondary rounded-pill px-4 fw-bold"
+                        data-i18n="payment.returnCart">العودة للسلة</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

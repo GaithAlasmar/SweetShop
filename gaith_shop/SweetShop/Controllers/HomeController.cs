@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using SweetShop.Data;
 using SweetShop.Models.Interfaces;
@@ -65,5 +66,39 @@ public class HomeController : Controller
         };
 
         return View(branches);
+    }
+
+    // ── Language Switcher ─────────────────────────────────────────────────────
+    /// <summary>
+    /// Persists the selected culture in a cookie so ASP.NET's
+    /// RequestLocalizationMiddleware (CookieRequestCultureProvider) applies
+    /// the correct CultureInfo to every subsequent server-rendered request.
+    /// </summary>
+    /// <param name="lang">Culture code: "ar" or "en"</param>
+    /// <param name="returnUrl">URL to redirect back to after setting the cookie.</param>
+    [HttpGet]
+    public IActionResult SetLanguage(string lang, string returnUrl)
+    {
+        // Validate lang to prevent open-redirect abuse
+        var supported = new[] { "ar", "en" };
+        if (!supported.Contains(lang)) lang = "ar";
+
+        // Write the standard ASP.NET culture cookie
+        Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(lang)),
+            new CookieOptions
+            {
+                Expires  = DateTimeOffset.UtcNow.AddYears(1),
+                IsEssential = true,
+                SameSite = SameSiteMode.Lax
+            }
+        );
+
+        // Redirect safely — only allow relative URLs
+        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            return LocalRedirect(returnUrl);
+
+        return RedirectToAction("Index", "Home");
     }
 }

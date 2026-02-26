@@ -23,10 +23,10 @@ public class ShoppingCart(ApplicationDbContext context)
         return new ShoppingCart(context) { ShoppingCartId = cartId };
     }
 
-    public void AddToCart(Product product, int amount)
+    public void AddToCart(Product product, int amount, int? variantId = null)
     {
         var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(
-            s => s.ProductId == product.Id && s.ShoppingCartId == ShoppingCartId);
+            s => s.ProductId == product.Id && s.ProductVariantId == variantId && s.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem == null)
         {
@@ -34,6 +34,7 @@ public class ShoppingCart(ApplicationDbContext context)
             {
                 ShoppingCartId = ShoppingCartId,
                 ProductId = product.Id,
+                ProductVariantId = variantId,
                 Amount = amount
             };
 
@@ -46,10 +47,10 @@ public class ShoppingCart(ApplicationDbContext context)
         _context.SaveChanges();
     }
 
-    public int RemoveFromCart(Product product)
+    public int RemoveFromCart(Product product, int? variantId = null)
     {
         var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(
-            s => s.ProductId == product.Id && s.ShoppingCartId == ShoppingCartId);
+            s => s.ProductId == product.Id && s.ProductVariantId == variantId && s.ShoppingCartId == ShoppingCartId);
 
         var localAmount = 0;
 
@@ -71,10 +72,10 @@ public class ShoppingCart(ApplicationDbContext context)
         return localAmount;
     }
 
-    public void RemoveTotalFromCart(Product product)
+    public void RemoveTotalFromCart(Product product, int? variantId = null)
     {
         var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(
-            s => s.ProductId == product.Id && s.ShoppingCartId == ShoppingCartId);
+            s => s.ProductId == product.Id && s.ProductVariantId == variantId && s.ShoppingCartId == ShoppingCartId);
 
         if (shoppingCartItem != null)
         {

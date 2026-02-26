@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # 1. حاوية تطبيق الويب (ASP.NET Core)
+  sweetshop-web:
+    build:
+      context: . # مسار بناء الـ Dockerfile
+      dockerfile: Dockerfile
+    container_name: sweetshop-web_prod
+    # ربط المنفذ 8080 في جهازك مع 8080 داخل الحاوية
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production # ضبط بيئة العمل كإنتاج
+      # تمرير سلسلة الاتصال بقاعدة البيانات لتقرأ مباشرة من حاوية الـ db
+      # لاحظ اسم الخادم هنا هو "sweetshop-db" وهو نفس اسم Service الخاص بـ SQL في الأسفل
+      - ConnectionStrings__DefaultConnection=Server=sweetshop-db,1433;Database=SweetShopProduction;User Id=sa;Password=SweetShop_Prod123!;TrustServerCertificate=True;MultipleActiveResultSets=true;
+    # نطلب من الـ Docker أن لا يشغل تطبيق الويب إلا بعد تشغيل قاعدة البيانات بنجاح
+    depends_on:
+      sweetshop-db:
+        condition: service_healthy
+    networks:
+      - sweetshop-network
+    restart: always # إعادة التشغيل التلقائي عند التوقف أو الانهيار
+
+  # 2. حاوية قاعدة البيانات (SQL Server 2022)
+  sweetshop-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest # الصورة الرسمية
+    container_name: sweetshop-db_prod
+    user: root # صلاحيات الجذور لتفادي بعض مشاكل المجلدات
+    environment:
+      - ACCEPT_EULA=Y # الموافقة على رخصة التشغيل (إجباري)
+      - MSSQL_SA_PASSWORD=SweetShop_Prod123! # كلمة المرور واسم المستخدم الافتراضي هو sa
+    ports:
+      - "1433:1433" # ربط المنفذ الافتراضي لـ SQL Server
+    # مجلد مشترك لحفظ البيانات لكي لا تضيع بعد حذف الحاوية (Data Persistence)
+    volumes:
+      - sqlvolume:/var/opt/mssql
+    # فحص صحة تشغيل قاعدة البيانات (لتأكد تشغيلها قبل تشغيل الويب)
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'SweetShop_Prod123!' -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - sweetshop-network
+    restart: always
+
+# تعريف المساحة التخزينية المشتركة لقاعدة البيانات لتبقى البيانات مخزنة في جهازك
+volumes:
+  sqlvolume:
+
+# شبكة اتصال معزولة ليتمكن كلا الحاويتين من التحدث معاً باستخدام أسمائهما
+networks:
+  sweetshop-network:
+    driver: bridge

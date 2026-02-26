@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="admin-card-body">
-                <form asp-action="Edit" method="post">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
                     @Html.AntiForgeryToken()
                     <input type="hidden" asp-for="Id" />
 
@@ -43,9 +43,12 @@
                         </div>
                         <div class="col-md-8">
                             <div class="admin-form-group">
-                                <label asp-for="ImageUrl">رابط الصورة</label>
-                                <input asp-for="ImageUrl" class="admin-form-control"
-                                    placeholder="https://... أو /images/..." />
+                                <label>تغيير صورة المنتج</label>
+                                <input type="file" name="imageFile" class="admin-form-control" accept="image/*" />
+                                <span class="text-muted" style="font-size:12px;">اترك الحقل فارغاً إذا كنت ترغب
+                                    بالاحتفاظ بالصورة الحالية</span>
+                                <!-- نحتفظ بالرابط القديم في حال لم يرفع صورة جديدة -->
+                                <input type="hidden" asp-for="ImageUrl" />
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -97,6 +100,65 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12 mt-4">
+                            <div style="background:#f8fafc;padding:20px;border-radius:10px;border:1px solid #e2e8f0;">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h6 style="color:#334155;margin:0;"><i class="bi bi-box-seam me-2"
+                                            style="color:#1A8CB0;"></i>أوزان وأحجام المنتج</h6>
+                                    <button type="button" id="addVariantBtn" class="btn btn-sm btn-outline-primary"
+                                        style="border-radius:6px;font-size:13px;">
+                                        <i class="bi bi-plus"></i> إضافة وزن/حجم
+                                    </button>
+                                </div>
+
+                                <div id="variantsContainer">
+                                    @if (Model.Configurations != null && Model.Configurations.Any())
+                                    {
+                                        int i = 0;
+                                        foreach (var variant in Model.Configurations)
+                                        {
+                                            <div class="row g-2 mb-3 variant-row align-items-end"
+                                                style="background:#fff;padding:15px;border-radius:8px;border:1px solid #e2e8f0;">
+                                                <input type="hidden" name="Configurations[@i].Id" value="@variant.Id" />
+                                                <input type="hidden" name="Configurations[@i].ProductId"
+                                                    value="@variant.ProductId" />
+
+                                                <div class="col-md-5">
+                                                    <label class="form-label" style="font-size:13px;color:#64748b;">الوزن /
+                                                        الحجم</label>
+                                                    <input type="text" name="Configurations[@i].Weight" value="@variant.Weight"
+                                                        class="admin-form-control" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" style="font-size:13px;color:#64748b;">السعر
+                                                        (د.أ)</label>
+                                                    <input type="number" step="0.01" name="Configurations[@i].Price"
+                                                        value="@variant.Price" class="admin-form-control" required />
+                                                </div>
+                                                <div class="col-md-2 text-center pb-2">
+                                                    <div class="form-check form-switch d-inline-block">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="Configurations[@i].IsDefault" value="true" id="default_@i"
+                                                        @(variant.IsDefault ? "checked" : "")>
+                                                        <label class="form-check-label" style="font-size:12px;"
+                                                            for="default_@i">افتراضي</label>
+                                                    </div>
+                                                    <input type="hidden" name="Configurations[@i].IsDefault" value="false" />
+                                                </div>
+                                                <div class="col-md-1 text-end pb-1">
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-outline-danger remove-variant-btn"
+                                                        style="border:none;">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            i++;
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <hr style="margin:24px 0;border-color:#f1f5f9;">
@@ -120,4 +182,57 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+        <script>
+            $(document).ready(function () {
+                let variantIndex = @(Model.Configurations != null ? Model.Configurations.Count() : 0);
+
+                $('#addVariantBtn').click(function () {
+                    const html = `
+                        <div class="row g-2 mb-3 variant-row align-items-end" style="background:#fff;padding:15px;border-radius:8px;border:1px solid #e2e8f0;position:relative;">
+                            <!-- new variant, ID is 0 so EF knows it's new -->
+                            <input type="hidden" name="Configurations[${variantIndex}].Id" value="0" />
+                            <input type="hidden" name="Configurations[${variantIndex}].ProductId" value="@Model.Id" />
+
+                            <div class="col-md-5">
+                                <label class="form-label" style="font-size:13px;color:#64748b;">الوزن / الحجم (مثل: 1 كيلو)</label>
+                                <input type="text" name="Configurations[${variantIndex}].Weight" class="admin-form-control" required />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label" style="font-size:13px;color:#64748b;">السعر (د.أ)</label>
+                                <input type="number" step="0.01" name="Configurations[${variantIndex}].Price" class="admin-form-control" required />
+                            </div>
+                            <div class="col-md-2 text-center pb-2">
+                                 <div class="form-check form-switch d-inline-block">
+                                    <input class="form-check-input" type="checkbox" name="Configurations[${variantIndex}].IsDefault" value="true" id="default_${variantIndex}">
+                                    <label class="form-check-label" style="font-size:12px;" for="default_${variantIndex}">افتراضي</label>
+                                 </div>
+                                 <input type="hidden" name="Configurations[${variantIndex}].IsDefault" value="false" />
+                            </div>
+                            <div class="col-md-1 text-end pb-1">
+                                <button type="button" class="btn btn-sm btn-outline-danger remove-variant-btn" style="border:none;">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    $('#variantsContainer').append(html);
+                    variantIndex++;
+                });
+
+                $(document).on('click', '.remove-variant-btn', function () {
+                    $(this).closest('.variant-row').remove();
+
+                    // Re-index variants
+                    $('#variantsContainer .variant-row').each(function(index) {
+                        $(this).find('input[name^="Configurations["]').each(function() {
+                            const name = $(this).attr('name');
+                            const newName = name.replace(/\[\d+\]/, `[${index}]`);
+                            $(this).attr('name', newName); // ID, ProductId, Weight, Price, IsDefault
+                        });
+                    });
+                    variantIndex = $('#variantsContainer .variant-row').length;
+                });
+            });
+        </script>
 }

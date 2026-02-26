@@ -4,15 +4,15 @@
     Layout = "_AdminLayout";
     var statusColors = new Dictionary<string, string>
             {
-                ["معلق"] = "badge-pending",
-                ["قيد المعالجة"] = "badge-process",
-                ["مكتمل"] = "badge-done",
-                ["ملغى"] = "badge-cancelled"
+                ["Pending"] = "badge-pending",
+                ["Processing"] = "badge-process",
+                ["Shipped"] = "badge-done", // Or create a new class
+                ["Delivered"] = "badge-done"
             };
-    var pending = Model.Count(o => o.Status == "معلق");
-    var processing = Model.Count(o => o.Status == "قيد المعالجة");
-    var completed = Model.Count(o => o.Status == "مكتمل");
-    var cancelled = Model.Count(o => o.Status == "ملغى");
+    var pending = Model.Count(o => o.Status == "Pending");
+    var processing = Model.Count(o => o.Status == "Processing");
+    var shipped = Model.Count(o => o.Status == "Shipped");
+    var delivered = Model.Count(o => o.Status == "Delivered");
 }
 
 <!-- Stats -->
@@ -39,21 +39,21 @@
     </div>
     <div class="col-6 col-md-3">
         <div class="stat-card">
-            <div class="stat-icon" style="background:#d1fae5;"><i class="bi bi-check-circle" style="color:#065f46;"></i>
+            <div class="stat-icon" style="background:#d1fae5;"><i class="bi bi-box-seam" style="color:#065f46;"></i>
             </div>
             <div>
-                <div class="stat-value">@completed</div>
-                <div class="stat-label">مكتمل</div>
+                <div class="stat-value">@shipped</div>
+                <div class="stat-label">مشحون</div>
             </div>
         </div>
     </div>
     <div class="col-6 col-md-3">
         <div class="stat-card">
-            <div class="stat-icon" style="background:#fee2e2;"><i class="bi bi-x-circle" style="color:#991b1b;"></i>
+            <div class="stat-icon" style="background:#d1fae5;"><i class="bi bi-check-circle" style="color:#065f46;"></i>
             </div>
             <div>
-                <div class="stat-value">@cancelled</div>
-                <div class="stat-label">ملغى</div>
+                <div class="stat-value">@delivered</div>
+                <div class="stat-label">تم التوصيل</div>
             </div>
         </div>
     </div>
@@ -101,7 +101,19 @@
                                 <td style="color:#64748b;font-size:13px;">@order.City</td>
                                 <td style="font-weight:600;">@order.OrderTotal.ToString("0.00") د.أ</td>
                                 <td style="font-size:13px;color:#64748b;">@order.OrderPlaced.ToString("yyyy/MM/dd")</td>
-                                <td><span class="status-badge @badgeCss">@order.Status</span></td>
+                                <td>
+                                    @{
+                                        string translatedStatus = order.Status switch
+                                        {
+                                            "Pending" => "معلق",
+                                            "Processing" => "قيد المعالجة",
+                                            "Shipped" => "مشحون",
+                                            "Delivered" => "تم التوصيل",
+                                            _ => order.Status
+                                        };
+                                    }
+                                    <span class="status-badge @badgeCss">@translatedStatus</span>
+                                </td>
                                 <td>
                                     <form asp-action="UpdateOrderStatus" method="post"
                                         style="display:flex;gap:6px;align-items:center;">
@@ -109,11 +121,12 @@
                                         <input type="hidden" name="id" value="@order.Id" />
                                         <select name="status" class="admin-form-control admin-form-select"
                                             style="padding:5px 8px;font-size:12px;min-width:130px;">
-                                            <option value="معلق" selected="@(order.Status == "معلق")">⏳ معلق</option>
-                                            <option value="قيد المعالجة" selected="@(order.Status == "قيد المعالجة")">🔄 قيد
+                                            <option value="Pending" selected="@(order.Status == "Pending")">⏳ معلق</option>
+                                            <option value="Processing" selected="@(order.Status == "Processing")">🔄 قيد
                                                 المعالجة</option>
-                                            <option value="مكتمل" selected="@(order.Status == "مكتمل")">✅ مكتمل</option>
-                                            <option value="ملغى" selected="@(order.Status == "ملغى")">❌ ملغى</option>
+                                            <option value="Shipped" selected="@(order.Status == "Shipped")">📦 مشحون</option>
+                                            <option value="Delivered" selected="@(order.Status == "Delivered")">✅ تم التوصيل
+                                            </option>
                                         </select>
                                         <button type="submit"
                                             style="padding:5px 10px;border-radius:7px;background:#1A8CB0;color:white;border:none;font-size:12px;cursor:pointer;">

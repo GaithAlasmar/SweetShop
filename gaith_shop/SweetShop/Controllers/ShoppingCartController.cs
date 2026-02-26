@@ -18,38 +18,38 @@ public class ShoppingCartController(IMediator mediator) : Controller
         return View(viewModel);
     }
 
-    // GET: /ShoppingCart/AddToShoppingCart/5
-    public async Task<IActionResult> AddToShoppingCart(int productId)
+    // GET: /ShoppingCart/AddToShoppingCart/5?variantId=10
+    public async Task<IActionResult> AddToShoppingCart(int productId, int? variantId)
     {
-        await mediator.Send(new AddToCartCommand(productId));
-        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+        await mediator.Send(new AddToCartCommand(productId, variantId));
+        if (Request.Headers.XRequestedWith == "XMLHttpRequest")
             return Ok();
         return RedirectToAction("Index");
     }
 
-    // GET: /ShoppingCart/RemoveFromShoppingCart/5
-    public async Task<IActionResult> RemoveFromShoppingCart(int productId)
+    // GET: /ShoppingCart/RemoveFromShoppingCart/5?variantId=10
+    public async Task<IActionResult> RemoveFromShoppingCart(int productId, int? variantId)
     {
-        await mediator.Send(new RemoveFromCartCommand(productId));
-        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+        await mediator.Send(new RemoveFromCartCommand(productId, variantId));
+        if (Request.Headers.XRequestedWith == "XMLHttpRequest")
             return Ok();
         return RedirectToAction("Index");
     }
 
-    // GET: /ShoppingCart/IncreaseQuantity/5
-    public async Task<IActionResult> IncreaseQuantity(int productId)
+    // GET: /ShoppingCart/IncreaseQuantity/5?variantId=10
+    public async Task<IActionResult> IncreaseQuantity(int productId, int? variantId)
     {
-        await mediator.Send(new ChangeCartQuantityCommand(productId, QuantityChange.Increase));
-        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+        await mediator.Send(new ChangeCartQuantityCommand(productId, QuantityChange.Increase, variantId));
+        if (Request.Headers.XRequestedWith == "XMLHttpRequest")
             return Ok();
         return RedirectToAction("Index");
     }
 
-    // GET: /ShoppingCart/DecreaseQuantity/5
-    public async Task<IActionResult> DecreaseQuantity(int productId)
+    // GET: /ShoppingCart/DecreaseQuantity/5?variantId=10
+    public async Task<IActionResult> DecreaseQuantity(int productId, int? variantId)
     {
-        await mediator.Send(new ChangeCartQuantityCommand(productId, QuantityChange.Decrease));
-        if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+        await mediator.Send(new ChangeCartQuantityCommand(productId, QuantityChange.Decrease, variantId));
+        if (Request.Headers.XRequestedWith == "XMLHttpRequest")
             return Ok();
         return RedirectToAction("Index");
     }
