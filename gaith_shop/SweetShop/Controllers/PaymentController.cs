@@ -3,21 +3,27 @@ using Microsoft.AspNetCore.Mvc;
 using SweetShop.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
+using SweetShop.Models;
 
 namespace SweetShop.Controllers;
 
-[Authorize]
 public class PaymentController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly SweetShop.Services.IStripePaymentService _stripePaymentService;
+    private readonly ShoppingCart _shoppingCart;
 
-    public PaymentController(ApplicationDbContext context, IHttpClientFactory httpClientFactory, SweetShop.Services.IStripePaymentService stripePaymentService)
+    public PaymentController(
+        ApplicationDbContext context,
+        IHttpClientFactory httpClientFactory,
+        SweetShop.Services.IStripePaymentService stripePaymentService,
+        ShoppingCart shoppingCart)
     {
         _context = context;
         _httpClientFactory = httpClientFactory;
         _stripePaymentService = stripePaymentService;
+        _shoppingCart = shoppingCart;
     }
 
     // Displays the Mock Gateway Interface
@@ -33,9 +39,8 @@ public class PaymentController : Controller
         return View(order);
     }
 
-    // Processes the Stripe Payment Checkout
     [HttpPost]
-    public async Task<IActionResult> ProcessPayment(int orderId)
+    public async Task<IActionResult> ProcessPayment(int orderId, string cvv)
     {
         var order = await _context.Orders
             .Include(o => o.OrderDetails)
@@ -44,15 +49,30 @@ public class PaymentController : Controller
 
         if (order == null) return NotFound();
 
-        // Pass domain URL (e.g. https://localhost:8080) for success and cancel callbacks
-        var domain = $"{Request.Scheme}://{Request.Host}";
+        // Simulate processing time
+        await Task.Delay(1500);
 
-        // Generate the Stripe Session URL
-        var sessionUrl = await _stripePaymentService.CreateCheckoutSessionAsync(order, domain);
+        if (cvv == "000")
+        {
+            // Simulate failure
+            order.PaymentStatus = "Failed";
+            order.Status = "فشل الدفع";
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Cancel), new { orderId = order.Id });
+        }
+        else
+        {
+            // Simulate success
+            order.PaymentStatus = "Completed";
+            order.Status = "قيد التحضير"; // Preparing
+            order.TransactionId = "mock_txn_" + Guid.NewGuid().ToString("N").Substring(0, 10);
+            await _context.SaveChangesAsync();
 
-        // Redirect the user to Stripe Secure Checkout
-        Response.Headers["Location"] = sessionUrl;
-        return new StatusCodeResult(303);
+            // Clear the shopping cart
+            _shoppingCart.ClearCart();
+
+            return RedirectToAction(nameof(Success), new { orderId = order.Id });
+        }
     }
 
     [HttpGet]

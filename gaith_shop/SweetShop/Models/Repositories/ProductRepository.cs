@@ -58,8 +58,49 @@ public class ProductRepository(ApplicationDbContext context) : IProductRepositor
 
     public void UpdateProduct(Product product)
     {
-        context.Products.Update(product);
-        context.SaveChanges();
+        var existingProduct = context.Products
+            .Include(p => p.Configurations)
+            .FirstOrDefault(p => p.Id == product.Id);
+
+        if (existingProduct != null)
+        {
+            // Update scalar properties
+            context.Entry(existingProduct).CurrentValues.SetValues(product);
+
+            // Handle Configurations (Variants)
+            if (product.Configurations != null)
+            {
+                var incomingIds = product.Configurations.Select(c => c.Id).ToList();
+
+                // Remove variants not in the incoming list
+                var variantsToRemove = existingProduct.Configurations
+                    .Where(c => !incomingIds.Contains(c.Id))
+                    .ToList();
+
+                foreach (var variant in variantsToRemove)
+                {
+                    context.Remove(variant);
+                }
+
+                // Add or update incoming variants
+                foreach (var incomingVariant in product.Configurations)
+                {
+                    var existingVariant = existingProduct.Configurations
+                        .FirstOrDefault(c => c.Id == incomingVariant.Id);
+
+                    if (existingVariant != null)
+                    {
+                        context.Entry(existingVariant).CurrentValues.SetValues(incomingVariant);
+                    }
+                    else
+                    {
+                        existingProduct.Configurations.Add(incomingVariant);
+                    }
+                }
+            }
+
+            context.SaveChanges();
+        }
     }
 
     public void DeleteProduct(Product product)

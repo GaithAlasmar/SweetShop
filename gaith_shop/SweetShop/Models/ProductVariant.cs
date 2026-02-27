@@ -8,6 +8,7 @@ public class ProductVariant
     public int Id { get; set; }
 
     public int ProductId { get; set; }
+    [Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidateNever]
     public Product Product { get; set; } = default!;
 
     [Required(ErrorMessage = "وزن أو حجم المنتج مطلوب")]

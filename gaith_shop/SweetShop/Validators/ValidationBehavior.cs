@@ -14,7 +14,7 @@ namespace SweetShop.Validators;
 ///           → If valid:  call next() → actual handler
 ///
 /// Register once in Program.cs — applies to ALL MediatR commands and queries
-/// that have a matching IValidator<TRequest> registered.
+/// that have a matching IValidator&lt;TRequest&gt; registered.
 /// </summary>
 public sealed class ValidationBehavior<TRequest, TResponse>(
     IEnumerable<IValidator<TRequest>> validators)

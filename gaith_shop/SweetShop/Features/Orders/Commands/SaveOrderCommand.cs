@@ -1,5 +1,7 @@
 using MediatR;
+using Microsoft.AspNetCore.SignalR;
 using SweetShop.Features.Shared;
+using SweetShop.Hubs;
 using SweetShop.Models;
 using SweetShop.Models.Interfaces;
 using SweetShop.ViewModels;
@@ -18,7 +20,8 @@ public record SaveOrderResult(bool Success, string? OrderSummary, string? ErrorM
 // ── Handler ───────────────────────────────────────────────────────────
 public class SaveOrderCommandHandler(
     IOrderRepository orderRepository,
-    IProductRepository productRepository)
+    IProductRepository productRepository,
+    IHubContext<NotificationHub> hubContext)
     : IRequestHandler<SaveOrderCommand, SaveOrderResult>
 {
     public async Task<SaveOrderResult> Handle(SaveOrderCommand request,
@@ -68,6 +71,15 @@ public class SaveOrderCommandHandler(
                           $"المنتجات المطلوبة:\n" +
                           string.Join("\n", model.Items.Select(i =>
                               $"- {i.ProductName}: {i.Quantity} {i.Unit}"));
+
+        // ── Broadcast the real-time notification to the Admins group ──
+        await hubContext.Clients.Group("Admins").SendAsync("ReceiveOrderNotification", new
+        {
+            OrderId = order.Id,
+            CustomerName = model.CustomerName,
+            Total = order.OrderTotal,
+            Date = DateTime.Now.ToString("g")
+        });
 
         return new SaveOrderResult(true, orderSummary);
     }

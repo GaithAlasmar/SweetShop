@@ -13,8 +13,15 @@ using SweetShop.Services;
 using SweetShop.Services.Caching;
 using SweetShop.Services.Reports;
 using SweetShop.Validators;
+using SweetShop.Hubs;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IO;
 
 using Serilog;
 
@@ -82,6 +89,9 @@ try
             cache: sp.GetRequiredService<ICacheService>(),
             logger: sp.GetRequiredService<ILogger<CachedProductRepository>>()));
 
+    // ── SignalR ─────────────────────────────────────────────────────────
+    builder.Services.AddSignalR();
+
     builder.Services.AddScoped<IOrderRepository, OrderRepository>();
     builder.Services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
     builder.Services.AddScoped<ICouponService, SweetShop.Services.CouponService>();
@@ -100,6 +110,77 @@ try
     // Automatically scans and registers all AbstractValidator<T> in this assembly.
     // Each validator is registered as IValidator<T> and injected by DI as needed.
     builder.Services.AddValidatorsFromAssemblyContaining<RegisterViewModelValidator>();
+
+    // ── Authentication & JWT ────────────────────────────────────────────────────
+    builder.Services.AddAuthentication(options =>
+    {
+        // Default to Identity for MVC web views
+        options.DefaultScheme = IdentityConstants.ApplicationScheme;
+        options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        // Configure JWT for the API
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"] ?? "SweetShopAPI",
+            ValidAudience = builder.Configuration["Jwt:Audience"] ?? "SweetShopClients",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? "a_very_long_secure_secret_key_for_jwt_auth_12345"))
+        };
+    });
+
+    // ── Swagger / OpenAPI ───────────────────────────────────────────────────
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Title = "SweetShop API",
+            Version = "v1",
+            Description = "An enterprise e-commerce REST API.",
+            Contact = new OpenApiContact { Name = "SweetShop Tech Team", Email = "api@sweetshop.com" }
+        });
+
+        // 1. Enable Swagger Annotations
+        c.EnableAnnotations();
+
+        // 2. JWT Authentication Setup in Swagger UI
+        var securityScheme = new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Description = "Enter 'Bearer {token}'",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "bearer",
+            BearerFormat = "JWT",
+            Reference = new OpenApiReference
+            {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+            }
+        };
+
+        c.AddSecurityDefinition("Bearer", securityScheme);
+
+        var securityRequirement = new OpenApiSecurityRequirement
+        {
+            { securityScheme, new[] { "Bearer" } }
+        };
+
+        c.AddSecurityRequirement(securityRequirement);
+
+        // 3. Include XML Comments for Documentation
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
+        if (System.IO.File.Exists(xmlPath))
+        {
+            c.IncludeXmlComments(xmlPath);
+        }
+    });
 
     builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
     builder.Services.AddRazorPages();
@@ -225,6 +306,14 @@ try
     if (app.Environment.IsDevelopment())
     {
         app.UseMigrationsEndPoint();
+
+        // Use Swagger in Development
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "SweetShop API V1");
+            c.InjectStylesheet("/css/swagger-custom.css"); // Optional: for custom styling
+        });
     }
     else
     {
@@ -263,6 +352,8 @@ try
     // and BEFORE UseAuthorization (so the User identity is populated for OrderPolicy).
     app.UseRateLimiter();
 
+    // Authentication MUST come before Authorization
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapStaticAssets();
@@ -271,6 +362,9 @@ try
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}")
         .WithStaticAssets();
+
+    // Register ASP.NET Core SignalR endpoints
+    app.MapHub<NotificationHub>("/notificationHub");
 
     app.MapRazorPages()
        .WithStaticAssets();

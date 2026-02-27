@@ -1,0 +1,33 @@
+[19:41:19 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:41:20 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[19:41:20 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 06:18:39 at 02:00.
+[19:41:21 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[19:41:21 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[19:41:21 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[19:41:21 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[19:41:21 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[19:41:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 918.9483 ms
+[19:41:26 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 393.4148 ms
+[19:45:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 10608.4305 ms
+[19:45:28 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 63.4761 ms
+[19:45:29 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 16.8410 ms
+[19:50:33 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:50:34 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[19:50:34 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 06:09:25 at 02:00.
+[19:50:35 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5076
+[19:50:35 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[19:50:35 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[19:50:35 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[19:50:41 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[19:50:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 577.3412 ms
+[19:50:46 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/Create responded 200 in 227.7682 ms
+[19:50:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Home/Branches responded 200 in 103.0119 ms
+[19:50:49 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 105.7903 ms
+[19:50:51 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 81.8067 ms
+[19:51:07 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 47.0837 ms
+[19:51:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 147.9477 ms
+[19:51:21 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Add responded 200 in 134.5578 ms
+[19:51:27 INF] [SweetShop.Areas.Identity.Pages.Account.LogoutModel] المستخدم قام بتسجيل الخروج.
+[19:51:27 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Identity/Account/Logout responded 302 in 45.5602 ms
+[19:51:27 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 10.9871 ms
+[19:51:30 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 11.3956 ms

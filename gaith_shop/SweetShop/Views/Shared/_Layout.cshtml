@@ -148,17 +148,17 @@
                     <!-- Account -->
                     @if (User.Identity != null && User.Identity.IsAuthenticated)
                     {
-                        <a asp-controller="Account" asp-action="Login" class="mh-action-btn">
-                            <i class="bi bi-person-fill mh-icon" style="color: #1A8CB0;"></i>
-                            <span class="mh-action-label d-none d-lg-inline" data-i18n="header.account">حسابي</span>
-                        </a>
+                            <a asp-controller="Account" asp-action="Login" class="mh-action-btn">
+                                <i class="bi bi-person-fill mh-icon" style="color: #1A8CB0;"></i>
+                                <span class="mh-action-label d-none d-lg-inline" data-i18n="header.account">حسابي</span>
+                            </a>
                     }
                     else
                     {
-                        <a asp-controller="Account" asp-action="Login" class="mh-action-btn">
-                            <i class="bi bi-person mh-icon"></i>
-                            <span class="mh-action-label d-none d-lg-inline" data-i18n="header.account">حسابي</span>
-                        </a>
+                            <a asp-controller="Account" asp-action="Login" class="mh-action-btn">
+                                <i class="bi bi-person mh-icon"></i>
+                                <span class="mh-action-label d-none d-lg-inline" data-i18n="header.account">حسابي</span>
+                            </a>
                     }
 
                     <!-- Cart -->
@@ -326,11 +326,11 @@
                                 class="bi bi-bag-check-fill"></i><span data-i18n="nav.orders">طلبيات</span></a></li>
                     <li><a class="cn-mob-link" asp-controller="Home" asp-action="Branches"><i
                                 class="bi bi-geo-alt-fill"></i><span data-i18n="nav.branches">فروعنا</span></a></li>
-                    @if (User.IsInRole("Admin"))
+                    @if (User.Identity != null && User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.Identity.Name == "admin@sweetshop.com"))
                     {
-                        <li class="cn-mob-sep"></li>
-                        <li><a class="cn-mob-link" style="color:#178ca4" asp-controller="Admin" asp-action="Index"><i
-                                    class="bi bi-shield-check"></i><span data-i18n="nav.admin">لوحة التحكم</span></a></li>
+                            <li class="cn-mob-sep"></li>
+                            <li><a class="cn-mob-link" style="color:#178ca4" asp-controller="Admin" asp-action="Index"><i
+                                        class="bi bi-shield-check"></i><span data-i18n="nav.admin">لوحة التحكم</span></a></li>
                     }
                 </ul>
             </div>
@@ -402,14 +402,14 @@
                     </li>
                     <li><a class="cn-link" asp-controller="Home" asp-action="Branches"
                             data-i18n="nav.branches">فروعنا</a></li>
-                    @if (User.IsInRole("Admin"))
+                    @if (User.Identity != null && User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.Identity.Name == "admin@sweetshop.com"))
                     {
-                        <li>
-                            <a class="cn-link cn-admin-link" asp-controller="Admin" asp-action="Index"
-                                data-i18n="nav.admin">
-                                لوحة التحكم
-                            </a>
-                        </li>
+                            <li>
+                                <a class="cn-link cn-admin-link" asp-controller="Admin" asp-action="Index"
+                                    data-i18n="nav.admin">
+                                    لوحة التحكم
+                                </a>
+                            </li>
                     }
                 </ul>
             </div><!-- /cn-links-wrap -->

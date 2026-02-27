@@ -5,7 +5,6 @@ using SweetShop.Models.Interfaces;
 
 namespace SweetShop.Controllers;
 
-[Authorize]
 public class OrderController : Controller
 {
     private readonly IOrderRepository _orderRepository;

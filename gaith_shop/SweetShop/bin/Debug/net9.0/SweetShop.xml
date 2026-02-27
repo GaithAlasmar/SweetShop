@@ -1,0 +1,618 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SweetShop</name>
+    </assembly>
+    <members>
+        <member name="T:SweetShop.Controllers.Api.ProductsController">
+            <summary>
+            API Controller for managing products in the e-commerce store.
+            Requires Bearer JWT Authentication for write operations.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Controllers.Api.ProductsController.GetProducts(System.Int32,System.Int32)">
+             <summary>
+             Retrieves a paginated list of all active products.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 GET /api/Products?pageNumber=1&amp;pageSize=10
+            
+             </remarks>
+             <param name="pageNumber">The page number to retrieve</param>
+             <param name="pageSize">The number of items per page</param>
+             <returns>A list of product objects</returns>
+             <response code="200">Returns the list of matching products</response>
+             <response code="400">If the pagination parameters are invalid</response>
+        </member>
+        <member name="M:SweetShop.Controllers.Api.ProductsController.GetProductById(System.Int32)">
+            <summary>
+            Retrieves a specific product by unique ID.
+            </summary>
+            <param name="id">The unique identifier of the product</param>
+            <returns>A single product object</returns>
+            <response code="200">Returns the requested product</response>
+            <response code="404">If the product is not found</response>
+        </member>
+        <member name="M:SweetShop.Controllers.Api.ProductsController.CreateProduct(SweetShop.Models.Product)">
+            <summary>
+            Creates a new product. (Admin &amp; Staff Only)
+            </summary>
+            <param name="product">The product details to create from the request body</param>
+            <returns>The newly created product</returns>
+            <response code="201">Returns the newly created product</response>
+            <response code="400">If the item is null or validation fails</response>
+            <response code="401">If the user is unauthorized (No valid JWT)</response>
+        </member>
+        <member name="M:SweetShop.Controllers.HomeController.SetLanguage(System.String,System.String)">
+            <summary>
+            Persists the selected culture in a cookie so ASP.NET's
+            RequestLocalizationMiddleware (CookieRequestCultureProvider) applies
+            the correct CultureInfo to every subsequent server-rendered request.
+            </summary>
+            <param name="lang">Culture code: "ar" or "en"</param>
+            <param name="returnUrl">URL to redirect back to after setting the cookie.</param>
+        </member>
+        <member name="T:SweetShop.Controllers.OrdersController">
+            <summary>
+            Thin controller — all business logic delegated to MediatR handlers.
+            No direct DB access; ApplicationDbContext is NOT injected here.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Controllers.OrdersController.#ctor(MediatR.IMediator)">
+            <summary>
+            Thin controller — all business logic delegated to MediatR handlers.
+            No direct DB access; ApplicationDbContext is NOT injected here.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Controllers.ProductController">
+            <summary>
+            Thin controller — dispatches Queries/Commands to MediatR handlers.
+            No business logic lives here.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Controllers.ProductController.#ctor(MediatR.IMediator)">
+            <summary>
+            Thin controller — dispatches Queries/Commands to MediatR handlers.
+            No business logic lives here.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Controllers.ShoppingCartController">
+            <summary>
+            Thin controller — dispatches all cart operations to MediatR handlers.
+            No repository or ShoppingCart injected directly.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Controllers.ShoppingCartController.#ctor(MediatR.IMediator)">
+            <summary>
+            Thin controller — dispatches all cart operations to MediatR handlers.
+            No repository or ShoppingCart injected directly.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Data.Migrations.UpdateCouponDecimal">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Data.Migrations.UpdateCouponDecimal.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Data.Migrations.UpdateCouponDecimal.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Data.Migrations.UpdateCouponDecimal.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SweetShop.Features.Orders.Commands.SaveOrderCommand">
+            <summary>
+            Creates a detailed order from a CreateOrderViewModel (line-item order).
+            Looks up product prices, builds OrderDetails, and persists via IOrderRepository.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Features.Orders.Commands.SaveOrderCommand.#ctor(SweetShop.ViewModels.CreateOrderViewModel)">
+            <summary>
+            Creates a detailed order from a CreateOrderViewModel (line-item order).
+            Looks up product prices, builds OrderDetails, and persists via IOrderRepository.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Features.Orders.Commands.SubmitBulkOrderCommand">
+            <summary>
+            Validates and processes a Bulk Order (event-based order with category quantities).
+            Returns a CommandResult with success flag and the order summary string for TempData.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Features.Orders.Commands.SubmitBulkOrderCommand.#ctor(SweetShop.ViewModels.BulkOrderViewModel)">
+            <summary>
+            Validates and processes a Bulk Order (event-based order with category quantities).
+            Returns a CommandResult with success flag and the order summary string for TempData.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Features.Orders.Queries.GetBulkOrderFormQuery">
+            <summary>
+            Loads the Bulk Order form ViewModel, populating categories from the DB.
+            Accepts an optional existing model so we can re-display form on validation failure.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Features.Orders.Queries.GetBulkOrderFormQuery.#ctor(SweetShop.ViewModels.BulkOrderViewModel)">
+            <summary>
+            Loads the Bulk Order form ViewModel, populating categories from the DB.
+            Accepts an optional existing model so we can re-display form on validation failure.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Features.Products.Queries.GetAllProductsQuery">
+            <summary>Returns a filtered product list. Pass null Category for all products.</summary>
+        </member>
+        <member name="M:SweetShop.Features.Products.Queries.GetAllProductsQuery.#ctor(System.String)">
+            <summary>Returns a filtered product list. Pass null Category for all products.</summary>
+        </member>
+        <member name="T:SweetShop.Features.Shared.CommandResult">
+            <summary>
+            A lightweight result type returned by Command handlers.
+            Controllers check Success and act accordingly.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Features.Shared.CommandResult.#ctor(System.Boolean,System.String)">
+            <summary>
+            A lightweight result type returned by Command handlers.
+            Controllers check Success and act accordingly.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Middleware.SecurityHeadersMiddleware">
+            <summary>
+            Injects hardened security headers into every HTTP response.
+            Register this BEFORE UseStaticFiles and UseRouting so that even
+            static assets and error pages carry the headers.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Middleware.SecurityHeadersMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Injects hardened security headers into every HTTP response.
+            Register this BEFORE UseStaticFiles and UseRouting so that even
+            static assets and error pages carry the headers.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SweetShop.Migrations.AddOrderStatusAndSiteSettings">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddOrderStatusAndSiteSettings.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddOrderStatusAndSiteSettings.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddOrderStatusAndSiteSettings.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SweetShop.Migrations.AddPaymentFieldsToOrder">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddPaymentFieldsToOrder.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddPaymentFieldsToOrder.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddPaymentFieldsToOrder.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SweetShop.Migrations.AddCoupons">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddCoupons.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddCoupons.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddCoupons.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SweetShop.Migrations.AddProductVariants">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddProductVariants.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddProductVariants.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddProductVariants.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SweetShop.Migrations.AddSoftDelete">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddSoftDelete.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddSoftDelete.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddSoftDelete.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:SweetShop.Migrations.AddProductReviews">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddProductReviews.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddProductReviews.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Migrations.AddProductReviews.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:SweetShop.Models.Interfaces.IImageService.UploadImageAsync(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            Uploads an image to the cloud storage and returns its URL.
+            </summary>
+            <param name="file">The image file uploaded by the user.</param>
+            <param name="folderName">The logical folder name (e.g. products, users).</param>
+            <returns>The full URL of the uploaded image.</returns>
+        </member>
+        <member name="M:SweetShop.Models.Interfaces.IImageService.DeleteImageAsync(System.String)">
+            <summary>
+            Deletes an image from the cloud storage.
+            </summary>
+            <param name="fileUrl">The full URL of the image to delete.</param>
+            <returns>True if deleted successfully, false otherwise.</returns>
+        </member>
+        <member name="M:SweetShop.Models.Interfaces.IOrderRepository.CreateOrderFromViewModelAsync(SweetShop.Models.Order)">
+            <summary>
+            Persists an order that was built manually (not from ShoppingCart).
+            Used by the CQRS SaveOrderCommandHandler.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Models.Repositories.OrderRepository.CreateOrder(SweetShop.Models.Order)">
+            <summary>Creates an order using items from the ShoppingCart session.</summary>
+        </member>
+        <member name="M:SweetShop.Models.Repositories.OrderRepository.CreateOrderFromViewModelAsync(SweetShop.Models.Order)">
+            <summary>
+            Persists an order that was built manually from a ViewModel (CQRS path).
+            The order's OrderDetails must already be populated before calling this.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Services.CachedProductRepository">
+             <summary>
+             Decorator that wraps IProductRepository with the Cache-Aside pattern.
+            
+             Cache-Aside flow:
+               READ  → Check cache → HIT: return cached value
+                                   → MISS: call inner repo → store in cache → return value
+               WRITE → Call inner repo (source of truth) → invalidate related cache keys
+            
+             This class is registered in DI instead of the raw ProductRepository,
+             so ALL consumers (MediatR handlers, controllers) transparently get caching.
+             </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.#ctor(SweetShop.Models.Interfaces.IProductRepository,SweetShop.Services.Caching.ICacheService,Microsoft.Extensions.Logging.ILogger{SweetShop.Services.CachedProductRepository})">
+             <summary>
+             Decorator that wraps IProductRepository with the Cache-Aside pattern.
+            
+             Cache-Aside flow:
+               READ  → Check cache → HIT: return cached value
+                                   → MISS: call inner repo → store in cache → return value
+               WRITE → Call inner repo (source of truth) → invalidate related cache keys
+            
+             This class is registered in DI instead of the raw ProductRepository,
+             so ALL consumers (MediatR handlers, controllers) transparently get caching.
+             </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.GetAllProducts">
+            <summary>
+            High-traffic endpoint. Served from cache on all subsequent hits.
+            Cache is busted whenever any product is created, updated, or deleted.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.GetAllProductsWithDeleted">
+            <summary>
+            Admin view that includes deleted products.
+            Not cached to ensure admins always see real-time deletion status.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.GetPreferredProducts">
+            <summary>
+            Homepage "featured" section — cached independently from the full catalogue.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.GetProductById(System.Int32)">
+            <summary>
+            Product detail page. Per-product key so invalidating one product
+            doesn't flush the entire catalogue cache.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.SearchProducts(System.String)">
+            <summary>
+            Search results are cached per unique search term (lower-cased).
+            Shorter TTL because stock levels change more frequently.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.CreateProduct(SweetShop.Models.Product)">
+            <summary>
+            After a new product is created, every "all products" and "preferred"
+            key is stale → bust the entire "products" prefix.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.UpdateProduct(SweetShop.Models.Product)">
+            <summary>
+            After an update, bust both the specific product key AND catalogue keys.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.DeleteProduct(SweetShop.Models.Product)">
+            <summary>
+            After deletion, remove the specific key and flush the catalogue.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.CachedProductRepository.InvalidateProductCaches(System.String)">
+            <summary>
+            Busts the entire "products" cache prefix (all catalogue + search keys).
+            Called on any write operation to ensure consistency.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Services.Caching.ICacheService">
+            <summary>
+            Abstraction over the underlying cache store (IMemoryCache or Redis).
+            Swap implementations without touching any consumer code.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Caching.ICacheService.GetAsync``1(System.String)">
+            <summary>
+            Tries to get a cached value. Returns null if not found (cache miss).
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Caching.ICacheService.SetAsync``1(System.String,``0,System.Nullable{System.TimeSpan})">
+            <summary>
+            Writes a value to the cache with an optional TTL.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Caching.ICacheService.RemoveAsync(System.String)">
+            <summary>
+            Removes a specific key from the cache (point invalidation).
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Caching.ICacheService.RemoveByPrefixAsync(System.String)">
+            <summary>
+            Removes all keys that start with the given prefix (tag-based invalidation).
+            Used to bust entire entity groups (e.g., all "products:*" keys at once).
+            </summary>
+        </member>
+        <member name="T:SweetShop.Services.Caching.MemoryCacheService">
+            <summary>
+            In-process cache implementation using IMemoryCache.
+            Best for single-server deployments. No serialization overhead.
+            Switch to RedisCacheService for multi-server / scaled-out environments.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Caching.MemoryCacheService.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,Microsoft.Extensions.Logging.ILogger{SweetShop.Services.Caching.MemoryCacheService})">
+            <summary>
+            In-process cache implementation using IMemoryCache.
+            Best for single-server deployments. No serialization overhead.
+            Switch to RedisCacheService for multi-server / scaled-out environments.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Services.Caching.RedisCacheService">
+             <summary>
+             Redis-backed distributed cache implementation using IDistributedCache.
+             Switch to this in multi-server / Azure deployments by changing the
+             DI registration in Program.cs — no consumer code changes needed.
+            
+             Setup: dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis
+                    builder.Services.AddStackExchangeRedisCache(o => o.Configuration = "localhost:6379");
+             </summary>
+        </member>
+        <member name="M:SweetShop.Services.Caching.RedisCacheService.#ctor(Microsoft.Extensions.Caching.Distributed.IDistributedCache,Microsoft.Extensions.Logging.ILogger{SweetShop.Services.Caching.RedisCacheService})">
+             <summary>
+             Redis-backed distributed cache implementation using IDistributedCache.
+             Switch to this in multi-server / Azure deployments by changing the
+             DI registration in Program.cs — no consumer code changes needed.
+            
+             Setup: dotnet add package Microsoft.Extensions.Caching.StackExchangeRedis
+                    builder.Services.AddStackExchangeRedisCache(o => o.Configuration = "localhost:6379");
+             </summary>
+        </member>
+        <member name="M:SweetShop.Services.Caching.RedisCacheService.RemoveByPrefixAsync(System.String)">
+             <summary>
+             Redis doesn't natively support prefix-based deletion via IDistributedCache.
+             For full SCAN-based invalidation, inject IConnectionMultiplexer from
+             StackExchange.Redis directly. This implementation logs a guidance message.
+            
+             Production pattern:
+               var server = _multiplexer.GetServer(_multiplexer.GetEndPoints().First());
+               var keys = server.Keys(pattern: $"{prefix}:*").ToArray();
+               await _db.KeyDeleteAsync(keys);
+             </summary>
+        </member>
+        <member name="M:SweetShop.Services.IStripePaymentService.CreateCheckoutSessionAsync(SweetShop.Models.Order,System.String)">
+            <summary>
+            Creates a Stripe Checkout Session for the given order and returns the Session URL.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Services.Reports.DailyFinancialReport">
+            <summary>
+            Aggregated data for a single nightly financial report.
+            Populated by FinancialReportService and passed to IReportEmailService.
+            </summary>
+        </member>
+        <member name="P:SweetShop.Services.Reports.DailyFinancialReport.ReportDate">
+            <summary>The date this report covers (yesterday's orders).</summary>
+        </member>
+        <member name="P:SweetShop.Services.Reports.DailyFinancialReport.TotalOrders">
+            <summary>Total number of orders placed.</summary>
+        </member>
+        <member name="P:SweetShop.Services.Reports.DailyFinancialReport.GrossRevenue">
+            <summary>Sum of all OrderTotal values.</summary>
+        </member>
+        <member name="P:SweetShop.Services.Reports.DailyFinancialReport.AverageOrderValue">
+            <summary>Average order value for the day.</summary>
+        </member>
+        <member name="P:SweetShop.Services.Reports.DailyFinancialReport.TopOrderValue">
+            <summary>The single highest-value order of the day.</summary>
+        </member>
+        <member name="P:SweetShop.Services.Reports.DailyFinancialReport.TopProducts">
+            <summary>Top 5 best-selling products by units sold.</summary>
+        </member>
+        <member name="P:SweetShop.Services.Reports.DailyFinancialReport.HourlyBreakdown">
+            <summary>Hour-by-hour order breakdown (0-23).</summary>
+        </member>
+        <member name="T:SweetShop.Services.Reports.FinancialReportService">
+            <summary>
+            Queries the database and builds a DailyFinancialReport for a given date.
+            Registered as Scoped and resolved inside a DI scope created by the worker.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Reports.FinancialReportService.#ctor(SweetShop.Data.ApplicationDbContext)">
+            <summary>
+            Queries the database and builds a DailyFinancialReport for a given date.
+            Registered as Scoped and resolved inside a DI scope created by the worker.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Reports.FinancialReportService.BuildReportAsync(System.DateOnly,System.Threading.CancellationToken)">
+            <summary>
+            Aggregates all orders placed on <paramref name="reportDate"/> into
+            a structured DailyFinancialReport object.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Services.Reports.NightlyReportWorker">
+             <summary>
+             ASP.NET Core BackgroundService that fires the financial report pipeline
+             every night at a configurable time (default: 02:00 AM local time).
+            
+             Key design decisions:
+              • BackgroundService (not IHostedService) — cleaner lifecycle hooks.
+              • IServiceScopeFactory for resolving Scoped services (EF Core DbContext)
+                from a Singleton-lifetime hosted service.
+              • Graceful shutdown via CancellationToken — never blocks SIGTERM.
+              • Retry logic with exponential back-off: 1 min → 5 min → 15 min.
+              • Full structured logging at every stage.
+             </summary>
+        </member>
+        <member name="M:SweetShop.Services.Reports.NightlyReportWorker.#ctor(Microsoft.Extensions.DependencyInjection.IServiceScopeFactory,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{SweetShop.Services.Reports.NightlyReportWorker})">
+             <summary>
+             ASP.NET Core BackgroundService that fires the financial report pipeline
+             every night at a configurable time (default: 02:00 AM local time).
+            
+             Key design decisions:
+              • BackgroundService (not IHostedService) — cleaner lifecycle hooks.
+              • IServiceScopeFactory for resolving Scoped services (EF Core DbContext)
+                from a Singleton-lifetime hosted service.
+              • Graceful shutdown via CancellationToken — never blocks SIGTERM.
+              • Retry logic with exponential back-off: 1 min → 5 min → 15 min.
+              • Full structured logging at every stage.
+             </summary>
+        </member>
+        <member name="M:SweetShop.Services.Reports.NightlyReportWorker.CalculateDelayUntilNextRun">
+            <summary>
+            Calculates the precise TimeSpan to wait until the next scheduled run.
+            If the scheduled time has already passed today, targets tomorrow.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Services.Reports.ReportEmailService">
+            <summary>
+            Sends the nightly financial report via SMTP.
+            Uses SmtpClient (built-in, no extra packages).
+            For production, replace with SendGrid / Mailgun for reliability.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Services.Reports.ReportEmailService.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{SweetShop.Services.Reports.ReportEmailService})">
+            <summary>
+            Sends the nightly financial report via SMTP.
+            Uses SmtpClient (built-in, no extra packages).
+            For production, replace with SendGrid / Mailgun for reliability.
+            </summary>
+        </member>
+        <member name="T:SweetShop.Validators.RegisterViewModelValidator">
+            <summary>
+            Full FluentValidation pipeline for user registration.
+            Rules: strong password, unique email (async DB check), valid phone format.
+            All error messages are in Arabic to match the app's UI language.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Validators.RegisterViewModelValidator.BeUniqueEmailAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously checks UserManager to see if the email already exists.
+            Runs only when the email format is valid (see .When() above).
+            </summary>
+        </member>
+        <member name="M:SweetShop.Validators.RegisterViewModelValidator.BeValidJordanianOrInternationalPhone(System.String)">
+            <summary>
+            Accepts:
+              - Jordanian mobile:          07XXXXXXXX (10 digits, starts with 07)
+              - Jordanian international:   +9627XXXXXXXX
+              - Generic international:     +[country-code][number] (7-15 digits)
+            </summary>
+        </member>
+        <member name="T:SweetShop.Validators.ValidationBehavior`2">
+             <summary>
+             MediatR Pipeline Behavior that runs FluentValidation automatically
+             before any IRequest handler executes.
+            
+             Flow:
+               Controller → mediator.Send(request)
+                   → ValidationBehavior (validates here)
+                       → If errors: throw ValidationException (structured errors)
+                       → If valid:  call next() → actual handler
+            
+             Register once in Program.cs — applies to ALL MediatR commands and queries
+             that have a matching IValidator&lt;TRequest&gt; registered.
+             </summary>
+        </member>
+        <member name="M:SweetShop.Validators.ValidationBehavior`2.#ctor(System.Collections.Generic.IEnumerable{FluentValidation.IValidator{`0}})">
+             <summary>
+             MediatR Pipeline Behavior that runs FluentValidation automatically
+             before any IRequest handler executes.
+            
+             Flow:
+               Controller → mediator.Send(request)
+                   → ValidationBehavior (validates here)
+                       → If errors: throw ValidationException (structured errors)
+                       → If valid:  call next() → actual handler
+            
+             Register once in Program.cs — applies to ALL MediatR commands and queries
+             that have a matching IValidator&lt;TRequest&gt; registered.
+             </summary>
+        </member>
+        <member name="T:SweetShop.Validators.ValidationExtensions">
+            <summary>
+            Extension methods to map FluentValidation failures into
+            ASP.NET Core ModelState for automatic Razor view error display.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Validators.ValidationExtensions.AddToModelState(FluentValidation.Results.ValidationResult,Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)">
+            <summary>
+            Adds FluentValidation errors to ModelState so they appear
+            in Razor views via @Html.ValidationMessageFor() / asp-validation-for.
+            </summary>
+        </member>
+        <member name="M:SweetShop.Validators.ValidationExtensions.ToErrorDictionary(FluentValidation.ValidationException)">
+             <summary>
+             Converts a FluentValidation ValidationException into a
+             structured dictionary keyed by property name.
+             Useful for JSON API responses.
+            
+             Example output:
+             {
+               "Email":    ["هذا البريد الإلكتروني مسجل مسبقاً"],
+               "Password": ["يجب أن تحتوي كلمة المرور على رمز خاص"]
+             }
+             </summary>
+        </member>
+        <member name="T:SweetShop.ViewModels.RegisterViewModel">
+            <summary>
+            Enhanced registration model with full name and phone number.
+            Replaces DataAnnotations — all validation is handled by FluentValidation.
+            </summary>
+        </member>
+    </members>
+</doc>

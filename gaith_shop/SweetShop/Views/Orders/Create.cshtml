@@ -26,7 +26,10 @@
                     @Html.AntiForgeryToken()
 
                     <!-- Validation Summary -->
-                    <div asp-validation-summary="All" class="alert alert-danger" style="display:none;"></div>
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="All" class="alert alert-danger shadow-sm rounded-3"></div>
+                    }
 
                     <!-- ══════════════ CUSTOMER INFO CARD ══════════════ -->
                     <div class="so-card so-card-info">
@@ -71,7 +74,8 @@
                                 <div class="col-md-6">
                                     <div class="so-field">
                                         <label asp-for="AdditionalNotes" class="so-label">
-                                            <i class="bi bi-chat-dots-fill"></i> <span data-i18n="orders.notesLabel">ملاحظات إضافية</span>
+                                            <i class="bi bi-chat-dots-fill"></i> <span
+                                                data-i18n="orders.notesLabel">ملاحظات إضافية</span>
                                         </label>
                                         <textarea asp-for="AdditionalNotes" class="form-control so-input" rows="2"
                                             placeholder="أي ملاحظات أو طلبات خاصة..."
@@ -101,13 +105,15 @@
                                 </div>
                                 <!-- Quantity -->
                                 <div class="so-qty-field">
-                                    <label class="so-label"><i class="bi bi-hash"></i> <span data-i18n="orders.qty">الكمية</span></label>
+                                    <label class="so-label"><i class="bi bi-hash"></i> <span
+                                            data-i18n="orders.qty">الكمية</span></label>
                                     <input type="number" id="itemQuantity" class="form-control so-input" min="0.5"
                                         max="1000" step="0.5" value="1" />
                                 </div>
                                 <!-- Unit -->
                                 <div class="so-unit-field">
-                                    <label class="so-label"><i class="bi bi-rulers"></i> <span data-i18n="orders.unit">الوحدة</span></label>
+                                    <label class="so-label"><i class="bi bi-rulers"></i> <span
+                                            data-i18n="orders.unit">الوحدة</span></label>
                                     <select id="itemUnit" class="form-select so-input">
                                         <option value="كيلو" data-i18n="orders.unit.kilo">كيلو</option>
                                         <option value="صينية" data-i18n="orders.unit.tray">صينية</option>
@@ -187,9 +193,12 @@
 
                     <!-- ══════════════ SUBMIT BUTTON ══════════════ -->
                     <div class="so-submit-wrapper">
-                        <button type="submit" id="submitBtn" class="btn so-btn-submit" disabled>
-                            <i class="bi bi-send-check-fill ms-2"></i>
-                            <span data-i18n="orders.submit">إرسال الطلب</span>
+                        <button type="submit" id="submitBtn" class="btn so-btn-submit position-relative" disabled>
+                            <span class="btn-text"><i class="bi bi-send-check-fill ms-2"></i><span
+                                    data-i18n="orders.submit">إرسال الطلب</span></span>
+                            <span
+                                class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle d-none text-white text-center"
+                                role="status" aria-hidden="true" id="submitSpinner"></span>
                         </button>
                     </div>
                 </form>
@@ -222,9 +231,9 @@
 
     <style>
         /* ═══════════════════════════════════════════
-                               SPECIAL ORDERS — PREMIUM DASHBOARD THEME
-                               Colors: #1A8CB0 (teal), #C7AE6A (gold), #E6F3FB (ice)
-                               ═══════════════════════════════════════════ */
+                                   SPECIAL ORDERS — PREMIUM DASHBOARD THEME
+                                   Colors: #1A8CB0 (teal), #C7AE6A (gold), #E6F3FB (ice)
+                                   ═══════════════════════════════════════════ */
 
         .special-order-page {
             font-family: 'Readex Pro', 'Segoe UI', Tahoma, sans-serif;
@@ -806,7 +815,12 @@
 
     <script>
         $(document).ready(function () {
-            var items = [];
+            var items = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model?.Items ?? new List<SweetShop.ViewModels.OrderItemViewModel>(), new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase }));
+
+            // Render existing items immediately if we came back from a validation error
+            if (items.length > 0) {
+                renderTable();
+            }
 
             // ─── Initialize Select2 ───
             $('#productSearch').select2({
@@ -973,7 +987,19 @@
                 if (items.length === 0) {
                     e.preventDefault();
                     showError(typeof I18n !== 'undefined' && I18n.getSaved() === 'en' ? 'Please add at least one product before submitting the order' : 'الرجاء إضافة منتج واحد على الأقل قبل إرسال الطلب');
+                    return;
                 }
+
+                // If using jQuery validation on client side, check if valid
+                if ($(this).valid && !$(this).valid()) {
+                    return; // Prevent spinner if validation fails
+                }
+
+                // Show loading spinner
+                var btn = $(this).find('.so-btn-submit');
+                btn.css('pointer-events', 'none');
+                btn.find('.btn-text').css('opacity', '0');
+                btn.find('#submitSpinner').removeClass('d-none');
             });
         });
     </script>

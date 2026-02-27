@@ -737,3 +737,69 @@ System.InvalidOperationException: Email:Smtp:Host not configured
 [02:11:44 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 39.6973 ms
 [02:11:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 155.5583 ms
 [02:11:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 60.1584 ms
+[18:53:52 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[18:53:53 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[18:53:53 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 07:06:06 at 02:00.
+[18:53:53 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[18:53:53 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[18:53:53 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[18:53:53 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[18:53:54 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[18:53:55 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 555.1261 ms
+[19:12:27 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:12:29 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[19:12:29 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 06:47:30 at 02:00.
+[19:12:29 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[19:12:29 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[19:12:29 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[19:12:29 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[19:12:30 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[19:12:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 615.4560 ms
+[19:13:40 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 622.6539 ms
+[19:13:57 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 302 in 430.0417 ms
+[19:13:57 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 34.9065 ms
+[19:13:59 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 347.0839 ms
+[19:14:09 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[19:14:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/15 responded 200 in 866.9244 ms
+[19:14:22 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/15 responded 200 in 70.9190 ms
+[19:14:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/15 responded 200 in 9.2834 ms
+[19:14:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/15 responded 200 in 39.0110 ms
+[19:14:57 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/15 responded 200 in 9.0281 ms
+[19:14:58 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 49.5965 ms
+[19:15:01 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 89.9885 ms
+[19:15:43 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/15 responded 200 in 51.8028 ms
+[19:15:48 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/15 responded 200 in 9.4092 ms
+[19:15:51 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/15 responded 200 in 9.6999 ms
+[19:15:53 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 26.0019 ms
+[19:16:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/15 responded 200 in 8.5465 ms
+[19:26:33 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:26:35 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[19:26:35 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 06:33:24 at 02:00.
+[19:26:35 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[19:26:35 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[19:26:35 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[19:26:35 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[19:26:36 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[19:26:37 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 929.3324 ms
+[19:26:43 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 386.5739 ms
+[19:26:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 72.0735 ms
+[19:26:49 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 21.6656 ms
+[19:26:53 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[19:26:53 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/2 responded 200 in 720.1542 ms
+[19:26:59 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/1 responded 200 in 13.7678 ms
+[19:27:10 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/1 responded 200 in 96.7393 ms
+[19:27:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/1 responded 200 in 11.1408 ms
+[19:27:16 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 12.3899 ms
+[19:27:19 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 53.9304 ms
+[19:27:35 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin responded 200 in 18.4441 ms
+[19:27:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Admin/Edit/1 responded 200 in 7.4625 ms
+[19:27:43 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/1 responded 200 in 29.4686 ms
+[19:27:46 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Admin/Edit/1 responded 200 in 9.3458 ms
+[19:27:50 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 46.5301 ms
+[19:27:59 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 12.2253 ms
+[19:28:07 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 11.2680 ms
+[19:28:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 12.9149 ms
+[19:28:10 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 95.2083 ms
+[19:28:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 200 in 61.0373 ms
+[19:28:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 56.4950 ms
+[19:29:01 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 25.3191 ms

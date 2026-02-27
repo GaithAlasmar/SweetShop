@@ -1,0 +1,434 @@
+[02:22:14 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[02:22:15 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[02:22:15 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 23:37:44 at 02:00.
+[02:22:16 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[02:22:16 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[02:22:16 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[02:22:16 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[02:22:16 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[02:22:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 1063.6566 ms
+[02:23:32 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 303.5712 ms
+[02:23:33 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[02:23:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 509.1201 ms
+[02:23:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 154.1004 ms
+[02:23:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 7.6899 ms
+[02:23:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 98.6976 ms
+[02:23:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 7.2588 ms
+[02:23:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 8.4392 ms
+[02:23:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 6.2384 ms
+[02:23:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 4.4496 ms
+[02:23:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 34.6093 ms
+[02:23:36 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 3.8749 ms
+[02:23:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 302 in 14.8131 ms
+[02:23:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 343.9046 ms
+[02:23:42 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Register responded 200 in 58.9512 ms
+[02:26:29 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 80.6399 ms
+[02:26:30 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 9.3425 ms
+[02:26:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 38.1974 ms
+[02:26:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 27.9733 ms
+[02:26:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.9138 ms
+[02:26:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 4.5045 ms
+[02:26:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.2387 ms
+[02:26:33 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 302 in 1.1570 ms
+[02:26:33 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Account/Login responded 200 in 28.6947 ms
+[02:26:35 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Account/Login responded 200 in 86.3780 ms
+[02:27:04 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[02:27:05 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[02:27:05 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 23:32:54 at 02:00.
+[02:27:06 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[02:27:06 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[02:27:06 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[02:27:06 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[02:27:06 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[02:27:06 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 228.2673 ms
+[02:27:10 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[02:27:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 484.8916 ms
+[02:27:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 127.7722 ms
+[02:27:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 13.0634 ms
+[02:27:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 83.9169 ms
+[02:27:11 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 5.2137 ms
+[02:27:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 16.1981 ms
+[02:27:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 6.3191 ms
+[02:27:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.6107 ms
+[02:27:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 29.2903 ms
+[02:27:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.5535 ms
+[02:27:16 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart responded 200 in 77.2201 ms
+[02:27:17 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 109.7379 ms
+[02:27:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 292.3591 ms
+[02:27:23 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 153.4718 ms
+[02:27:40 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 500 in 3912.4652 ms
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[02:27:42 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[02:28:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 9.4753 ms
+[02:28:26 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 500 in 2994.6040 ms
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[02:28:28 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[02:28:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 69.8919 ms
+[02:28:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 16.2553 ms
+[02:29:06 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 500 in 3320.5798 ms
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[02:29:08 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[02:29:16 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 37.1979 ms
+[02:29:30 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 18.2449 ms
+[02:29:59 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 500 in 3043.4263 ms
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[02:30:01 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[02:33:50 ERR] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 500 in 2416.7036 ms
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[02:33:52 ERR] [Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware] An unhandled exception has occurred while executing the request.
+Stripe.StripeException: Invalid API Key provided: sk_test_*2345
+   at Stripe.StripeClient.ProcessResponse[T](StripeResponse response) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 153
+   at Stripe.StripeClient.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Infrastructure/Public/StripeClient.cs:line 115
+   at Stripe.Service`1.RequestAsync[T](HttpMethod method, String path, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken) in /_/src/Stripe.net/Services/_base/Service.cs:line 276
+   at SweetShop.Services.StripePaymentService.CreateCheckoutSessionAsync(Order order, String domainUrl) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Services\StripePaymentService.cs:line 47
+   at SweetShop.Controllers.PaymentController.ProcessPayment(Int32 orderId) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Controllers\PaymentController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at SweetShop.Middleware.SecurityHeadersMiddleware.InvokeAsync(HttpContext context) in C:\Users\HP\Desktop\training\gaith_shop\SweetShop\Middleware\SecurityHeadersMiddleware.cs:line 89
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[02:33:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 13.9338 ms
+[02:33:55 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 7.0685 ms
+[02:33:55 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 7.1855 ms
+[02:34:11 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[02:34:12 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[02:34:12 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 23:25:47 at 02:00.
+[02:34:13 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[02:34:13 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[02:34:13 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[02:34:13 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[02:34:13 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[02:34:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 388.6072 ms
+[02:34:17 WRN] [Microsoft.EntityFrameworkCore.Query] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[02:34:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 543.3175 ms
+[02:34:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 132.3484 ms
+[02:34:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 10.8081 ms
+[02:34:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 73.8315 ms
+[02:34:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 5.5288 ms
+[02:34:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 12.8886 ms
+[02:34:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 7.3215 ms
+[02:34:19 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.4157 ms
+[02:34:19 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 25.4775 ms
+[02:34:19 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.6704 ms
+[02:34:21 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 175.9015 ms
+[02:34:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 194.0337 ms
+[02:34:25 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 68.0552 ms
+[02:34:37 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 302 in 1619.7076 ms
+[02:34:37 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment/Cancel responded 200 in 61.5295 ms
+[02:34:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 302 in 2.8259 ms
+[02:34:47 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 7.3807 ms
+[02:34:50 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 29.3487 ms
+[02:34:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/AddToShoppingCart responded 200 in 8.5489 ms
+[02:34:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 4.0108 ms
+[02:34:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.4659 ms
+[02:34:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 4.4027 ms
+[02:34:52 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.0000 ms
+[02:34:53 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 7.9619 ms
+[02:34:59 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 76.6557 ms
+[02:34:59 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 14.1304 ms
+[02:35:16 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 302 in 1543.4370 ms
+[02:35:16 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment/Cancel responded 200 in 13.4923 ms
+[02:35:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart responded 200 in 44.4906 ms
+[02:35:20 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 5.1853 ms
+[02:35:24 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 31.7113 ms
+[02:35:24 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 5.3441 ms
+[02:35:39 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 302 in 1516.2368 ms
+[02:35:39 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment/Success responded 200 in 55.5268 ms
+[02:35:49 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 14.6612 ms
+[02:38:12 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 40.1426 ms
+[02:38:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 22.8436 ms
+[02:38:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 3.3166 ms
+[02:38:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 5.5818 ms
+[02:38:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 4.1167 ms
+[02:38:14 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 10.9143 ms
+[02:38:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 62.0850 ms
+[02:38:18 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 13.3785 ms
+[02:38:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 302 in 1534.2535 ms
+[02:38:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment/Cancel responded 200 in 7.1823 ms
+[02:38:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 302 in 1.6273 ms
+[02:38:34 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 6.7992 ms
+[02:38:37 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 3.0013 ms
+[02:38:37 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 3.5965 ms
+[02:38:37 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.1085 ms
+[02:38:37 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 1.9136 ms
+[02:38:38 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Order/Checkout responded 200 in 6.0901 ms
+[02:38:45 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Order/Checkout responded 302 in 7.1473 ms
+[02:38:45 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment responded 200 in 5.2760 ms
+[02:38:57 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Payment/ProcessPayment responded 302 in 1522.7358 ms
+[02:38:57 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Payment/Success responded 200 in 8.3537 ms
+[02:38:59 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 6.5739 ms
+[02:39:01 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 11.2992 ms
+[02:39:01 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 3.6897 ms
+[02:39:01 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 2.0505 ms
+[02:39:01 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 1.6532 ms
+[02:39:04 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/RemoveFromShoppingCart responded 200 in 30.3379 ms
+[02:39:04 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 3.5726 ms
+[02:39:04 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 1.6057 ms
+[02:39:05 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/RemoveFromShoppingCart responded 200 in 8.4916 ms
+[02:39:05 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 4.3688 ms
+[02:39:05 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 1.7228 ms
+[02:39:06 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/RemoveFromShoppingCart responded 200 in 42.0967 ms
+[02:39:06 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartPartial responded 200 in 6.4843 ms
+[02:39:06 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /ShoppingCart/GetCartCount responded 200 in 3.1185 ms
+[02:39:09 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/Create responded 200 in 169.4203 ms
+[02:39:13 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Home/Branches responded 200 in 58.1790 ms
+[02:39:16 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/Create responded 200 in 9.3520 ms
+[02:39:31 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/SearchProducts responded 200 in 159.5945 ms
+[02:39:41 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Orders/SaveOrder responded 200 in 188.5621 ms
+[02:39:55 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/SearchProducts responded 200 in 5.4370 ms
+[02:40:02 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Orders/SaveOrder responded 200 in 43.6345 ms
+[02:43:50 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/SearchProducts responded 200 in 34.6051 ms
+[02:43:57 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP POST /Orders/SaveOrder responded 302 in 90.3145 ms
+[02:43:58 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Orders/OrderConfirmation responded 200 in 690.2203 ms
+[02:44:06 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 7.5915 ms
+[02:44:08 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Product/List responded 200 in 4.5055 ms
+[02:44:15 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET /Home/Branches responded 200 in 3.9619 ms

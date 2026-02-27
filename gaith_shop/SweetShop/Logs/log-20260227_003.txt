@@ -1,0 +1,9 @@
+[19:51:50 WRN] [Microsoft.EntityFrameworkCore.Model.Validation] Entity 'Product' has a global query filter defined and is the required end of a relationship with the entity 'OrderDetail'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+[19:51:51 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Started. Scheduled to run daily at 02:00.
+[19:51:51 INF] [SweetShop.Services.Reports.NightlyReportWorker] [ReportWorker] Next report run in 06:08:08 at 02:00.
+[19:51:52 INF] [Microsoft.Hosting.Lifetime] Now listening on: http://localhost:5000
+[19:51:52 INF] [Microsoft.Hosting.Lifetime] Application started. Press Ctrl+C to shut down.
+[19:51:52 INF] [Microsoft.Hosting.Lifetime] Hosting environment: Development
+[19:51:52 INF] [Microsoft.Hosting.Lifetime] Content root path: C:\Users\HP\Desktop\training\gaith_shop\SweetShop
+[19:51:53 WRN] [Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware] Failed to determine the https port for redirect.
+[19:51:54 INF] [Serilog.AspNetCore.RequestLoggingMiddleware] HTTP GET / responded 200 in 966.3866 ms
